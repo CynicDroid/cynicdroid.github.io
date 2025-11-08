@@ -1,295 +1,325 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html lang="en">
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.13, https://mobirise.com -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.13, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
-  <meta name="description" content="Information about CynicDroid Technologies">
-  
-  
-  <title>About Us</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/web/assets/gdpr-plugin/gdpr-styles.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed:400&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface:400&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,500,600,700,800,300i,400i,500i,600i,700i,800i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,500,600,700,800,300i,400i,500i,600i,700i,800i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Russo+One:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Russo+One:400&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=RpyEtN"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=RpyEtN" type="text/css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - CynicDroid Technologies</title>
+<link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
 
-  
-  
-  
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts: Orbitron -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<style>
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #2e2e2e;
+    color: #fff;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Particle canvas */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+/* Circuit lines canvas */
+#circuit-lines {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Header */
+header {
+    background-color: #262626;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 10;
+}
+header a {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, #0ff, #00f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background: linear-gradient(135deg,#2e2e2e,#3a3a3a);
+    text-align: center;
+    padding: 6rem 1rem;
+    z-index: 1;
+    box-shadow: 0 0 50px #0ff inset, 0 0 80px #00f inset;
+    border-radius: 1rem;
+}
+.hero-title {
+    color: #0ff;
+    font-size: 3rem;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    animation: neonGlow 2s ease-in-out infinite alternate;
+}
+.hero-subtitle {
+    color: #0ff;
+    text-shadow: 0 0 3px #0ff, 0 0 6px #0ff;
+    animation: neonGlowSub 2s ease-in-out infinite alternate;
+}
+@keyframes neonGlow {
+    from { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; }
+    to { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 50px #0ff; }
+}
+@keyframes neonGlowSub {
+    from { text-shadow: 0 0 3px #0ff, 0 0 6px #0ff; }
+    to { text-shadow: 0 0 6px #0ff, 0 0 12px #0ff; }
+}
+
+/* Cards Section */
+.section-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    padding: 4rem 1rem;
+    position: relative;
+    z-index: 1;
+}
+.card-tech {
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    animation: floatCard 6s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-tech img {
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    max-height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Neon card colors */
+.card-tech:nth-child(1) {
+    background-color: #3a1a3a;
+    border: 2px solid #ff00ff;
+}
+.card-tech:nth-child(1):hover {
+    box-shadow: 0 0 30px #ff00ff, 0 0 60px #ff00ff inset;
+}
+.card-tech:nth-child(1) img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+}
+
+.card-tech:nth-child(2) {
+    background-color: #1a3a3a;
+    border: 2px solid #00ffcc;
+}
+.card-tech:nth-child(2):hover {
+    box-shadow: 0 0 30px #00ffcc, 0 0 60px #00ffcc inset;
+}
+.card-tech:nth-child(2) img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+}
+
+.card-tech:nth-child(3) {
+    background-color: #1a1a3a;
+    border: 2px solid #00ccff;
+}
+.card-tech:nth-child(3):hover {
+    box-shadow: 0 0 30px #00ccff, 0 0 60px #00ccff inset;
+}
+.card-tech:nth-child(3) img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff;
+}
+
+.card-tech:nth-child(4) {
+    background-color: #3a3a1a;
+    border: 2px solid #ffff00;
+}
+.card-tech:nth-child(4):hover {
+    box-shadow: 0 0 30px #ffff00, 0 0 60px #ffff00 inset;
+}
+.card-tech:nth-child(4) img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00;
+}
+
+.card-tech:nth-child(5) {
+    background-color: #3a1a1a;
+    border: 2px solid #ff5500;
+}
+.card-tech:nth-child(5):hover {
+    box-shadow: 0 0 30px #ff5500, 0 0 60px #ff5500 inset;
+}
+.card-tech:nth-child(5) img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #ff5500, 0 0 40px #ff5500;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Float animation */
+@keyframes floatCard {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Manager Section */
+.manager-section {
+    background-color: #262626;
+    padding: 6rem 1rem;
+    text-align: center;
+}
+.manager-card {
+    max-width: 700px;
+    margin: auto;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: left;
+    animation: neonManager 4s ease-in-out infinite alternate;
+}
+.manager-card img {
+    border-radius: 0.5rem;
+    max-height: 300px;
+    display: block;
+    margin: 0 auto 1rem auto;
+}
+.manager-card p {
+    margin-bottom: 1rem;
+}
+@keyframes neonManager {
+    0% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff inset; }
+    25% { box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc inset; }
+    50% { box-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff inset; }
+    75% { box-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00 inset; }
+    100% { box-shadow: 0 0 20px #ff5500, 0 0 40px #ff5500 inset; }
+}
+
+/* Footer */
+footer {
+    background-color: #262626;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+</style>
 </head>
 <body>
-  
-  <section class="menu menu3 cid-ua0ktO9bkK" once="menu" id="menu03-by">
-	
 
-	<nav class="navbar navbar-dropdown navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				<span class="navbar-logo">
-					<a href="index.html">
-						<img src="assets/images/photo-1652604894441-720x720.png" alt="Cynicdroid logo" style="height: 5rem;">
-					</a>
-				</span>
-				
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
-						<a class="nav-link link text-black text-primary display-1" href="About.html">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black show text-primary display-1" href="Purchase.html" aria-expanded="false">Shop</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-1" href="Contacts.html">Contacts</a>
-					</li></ul>
-				<div class="icons-menu">
-					<a class="iconfont-wrapper" href="tel:0716375459">
-						<span class="p-2 mbr-iconfont socicon-viber socicon"></span>
-					</a>
-					<a class="iconfont-wrapper" href="mailto:cynicdroid@gmail.com">
-						<span class="p-2 mbr-iconfont socicon-mail socicon"></span>
-					</a>
-					<a class="iconfont-wrapper" href="https://wa.me/0716375459">
-						<span class="p-2 mbr-iconfont socicon-whatsapp socicon"></span>
-					</a>
-					
-				</div>
-				
-			</div>
-		</div>
-	</nav>
+<!-- Particle background -->
+<div id="particles-js"></div>
+
+<!-- Circuit lines SVG -->
+<svg id="circuit-lines">
+    <line x1="10%" y1="40%" x2="40%" y2="20%" stroke="#0ff" stroke-width="2" stroke-opacity="0.3"/>
+    <line x1="40%" y1="20%" x2="70%" y2="40%" stroke="#0ff" stroke-width="2" stroke-opacity="0.3"/>
+    <line x1="30%" y1="60%" x2="60%" y2="60%" stroke="#0ff" stroke-width="2" stroke-opacity="0.3"/>
+    <line x1="50%" y1="10%" x2="50%" y2="80%" stroke="#0ff" stroke-width="1.5" stroke-opacity="0.2"/>
+</svg>
+
+<!-- Header -->
+<header>
+    <div class="container mx-auto px-4">
+        <a href="index.html">CynicDroid</a>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <h1 class="hero-title">About CynicDroid Technologies</h1>
+    <p class="hero-subtitle mt-4 text-lg">Innovating IT solutions for modern businesses</p>
 </section>
 
-<section class="testimonials5 cid-u7KiKOhIml" id="testimonials5-bv">
-
-    
-
-    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);">
+<!-- About Cards Section -->
+<section class="section-container">
+    <div class="card-tech">
+        <img src="assets/images/mbr-2-240x240.png" alt="">
+        <h2 class="section-title">Who are we?</h2>
+        <p>We specializes in analyzing, designing, and implementing IT systems. We assess system suitability, collaborate with users and developers, and use technology to solve business challenges. We also guide organizational improvements and help teams adopt new systems effectively. CynicDroid Technologies designs and implements cutting-edge IT systems. We assess, optimize, and solve business challenges with tech, while guiding teams to embrace smarter, faster workflows</p>
     </div>
-    <div class="container">
-        <div class="media-container-row">
-            <div class="title col-12 align-center">
-                
-                
-            </div>
-        </div>
+    <div class="card-tech">
+        <img src="assets/images/mbr-240x240.jpg" alt="">
+        <h2 class="section-title">What do we do?</h2>
+        <p>We offer a wide range of IT services, including software development, ICT setup and maintenance, hardware and software installation, website design and deployment, Android device support, data recovery, and internet services like email and web conferencing.</p>
     </div>
-
-    <div class="container">
-        <div class="media-container-column">
-            
-
-            
-        <div class="mbr-testimonial align-center col-12 col-md-10">
-                <div class="panel-item">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="assets/images/mbr-2-240x240.png" alt="">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style mbr-white display-7">Who are we? </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style mbr-white display-7">CynicDroid Technologies is a firm specialized in designing and implementing information systems (IT) . As systems analysts we assess the suitability of information systems in terms of their intended outcomes and liaise with end users, software vendors and programmers in order to achieve these outcomes. We use analysis and design techniques to solve business problems using information technology. We may also serve as change agents who identify the organizational improvements needed, design systems to implement those changes, and train and motivate others to use the systems.</div>
-                        
-                    </div>
-                </div>
-            </div><div class="mbr-testimonial align-center col-12 col-md-10">
-                <div class="panel-item">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="assets/images/mbr-240x240.jpg" alt="">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style mbr-white display-7">What do we do?
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style mbr-white display-7">We try to offer a variety of services including but not limited to:
-<div>• Analyzing, designing, coding and implementing computer programs providing user support.
-</div><div>• Configuring of new Information Communication Technology equipment.
-</div><div>• Repairing and maintaining of Information Communication Technology equipment and associated peripherals.
-</div><div>• Install and configure software and hardware for new and used computers to make them ready for use.
-</div><div>• Designing, coding and deployment of websites providing user support.
-</div><div>• Android devices software maintenance.
-</div><div>• Windows and Android platform data recovery.
-</div><div>• Offering internet services i.e emails and web conferencing.&nbsp;</div></div>
-                        
-                    </div>
-                </div>
-            </div><div class="mbr-testimonial align-center col-12 col-md-10">
-                <div class="panel-item">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="assets/images/mbr-240x151.jpg" alt="">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style mbr-white display-7">Our Mission
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style mbr-white display-7">* To offer support to our softwares.
-<div>* To provide documented softwares.
-</div><div>* To secure our packages and develop using the best of the installer packaging system.
-</div><div>* To advice accordingly.
-</div><div>* To respond to our helpline forum instantly.
-</div><div>* To ensure Data security is our key component.
-</div><div>* To liaise with end users, software vendors and programmers in order to achieve the best we can offer.
-</div><div>* To offer pocket friendly products and services.</div></div>
-                        
-                    </div>
-                </div>
-            </div><div class="mbr-testimonial align-center col-12 col-md-10">
-                <div class="panel-item">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="assets/images/mbr-1-240x170.jpg" alt="">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style mbr-white display-7">Our vision
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style mbr-white display-7">To make technology fit in so that you don't really even notice it, so it's part of everyday life</div>
-                        
-                    </div>
-                </div>
-            </div><div class="mbr-testimonial align-center col-12 col-md-10">
-                <div class="panel-item">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="assets/images/mbr-1-240x240.jpg" alt="">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style mbr-white display-7">Motto
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style mbr-white display-7">Get rid of all doubts and go for it</div>
-                        
-                    </div>
-                </div>
-            </div></div>
-    </div>   
+    <div class="card-tech">
+        <img src="assets/images/mbr-240x151.jpg" alt="">
+        <h2 class="section-title">Our Mission</h2>
+        <p>Our mission is to provide reliable software support, secure and well-documented packages, prompt assistance via our helpline, strong data security, collaboration with users and developers, and affordable products and services..</p>
+    </div>
+    <div class="card-tech">
+        <img src="assets/images/mbr-1-240x170.jpg" alt="">
+        <h2 class="section-title">Our Vision</h2>
+        <p>To make technology fit in seamlessly with everyday life.</p>
+    </div>
+    <div class="card-tech">
+        <img src="assets/images/mbr-1-240x240.jpg" alt="">
+        <h2 class="section-title">Motto</h2>
+        <p>Get rid of all doubts and go for it.</p>
+    </div>
 </section>
 
-<section class="testimonials5 cid-sINGqMklxo" id="testimonials5-92">
-
-    
-
-    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);">
+<!-- Manager Section -->
+<section class="manager-section">
+    <h2 class="section-title mb-8">MANAGER</h2>
+    <div class="manager-card">
+        <img src="assets/images/1629107421449-240x427.jpg" alt="Nelson Mutugi">
+        <p>Nelson is an ICT expert with skills in software engineering, Android programming, web development, and IT system management. He designs, builds, and maintains efficient tech solutions, blending technical know-how with problem-solving and project management.Always learning and exploring new trends, Nelson thrives on creating innovative, user-friendly solutions, even in remote or challenging environments.</p>
+        <p class="text-cyan-400 font-bold mt-2">NELSON MUTUGI NGARI</p>
     </div>
-    <div class="container">
-        <div class="media-container-row">
-            <div class="title col-12 align-center">
-                <h2 class="pb-3 mbr-fonts-style display-4">MANAGER:</h2>
-                
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="media-container-column">
-            
-
-            
-        <div class="mbr-testimonial align-center col-12 col-md-10">
-                <div class="panel-item">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="assets/images/1629107421449-240x427.jpg" alt="">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style mbr-white display-7">Nelson is an Information Communication Technology (ICT) specialist with experience in project management, communication and analytical skills, good background in computer programming languages; C, C++, JavaScript, Visual Basic Dot Net (VB.Net) and Web development (HTML and CSS), computer maintenance, Graphics developer and Networking. Fueled  by his passion for understanding the nuances of  cross-IT advertising, he considers himself a  ‘forever student,’ eager to both build on his academic foundations in computer maintenance ,programming, networking and stay in tune with the latest digital marketing  strategies through continued coursework.  His hunger for knowledge and determination to turn information into action has contributed to his most recent success at website deployment. Meanwhile, he vastly improved the productivity of  his services by implementing strategic project management methods and ensuring a work-life balance for his studies. Nelson believes mindfulness in the workplace is key to success - a tenet he lives out through his interests in exploring IT trends. Reach out to us through our <strong><em><a href="contacts.html" class="text-warning">contact page!</a></em></strong></p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style mbr-white display-7">NELSON MUTUGI NGARI</div>
-                        
-                    </div>
-                </div>
-            </div></div>
-    </div>   
 </section>
 
-<section class="footer3 cid-tOBQHGejan" once="footers" id="footer3-be">
+<!-- Footer -->
+<footer>
+    <p>© Copyright 2025 CynicDroid Technologies. All Rights Reserved.</p>
+</footer>
 
-    
+<!-- Particles JS -->
+<script>
+particlesJS('particles-js', {
+    "particles": {
+        "number": {"value": 60, "density": {"enable": true, "value_area": 800}},
+        "color": {"value": "#0ff"},
+        "shape": {"type": "circle"},
+        "opacity": {"value": 0.3, "random": true},
+        "size": {"value": 3, "random": true},
+        "line_linked": {"enable": true, "distance": 150, "color": "#0ff", "opacity": 0.2, "width": 1},
+        "move": {"enable": true, "speed": 1, "direction": "none", "random": true, "straight": false}
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {"enable": true, "mode": "repulse"},
+            "onclick": {"enable": true, "mode": "push"}
+        },
+        "modes": {
+            "repulse": {"distance": 100},
+            "push": {"particles_nb": 4}
+        }
+    },
+    "retina_detect": true
+});
+</script>
 
-    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);"></div>
-
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="row row-links">
-                <ul class="foot-menu">
-                    
-                    
-                    
-                    
-                    
-                <li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="About.html">About us</a>
-                    </li><li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="Social.html">Social</a></li><li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="Contacts.html">Contact Us</a>
-                    </li><li class="foot-menu-item mbr-fonts-style display-7"><a href="Preview.html" class="text-white text-primary">Preview</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="Privacy.html" class="text-white">Privacy Policy</a></li></ul>
-            </div>
-            <div class="row social-row">
-                <div class="social-list align-right pb-2">
-                    
-                    
-                    
-                    
-                    
-                    
-                <div class="soc-item">
-                        <a href="https://wa.me/0716375459">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
-                        </a>
-                    </div><div class="soc-item">
-                        <a href="https://www.facebook.com/profile.php?id=100064124917514" target="_blank">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
-                        </a>
-                    </div><div class="soc-item">
-                        <a href="mailto:cynicdroid@gmail.com">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
-                        </a>
-                    </div></div>
-            </div>
-            <div class="row row-copirayt">
-                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-1">
-                    © Copyright 2024 CynicDroid Technologies. All Rights Reserved.
-                </p>
-            </div>
-        </div>
-    </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2913147" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/offline-website-builder.html"></a></section><script src="assets/popper/popper.min.js"></script>  <script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
-<div id="cookie-dialog" style="display: none;"><div id="cookiesdirective" style="background-color:rgba(35,35,35,NaN)"><div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgb(0, 0, 0); opacity: 0.1; z-index: 9999;"></div><div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; z-index: 10000"><div class="cookie-wrapper" style="font-family: sans-serif;position: relative; width: 100%; max-width: 500px; margin-right: auto; margin-left: auto; padding: 1rem; text-align: center; border-radius: .3rem; box-shadow: 0 10px 40px 0 rgba(0,0,0,0.2); color:#ffffff; background:rgb(35, 35, 35);"><div class="mbr-text"><p class="display-7 accept-text">We use cookies to give you the best experience. Read our <a style='color: #0f7699; text-decoration: underline;' href='Cookie.html'>Cookie policy</a>.</p></div><div class="mbr-section-btn"><a class="btn btn-sm btn-primary" style="margin:0; background-color:#aef710!important;color:#000000!important" id="impliedsubmit">Accept</a></div></div></div></div></div>
-  <input name="cookieData" type="hidden" data-cookie-cookiesAlertType='false' data-cookie-customDialogSelector='#cookie-dialog' data-cookie-colorText='#ffffff' data-cookie-colorBg='rgb(35, 35, 35)' data-cookie-opacityOverlay='10' data-cookie-bgOpacity='undefined' data-cookie-textButton='Accept' data-cookie-rejectText='REJECT' data-cookie-colorButton='#aef710' data-cookie-rejectColor='' data-cookie-colorLink='#0f7699' data-cookie-underlineLink='true' data-cookie-text="We use cookies to give you the best experience. Read our <a href='Cookie.html'>Cookie policy</a>.">
-   <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+</body>
 </html>

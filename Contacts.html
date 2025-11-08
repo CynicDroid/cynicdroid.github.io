@@ -1,188 +1,286 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html lang="en">
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.13, https://mobirise.com -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.13, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
-  <meta name="description" content="Get in touch with CynicDroid Technologies. Dear customer, we consider your feedback of importance. Please use this page to communicate to us. Thank you!">
-  
-  
-  <title>Contacts</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/web/assets/gdpr-plugin/gdpr-styles.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed:400&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface:400&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,500,600,700,800,300i,400i,500i,600i,700i,800i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,500,600,700,800,300i,400i,500i,600i,700i,800i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Russo+One:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Russo+One:400&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=v2axMv"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=v2axMv" type="text/css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contacts — CynicDroid Technologies</title>
+<link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
 
-  
-  
-  
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Orbitron font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+<style>
+:root {
+    --cyan: #00ffff;
+    --deep: #0b0b12;
+    --bg: #15151b;
+    --muted: rgba(255,255,255,0.07);
+}
+
+html, body { height:100%; }
+body {
+    margin:0;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(180deg,#111216 0%, #15151b 100%);
+    color: #e8faff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ====== Circuit SVG Background ====== */
+#circuit-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+.circuit-line { stroke: var(--cyan); stroke-width: 1.8; opacity: 0.18; }
+.circuit-glow { 
+    stroke: url(#pulse-gradient); stroke-width: 2.8; stroke-linecap: round; 
+    opacity: 0.85; stroke-dasharray: 12 260; animation: flow 5s linear infinite; 
+    filter: drop-shadow(0 0 12px rgba(0,255,255,0.18));
+}
+@keyframes flow { from { stroke-dashoffset:260; } to { stroke-dashoffset:0; } }
+.spark {
+    fill: var(--cyan); filter: drop-shadow(0 0 8px rgba(0,255,255,0.5));
+    opacity: 0; animation: spark-pop 3.5s ease-in-out infinite;
+}
+@keyframes spark-pop {
+    0% { opacity:0; transform:translateY(0) scale(0.2);}
+    45% { opacity:1; transform:translateY(-6px) scale(1.05);}
+    100% { opacity:0; transform:translateY(-12px) scale(0.3);}
+}
+
+/* ====== Header ====== */
+header.site-header {
+    position: fixed; top:0; left:0; right:0; z-index:40;
+    background: linear-gradient(180deg, rgba(6,6,10,0.6), rgba(6,6,10,0.35));
+    backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,255,255,0.04);
+    padding:1rem 2rem; display:flex; align-items:center; justify-content:flex-start;
+}
+header .brand {
+    font-weight:700; letter-spacing:2px; font-size:1.6rem;
+    background: linear-gradient(90deg,#0ff,#00f,#a020f0);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #00f, 0 0 30px #a020f0;
+    animation: neon-flicker 2.5s infinite alternate;
+    text-decoration:none;
+}
+@keyframes neon-flicker {
+    0%,100% { text-shadow:0 0 5px #0ff,0 0 10px #00f,0 0 15px #a020f0;}
+    25% { text-shadow:0 0 8px #0ff,0 0 15px #00f,0 0 22px #a020f0;}
+    50% { text-shadow:0 0 6px #0ff,0 0 12px #00f,0 0 18px #a020f0;}
+    75% { text-shadow:0 0 10px #0ff,0 0 18px #00f,0 0 25px #a020f0;}
+}
+
+/* ====== Hero ====== */
+.hero {
+    padding-top: 100px;
+    min-height: 28vh;
+    display:flex; align-items:center; justify-content:center;
+    position: relative; z-index:10;
+}
+.hero .inner { text-align:center; max-width:980px; padding:2rem 1rem; }
+.title { font-size:clamp(1.8rem,4vw,2.8rem); color: var(--cyan); text-shadow:0 0 6px #0ff,0 0 18px #00f; margin-bottom:.6rem; }
+.subtitle { color: rgba(255,255,255,0.85); max-width:900px; margin:0 auto; }
+
+/* ====== Contacts Grid ====== */
+.contacts-grid { max-width:1200px; margin:2.25rem auto; padding:1rem; display:grid; grid-template-columns:1fr; gap:1.25rem; position:relative; z-index:10;}
+@media(min-width:900px){ .contacts-grid { grid-template-columns:1fr 1fr; gap:2rem; } }
+
+.card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+    border:1px solid rgba(0,255,255,0.06);
+    border-radius:12px; padding:1.25rem;
+    box-shadow:0 6px 30px rgba(0,0,0,0.6);
+    transition: transform .25s ease, box-shadow .25s ease, background 0.3s ease, border-color 0.5s ease;
+}
+.card:hover {
+    transform:translateY(-6px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.7);
+    background: linear-gradient(180deg, rgba(0,255,255,0.05), rgba(0,255,255,0.08));
+    border-color: #00ffff;
+    animation: card-glow 1.2s infinite alternate;
+}
+@keyframes card-glow {
+    0% { box-shadow:0 10px 30px rgba(0,255,255,0.3);}
+    50% { box-shadow:0 15px 40px rgba(0,255,255,0.5);}
+    100% { box-shadow:0 10px 30px rgba(0,255,255,0.3);}
+}
+.card h4 {
+    color: var(--cyan); margin-bottom:.5rem; font-size:1.05rem;
+    animation: neon-flicker 2.2s infinite alternate;
+}
+.card p a { 
+    color:#aefbff; text-decoration:underline; transition: all 0.3s ease;
+}
+.card p a:hover { 
+    color:#fff; text-shadow:0 0 6px #0ff,0 0 12px #00f; 
+}
+
+/* ====== Map ====== */
+.map-frame { border-radius:12px; overflow:hidden; border:3px solid rgba(0,255,255,0.12); box-shadow:0 0 30px rgba(0,255,255,0.06), inset 0 0 18px rgba(0,255,255,0.02); position:relative; }
+.map-inner { position:relative; padding:.5rem; background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.2)); }
+.map-inner iframe { width:100%; height:320px; border:0; display:block; border-radius:8px; }
+.map-frame::after { content:""; position:absolute; inset:-6px; border-radius:16px; background:linear-gradient(90deg, rgba(0,255,255,0.06), rgba(0,120,255,0.04)); filter: blur(14px); z-index:-1; opacity:0.9; }
+.map-caption { margin-top:.5rem; color: rgba(255,255,255,0.7); font-size:.92rem; }
+
+/* ====== Footer ====== */
+footer.site-footer {
+    margin-top:3rem; text-align:center; color: rgba(174,251,255,0.9);
+    font-size:0.875rem; z-index:10; position:relative;
+}
+
+/* ====== Particle Canvas ====== */
+#particleCanvas {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    pointer-events:none; z-index:1;
+}
+</style>
 </head>
 <body>
-  
-  <section class="menu menu3 cid-ua0ktO9bkK" once="menu" id="menu03-by">
-	
 
-	<nav class="navbar navbar-dropdown navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				<span class="navbar-logo">
-					<a href="index.html">
-						<img src="assets/images/photo-1652604894441-720x720.png" alt="Cynicdroid logo" style="height: 5rem;">
-					</a>
-				</span>
-				
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
-						<a class="nav-link link text-black text-primary display-1" href="About.html">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black show text-primary display-1" href="Purchase.html" aria-expanded="false">Shop</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-1" href="Contacts.html">Contacts</a>
-					</li></ul>
-				<div class="icons-menu">
-					<a class="iconfont-wrapper" href="tel:0716375459">
-						<span class="p-2 mbr-iconfont socicon-viber socicon"></span>
-					</a>
-					<a class="iconfont-wrapper" href="mailto:cynicdroid@gmail.com">
-						<span class="p-2 mbr-iconfont socicon-mail socicon"></span>
-					</a>
-					<a class="iconfont-wrapper" href="https://wa.me/0716375459">
-						<span class="p-2 mbr-iconfont socicon-whatsapp socicon"></span>
-					</a>
-					
-				</div>
-				
-			</div>
-		</div>
-	</nav>
+<!-- Circuit Background -->
+<svg id="circuit-bg" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" aria-hidden="true">
+  <defs>
+    <linearGradient id="pulse-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0077ff" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+  <line x1="3%" y1="18%" x2="42%" y2="18%" class="circuit-line"/>
+  <line x1="42%" y1="18%" x2="66%" y2="38%" class="circuit-line"/>
+  <line x1="8%" y1="62%" x2="62%" y2="62%" class="circuit-line"/>
+  <line x1="52%" y1="8%" x2="52%" y2="78%" class="circuit-line"/>
+
+  <line x1="3%" y1="18%" x2="42%" y2="18%" class="circuit-glow"/>
+  <line x1="42%" y1="18%" x2="66%" y2="38%" class="circuit-glow"/>
+  <line x1="8%" y1="62%" x2="62%" y2="62%" class="circuit-glow"/>
+  <line x1="52%" y1="8%" x2="52%" y2="78%" class="circuit-glow"/>
+
+  <circle cx="42%" cy="18%" r="4" fill="#00ffff" opacity="0.9"/>
+  <circle cx="66%" cy="38%" r="3.5" fill="#00ffff" opacity="0.85"/>
+  <circle cx="52%" cy="62%" r="3.8" fill="#00ffff" opacity="0.9"/>
+
+  <circle cx="42%" cy="18%" r="0" class="spark" style="animation-delay:0.2s"></circle>
+  <circle cx="66%" cy="38%" r="0" class="spark" style="animation-delay:1.1s"></circle>
+  <circle cx="52%" cy="62%" r="0" class="spark" style="animation-delay:2.2s"></circle>
+</svg>
+
+<!-- Particle Canvas -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="index.html" class="brand">CynicDroid</a>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="inner hero-content" data-aos="fade-up">
+    <h1 class="title">CONTACTS</h1>
+    <p class="subtitle">Get in touch with CynicDroid Technologies. Dear customer, we consider your feedback important. Use the contact details below or the map to find us.</p>
+  </div>
 </section>
 
-<section class="contacts3 map1 cid-srzanC1xrm" id="contacts3-6d">
-
-    
-    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);"></div>
-    <div class="container">
-        
-        <div class="row justify-content-center mt-4">
-            <div class="card col-12 col-md-6">
-                <div class="card-wrapper">
-                    <div class="image-wrapper">
-                        <span class="mbr-iconfont socicon-viber socicon"></span>
-                    </div>
-                    <div class="text-wrapper">
-                        <h6 class="card-title mbr-fonts-style mb-1 display-5">
-                            <strong>Phone</strong>
-                        </h6>
-                        <p class="mbr-text mbr-fonts-style display-7"><a href="tel:0716375459" class="text-primary">0716375459</a></p>
-                    </div>
-                </div>
-                <div class="card-wrapper">
-                    <div class="image-wrapper">
-                        <span class="mbr-iconfont socicon-mail socicon"></span>
-                    </div>
-                    <div class="text-wrapper">
-                        <h6 class="card-title mbr-fonts-style mb-1 display-5">
-                            <strong>Email</strong>
-                        </h6>
-                        <p class="mbr-text mbr-fonts-style display-7"><a href="mailto:cynicdroid@gmail.com" class="text-primary">cynicdroid@gmail.com&nbsp;</a><br></p>
-                    </div>
-                </div>
-            </div>
-            <div class="map-wrapper col-12 col-md-6">
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB7QWkvlxV39ZsyKvhZRjPGVqlJFvxxNkw&amp;q=Ishiara Eastern Kenya" allowfullscreen=""></iframe></div>
-            </div>
-        </div>
+<!-- Contacts Grid -->
+<main class="contacts-grid">
+  <div class="space-y-4">
+    <div class="card" data-aos="fade-up">
+      <h4>Phone</h4>
+      <p><a href="tel:0716375459">0716375459</a></p>
     </div>
-</section>
-
-<section class="footer3 cid-tOBQHGejan" once="footers" id="footer3-be">
-
-    
-
-    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);"></div>
-
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="row row-links">
-                <ul class="foot-menu">
-                    
-                    
-                    
-                    
-                    
-                <li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="About.html">About us</a>
-                    </li><li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="Social.html">Social</a></li><li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="Contacts.html">Contact Us</a>
-                    </li><li class="foot-menu-item mbr-fonts-style display-7"><a href="Preview.html" class="text-white text-primary">Preview</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="Privacy.html" class="text-white">Privacy Policy</a></li></ul>
-            </div>
-            <div class="row social-row">
-                <div class="social-list align-right pb-2">
-                    
-                    
-                    
-                    
-                    
-                    
-                <div class="soc-item">
-                        <a href="https://wa.me/0716375459">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
-                        </a>
-                    </div><div class="soc-item">
-                        <a href="https://www.facebook.com/profile.php?id=100064124917514" target="_blank">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
-                        </a>
-                    </div><div class="soc-item">
-                        <a href="mailto:cynicdroid@gmail.com">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
-                        </a>
-                    </div></div>
-            </div>
-            <div class="row row-copirayt">
-                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-1">
-                    © Copyright 2024 CynicDroid Technologies. All Rights Reserved.
-                </p>
-            </div>
-        </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="80">
+      <h4>Email</h4>
+      <p><a href="mailto:cynicdroid@gmail.com">cynicdroid@gmail.com</a></p>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2913147" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/offline-website-builder.html"></a></section><script src="assets/popper/popper.min.js"></script>  <script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>  <script src="assets/parallax/jarallax.min.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
-<div id="cookie-dialog" style="display: none;"><div id="cookiesdirective" style="background-color:rgba(35,35,35,NaN)"><div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgb(0, 0, 0); opacity: 0.1; z-index: 9999;"></div><div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; z-index: 10000"><div class="cookie-wrapper" style="font-family: sans-serif;position: relative; width: 100%; max-width: 500px; margin-right: auto; margin-left: auto; padding: 1rem; text-align: center; border-radius: .3rem; box-shadow: 0 10px 40px 0 rgba(0,0,0,0.2); color:#ffffff; background:rgb(35, 35, 35);"><div class="mbr-text"><p class="display-7 accept-text">We use cookies to give you the best experience. Read our <a style='color: #0f7699; text-decoration: underline;' href='Cookie.html'>Cookie policy</a>.</p></div><div class="mbr-section-btn"><a class="btn btn-sm btn-primary" style="margin:0; background-color:#aef710!important;color:#000000!important" id="impliedsubmit">Accept</a></div></div></div></div></div>
-  <input name="cookieData" type="hidden" data-cookie-cookiesAlertType='false' data-cookie-customDialogSelector='#cookie-dialog' data-cookie-colorText='#ffffff' data-cookie-colorBg='rgb(35, 35, 35)' data-cookie-opacityOverlay='10' data-cookie-bgOpacity='undefined' data-cookie-textButton='Accept' data-cookie-rejectText='REJECT' data-cookie-colorButton='#aef710' data-cookie-rejectColor='' data-cookie-colorLink='#0f7699' data-cookie-underlineLink='true' data-cookie-text="We use cookies to give you the best experience. Read our <a href='Cookie.html'>Cookie policy</a>.">
-   <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+    <div class="card" data-aos="fade-up" data-aos-delay="160">
+      <h4>Hours & Visit</h4>
+      <p class="muted">Visit our service center (call ahead). We're available Monday–Saturday. Exact hours may vary; please call before visiting.</p>
+    </div>
+  </div>
+  <div>
+    <div class="map-frame" data-aos="fade-up">
+      <div class="map-inner">
+        <iframe loading="lazy"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB7QWkvlxV39ZsyKvhZRjPGVqlJFvxxNkw&q=Ishiara+Eastern+Kenya"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          title="CynicDroid Location">
+        </iframe>
+      </div>
+    </div>
+    <p class="map-caption mt-3">Ishiara, Eastern Kenya — open map to get directions. Click & drag to explore.</p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    © 2025 CynicDroid Technologies. All Rights Reserved.
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true });
+
+// Particle animation
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+const particleCount = 70;
+const particles = [];
+for(let i=0;i<particleCount;i++){
+    particles.push({x:Math.random()*width, y:Math.random()*height, vx:(Math.random()-0.5)*0.4, vy:(Math.random()-0.5)*0.4, size:Math.random()*2+1, alphaOffset:Math.random()*Math.PI*2});
+}
+function animateParticles(){
+    ctx.clearRect(0,0,width,height);
+    const time = Date.now()*0.002;
+    const gradient = ctx.createLinearGradient(0,0,width,height);
+    const gPulse = 0.5+0.5*Math.sin(time);
+    gradient.addColorStop(0, `rgba(0,${Math.floor(255*gPulse)},255,0.2)`);
+    gradient.addColorStop(1, `rgba(0,255,${Math.floor(255*(1-gPulse))},0.2)`);
+    for(let i=0;i<particles.length;i++){
+        const p=particles[i];
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>width)p.vx*=-1;
+        if(p.y<0||p.y>height)p.vy*=-1;
+        const pulse=0.5+0.5*Math.sin(time+p.alphaOffset);
+        const r=0,g=Math.floor(255*pulse),b=Math.floor(255*(1-0.5*pulse));
+        const color=`rgba(${r},${g},${b},0.7)`;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fillStyle=color;
+        ctx.shadowColor=color; ctx.shadowBlur=8; ctx.fill();
+        for(let j=i+1;j<particles.length;j++){
+            const p2=particles[j];
+            const dx=p2.x-p.x; const dy=p2.y-p.y;
+            const dist=Math.sqrt(dx*dx+dy*dy);
+            if(dist<120){
+                ctx.beginPath();
+                ctx.moveTo(p.x,p.y);
+                ctx.lineTo(p2.x,p2.y);
+                ctx.strokeStyle=gradient;
+                ctx.lineWidth=1;
+                ctx.shadowBlur=4;
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+window.addEventListener('resize',()=>{ width=canvas.width=window.innerWidth; height=canvas.height=window.innerHeight; });
+</script>
+
+</body>
 </html>

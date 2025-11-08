@@ -1,401 +1,401 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html lang="en">
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.13, https://mobirise.com -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.13, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
-  <meta name="description" content="Purchase products and inquire services .Dear customer, we consider to offer you great products and bug free softwares. Thank you!">
-  
-  
-  <title>Purchases</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/web/assets/gdpr-plugin/gdpr-styles.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed:400&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface:400&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,500,600,700,800,300i,400i,500i,600i,700i,800i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,500,600,700,800,300i,400i,500i,600i,700i,800i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Russo+One:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Russo+One:400&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=5cgDyF"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=5cgDyF" type="text/css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CynicDroid Catalog — Neon Pulse</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Kanit:wght@400;600&display=swap" rel="stylesheet">
 
-  
-  
-  
+<!-- Use the modern EmailJS browser bundle -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+:root{
+  --cyan:#00ffff;
+  --lime:#aef710;
+  --bg:#2e2e2e;
+  --card-bg: rgba(0,255,255,0.05);
+  --modal-bg: #1a1a1a;
+  --text-color: #e0e0e0;
+  --neon-shadow: 0 0 12px var(--cyan),0 0 24px var(--lime);
+}
+*{box-sizing:border-box}
+body{font-family:'Kanit',sans-serif;background:var(--bg);color:var(--text-color);margin:0;overflow-x:hidden;display:flex;min-height:100vh;scroll-behavior:smooth;}
+.sidebar{width:240px;background:var(--bg);border-right:2px solid var(--cyan);box-shadow: var(--neon-shadow);position:fixed;top:0;left:0;bottom:0;padding:1rem;display:flex;flex-direction:column;align-items:center;z-index:20;overflow-y:auto;}
+.cynicdroid-brand{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:700;color:var(--cyan);text-shadow:0 0 12px var(--cyan),0 0 20px var(--lime);margin-bottom:1rem;}
+.category-filter-vertical{display:flex;flex-direction:column;gap:0.6rem;width:100%;margin-top:0.5rem;}
+.category-filter-vertical button{background:transparent;border:1px solid var(--cyan);color: var(--cyan);padding:0.6rem 1rem;border-radius:0.5rem;cursor:pointer;transition:0.2s;text-align:left;}
+.category-filter-vertical button.active,
+.category-filter-vertical button:hover{background:var(--cyan);color:#000;box-shadow: var(--neon-shadow);}
+.topbar{position:fixed;right:1rem;top:1rem;z-index:60;display:flex;gap:0.75rem;align-items:center;}
+.cart-icon{position:relative;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(90deg,var(--cyan),var(--lime));color:#000;box-shadow: var(--neon-shadow);cursor:pointer;font-weight:700;}
+.cart-count{position:absolute;top:-8px;right:-8px;background:var(--bg);border:2px solid var(--cyan);color:var(--cyan);padding:2px 6px;border-radius:999px;font-size:0.8rem;box-shadow:0 0 8px var(--cyan);}
+.main-content{margin-left:260px;flex-grow:1;padding:2rem;padding-top:3.2rem;}
+header{text-align:center;margin-bottom:1rem;}
+h1{font-family:'Orbitron',sans-serif;color:var(--cyan);text-shadow:0 0 8px var(--cyan),0 0 18px var(--lime);margin:0;}
+.controls{display:flex;gap:1rem;align-items:center;justify-content:flex-start;margin:1rem 0 1.5rem 0;flex-wrap:wrap;}
+#searchInput, #sortSelect{padding:0.65rem 0.9rem;border-radius:10px;border:1px solid var(--cyan);background:transparent;color:var(--text-color);min-width:220px;}
+#sortSelect{ font-family:'Orbitron',sans-serif; color:var(--cyan); }
+.category{ padding:0.5rem 0;}
+.category h2{ margin:0 0 0.6rem 0; font-size:1.2rem;}
+.grid{ display:grid; gap:1.2rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.card{ background: var(--card-bg); border:1px solid var(--cyan); border-radius:1rem; box-shadow: var(--neon-shadow); overflow:hidden; display:flex; flex-direction:column; transition:0.3s; cursor:pointer; position:relative; }
+.card:hover{ transform:scale(1.03); box-shadow:0 0 20px var(--cyan),0 0 40px var(--lime); }
+.card img{ width:100%; height:170px; object-fit:cover;}
+.card-content{ padding:0.9rem; flex-grow:1; display:flex; flex-direction:column;}
+.card-content h3{ font-family:'Orbitron',sans-serif; font-size:1.05rem; margin:0 0 0.5rem 0; color:var(--cyan); }
+.card-content p{ flex-grow:1; margin:0 0 0.6rem 0; font-size:0.95rem; color:#cfd8dc;}
+.card-content .price{ font-weight:700; color:var(--lime); margin-bottom:0.5rem;}
+.pagination{ display:flex; gap:0.5rem; margin-top:0.6rem; justify-content:center; flex-wrap:wrap;}
+.pagination button{ background:transparent; border:1px solid var(--cyan); color:var(--cyan); padding:0.4rem 0.7rem; border-radius:0.5rem; cursor:pointer; transition:0.2s;}
+.pagination button.active, .pagination button:hover{ background:var(--cyan); color:#000; box-shadow:0 0 12px var(--cyan); }
+@keyframes neonPulse { 0% { box-shadow: 0 0 12px var(--cyan),0 0 24px var(--lime); transform: scale(1); } 50% { box-shadow: 0 0 20px var(--lime),0 0 36px var(--cyan); transform: scale(1.05); } 100% { box-shadow: 0 0 12px var(--cyan),0 0 24px var(--lime); transform: scale(1); } }
+.btn-neon{ background:linear-gradient(90deg,var(--cyan),var(--lime)); color:#000; font-weight:600; text-transform:uppercase; box-shadow: var(--neon-shadow); transition:0.18s; text-align:center; cursor:pointer; padding:0.5rem 0.6rem; border-radius:8px; border:none;}
+.btn-outline{ background:transparent; border:1px solid var(--cyan); color:var(--cyan); padding:0.45rem 0.6rem; border-radius:8px; cursor:pointer;}
+.btn-outline:hover{ background:var(--cyan); color:#000; box-shadow:0 0 12px var(--cyan);}
+.modal{ position:fixed; top:0; left:0; width:100%; height:100%; display:none; justify-content:center; align-items:center; z-index:70; }
+.modal-content{ background: var(--modal-bg); border:2px solid var(--cyan); border-radius:1rem; padding:1.25rem; width:92%; max-width:720px; box-shadow:0 0 20px var(--cyan),0 0 40px var(--lime); position:relative;}
+.small-modal{ max-width:420px; }
+.modal .closeModal{ position:absolute; top:0.6rem; right:0.8rem; font-size:1.2rem; color:var(--cyan); cursor:pointer; }
+.modal .closeModal:hover{ color:var(--lime); }
+#previewModal img, #checkoutModal img{ width:100%; border-radius:0.5rem; margin-bottom:0.9rem; box-shadow:0 0 10px var(--cyan); }
+#previewModal .preview-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; align-items:start; }
+#previewModal h3, #checkoutModal h3{ margin:0 0 0.4rem 0; color:var(--cyan); font-family:'Orbitron',sans-serif; }
+#previewModal p, #checkoutModal p{ color:#cfd8dc; }
+.cart-items{ max-height:320px; overflow:auto; margin-bottom:0.8rem; display:flex; flex-direction:column; gap:0.6rem; padding-right:0.25rem; }
+.cart-item{ display:flex; gap:0.75rem; align-items:center; border-radius:8px; padding:0.5rem; background:rgba(0,255,255,0.02); border:1px solid rgba(0,255,255,0.04); }
+.cart-item img{ width:64px; height:48px; object-fit:cover; border-radius:6px; }
+.cart-item .meta{ flex:1; }
+.qty-controls{ display:flex; gap:0.4rem; align-items:center; }
+.qty-controls button{ background:transparent; border:1px solid var(--cyan); color:var(--cyan); width:28px; height:28px; border-radius:6px; cursor:pointer; }
+.cart-totals{ display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-top:0.6rem; padding-top:0.6rem; border-top:1px dashed rgba(174,247,16,0.08); }
+.cart-empty{ text-align:center; color:#9aa7ab; padding:1rem 0; }
+.confetti-piece{ position:absolute; width:8px; height:8px; background:linear-gradient(45deg,#00ffff,#aef710); opacity:0.9; pointer-events:none; z-index:100; animation: fall 2s linear forwards; }
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(100vh) rotate(360deg);} }
+@media (max-width:900px){
+  .sidebar{ position:relative; width:100%; height:auto; display:flex; flex-direction:row; padding:0.5rem; overflow:auto; border-right: none; border-bottom: 2px solid var(--cyan); }
+  .category-filter-vertical{ flex-direction:row; gap:0.5rem; padding:0 0.5rem; }
+  .main-content{ margin-left:0; padding-top:1.6rem; }
+  #previewModal .preview-grid{ grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
-  
-  <section class="menu menu3 cid-ua0ktO9bkK" once="menu" id="menu03-by">
-	
 
-	<nav class="navbar navbar-dropdown navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				<span class="navbar-logo">
-					<a href="index.html">
-						<img src="assets/images/photo-1652604894441-720x720.png" alt="Cynicdroid logo" style="height: 5rem;">
-					</a>
-				</span>
-				
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
-						<a class="nav-link link text-black text-primary display-1" href="About.html">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black show text-primary display-1" href="Purchase.html" aria-expanded="false">Shop</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-1" href="Contacts.html">Contacts</a>
-					</li></ul>
-				<div class="icons-menu">
-					<a class="iconfont-wrapper" href="tel:0716375459">
-						<span class="p-2 mbr-iconfont socicon-viber socicon"></span>
-					</a>
-					<a class="iconfont-wrapper" href="mailto:cynicdroid@gmail.com">
-						<span class="p-2 mbr-iconfont socicon-mail socicon"></span>
-					</a>
-					<a class="iconfont-wrapper" href="https://wa.me/0716375459">
-						<span class="p-2 mbr-iconfont socicon-whatsapp socicon"></span>
-					</a>
-					
-				</div>
-				
-			</div>
-		</div>
-	</nav>
-</section>
+<aside class="sidebar">
+  <div class="cynicdroid-brand">CynicDroid</div>
+  <div class="category-filter-vertical" id="categoryFilter"></div>
+</aside>
 
-<section class="pricing02 cid-ua0r8pQTDg" id="pricing02-bz">
-  
-  <div class="mbr-overlay"></div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 content-head">
-        <div class="mbr-section-head mb-5">
-          <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-4">Accessory</h4>
-          <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7"><strong>
-            Mobile chargers</strong></h5>
-          
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="item features-image col-12 col-md-6 col-lg-4">
-        <div class="item-wrapper">
-          <div class="item-img">
-            <img src="assets/images/img-20240414-wa0020-700x681.jpg" alt="charger">
-          </div>
-          <div class="item-content">
-            <h5 class="item-title mbr-fonts-style display-5">
-              <strong>Smart charger 3.1 A</strong></h5>
-            <h6 class="item-subtitle mbr-fonts-style display-7">Ksh 250</h6>
-            
-            <div class="mbr-section-btn item-footer"><a href="Purchase.html#form1-8e" class="btn item-btn btn-black display-1">Buy Now</a></div>
-          </div>
-
-        </div>
-      </div>
-      <div class="item features-image col-12 col-md-6 col-lg-4">
-        <div class="item-wrapper">
-          <div class="item-img">
-            <img src="assets/images/img-20240414-wa0029-700x933.jpg" alt="charger">
-          </div>
-          <div class="item-content">
-            <h5 class="item-title mbr-fonts-style display-5">
-              <strong>2A Oraimo fast charger</strong></h5>
-            <h6 class="item-subtitle mbr-fonts-style display-7">
-              Ksh 450</h6>
-            
-            <div class="mbr-section-btn item-footer"><a href="Purchase.html#form1-8e" class="btn item-btn btn-black display-7">Buy Now</a></div>
-          </div>
-        </div>
-      </div>
-      <div class="item features-image col-12 col-md-6 col-lg-4">
-        <div class="item-wrapper">
-          <div class="item-img">
-            <img src="assets/images/img-20240414-wa0048-700x648.jpg" alt="charger">
-          </div>
-          <div class="item-content">
-            <h5 class="item-title mbr-fonts-style display-5">
-              <strong>Amaya 3.1A charger</strong></h5>
-            <h6 class="item-subtitle mbr-fonts-style display-7">
-              Ksh 400</h6>
-            
-            <div class="mbr-section-btn item-footer"><a href="Purchase.html#form1-8e" class="btn item-btn btn-black display-7">Buy Now</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="topbar">
+  <div id="cartBtn" class="cart-icon" title="Open Cart">🛒
+    <div id="cartCount" class="cart-count">0</div>
   </div>
-</section>
+</div>
 
-<section class="features026 cid-ua0rNEDaOu" id="features026-c0">
-	
+<div class="main-content">
+  <header><h1>Product Catalog</h1></header>
+  <div class="controls">
+    <input id="searchInput" placeholder="Search products..." />
+    <select id="sortSelect">
+      <option value="default">Sort: Default</option>
+      <option value="priceLow">Price: Low → High</option>
+      <option value="priceHigh">Price: High → Low</option>
+      <option value="nameAZ">Name: A → Z</option>
+      <option value="nameZA">Name: Z → A</option>
+    </select>
+    <div style="flex:1"></div>
+  </div>
+  <div id="categoriesContainer"></div>
+</div>
 
-	
-	<div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(0, 0, 0);"></div>
-	<div class="container">
-		<div class="row mb-5 justify-content-center">
-			<div class="col-12 mb-0 content-head">
-				<h3 class="mbr-section-title mbr-fonts-style align-center display-4">
-					<strong>Services</strong>
-				</h3>
-				
-			</div>
-		</div>
-		<div class="row">
-			<div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<div class="img-wrapper mb-3">
-							<img src="assets/images/mbr-2-240x160.jpg" alt="">
-						</div>
-						<h5 class="card-title mbr-fonts-style display-5">
-							<strong>Software development</strong></h5>
-						<p class="price mbr-fonts-style display-7">Ksh 2,000 - Ksh 100,000</p>
-						<p class="card-text mbr-fonts-style display-7">
-							Analyzing, designing, coding and implementing computer programs providing user support.
-						</p>
-						<div class="mbr-section-btn mt-auto"><a class="btn btn-lg btn-primary display-1" href="Purchase.html#form1-8e">Inquire</a></div>
-					</div>
-				</div>
-			</div>
-			<div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<div class="img-wrapper mb-3">
-							<img src="assets/images/mbr-240x170.jpg" alt="">
-						</div>
-						<h5 class="card-title mbr-fonts-style display-5"><strong>Web Design</strong>
-						</h5>
-						<p class="price mbr-fonts-style display-7">Ksh 5,000 - Ksh 200,000</p>
-						<p class="card-text mbr-fonts-style display-7">Designing, coding and implementing responsive and dynamic websites providing user support.</p>
-						<div class="mbr-section-btn mt-auto"><a class="btn btn-lg btn-primary display-7" href="Purchase.html#form1-8e">Inquire</a></div>
-					</div>
-				</div>
-			</div>
-			<div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<div class="img-wrapper mb-3">
-							<img src="assets/images/mbr-2-240x240.png" alt="">
-						</div>
-						<h5 class="card-title mbr-fonts-style display-5">
-							<strong>Digital Questionaires</strong></h5>
-						<p class="price mbr-fonts-style display-7">
-							Ksh 500 - Ksh 2000</p>
-						<p class="card-text mbr-fonts-style display-7">
-							Designing digital questionnaires for use with tablets on data collection.
-						</p>
-						<div class="mbr-section-btn mt-auto"><a class="btn btn-lg btn-primary display-7" href="Purchase.html#form1-8e">Inquire</a></div>
-					</div>
-				</div>
-			</div>
-			<div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<div class="img-wrapper mb-3">
-							<img src="assets/images/pngegg-160x120.png" alt="">
-						</div>
-						<h5 class="card-title mbr-fonts-style display-5"><strong>Mobile Services</strong></h5>
-						<p class="price mbr-fonts-style display-7">Ksh 100 - Ksh 5,000</p>
-						<p class="card-text mbr-fonts-style display-7">•Android Software upgrade, data recovery and flashing.
-<br>• Android devices software maintenance.</p>
-						<div class="mbr-section-btn mt-auto"><a class="btn btn-lg btn-primary display-7" href="Purchase.html#form1-8e">Inquire</a></div>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<div class="img-wrapper mb-3">
-							<img src="assets/images/pngegg-2-160x127.png" data-slide-to="4" data-bs-slide-to="5" alt="">
-						</div>
-						<h5 class="card-title mbr-fonts-style display-5"><strong>Installation services</strong></h5>
-						<p class="price mbr-fonts-style display-7">Ksh 100 - Ksh 10,000</p>
-						<p class="card-text mbr-fonts-style display-7">•Configuring of new Information Communication Technology equipment.
-<br>• Install and configure software and hardware for new and used computers to make them ready for use.</p>
-						<div class="mbr-section-btn mt-auto"><a class="btn btn-lg btn-primary display-7" href="Purchase.html#form1-8e">Inquire</a></div>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<div class="img-wrapper mb-3">
-							<img src="assets/images/mbr-160x113.jpg" data-slide-to="5" data-bs-slide-to="6" alt="">
-						</div>
-						<h5 class="card-title mbr-fonts-style display-5"><strong>Surfing the internet</strong></h5>
-						<p class="price mbr-fonts-style display-7">Mobile - Ksh 1 per minute</p>
-						<p class="card-text mbr-fonts-style display-7">Computer usage &amp; Internet - Ksh 3 per minute</p>
-						<div class="mbr-section-btn mt-auto"><a class="btn btn-lg btn-primary display-7" href="Purchase.html#form1-8e">Inquire</a></div>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<div class="img-wrapper mb-3">
-							<img src="assets/images/pngegg-5-160x161.png" data-slide-to="6" data-bs-slide-to="7" alt="">
-						</div>
-						<h5 class="card-title mbr-fonts-style display-5"><strong>Maintenance services</strong></h5>
-						<p class="price mbr-fonts-style display-7">Ksh 100 - Ksh 20,000</p>
-						<p class="card-text mbr-fonts-style display-7">Repairing and maintaining of Information Communication Technology equipment and associated peripherals.</p>
-						<div class="mbr-section-btn mt-auto"><a class="btn btn-lg btn-primary display-7" href="Purchase.html#form1-8e">Inquire</a></div>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<div class="img-wrapper mb-3">
-							<img src="assets/images/mbr-160x90.jpg" data-slide-to="7" data-bs-slide-to="8" alt="">
-						</div>
-						<h5 class="card-title mbr-fonts-style display-5"><strong>Networking</strong></h5>
-						<p class="price mbr-fonts-style display-7">Ksh 300 - Ksh 100,000</p>
-						<p class="card-text mbr-fonts-style display-7">1. Router installation
-<br>2. Router configuration 
-<br>3. Firewall installation 
-<br>4. Firewall configuration 
-<br>5. Cabling
-<br>6. Server OS installation and configuration&nbsp;</p>
-						<div class="mbr-section-btn mt-auto"><a class="btn btn-lg btn-primary display-7" href="Purchase.html#form1-8e">Inquire</a></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<!-- Preview Modal -->
+<div id="previewModal" class="modal">
+  <div class="modal-content small-modal">
+    <span class="closeModal" onclick="closePreview()">×</span>
+    <img id="previewImg" src="">
+    <h3 id="previewTitle"></h3>
+    <p id="previewDesc"></p>
+    <div class="price" id="previewPrice"></div>
+    <button class="btn-neon" id="addToCartBtn">Add to Cart</button>
+  </div>
+</div>
 
-<section class="mbr-section form1 cid-sIMacOOJep mbr-parallax-background" id="form1-8e">
-
-    
-
-    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);">
+<!-- Cart Modal -->
+<div id="cartModal" class="modal">
+  <div class="modal-content small-modal">
+    <span class="closeModal" onclick="closeCart()">×</span>
+    <h3>Shopping Cart</h3>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-totals">
+      <strong>Total:</strong>
+      <span id="cartTotal">Ksh 0</span>
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-12 col-lg-8">
-                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-4">PURCHASE FORM</h2>
-                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-7">Please key in your product/Service and the required details then tap <strong><em>Send Request</em></strong>. Thank you!</h3>
-            </div>
-        </div>
+    <button class="btn-neon w-full mt-3" onclick="openCheckout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- Checkout Modal -->
+<div id="checkoutModal" class="modal">
+  <div class="modal-content small-modal">
+    <span class="closeModal" onclick="closeCheckout()">×</span>
+    <h3>Checkout</h3>
+    <div style="margin-bottom:1rem;">
+      <input type="text" id="checkoutName" placeholder="Full Name" class="btn-outline w-full mb-2">
+      <input type="tel" id="checkoutPhone" placeholder="Phone Number" class="btn-outline w-full mb-2">
+      <input type="email" id="checkoutEmail" placeholder="Email" class="btn-outline w-full mb-2">
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="media-container-column col-lg-8" data-form-type="formoid">
-                <!---Formbuilder Form--->
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="Tf1To5dm3j4yD8fFmOM6rE/p1DrTeoTByxpLMEu80Il/Ij2BzhoiVOQfNfx7/GiWcosnO60ApKTNNTD0Q6l3qQeR/8ahVk0vKYupVp8v7Zg802vf58HT8AGDnvhrjYIQ">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Request successfully received by the server. Our staff will get back to you once verified. Thank you!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                        </div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="col-md-4  form-group" data-for="name">
-                            <label for="name-form1-8e" class="form-control-label mbr-fonts-style display-7">Name</label>
-                            <input type="text" name="name" data-form-field="Name" required="required" class="form-control display-7" placeholder="Key in your valid full names" id="name-form1-8e">
-                        </div>
-                        <div class="col-md-4  form-group" data-for="email">
-                            <label for="email-form1-8e" class="form-control-label mbr-fonts-style display-7">Email</label>
-                            <input type="email" name="email" data-form-field="Email" required="required" class="form-control display-7" placeholder="Input your Email" id="email-form1-8e">
-                        </div>
-                        <div data-for="phone" class="col-md-4  form-group">
-                            <label for="phone-form1-8e" class="form-control-label mbr-fonts-style display-7">Phone</label>
-                            <input type="tel" name="phone" data-form-field="Phone" class="form-control display-7" placeholder="Input your number" id="phone-form1-8e">
-                        </div>
-                        <div data-for="message" class="col-md-12 form-group">
-                            <label for="message-form1-8e" class="form-control-label mbr-fonts-style display-7">Message</label>
-                            <textarea name="message" data-form-field="Message" class="form-control display-7" placeholder="Please key in the product or service here!" id="message-form1-8e"></textarea>
-                        </div>
-                        <div class="col-md-12 input-group-btn align-center"><button type="submit" class="btn btn-form btn-danger display-5"><span class="socicon socicon-telegram mbr-iconfont mbr-iconfont-btn"></span>Send Request</button></div>
-                    </div>
-                <span class="gdpr-block">
-<label>
-<span class="textGDPR display-7" style="color: #073b4c"><input type="checkbox" name="gdpr" id="gdpr-form1-8e" required="">By continuing you agree to our Terms of use and <a style="color: #149dcc; text-decoration: underline;" href="Privacy.html">Privacy Policy</a>.</span>
-</label>
-</span></form><!---Formbuilder Form--->
-            </div>
-        </div>
+    <div id="checkoutProducts" class="cart-items"></div>
+    <div class="cart-totals">
+      <strong>Total:</strong>
+      <span id="checkoutTotal">Ksh 0</span>
     </div>
-</section>
+    <button id="submitOrderBtn" class="btn-neon w-full mt-3" onclick="submitCheckout()">Submit Order</button>
+  </div>
+</div>
 
-<section class="footer3 cid-tOBQHGejan" once="footers" id="footer3-be">
+<script>
+// ================== DATA ==================
+const categories = ["Electronics","Home & Kitchen","Mobile Accessories","Software Solutions","Services"];
+const categoriesContainer = document.getElementById('categoriesContainer');
+const filterContainer = document.getElementById('categoryFilter');
+const searchInput = document.getElementById('searchInput');
+const sortSelect = document.getElementById('sortSelect');
 
-    
+let products = [];
+let idCounter=1;
+categories.forEach(cat=>{
+  for(let i=1;i<=50;i++){
+    products.push({
+      id:'p'+(idCounter++),
+      title:`${cat} Product ${i}`,
+      desc:`Description for ${cat} Product ${i}`,
+      price:Math.floor(Math.random()*5000)+200,
+      img:`https://picsum.photos/300/200?random=${idCounter}`,
+      category:cat
+    });
+  }
+});
 
-    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);"></div>
+// ================== CART ==================
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let currentDisplayProducts = [...products];
+function saveCart(){ localStorage.setItem('cart', JSON.stringify(cart)); }
 
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="row row-links">
-                <ul class="foot-menu">
-                    
-                    
-                    
-                    
-                    
-                <li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="About.html">About us</a>
-                    </li><li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="Social.html">Social</a></li><li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white text-primary" href="Contacts.html">Contact Us</a>
-                    </li><li class="foot-menu-item mbr-fonts-style display-7"><a href="Preview.html" class="text-white text-primary">Preview</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="Privacy.html" class="text-white">Privacy Policy</a></li></ul>
-            </div>
-            <div class="row social-row">
-                <div class="social-list align-right pb-2">
-                    
-                    
-                    
-                    
-                    
-                    
-                <div class="soc-item">
-                        <a href="https://wa.me/0716375459">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
-                        </a>
-                    </div><div class="soc-item">
-                        <a href="https://www.facebook.com/profile.php?id=100064124917514" target="_blank">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
-                        </a>
-                    </div><div class="soc-item">
-                        <a href="mailto:cynicdroid@gmail.com">
-                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
-                        </a>
-                    </div></div>
-            </div>
-            <div class="row row-copirayt">
-                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-1">
-                    © Copyright 2024 CynicDroid Technologies. All Rights Reserved.
-                </p>
-            </div>
-        </div>
-    </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2913147" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/offline-website-builder.html"></a></section><script src="assets/popper/popper.min.js"></script>  <script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>  <script src="assets/parallax/jarallax.min.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/formoid/formoid.min.js"></script>  
-  
-  
-<div id="cookie-dialog" style="display: none;"><div id="cookiesdirective" style="background-color:rgba(35,35,35,NaN)"><div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgb(0, 0, 0); opacity: 0.1; z-index: 9999;"></div><div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; z-index: 10000"><div class="cookie-wrapper" style="font-family: sans-serif;position: relative; width: 100%; max-width: 500px; margin-right: auto; margin-left: auto; padding: 1rem; text-align: center; border-radius: .3rem; box-shadow: 0 10px 40px 0 rgba(0,0,0,0.2); color:#ffffff; background:rgb(35, 35, 35);"><div class="mbr-text"><p class="display-7 accept-text">We use cookies to give you the best experience. Read our <a style='color: #0f7699; text-decoration: underline;' href='Cookie.html'>Cookie policy</a>.</p></div><div class="mbr-section-btn"><a class="btn btn-sm btn-primary" style="margin:0; background-color:#aef710!important;color:#000000!important" id="impliedsubmit">Accept</a></div></div></div></div></div>
-  <input name="cookieData" type="hidden" data-cookie-cookiesAlertType='false' data-cookie-customDialogSelector='#cookie-dialog' data-cookie-colorText='#ffffff' data-cookie-colorBg='rgb(35, 35, 35)' data-cookie-opacityOverlay='10' data-cookie-bgOpacity='undefined' data-cookie-textButton='Accept' data-cookie-rejectText='REJECT' data-cookie-colorButton='#aef710' data-cookie-rejectColor='' data-cookie-colorLink='#0f7699' data-cookie-underlineLink='true' data-cookie-text="We use cookies to give you the best experience. Read our <a href='Cookie.html'>Cookie policy</a>.">
-   <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+// ================== RENDER ==================
+function createCard(p){
+  const card=document.createElement('div'); card.className='card';
+  const img=document.createElement('img'); img.src=p.img; img.alt=p.title;
+  const content=document.createElement('div'); content.className='card-content';
+  const title=document.createElement('h3'); title.innerText=p.title;
+  const desc=document.createElement('p'); desc.innerText=p.desc;
+  const price=document.createElement('div'); price.className='price'; price.innerText=`Ksh ${p.price}`;
+  content.append(title,desc,price); card.appendChild(img); card.appendChild(content);
+  card.addEventListener('click',()=>{ card.style.animation='neonPulse 0.6s ease-in-out';
+    card.addEventListener('animationend',()=>{ card.style.animation=''; openPreview(p); }, {once:true});
+  });
+  return card;
+}
+
+function createPagination(container, items){
+  const pagination = document.createElement('div'); pagination.className = 'pagination';
+  const totalPages = Math.ceil(items.length/10); let currentPage = 1;
+  function renderPage(page){
+    currentPage = page; const grid = container.querySelector('.grid'); grid.innerHTML = '';
+    const start = (page-1)*10; const end = start+10;
+    items.slice(start,end).forEach(p=>grid.appendChild(createCard(p)));
+    pagination.innerHTML='';
+    for(let i=1;i<=totalPages;i++){
+      const btn=document.createElement('button'); btn.innerText=i;
+      if(i===currentPage) btn.classList.add('active');
+      btn.addEventListener('click',()=>renderPage(i));
+      pagination.appendChild(btn);
+    }
+  }
+  container.appendChild(pagination); renderPage(1);
+}
+
+function renderCategories(filteredProducts){
+  categoriesContainer.innerHTML='';
+
+  const allSection = document.createElement('div'); allSection.className='category'; allSection.id='AllProducts';
+  const allTitle = document.createElement('h2'); allTitle.innerText='All Products';
+  allSection.appendChild(allTitle);
+  const allGrid = document.createElement('div'); allGrid.className='grid';
+  allSection.appendChild(allGrid);
+  categoriesContainer.appendChild(allSection);
+  createPagination(allSection, filteredProducts);
+
+  categories.forEach(cat=>{
+    const catSection = document.createElement('div'); catSection.className='category'; catSection.id=cat.replace(/\s/g,'');
+    const title = document.createElement('h2'); title.innerText=cat; catSection.appendChild(title);
+    const grid = document.createElement('div'); grid.className='grid'; catSection.appendChild(grid);
+    categoriesContainer.appendChild(catSection);
+    const catProducts = filteredProducts.filter(p=>p.category===cat);
+    createPagination(catSection, catProducts);
+  });
+
+  document.querySelectorAll('.category').forEach(sec => sec.style.display='none');
+  document.getElementById('AllProducts').style.display='block';
+}
+
+// ================== CATEGORY BUTTONS ==================
+filterContainer.innerHTML='';
+const allBtn = document.createElement('button'); allBtn.innerText = "All Products"; allBtn.classList.add('active');
+allBtn.addEventListener('click',()=>{
+  document.querySelectorAll('#categoryFilter button').forEach(b=>b.classList.remove('active')); allBtn.classList.add('active');
+  document.querySelectorAll('.category').forEach(sec=>sec.style.display='none');
+  document.getElementById('AllProducts').style.display='block';
+}); filterContainer.appendChild(allBtn);
+
+categories.forEach(cat=>{
+  const btn = document.createElement('button'); btn.innerText=cat;
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#categoryFilter button').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+    document.querySelectorAll('.category').forEach(sec=>sec.style.display='none');
+    document.getElementById(cat.replace(/\s/g,'')).style.display='block';
+  });
+  filterContainer.appendChild(btn);
+});
+
+// ================== SEARCH & SORT ==================
+searchInput.addEventListener('input',()=>{
+  const term = searchInput.value.toLowerCase();
+  currentDisplayProducts = products.filter(p=>p.title.toLowerCase().includes(term)||p.desc.toLowerCase().includes(term));
+  renderCategories(currentDisplayProducts);
+});
+sortSelect.addEventListener('change',()=>{
+  const val = sortSelect.value;
+  if(val==='priceLow') currentDisplayProducts.sort((a,b)=>a.price-b.price);
+  else if(val==='priceHigh') currentDisplayProducts.sort((a,b)=>b.price-a.price);
+  else if(val==='nameAZ') currentDisplayProducts.sort((a,b)=>a.title.localeCompare(b.title));
+  else if(val==='nameZA') currentDisplayProducts.sort((a,b)=>b.title.localeCompare(a.title));
+  renderCategories(currentDisplayProducts);
+});
+
+// ================== CART MODAL ==================
+const cartBtn = document.getElementById('cartBtn');
+cartBtn.addEventListener('click',()=>openCart());
+
+function openCart(){ document.getElementById('cartModal').style.display='flex'; updateCartUI(); }
+function closeCart(){ document.getElementById('cartModal').style.display='none'; }
+
+function updateCartUI(){
+  const cartItemsDiv = document.getElementById('cartItems'); cartItemsDiv.innerHTML='';
+  if(cart.length===0){ cartItemsDiv.innerHTML='<div class="cart-empty">Your cart is empty.</div>'; }
+  cart.forEach(item=>{
+    const div = document.createElement('div'); div.className='cart-item';
+    const img = document.createElement('img'); img.src=item.img;
+    const meta = document.createElement('div'); meta.className='meta';
+    meta.innerHTML=`<strong>${item.title}</strong><br>Ksh ${item.price} x ${item.qty}`;
+    const qty = document.createElement('div'); qty.className='qty-controls';
+    const minus = document.createElement('button'); minus.innerText='-';
+    minus.addEventListener('click',()=>{ item.qty--; if(item.qty<=0){ cart=cart.filter(c=>c.id!==item.id);} saveCart(); updateCartUI(); });
+    const plus = document.createElement('button'); plus.innerText='+';
+    plus.addEventListener('click',()=>{ item.qty++; saveCart(); updateCartUI(); });
+    qty.append(minus, plus); div.append(img,meta,qty); cartItemsDiv.appendChild(div);
+  });
+  const total = cart.reduce((a,b)=>a+b.price*b.qty,0);
+  document.getElementById('cartTotal').innerText=`Ksh ${total}`;
+  document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
+  saveCart();
+}
+
+// ================== PREVIEW MODAL ==================
+function openPreview(p){
+  document.getElementById('previewModal').style.display='flex';
+  document.getElementById('previewImg').src=p.img;
+  document.getElementById('previewTitle').innerText=p.title;
+  document.getElementById('previewDesc').innerText=p.desc;
+  document.getElementById('previewPrice').innerText=`Ksh ${p.price}`;
+  document.getElementById('addToCartBtn').onclick=()=>{
+    const existing = cart.find(c=>c.id===p.id);
+    if(existing){ existing.qty++; } else{ cart.push({...p,qty:1}); }
+    saveCart(); updateCartUI(); alert(`${p.title} added to cart!`);
+  };
+}
+function closePreview(){ document.getElementById('previewModal').style.display='none'; }
+
+// ================== CHECKOUT MODAL ==================
+function openCheckout(){
+  if(cart.length===0){ alert('Your cart is empty.'); return; }
+  document.getElementById('checkoutModal').style.display='flex';
+  const checkoutProductsDiv = document.getElementById('checkoutProducts'); checkoutProductsDiv.innerHTML='';
+  cart.forEach(item=>{
+    const div = document.createElement('div'); div.className='cart-item';
+    const img = document.createElement('img'); img.src=item.img;
+    const meta = document.createElement('div'); meta.className='meta';
+    meta.innerHTML=`<strong>${item.title}</strong><br>Ksh ${item.price} x ${item.qty}`;
+    div.append(img,meta); checkoutProductsDiv.appendChild(div);
+  });
+  const total = cart.reduce((a,b)=>a+b.price*b.qty,0);
+  document.getElementById('checkoutTotal').innerText=`Ksh ${total}`;
+}
+function closeCheckout(){ document.getElementById('checkoutModal').style.display='none'; }
+
+// ================== EMAIL CHECKOUT ==================
+emailjs.init("Iz22KBRfL682WD6td"); // <-- Replace with your EmailJS public key
+
+async function submitCheckout(){
+  const submitBtn = document.getElementById('submitOrderBtn');
+  const name = document.getElementById('checkoutName').value.trim();
+  const phone = document.getElementById('checkoutPhone').value.trim();
+  const email = document.getElementById('checkoutEmail').value.trim();
+  if(!name || !phone || !email){
+    alert('Please fill in all your details.');
+    return;
+  }
+  if(!cart || cart.length === 0){
+    alert('Your cart is empty.');
+    return;
+  }
+
+  const productsSummary = cart.map(i => `${i.title} (Ksh ${i.price} x ${i.qty})`).join('\n');
+  const totalAmount = cart.reduce((a,b)=>a+b.price*b.qty,0);
+
+  const adminParams = {
+    from_name: name,
+    from_phone: phone,
+    from_email: email,
+    products: productsSummary,
+    total: `Ksh ${totalAmount}`
+  };
+
+  const customerParams = {
+    from_name: name,
+    from_email: email,
+    products: productsSummary,
+    total: totalAmount
+  };
+
+  submitBtn.disabled = true;
+  submitBtn.innerText = 'Sending...';
+
+  try {
+    await emailjs.send('cynic_service', 'template_d145jij', adminParams);
+    await emailjs.send('cynic_service', 'template_2b1djar', customerParams);
+    alert(`Thank you ${name}! Your order of Ksh ${totalAmount} has been submitted. Check your email for confirmation.`);
+    cart = [];
+    updateCartUI();
+    closeCheckout();
+    closeCart();
+  } catch (err) {
+    console.error('EmailJS send failed:', err);
+    let message = 'Sorry, we could not submit your order at this time. Please try again later.';
+    if (err && err.text) message += '\n\nDetails: ' + err.text;
+    if (err && err.message) message += '\n\nError: ' + err.message;
+    alert(message);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerText = 'Submit Order';
+  }
+}
+
+// ================== INIT ==================
+renderCategories(currentDisplayProducts);
+updateCartUI();
+</script>
+
+</body>
 </html>
