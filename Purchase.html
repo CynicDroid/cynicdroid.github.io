@@ -361,45 +361,63 @@ function closeCheckout(){ document.getElementById('checkoutModal').style.display
 // ================== EMAIL CHECKOUT ==================
 emailjs.init("Iz22KBRfL682WD6td"); // <-- Replace with your EmailJS public key
 
-async function submitCheckout(){
+async function submitCheckout() {
   const submitBtn = document.getElementById('submitOrderBtn');
   const name = document.getElementById('checkoutName').value.trim();
   const phone = document.getElementById('checkoutPhone').value.trim();
   const email = document.getElementById('checkoutEmail').value.trim();
-  if(!name || !phone || !email){
+
+  if (!name || !phone || !email) {
     alert('Please fill in all your details.');
     return;
   }
-  if(!cart || cart.length === 0){
+  if (!cart || cart.length === 0) {
     alert('Your cart is empty.');
     return;
   }
 
-  const productsSummary = cart.map(i => `${i.title} (Ksh ${i.price} x ${i.qty})`).join('\n');
-  const totalAmount = cart.reduce((a,b)=>a+b.price*b.qty,0);
+  // Transform cart items to match EmailJS template keys
+  const productsArray = cart.map(item => ({
+    title: item.title,
+    price: item.price,
+    qty: item.qty,
+    img: item.img // Make sure each product object has the 'img' URL
+  }));
+
+  const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const adminParams = {
     from_name: name,
     from_phone: phone,
     from_email: email,
-    products: productsSummary,
-    total: `Ksh ${totalAmount}`
+    products: productsArray,
+    total: totalAmount
   };
 
   const customerParams = {
     from_name: name,
     from_email: email,
-    products: productsSummary,
+    products: productsArray,
     total: totalAmount
   };
 
+  // Disable button and add neon loader animation
   submitBtn.disabled = true;
-  submitBtn.innerText = 'Sending...';
+  submitBtn.innerHTML = `<span class="loader" style="
+      display:inline-block;
+      width:16px; height:16px;
+      border:3px solid #00ffff;
+      border-top-color:#aef710;
+      border-radius:50%;
+      animation: spin 1s linear infinite;
+      margin-right: 8px;"></span> Sending...`;
 
   try {
     await emailjs.send('cynic_service', 'template_d145jij', adminParams);
     await emailjs.send('cynic_service', 'template_2b1djar', customerParams);
+
     alert(`Thank you ${name}! Your order of Ksh ${totalAmount} has been submitted. Check your email for confirmation.`);
+
     cart = [];
     updateCartUI();
     closeCheckout();
@@ -415,6 +433,17 @@ async function submitCheckout(){
     submitBtn.innerText = 'Submit Order';
   }
 }
+
+// Add CSS for spinning loader (insert in <style> or CSS file)
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+`;
+document.head.appendChild(style);
+
 
 // ================== INIT ==================
 renderCategories(currentDisplayProducts);
