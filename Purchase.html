@@ -84,9 +84,33 @@ h1{font-family:'Orbitron',sans-serif;color:var(--cyan);text-shadow:0 0 8px var(-
 <body>
 
 <aside class="sidebar">
-  <div class="cynicdroid-brand">CynicDroid</div>
+  <a href="index.html" class="cynicdroid-brand hover:scale-105 transition-transform duration-200">
+    <span class="font-[Orbitron] font-bold text-[1.7rem] tracking-[2px]"
+      style="color:#00ffff; text-shadow:0 0 12px #00ffff, 0 0 24px #aef710;">
+      CynicDroid
+    </span>
+  </a>
   <div class="category-filter-vertical" id="categoryFilter"></div>
 </aside>
+
+<style>
+.cynicdroid-brand:hover span {
+  animation: neonPulse 1.2s infinite alternate, neonFlicker 0.18s 3 ease-in-out;
+  transform: scale(1.05);
+}
+
+@keyframes neonPulse {
+  0% { text-shadow: 0 0 12px #00ffff, 0 0 24px #aef710; }
+  50% { text-shadow: 0 0 20px #aef710, 0 0 40px #00ffff; }
+  100% { text-shadow: 0 0 12px #00ffff, 0 0 24px #aef710; }
+}
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.4; }
+}
+</style>
+
 
 <div class="topbar">
   <div id="cartBtn" class="cart-icon" title="Open Cart">🛒
@@ -396,6 +420,5 @@ async function submitCheckout(){
 renderCategories(currentDisplayProducts);
 updateCartUI();
 </script>
-
 </body>
 </html>
