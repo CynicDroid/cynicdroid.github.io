@@ -9,434 +9,465 @@
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Google Fonts: Orbitron for futuristic look -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<!-- Google Fonts: Orbitron for precision technical readouts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <!-- AOS Scroll Animations -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
-/* ====== Global Font ====== */
 body, h1, h2, h3, p, a, button {
     font-family: 'Orbitron', sans-serif;
 }
 
 body {
-    background-color: #2a2a35;
-    color: #ffffff;
+    background-color: #cbd5e1;
+    /* Skeuomorphic Brushed Aluminum / Raw Metallic Background Design */
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.1) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.05) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.15);
+    color: #1e293b;
     overflow-x: hidden;
 }
 
-/* ====== Buttons ====== */
-.btn-tech {
-    border: 2px solid #0ff;
-    color: #0ff;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(6px);
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-}
-.btn-tech:hover {
-    transform: scale(1.1);
-    color: #fff;
-    background: linear-gradient(90deg, #0ff, #00f);
-    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #00f;
-}
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f; }
-    50% { box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #00f; }
-}
-
-/* ====== Neon Headings ====== */
-.neon-text {
-    color: #0ff;
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f, 0 0 60px #0ff;
-    transition: all 0.3s ease-in-out;
-}
-.neon-text:hover {
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f, 0 0 50px #0ff, 0 0 70px #00f;
-}
-
-/* ====== Futuristic Logo ====== */
-.logo-futuristic {
-    font-weight: 700;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #0ff, #00f);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
-    transition: all 0.3s;
-}
-.logo-futuristic:hover {
-    transform: scale(1.1);
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f;
-}
-
-/* ====== Cards ====== */
-.card-tech {
+/* ====== 3D Machined Metal Chassis Panels ====== */
+.hardware-panel {
+    background: linear-gradient(180deg, #2a303d 0%, #171b22 100%);
+    border-top: 2px solid #5a657a;
+    border-left: 2px solid #485264;
+    border-right: 2px solid #1a1e26;
+    border-bottom: 3px solid #0d1014;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.6),
+        0 30px 60px -15px rgba(15, 23, 42, 0.6);
+    border-radius: 6px;
     position: relative;
-    border-radius: 0.5rem;
-    background: #2f2f3d;
-    border: 2px solid #0ff;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: cardPulse 4s infinite;
 }
-.card-tech:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
-}
-.card-tech img {
-    border: 2px solid #0ff;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-}
-.card-tech img:hover {
-    box-shadow: 0 0 25px #0ff, 0 0 45px #00f;
-    transform: scale(1.05);
-}
-.card-tech:hover::after {
-    content: "";
+
+/* Inner mechanical framing trim */
+.hardware-panel::before {
+    content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 0.5rem;
-    background: linear-gradient(270deg, #0ff, #00f, #a020f0, #0ff);
-    background-size: 600% 600%;
-    animation: hoverGradient 3s linear infinite;
-    opacity: 0.3;
+    inset: 5px;
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
     pointer-events: none;
 }
-@keyframes cardPulse {
-    0%, 100% { box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f; }
-    50% { box-shadow: 0 0 15px #0ff, 0 0 30px #0ff, 0 0 45px #00f; }
-}
-@keyframes hoverGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+
+/* ====== Recessed Die-Cast Pods ====== */
+.card-recessed {
+    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
+    border-top: 2px solid #101319;
+    border-left: 2px solid #101319;
+    border-right: 1px solid #3a4252;
+    border-bottom: 1px solid #3a4252;
+    box-shadow: 
+        inset 0 4px 10px rgba(0, 0, 0, 0.9),
+        0 1px 2px rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Increase Our Shop image height */
-#shopCard img {
-    max-height: 280px;
+.card-recessed:hover {
+    border-right-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.9),
+        0 0 15px rgba(0, 210, 255, 0.2);
 }
 
-/* ====== Social Buttons ====== */
-.social-bar {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.card-recessed img {
+    border: 2px solid #1b202b;
+    border-radius: 2px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    filter: brightness(85%) contrast(105%);
+    transition: all 0.3s ease;
 }
-.social-text-btn {
+.card-recessed:hover img {
+    filter: brightness(100%) contrast(100%);
+    border-color: #00d2ff;
+}
+
+/* ====== Industrial Rivet Badges ====== */
+.rivet-plate {
+    background: linear-gradient(180deg, #404859 0%, #202530 100%);
+    border: 1px solid #566178;
+    box-shadow: 
+        inset 0 1px 1px rgba(255,255,255,0.2),
+        0 4px 8px rgba(0,0,0,0.5);
+    padding: 4px 20px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #e2e8f0;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+    position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 70px;
-    height: 35px;
-    border-radius: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 2px solid #0ff;
-    color: #0ff;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 6px #0ff, 0 0 12px #0ff;
+    gap: 12px;
 }
-.social-text-btn:hover {
-    transform: scale(1.2);
-    background: linear-gradient(90deg, #0ff, #00f);
-    color: #fff;
-    box-shadow: 0 0 15px #0ff, 0 0 30px #0ff, 0 0 45px #00f;
-}
-
-/* ====== Hero Text Animation ====== */
-.hero-text p {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 1s forwards;
-}
-.hero-text p:nth-child(1) { animation-delay: 0.3s; }
-.hero-text p:nth-child(2) { animation-delay: 0.6s; }
-.hero-text p:nth-child(3) { animation-delay: 0.9s; }
-.hero-text p:nth-child(4) { animation-delay: 1.2s; }
-.hero-text p:nth-child(5) { animation-delay: 1.5s; }
-@keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ====== Particle Canvas ====== */
-#particleCanvas {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ====== Hero Neon Glow Overlay ====== */
-.hero-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
+.rivet-plate::before, .rivet-plate::after {
+    content: '';
+    width: 5px; height: 5px;
+    background: #11141a;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,255,255,0.15) 0%, rgba(0,0,0,0) 70%);
-    filter: blur(50px);
-    pointer-events: none;
-    z-index: 1;
-    animation: pulseGlow 4s infinite;
-}
-@keyframes pulseGlow {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+    box-shadow: 0 1px 0 rgba(255,255,255,0.15);
 }
 
-/* ====== Hero Text Neon Color Pulse ====== */
-.neon-text-animated {
-    animation: neonShift 6s infinite alternate;
-}
-@keyframes neonShift {
-    0% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff; color: #0ff; }
-    33% { text-shadow: 0 0 5px #00f, 0 0 15px #00f, 0 0 25px #00f; color: #00f; }
-    66% { text-shadow: 0 0 5px #a020f0, 0 0 15px #a020f0, 0 0 25px #a020f0; color: #a020f0; }
-    100% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff; color: #0ff; }
+/* ====== Heavy Machinery 3D Buttons ====== */
+.btn-machined {
+    background: linear-gradient(180deg, #323947 0%, #1a1e26 100%);
+    border-top: 1px solid #566178;
+    border-left: 1px solid #465063;
+    border-right: 2px solid #0f1217;
+    border-bottom: 4px solid #0a0c10;
+    color: #d8dee9;
+    font-weight: 700;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 6px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+    letter-spacing: 1.5px;
 }
 
-/* ====== Futuristic Cookie Notice ====== */
+.btn-machined:hover {
+    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%);
+    color: #00d2ff;
+    border-right-color: #1f242e;
+    border-bottom-color: #00d2ff;
+    text-shadow: 0 0 4px rgba(0, 210, 255, 0.4);
+    box-shadow: 
+        inset 0 1px 0 rgba(0, 210, 255, 0.05),
+        0 4px 12px rgba(0, 210, 255, 0.15);
+}
+
+.btn-machined:active {
+    border-bottom-width: 1px;
+    transform: translateY(3px);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* ====== Embedded Steel Header Navigation ====== */
+.nav-chassis {
+    background: linear-gradient(180deg, #3a4253 0%, #1c2029 100%);
+    border-bottom: 4px solid #0d1014;
+    box-shadow: 
+        inset 0 -1px 0 rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        0 10px 30px rgba(0,0,0,0.5);
+}
+
+.logo-cast {
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #e5e9f0;
+    background: linear-gradient(180deg, #ffffff 0%, #9aa3b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
+}
+
+.telemetry-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #090b0e;
+    border: 1px solid #313745;
+    color: #88c0d0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+.telemetry-link:hover {
+    color: #ffffff;
+    border-color: #00d2ff;
+    box-shadow: 
+        inset 0 1px 2px rgba(0,0,0,0.6),
+        0 0 8px rgba(0, 210, 255, 0.3);
+}
+
+/* ====== Structural Chiseled Typography ====== */
+.steel-engraved-header {
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #ffffff 20%, #a3acb9 60%, #4c535e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
+}
+
+/* ====== Recessed FAQ Accordion Elements ====== */
+.faq-trigger {
+    background: linear-gradient(180deg, #131722 0%, #0a0c10 100%);
+    border: 1px solid #1a202c;
+    border-bottom: 2px solid #050608;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    transition: all 0.2s ease;
+}
+.faq-trigger:hover {
+    border-color: #313b4d;
+    background: linear-gradient(180deg, #181d2a 0%, #0d1015 100%);
+}
+.faq-trigger.active {
+    border-bottom-color: #00d2ff;
+}
+.faq-content-pane {
+    background: #07090d;
+    border-left: 2px solid #1a202c;
+    border-right: 2px solid #1a202c;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.9);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-indicator {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #475569;
+}
+.faq-trigger.active .faq-indicator {
+    transform: rotate(180deg);
+    color: #00d2ff;
+}
+
+/* ====== Heavy Armor Plate Cookie Module ====== */
 #cookieNotice {
     position: fixed;
-    bottom: 4rem;
-    left: 50%;
+    bottom: 2rem; left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(6px);
-    border-radius: 1rem; /* keep rounded corners */
-    padding: 1rem 2rem;
+    background: linear-gradient(180deg, #2b313d 0%, #12151c 100%);
+    border-top: 2px solid #566178;
+    border-left: 2px solid #465063;
+    border-right: 2px solid #0f1217;
+    border-bottom: 3px solid #0a0c10;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.95);
+    border-radius: 4px;
+    padding: 1.25rem 2rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    max-width: 28rem;
+    gap: 1.5rem;
+    max-width: 34rem;
     opacity: 0;
-    transition: all 0.5s ease-in-out;
-    z-index: 50;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 100;
+}
+#cookieNotice::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid #090b0e;
+    pointer-events: none;
 }
 #cookieNotice.show {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
-#cookieNotice button {
-    padding: 0.5rem 1rem;
-    background: linear-gradient(90deg,#0ff,#00f,#a020f0);
-    color: #fff;
-    border-radius: 9999px;
-    cursor: pointer;
-    box-shadow: 0 0 8px #0ff,0 0 15px #00f;
-    animation: pulse 2s infinite;
-}
-#cookieNotice button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px #0ff,0 0 25px #00f,0 0 35px #a020f0;
-}
-#cookieNotice a {
-    text-decoration: underline;
-    color: #0ff;
-}
-#cookieNotice a:hover {
-    color: #fff;
-}
-#cookieNotice p {
-    text-shadow: 0 0 3px #0ff, 0 0 6px #00f, 0 0 9px #a020f0;
-}
 </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="bg-gray-800 shadow-md fixed w-full z-50">
-    <div class="container mx-auto flex justify-between items-center p-4">
-        <a href="index.html" class="text-2xl logo-futuristic">CynicDroid</a>
-        <div class="flex gap-2">
-            <a href="https://wa.me/0716375459" class="social-text-btn" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="https://www.facebook.com/profile.php?id=100064124917514" class="social-text-btn" target="_blank" rel="noopener">Facebook</a>
-            <a href="mailto:cynicdroid@gmail.com" class="social-text-btn">Email</a>
+<!-- Header Architecture Layout -->
+<header class="nav-chassis fixed w-full z-50">
+    <div class="container mx-auto flex justify-between items-center p-3 px-6">
+        <a href="index.html" class="text-2xl logo-cast">CYNICDROID</a>
+        <div class="flex gap-3">
+            <a href="https://wa.me/0716375459" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">WHATSAPP</a>
+            <a href="https://www.facebook.com/profile.php?id=100064124917514" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">FACEBOOK</a>
+            <a href="mailto:cynicdroid@gmail.com" class="telemetry-link px-4 py-1.5">EMAIL</a>
         </div>
     </div>
 </header>
 
-<!-- Hero Section -->
-<section class="pt-32 bg-cover bg-center relative" style="background-image: url('assets/images/mbr-1650x1071.jpg');">
-    <div class="absolute inset-0 bg-black opacity-60"></div>
-    <canvas id="particleCanvas"></canvas>
-    <div class="hero-glow"></div>
-    <div class="container mx-auto text-center py-32 relative z-10 hero-text" data-aos="fade-up">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 neon-text-animated">WELCOME TO CYNICDROID TECHNOLOGIES</h1>
-        <p>CynicDroid Technologies is a firm specialized in designing and implementing information systems (IT).</p>
-        <p>As systems analysts, we assess the suitability of information systems in terms of their intended outcomes and liaise with end users, software vendors and programmers in order to achieve these outcomes.</p>
-        <p>We use analysis and design techniques to solve business problems using information technology.</p>
-        <p>We may also serve as change agents who identify the organizational improvements needed, design systems to implement those changes,</p>
-        <p>and train and motivate others to use the systems.</p>
-        <a href="About.html" class="btn-tech px-8 py-4 rounded-full text-white font-semibold mt-6 inline-block">About Us</a>
-    </div>
-</section>
+<!-- Main Dashboard Frame -->
+<main class="pt-32 pb-12 relative z-10 container mx-auto px-6 space-y-6">
+    
+    <!-- Upper Split Control Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        
+        <!-- Left Panel Block: About Us Console Framework -->
+        <div class="lg:col-span-7 hardware-panel p-6 md:p-8 flex flex-col justify-between" data-aos="fade-up">
+            <div>
+                <h1 class="text-2xl md:text-4xl font-black mb-6 tracking-wider steel-engraved-header">WELCOME TO CYNICDROID TECHNOLOGIES</h1>
+                
+                <div class="space-y-4 text-gray-400 text-xs md:text-sm leading-relaxed tracking-wide card-recessed p-5 md:p-6 mb-6">
+                    <p>CynicDroid Technologies is a firm specialized in designing and implementing information systems (IT).</p>
+                    <p>As systems analysts, we assess the suitability of information systems in terms of their intended outcomes and liaise with end users, software vendors and programmers in order to achieve these outcomes.</p>
+                    <p>We use analysis and design techniques to solve business problems using information technology.</p>
+                    <p>We may also serve as change agents who identify the organizational improvements needed, design systems to implement those changes, and train and motivate others to use the systems.</p>
+                </div>
+            </div>
+            
+            <a href="About.html" class="btn-machined px-8 py-3 rounded text-xs font-black inline-block self-start">ABOUT US</a>
+        </div>
 
-<!-- Services / Cards -->
-<section class="container mx-auto py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  <div class="p-6 card-tech" data-aos="fade-up">
-  <img src="assets/images/mbr-privacy.png" alt="CynicDroid" class="mb-4">
-  <h2 class="text-2xl font-bold mb-2 neon-text">DATA SECURITY</h2>
-  <p class="mb-4">We are committed to protecting your personal information and your right to privacy</p>
-  <div class="flex flex-wrap gap-4">
-    <a href="Privacy.html" class="btn-tech px-4 py-2 rounded text-white font-semibold">Privacy Policy</a>
-    <a href="Cookie.html" class="btn-tech px-4 py-2 rounded text-white font-semibold">Cookie Policy</a>
-  </div>
-</div>
-  <div class="p-6 card-tech" data-aos="fade-up" data-aos-delay="100">
-    <img src="assets/images/mbr-contact.png" alt="Contact" class="mb-4">
-    <h2 class="text-2xl font-bold mb-2 neon-text">CONTACT US</h2>
-    <p class="mb-4">Dear customer, we value your feedback. Click below to communicate with us.</p>
-    <a href="Contacts.html" class="btn-tech px-4 py-2 rounded text-white font-semibold">Contacts</a>
-  </div>
-  <div class="p-6 card-tech" data-aos="fade-up" data-aos-delay="200">
-    <img src="assets/images/mbr-forum.png" alt="Forum" class="mb-4">
-    <h2 class="text-2xl font-bold mb-2 neon-text">OUR FORUM</h2>
-    <p class="mb-4">Dear customer, we consider your feedback of importance. Please use the below button to our forum page; communicate to us, make request and notify us about any bugs you experience from our products & to inquire for help service, Thank you!</p>
-    <a href="Forum.html" class="btn-tech px-4 py-2 rounded text-white font-semibold">Forum</a>
-  </div>
-  <div class="p-6 card-tech col-span-1 md:col-span-2 lg:col-span-3" id="shopCard" data-aos="fade-up" data-aos-delay="300">
-    <img src="assets/images/mbr-accessories.jpg" alt="Shop" class="mb-4">
-    <h2 class="text-2xl font-bold mb-2 neon-text">OUR SHOP</h2>
-    <p class="mb-4">We provide a huge catalogue of mobile phone accessories and products to consumers through retail and online store.With the mobile phonemarket growing at a rapid rate and already being so huge, it should come as no real surprise to learn that the mobile phone accessories market is also growing and very valuable. This incorporates a large range of different products, including Bluetooth accessories (keyboards etc.), cases, stands , back covers, headphones, portable speakers, batteries and others which are having great demand around the world with the continuous launch of smartphones by various companies. These accessories improve the look and feel of the mobile phones, along with enhancing its performance. We have made a huge catalogue of products to the consumers through retail and our online store, supporting the market growth. Smartphone users across the globe are looking for attractive products as they feel them to be a symbol of their lifestyle.</p>
-    <a href="Purchase.html" class="btn-tech px-4 py-2 rounded text-white font-semibold">Catalog</a>
-  </div>
-</section>
+        <!-- Right Panel Block: Stacked Component Modules -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+            
+            <!-- Module 1: Privacy Control Console -->
+            <div class="p-4 hardware-panel flex flex-col justify-between" data-aos="fade-up" data-aos-delay="50">
+                <div class="card-recessed p-3 mb-3 flex items-center gap-4 flex-1">
+                    <img src="assets/images/security.png" alt="Data Security" class="w-14 h-14 object-cover shrink-0">
+                    <div>
+                        <h2 class="text-xs font-black mb-1 tracking-wide text-gray-200">DATA SECURITY</h2>
+                        <p class="text-gray-400 text-[11px] leading-tight">We are committed to protecting your personal information and your right to privacy.</p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <a href="Privacy.html" class="btn-machined py-1.5 text-[10px] rounded flex-1 text-center">PRIVACY</a>
+                    <a href="Cookie.html" class="btn-machined py-1.5 text-[10px] rounded flex-1 text-center">COOKIES</a>
+                </div>
+            </div>
 
-<!-- FAQ Section -->
-<section class="container mx-auto py-20" data-aos="fade-up">
-  <h2 class="text-3xl font-bold mb-8 text-center neon-text">FAQ</h2>
-  <div class="space-y-4">
-    <div class="bg-gray-800 p-4 rounded shadow hover:shadow-lg transition-shadow">
-      <h3 class="font-semibold neon-text">What is CynicDroid?</h3>
-      <p>We specializes in analyzing, designing, and implementing IT systems. We assess system suitability, collaborate with users and developers, and use technology to solve business challenges. We also guide organizational improvements and help teams adopt new systems effectively. CynicDroid Technologies designs and implements cutting-edge IT systems. We assess, optimize, and solve business challenges with tech, while guiding teams to embrace smarter, faster workflows</p>
-    </div>
-    <div class="bg-gray-800 p-4 rounded shadow hover:shadow-lg transition-shadow">
-      <h3 class="font-semibold neon-text">Is it good for me?</h3>
-      <p>We try to offer a variety of services including but not limited to:
-• Analyzing, designing, coding and implementing computer programs providing user support.
-• Configuring of new Information Communication Technology equipment.
-• Repairing and maintaining of Information Communication Technology equipment and associated peripherals.
-• Install and configure software and hardware for new and used computers to make them ready for use.
-• Designing, coding and deployment of websites providing user support.
-• Android devices software maintenance.
-• Windows and Android platform data recovery.
-• Offering internet services i.e emails and web conferencing. </p>
-    </div>
-    <div class="bg-gray-800 p-4 rounded shadow hover:shadow-lg transition-shadow">
-      <h3 class="font-semibold neon-text">Why CynicDroid?</h3>
-      <p>We provide secure, documented software packages, instant support, data security, and pocket-friendly services.</p>
-    </div>
-  </div>
-</section>
+            <!-- Module 2: Communication Hub Terminal -->
+            <div class="p-4 hardware-panel flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-recessed p-3 mb-3 flex items-center gap-4 flex-1">
+                    <img src="assets/images/contact.png" alt="Contact" class="w-14 h-14 object-cover shrink-0">
+                    <div>
+                        <h2 class="text-xs font-black mb-1 tracking-wide text-gray-200">CONTACT US</h2>
+                        <p class="text-gray-400 text-[11px] leading-tight">Dear customer, we value your feedback. Click below to communicate with us directly.</p>
+                    </div>
+                </div>
+                <a href="Contacts.html" class="btn-machined py-1.5 text-[10px] rounded text-center block w-full">CONTACTS Terminal</a>
+            </div>
 
-<!-- Footer -->
-<footer class="bg-gray-800 text-white py-6 mt-12 text-center">
-  <p>© Copyright 2025 CynicDroid Technologies. All Rights Reserved.</p>
+            <!-- Module 3: Technical Forum Array -->
+            <div class="p-4 hardware-panel flex flex-col justify-between" data-aos="fade-up" data-aos-delay="150">
+                <div class="card-recessed p-3 mb-3 flex items-center gap-4 flex-1">
+                    <img src="assets/images/forum.png" alt="Forum" class="w-14 h-14 object-cover shrink-0">
+                    <div>
+                        <h2 class="text-xs font-black mb-1 tracking-wide text-gray-200">OUR FORUM</h2>
+                        <p class="text-gray-400 text-[11px] leading-tight">Inquire for diagnostic help service, report interface bugs, or submit firmware requests.</p>
+                    </div>
+                </div>
+                <a href="Forum.html" class="btn-machined py-1.5 text-[10px] rounded text-center block w-full">OPEN FORUM</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lower Split Dashboard Grid: Catalog (Left) & FAQ (Right) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch pt-4">
+        
+        <!-- Bottom Left: Shop Catalogue Panel Array -->
+        <section class="lg:col-span-5 hardware-panel p-5 md:p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+            <div>
+                <div class="text-center mb-6"><span class="rivet-plate">SHOP CATALOGUE</span></div>
+                
+                <div class="card-recessed p-4 mb-5 flex flex-col sm:flex-row items-center gap-4">
+                    <img src="assets/images/shopping.png" alt="Warehouse Storage" class="w-full sm:w-28 h-24 object-cover rounded-sm shrink-0">
+                    <p class="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
+                        We provide a comprehensive catalogue of high-demand mobile phone accessories, performance components, and retail lifestyle modifications. Our inventory supports rapid consumer market shifts.
+                    </p>
+                </div>
+            </div>
+            
+            <a href="Purchase.html" class="btn-machined px-6 py-2.5 rounded text-[10px] font-black block text-center w-full sm:w-auto sm:inline-block self-start">LAUNCH CATALOG</a>
+        </section>
+
+        <!-- Bottom Right: FAQ Dynamic Expandable Matrix -->
+        <section class="lg:col-span-7 hardware-panel p-5 md:p-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="text-center mb-6"><span class="rivet-plate">FAQ MATRIX</span></div>
+            
+            <div class="space-y-3">
+                <!-- Accordion Module 1 -->
+                <div class="accordion-item">
+                    <button class="faq-trigger w-full flex justify-between items-center p-4 rounded text-left focus:outline-none select-none">
+                        <span class="font-black text-gray-200 text-xs tracking-wider uppercase">What is CynicDroid?</span>
+                        <svg class="faq-indicator w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content-pane">
+                        <div class="p-4 text-gray-400 text-xs leading-relaxed space-y-2">
+                            <p>We specialize in analyzing, designing, and implementing IT systems. We assess system suitability, collaborate with users and developers, and use technology to solve business challenges. We also guide organizational improvements and help teams adopt new systems effectively.</p>
+                            <p>CynicDroid Technologies designs and implements cutting-edge IT systems. We assess, optimize, and solve business challenges with tech, while guiding teams to embrace smarter, faster workflows.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accordion Module 2 -->
+                <div class="accordion-item">
+                    <button class="faq-trigger w-full flex justify-between items-center p-4 rounded text-left focus:outline-none select-none">
+                        <span class="font-black text-gray-200 text-xs tracking-wider uppercase">Is it good for me?</span>
+                        <svg class="faq-indicator w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content-pane">
+                        <div class="p-4 text-gray-400 text-xs leading-relaxed space-y-1">
+                            <p class="mb-2 text-gray-300 font-semibold">We try to offer a variety of services including but not limited to:</p>
+                            <p>• Analyzing, designing, coding and implementing computer programs providing user support.</p>
+                            <p>• Configuring of new Information Communication Technology equipment.</p>
+                            <p>• Repairing and maintaining of Information Communication Technology equipment and associated peripherals.</p>
+                            <p>• Install and configure software and hardware for new and used computers to make them ready for use.</p>
+                            <p>• Designing, coding and deployment of websites providing user support.</p>
+                            <p>• Android devices software maintenance.</p>
+                            <p>• Windows and Android platform data recovery.</p>
+                            <p>• Offering internet services i.e emails and web conferencing.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accordion Module 3 -->
+                <div class="accordion-item">
+                    <button class="faq-trigger w-full flex justify-between items-center p-4 rounded text-left focus:outline-none select-none">
+                        <span class="font-black text-gray-200 text-xs tracking-wider uppercase">Why CynicDroid?</span>
+                        <svg class="faq-indicator w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content-pane">
+                        <div class="p-4 text-gray-400 text-xs leading-relaxed">
+                            <p>We provide secure, documented software packages, instant support, data security, and pocket-friendly services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</main>
+
+<!-- Base Chassis Footer Frame -->
+<footer class="bg-black border-t-4 border-neutral-800 text-gray-600 py-6 text-center text-xs tracking-widest relative z-10">
+    <p>© Copyright 2026 CynicDroid Technologies. All Rights Reserved.</p>
 </footer>
 
-<!-- Futuristic Cookie Notice -->
+<!-- Cookie Storage Command Module -->
 <div id="cookieNotice">
-    <p class="text-sm">We use cookies to improve your experience. <a href="Cookie.html">Learn more</a>.</p>
-    <button id="acceptCookies">Got it</button>
+    <p class="text-xs text-gray-400 tracking-wide relative z-10">We utilize baseline structural diagnostic logging matrices to guarantee dashboard response metrics. <a href="Cookie.html" class="underline text-gray-200 hover:text-white">Review Parameters</a>.</p>
+    <button id="acceptCookies" class="btn-machined px-4 py-1.5 text-xs rounded shrink-0 relative z-10">CONFIRM</button>
 </div>
 
-<!-- Scripts -->
+<!-- Integration Scripts Framework -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init({ duration: 1000, once: true });
 
-// ====== Neon Gradient Particle Canvas ======
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
-let width = canvas.width = window.innerWidth;
-let height = canvas.height = window.innerHeight;
-
-const particleCount = 80;
-const particles = [];
-
-for (let i = 0; i < particleCount; i++) {
-    particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        size: Math.random() * 2 + 1,
-        alphaOffset: Math.random() * Math.PI * 2
-    });
-}
-
-function animateParticles() {
-    ctx.clearRect(0, 0, width, height);
-    const time = Date.now() * 0.002;
-
-    const gradient = ctx.createLinearGradient(0, 0, width, height);
-    const gPulse = 0.5 + 0.5 * Math.sin(time);
-    gradient.addColorStop(0, `rgba(0, ${Math.floor(255*gPulse)}, 255, 0.2)`);
-    gradient.addColorStop(1, `rgba(0, 255, ${Math.floor(255*(1-gPulse))}, 0.2)`);
-
-    for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-
-        const pulse = 0.5 + 0.5 * Math.sin(time + p.alphaOffset);
-        const r = 0;
-        const g = Math.floor(255 * pulse);
-        const b = Math.floor(255 * (1 - 0.5 * pulse));
-        const color = `rgba(${r},${g},${b},0.7)`;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-        ctx.fillStyle = color;
-        ctx.shadowColor = color;
-        ctx.shadowBlur = 8;
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-            const p2 = particles[j];
-            const dx = p2.x - p.x;
-            const dy = p2.y - p.y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if (dist < 120) {
-                ctx.beginPath();
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.strokeStyle = gradient;
-                ctx.lineWidth = 1;
-                ctx.shadowBlur = 4;
-                ctx.stroke();
-            }
+// ====== Compact FAQ Accordion Controller Engine ======
+document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        const pane = trigger.nextElementSibling;
+        const isCurrentActive = trigger.classList.contains('active');
+        
+        // Collapse all open matrices
+        document.querySelectorAll('.faq-trigger').forEach(t => {
+            t.classList.remove('active');
+            t.nextElementSibling.style.maxHeight = null;
+            t.nextElementSibling.style.borderBottomWidth = '0px';
+        });
+        
+        // Deploy targeted panel data if it was inactive
+        if (!isCurrentActive) {
+            trigger.classList.add('active');
+            pane.style.maxHeight = pane.scrollHeight + "px";
+            pane.style.borderBottomWidth = '2px';
+            pane.style.borderBottomColor = '#1a202c';
         }
-    }
-    requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+    });
 });
 
-// ====== Cookie Notice Logic ======
+// ====== Cookie Engine Validation ======
 window.addEventListener('load', () => {
     if(!localStorage.getItem('cookiesAccepted')){
         setTimeout(() => {
@@ -447,8 +478,7 @@ window.addEventListener('load', () => {
 
 document.getElementById('acceptCookies').addEventListener('click', () => {
     localStorage.setItem('cookiesAccepted', 'true');
-    const notice = document.getElementById('cookieNotice');
-    notice.classList.remove('show');
+    document.getElementById('cookieNotice').classList.remove('show');
 });
 </script>
 </body>

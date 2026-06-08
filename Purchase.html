@@ -3,450 +3,878 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CynicDroid Catalog — Neon Pulse</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+<title>CynicDroid Technologies — Online Store</title>
+<link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
 
-<!-- Use the modern EmailJS browser bundle -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
-:root{
-  --cyan:#00ffff;
-  --lime:#aef710;
-  --bg:#2e2e2e;
-  --card-bg: rgba(0,255,255,0.05);
-  --modal-bg: #1a1a1a;
-  --text-color: #e0e0e0;
-  --neon-shadow: 0 0 12px var(--cyan),0 0 24px var(--lime);
+body, h1, h2, h3, h4, p, a, li, strong, em, input, select, button, textarea {
+    font-family: 'Orbitron', sans-serif;
 }
-*{box-sizing:border-box}
-body{font-family:'Kanit',sans-serif;background:var(--bg);color:var(--text-color);margin:0;overflow-x:hidden;display:flex;min-height:100vh;scroll-behavior:smooth;}
-.sidebar{width:240px;background:var(--bg);border-right:2px solid var(--cyan);box-shadow: var(--neon-shadow);position:fixed;top:0;left:0;bottom:0;padding:1rem;display:flex;flex-direction:column;align-items:center;z-index:20;overflow-y:auto;}
-.cynicdroid-brand{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:700;color:var(--cyan);text-shadow:0 0 12px var(--cyan),0 0 20px var(--lime);margin-bottom:1rem;}
-.category-filter-vertical{display:flex;flex-direction:column;gap:0.6rem;width:100%;margin-top:0.5rem;}
-.category-filter-vertical button{background:transparent;border:1px solid var(--cyan);color: var(--cyan);padding:0.6rem 1rem;border-radius:0.5rem;cursor:pointer;transition:0.2s;text-align:left;}
-.category-filter-vertical button.active,
-.category-filter-vertical button:hover{background:var(--cyan);color:#000;box-shadow: var(--neon-shadow);}
-.topbar{position:fixed;right:1rem;top:1rem;z-index:60;display:flex;gap:0.75rem;align-items:center;}
-.cart-icon{position:relative;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(90deg,var(--cyan),var(--lime));color:#000;box-shadow: var(--neon-shadow);cursor:pointer;font-weight:700;}
-.cart-count{position:absolute;top:-8px;right:-8px;background:var(--bg);border:2px solid var(--cyan);color:var(--cyan);padding:2px 6px;border-radius:999px;font-size:0.8rem;box-shadow:0 0 8px var(--cyan);}
-.main-content{margin-left:260px;flex-grow:1;padding:2rem;padding-top:3.2rem;}
-header{text-align:center;margin-bottom:1rem;}
-h1{font-family:'Orbitron',sans-serif;color:var(--cyan);text-shadow:0 0 8px var(--cyan),0 0 18px var(--lime);margin:0;}
-.controls{display:flex;gap:1rem;align-items:center;justify-content:flex-start;margin:1rem 0 1.5rem 0;flex-wrap:wrap;}
-#searchInput, #sortSelect{padding:0.65rem 0.9rem;border-radius:10px;border:1px solid var(--cyan);background:transparent;color:var(--text-color);min-width:220px;}
-#sortSelect{ font-family:'Orbitron',sans-serif; color:var(--cyan); }
-.category{ padding:0.5rem 0;}
-.category h2{ margin:0 0 0.6rem 0; font-size:1.2rem;}
-.grid{ display:grid; gap:1.2rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
-.card{ background: var(--card-bg); border:1px solid var(--cyan); border-radius:1rem; box-shadow: var(--neon-shadow); overflow:hidden; display:flex; flex-direction:column; transition:0.3s; cursor:pointer; position:relative; }
-.card:hover{ transform:scale(1.03); box-shadow:0 0 20px var(--cyan),0 0 40px var(--lime); }
-.card img{ width:100%; height:170px; object-fit:cover;}
-.card-content{ padding:0.9rem; flex-grow:1; display:flex; flex-direction:column;}
-.card-content h3{ font-family:'Orbitron',sans-serif; font-size:1.05rem; margin:0 0 0.5rem 0; color:var(--cyan); }
-.card-content p{ flex-grow:1; margin:0 0 0.6rem 0; font-size:0.95rem; color:#cfd8dc;}
-.card-content .price{ font-weight:700; color:var(--lime); margin-bottom:0.5rem;}
-.pagination{ display:flex; gap:0.5rem; margin-top:0.6rem; justify-content:center; flex-wrap:wrap;}
-.pagination button{ background:transparent; border:1px solid var(--cyan); color:var(--cyan); padding:0.4rem 0.7rem; border-radius:0.5rem; cursor:pointer; transition:0.2s;}
-.pagination button.active, .pagination button:hover{ background:var(--cyan); color:#000; box-shadow:0 0 12px var(--cyan); }
-@keyframes neonPulse { 0% { box-shadow: 0 0 12px var(--cyan),0 0 24px var(--lime); transform: scale(1); } 50% { box-shadow: 0 0 20px var(--lime),0 0 36px var(--cyan); transform: scale(1.05); } 100% { box-shadow: 0 0 12px var(--cyan),0 0 24px var(--lime); transform: scale(1); } }
-.btn-neon{ background:linear-gradient(90deg,var(--cyan),var(--lime)); color:#000; font-weight:600; text-transform:uppercase; box-shadow: var(--neon-shadow); transition:0.18s; text-align:center; cursor:pointer; padding:0.5rem 0.6rem; border-radius:8px; border:none;}
-.btn-outline{ background:transparent; border:1px solid var(--cyan); color:var(--cyan); padding:0.45rem 0.6rem; border-radius:8px; cursor:pointer;}
-.btn-outline:hover{ background:var(--cyan); color:#000; box-shadow:0 0 12px var(--cyan);}
-.modal{ position:fixed; top:0; left:0; width:100%; height:100%; display:none; justify-content:center; align-items:center; z-index:70; }
-.modal-content{ background: var(--modal-bg); border:2px solid var(--cyan); border-radius:1rem; padding:1.25rem; width:92%; max-width:720px; box-shadow:0 0 20px var(--cyan),0 0 40px var(--lime); position:relative;}
-.small-modal{ max-width:420px; }
-.modal .closeModal{ position:absolute; top:0.6rem; right:0.8rem; font-size:1.2rem; color:var(--cyan); cursor:pointer; }
-.modal .closeModal:hover{ color:var(--lime); }
-#previewModal img, #checkoutModal img{ width:100%; border-radius:0.5rem; margin-bottom:0.9rem; box-shadow:0 0 10px var(--cyan); }
-#previewModal .preview-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; align-items:start; }
-#previewModal h3, #checkoutModal h3{ margin:0 0 0.4rem 0; color:var(--cyan); font-family:'Orbitron',sans-serif; }
-#previewModal p, #checkoutModal p{ color:#cfd8dc; }
-.cart-items{ max-height:320px; overflow:auto; margin-bottom:0.8rem; display:flex; flex-direction:column; gap:0.6rem; padding-right:0.25rem; }
-.cart-item{ display:flex; gap:0.75rem; align-items:center; border-radius:8px; padding:0.5rem; background:rgba(0,255,255,0.02); border:1px solid rgba(0,255,255,0.04); }
-.cart-item img{ width:64px; height:48px; object-fit:cover; border-radius:6px; }
-.cart-item .meta{ flex:1; }
-.qty-controls{ display:flex; gap:0.4rem; align-items:center; }
-.qty-controls button{ background:transparent; border:1px solid var(--cyan); color:var(--cyan); width:28px; height:28px; border-radius:6px; cursor:pointer; }
-.cart-totals{ display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-top:0.6rem; padding-top:0.6rem; border-top:1px dashed rgba(174,247,16,0.08); }
-.cart-empty{ text-align:center; color:#9aa7ab; padding:1rem 0; }
-.confetti-piece{ position:absolute; width:8px; height:8px; background:linear-gradient(45deg,#00ffff,#aef710); opacity:0.9; pointer-events:none; z-index:100; animation: fall 2s linear forwards; }
-@keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(100vh) rotate(360deg);} }
-@media (max-width:900px){
-  .sidebar{ position:relative; width:100%; height:auto; display:flex; flex-direction:row; padding:0.5rem; overflow:auto; border-right: none; border-bottom: 2px solid var(--cyan); }
-  .category-filter-vertical{ flex-direction:row; gap:0.5rem; padding:0 0.5rem; }
-  .main-content{ margin-left:0; padding-top:1.6rem; }
-  #previewModal .preview-grid{ grid-template-columns:1fr; }
+
+body {
+    background-color: #cbd5e1;
+    /* Clean Brushed Aluminum Metal Panel Background */
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.1) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.05) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.15);
+    color: #1e293b;
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ====== 3D Machined Metal Chassis Panels ====== */
+.hardware-panel {
+    background: linear-gradient(180deg, #2a303d 0%, #171b22 100%);
+    border-top: 2px solid #5a657a;
+    border-left: 2px solid #485264;
+    border-right: 2px solid #1a1e26;
+    border-bottom: 3px solid #0d1014;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.6),
+        0 20px 40px -10px rgba(15, 23, 42, 0.5);
+    border-radius: 6px;
+    position: relative;
+}
+.hardware-panel::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* ====== Recessed Die-Cast Technical Bays ====== */
+.card-recessed {
+    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
+    border-top: 2px solid #101319;
+    border-left: 2px solid #101319;
+    border-right: 1px solid #3a4252;
+    border-bottom: 1px solid #3a4252;
+    box-shadow: 
+        inset 0 4px 10px rgba(0, 0, 0, 0.9),
+        0 1px 2px rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
+
+/* ====== Structural Chiseled Typography ====== */
+.steel-engraved-header {
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #ffffff 20%, #a3acb9 60%, #4c535e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
+}
+
+.logo-cast {
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #e5e9f0;
+    background: linear-gradient(180deg, #ffffff 0%, #9aa3b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
+}
+
+/* ====== Telemetry Hardware Controls ====== */
+.telemetry-input, .telemetry-select {
+    background: linear-gradient(180deg, #090b0e 0%, #151922 100%);
+    border: 1px solid #3a4252;
+    color: #88c0d0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+.telemetry-input:focus, .telemetry-select:focus {
+    border-color: #00d2ff;
+    color: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,210,255,0.25);
+}
+
+.telemetry-btn {
+    background: linear-gradient(180deg, #3a4253 0%, #1c2029 100%);
+    border-top: 1px solid #5a657a;
+    border-left: 1px solid #485264;
+    border-right: 1px solid #14171f;
+    border-bottom: 2px solid #0d1014;
+    color: #e2e8f0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.15s ease;
+}
+.telemetry-btn:hover:not(:disabled) {
+    color: #ffffff;
+    border-color: #00d2ff;
+    box-shadow: 0 0 12px rgba(0,210,255,0.3);
+    background: linear-gradient(180deg, #434c5f 0%, #242935 100%);
+}
+.telemetry-btn.active {
+    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
+    border: 1px solid #00d2ff;
+    color: #00d2ff;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.operation-loader {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #3a4252;
+    border-top-color: #00d2ff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
 }
 </style>
 </head>
-<body>
+<body class="flex flex-col md:flex-row min-h-100vh">
 
-<aside class="sidebar">
-  <a href="index.html" class="cynicdroid-brand hover:scale-105 transition-transform duration-200">
-    <span class="font-[Orbitron] font-bold text-[1.7rem] tracking-[2px]"
-      style="color:#00ffff; text-shadow:0 0 12px #00ffff, 0 0 24px #aef710;">
-      CynicDroid
-    </span>
-  </a>
-  <div class="category-filter-vertical" id="categoryFilter"></div>
+<aside class="w-full md:w-64 bg-[#1e2330] border-b-4 md:border-b-0 md:border-r-4 border-neutral-900 md:fixed md:top-0 md:left-0 md:bottom-0 p-5 flex flex-col justify-between z-30 shadow-2xl">
+    <div class="w-full">
+        <div class="w-full text-center pb-4 border-b border-neutral-800">
+            <a href="index.html" class="text-xl logo-cast block py-2">CYNICDROID</a>
+            <div class="text-[9px] text-gray-500 tracking-widest font-bold mt-1">ONLINE PRODUCT STORE</div>
+        </div>
+        
+        <div class="w-full mt-6 space-y-2 flex flex-row flex-wrap gap-2 md:flex-col md:space-y-2 justify-center items-center" id="categoryFilter">
+            </div>
+    </div>
+
+    <div class="w-full mt-6 pt-4 border-t border-neutral-800 flex flex-col items-center gap-2">
+        <div class="text-[8px] font-black text-gray-500 tracking-widest" id="authIdentity">STATUS: VISITOR MODE</div>
+        <div class="w-full flex gap-1">
+            <button class="telemetry-btn flex-1 py-2 text-[9px]" onclick="openProfileModal()">MY PROFILE</button>
+            <button id="authTerminalBtn" class="telemetry-btn flex-1 py-2 text-[9px]" onclick="openAuthModal()">ADMIN LOGIN</button>
+        </div>
+    </div>
 </aside>
 
-<style>
-.cynicdroid-brand:hover span {
-  animation: neonPulse 1.2s infinite alternate, neonFlicker 0.18s 3 ease-in-out;
-  transform: scale(1.05);
-}
-
-@keyframes neonPulse {
-  0% { text-shadow: 0 0 12px #00ffff, 0 0 24px #aef710; }
-  50% { text-shadow: 0 0 20px #aef710, 0 0 40px #00ffff; }
-  100% { text-shadow: 0 0 12px #00ffff, 0 0 24px #aef710; }
-}
-
-@keyframes neonFlicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-  20%, 22%, 24%, 55% { opacity: 0.4; }
-}
-</style>
-
-
-<div class="topbar">
-  <div id="cartBtn" class="cart-icon" title="Open Cart">🛒
-    <div id="cartCount" class="cart-count">0</div>
-  </div>
+<div class="fixed top-4 right-4 z-40 flex items-center gap-2">
+    <button id="adminForgeBtn" class="hardware-panel p-3 px-4 hidden text-amber-400 border-amber-500 hover:border-amber-400 transition-all duration-200" onclick="openForgeModal()">
+        <span class="text-xs font-black tracking-widest">ADD NEW ITEM</span>
+    </button>
+    <button id="cartBtn" class="hardware-panel p-3 px-4 flex items-center gap-3 text-cyan-400 group transition-all duration-200 hover:border-cyan-500">
+        <span class="text-xs font-black tracking-widest text-gray-200">SHOPPING CART</span>
+        <div class="card-recessed px-2 py-0.5 text-[11px] font-black text-cyan-400 group-hover:text-white" id="cartCount">0</div>
+    </button>
 </div>
 
-<div class="main-content">
-  <header><h1>Product Catalog</h1></header>
-  <div class="controls">
-    <input id="searchInput" placeholder="Search products..." />
-    <select id="sortSelect">
-      <option value="default">Sort: Default</option>
-      <option value="priceLow">Price: Low → High</option>
-      <option value="priceHigh">Price: High → Low</option>
-      <option value="nameAZ">Name: A → Z</option>
-      <option value="nameZA">Name: Z → A</option>
-    </select>
-    <div style="flex:1"></div>
-  </div>
-  <div id="categoriesContainer"></div>
-</div>
-
-<!-- Preview Modal -->
-<div id="previewModal" class="modal">
-  <div class="modal-content small-modal">
-    <span class="closeModal" onclick="closePreview()">×</span>
-    <img id="previewImg" src="">
-    <h3 id="previewTitle"></h3>
-    <p id="previewDesc"></p>
-    <div class="price" id="previewPrice"></div>
-    <button class="btn-neon" id="addToCartBtn">Add to Cart</button>
-  </div>
-</div>
-
-<!-- Cart Modal -->
-<div id="cartModal" class="modal">
-  <div class="modal-content small-modal">
-    <span class="closeModal" onclick="closeCart()">×</span>
-    <h3>Shopping Cart</h3>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-totals">
-      <strong>Total:</strong>
-      <span id="cartTotal">Ksh 0</span>
+<main class="flex-grow p-4 md:p-8 pt-6 md:pt-8 space-y-6 md:ml-64 w-full max-w-7xl">
+    
+    <div class="hardware-panel p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+            <h1 class="text-xl md:text-3xl font-black steel-engraved-header uppercase tracking-wider">ONLINE SHOPPING PLATFORM</h1>
+            <p class="text-[10px] text-gray-400 font-bold tracking-widest mt-1">STORE ONLINE • 2026</p>
+        </div>
+        <div class="flex flex-wrap gap-2 w-full md:w-auto justify-end">
+            <input id="searchInput" class="telemetry-input w-full sm:w-64" placeholder="SEARCH PRODUCTS..." />
+            <select id="sortSelect" class="telemetry-select w-full sm:w-48">
+                <option value="default">SORT BY: DEFAULT</option>
+                <option value="priceLow">PRICE: LOW TO HIGH</option>
+                <option value="priceHigh">PRICE: HIGH TO LOW</option>
+                <option value="nameAZ">NAME: A TO Z</option>
+                <option value="nameZA">NAME: Z TO A</option>
+            </select>
+        </div>
     </div>
-    <button class="btn-neon w-full mt-3" onclick="openCheckout()">Proceed to Checkout</button>
-  </div>
+
+    <div id="categoriesContainer" class="space-y-8"></div>
+</main>
+
+<div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
+    <div class="hardware-panel max-w-sm w-full p-6 space-y-4">
+        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">MY ACCOUNT PROFILE</h3>
+            <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeProfileModal()">✕</button>
+        </div>
+        <p class="text-[10px] text-gray-400 leading-normal">Save your delivery details here to check out with a single click next time.</p>
+        <div class="space-y-2">
+            <div>
+                <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">FULL NAME</label>
+                <input type="text" id="profileName" placeholder="Your Name" class="telemetry-input w-full">
+            </div>
+            <div>
+                <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">PHONE NUMBER</label>
+                <input type="tel" id="profilePhone" placeholder="e.g., 0712345678" class="telemetry-input w-full">
+            </div>
+            <div>
+                <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">EMAIL ADDRESS</label>
+                <input type="email" id="profileEmail" placeholder="Your Email Address" class="telemetry-input w-full">
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button class="telemetry-btn flex-1 py-2.5 text-rose-500 border-rose-950 hover:border-rose-500" onclick="clearUserProfileData()">DELETE PROFILE</button>
+            <button class="telemetry-btn flex-2 py-2.5 text-cyan-400 border-cyan-700 hover:border-cyan-400" onclick="saveUserProfileData()">SAVE CHANGES</button>
+        </div>
+    </div>
 </div>
 
-<!-- Checkout Modal -->
-<div id="checkoutModal" class="modal">
-  <div class="modal-content small-modal">
-    <span class="closeModal" onclick="closeCheckout()">×</span>
-    <h3>Checkout</h3>
-    <div style="margin-bottom:1rem;">
-      <input type="text" id="checkoutName" placeholder="Full Name" class="btn-outline w-full mb-2">
-      <input type="tel" id="checkoutPhone" placeholder="Phone Number" class="btn-outline w-full mb-2">
-      <input type="email" id="checkoutEmail" placeholder="Email" class="btn-outline w-full mb-2">
+<div id="authModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
+    <div class="hardware-panel max-w-sm w-full p-6 space-y-4">
+        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">ADMIN PORTAL LOGIN</h3>
+            <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeAuthModal()">✕</button>
+        </div>
+        <div class="space-y-2">
+            <label class="text-[9px] font-black text-gray-400 tracking-widest block">SELECT ACCOUNT TYPE</label>
+            <select id="authRoleSelect" class="telemetry-select w-full">
+                <option value="user">CUSTOMER (VIEW ONLY)</option>
+                <option value="admin">STORE MANAGER (ADMIN ACCESS)</option>
+            </select>
+        </div>
+        <button class="telemetry-btn w-full py-2.5" onclick="executeAuthentication()">LOG IN</button>
     </div>
-    <div id="checkoutProducts" class="cart-items"></div>
-    <div class="cart-totals">
-      <strong>Total:</strong>
-      <span id="checkoutTotal">Ksh 0</span>
+</div>
+
+<div id="forgeModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
+    <div class="hardware-panel max-w-md w-full p-6 space-y-4">
+        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+            <h3 class="text-xs font-black text-amber-400 tracking-wider uppercase">ADD NEW PRODUCT TO CATALOG</h3>
+            <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeForgeModal()">✕</button>
+        </div>
+        <div class="space-y-3 max-h-[70vh] overflow-y-auto pr-1">
+            <div class="space-y-1">
+                <label class="text-[9px] font-black text-gray-400 tracking-widest block">PRODUCT CATEGORY</label>
+                <select id="forgeCategory" class="telemetry-select w-full"></select>
+            </div>
+            <div class="space-y-1">
+                <label class="text-[9px] font-black text-gray-400 tracking-widest block">PRODUCT TITLE</label>
+                <input type="text" id="forgeTitle" placeholder="e.g., Tecno Firmware Patch v2" class="telemetry-input w-full">
+            </div>
+            <div class="space-y-1">
+                <label class="text-[9px] font-black text-gray-400 tracking-widest block">IMAGE FILE NAME</label>
+                <div class="relative flex items-center">
+                    <span class="absolute left-3 text-[10px] font-mono text-slate-500 select-none">./assets/images/</span>
+                    <input type="text" id="forgeImg" placeholder="camon20-ic.jpg" class="telemetry-input w-full pl-32">
+                </div>
+            </div>
+            <div class="space-y-1">
+                <label class="text-[9px] font-black text-gray-400 tracking-widest block">PRICE VALUE (Ksh)</label>
+                <input type="number" id="forgePrice" placeholder="e.g., 4500" class="telemetry-input w-full">
+            </div>
+            <div class="space-y-1">
+                <label class="text-[9px] font-black text-gray-400 tracking-widest block">PRODUCT DESCRIPTION</label>
+                <textarea id="forgeDesc" rows="3" placeholder="Enter specifications or features of this product..." class="telemetry-input w-full resize-none"></textarea>
+            </div>
+        </div>
+        <button class="telemetry-btn w-full py-2.5 border-amber-600 text-amber-400 hover:border-amber-400" onclick="submitForgeModule()">ADD TO INVENTORY</button>
     </div>
-    <button id="submitOrderBtn" class="btn-neon w-full mt-3" onclick="submitCheckout()">Submit Order</button>
-  </div>
+</div>
+
+<div id="previewModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
+    <div class="hardware-panel max-w-md w-full p-6 space-y-4">
+        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">PRODUCT DETAILS</h3>
+            <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closePreview()">✕</button>
+        </div>
+        <div class="card-recessed overflow-hidden relative min-h-48 flex items-center justify-center">
+            <img id="previewImg" class="w-full h-48 object-cover opacity-80 hidden" src="" onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');">
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-black font-mono text-[10px] text-slate-400">
+                <span id="fallbackPreviewLabel" class="truncate max-w-full text-cyan-400"></span>
+                <span class="text-[9px] text-amber-400 mt-2 border border-amber-900/50 bg-amber-950/20 px-2 py-0.5 rounded">NO IMAGE INSTALLED</span>
+            </div>
+        </div>
+        <div class="space-y-1">
+            <h4 id="previewTitle" class="text-sm font-black text-gray-200 tracking-wide uppercase"></h4>
+            <p id="previewDesc" class="text-[11px] text-gray-400 leading-relaxed"></p>
+        </div>
+        <div class="flex justify-between items-center pt-2 border-t border-neutral-800">
+            <div id="previewPrice" class="text-xs font-black text-emerald-400 tracking-widest"></div>
+            <button class="telemetry-btn px-4 py-2" id="addToCartBtn">ADD TO SHOPPING CART</button>
+        </div>
+    </div>
+</div>
+
+<div id="cartModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
+    <div class="hardware-panel max-w-md w-full p-6 space-y-4">
+        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">YOUR SHOPPING CART</h3>
+            <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeCart()">✕</button>
+        </div>
+        <div class="card-recessed p-2 max-h-64 overflow-y-auto space-y-2" id="cartItems"></div>
+        <div class="flex justify-between items-center p-3 card-recessed font-black text-xs">
+            <span class="text-gray-400 tracking-widest">TOTAL AMOUNT:</span>
+            <span class="text-emerald-400 tracking-wider" id="cartTotal">Ksh 0</span>
+        </div>
+        <button class="telemetry-btn w-full py-2.5" onclick="openCheckout()">PROCEED TO CHECKOUT</button>
+    </div>
+</div>
+
+<div id="checkoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
+    <div class="hardware-panel max-w-md w-full p-6 space-y-4">
+        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">SECURE PAYMENT CHECKOUT</h3>
+            <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeCheckout()">✕</button>
+        </div>
+        
+        <div class="space-y-2">
+            <input type="text" id="checkoutName" placeholder="YOUR FULL NAME" class="telemetry-input w-full">
+            <input type="tel" id="checkoutPhone" placeholder="M-PESA NUMBER (e.g., 0712345678)" class="telemetry-input w-full">
+            <input type="email" id="checkoutEmail" placeholder="EMAIL ADDRESS" class="telemetry-input w-full">
+        </div>
+
+        <div class="card-recessed p-3 border border-neutral-800 space-y-2">
+            <div class="flex justify-between items-center">
+                <span class="text-[9px] font-black text-gray-400 tracking-widest">TRANSACTION GATEWAY:</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded text-black bg-emerald-400 uppercase tracking-wide">M-PESA STK PUSH</span>
+            </div>
+            <div class="text-[10px] font-mono p-2 bg-black/40 rounded border border-neutral-900 text-slate-300 leading-relaxed">
+                <span>An STK prompt will appear on your handset automatically. If it flags or times out, pay manually to:</span><br>
+                <div class="text-white text-center py-2 mt-1 bg-neutral-900 rounded border border-neutral-800 space-y-1 text-[10px]">
+                    <div>EQUITY PAYBILL: <strong class="text-cyan-400 font-black">247247</strong></div>
+                    <div>ACCOUNT NUMBER: <strong class="text-cyan-400 font-black">0716375459</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-recessed p-2 max-h-32 overflow-y-auto space-y-1 text-[10px]" id="checkoutProducts"></div>
+        
+        <div class="flex justify-between items-center p-3 card-recessed font-black text-xs">
+            <span class="text-gray-400 tracking-widest">TOTAL AMOUNT:</span>
+            <span class="text-emerald-400 tracking-wider" id="checkoutTotal">Ksh 0</span>
+        </div>
+        <button id="submitOrderBtn" class="telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-emerald-400 border-emerald-900 hover:border-emerald-400" onclick="submitCheckout()">
+            INITIATE M-PESA PAYMENT
+        </button>
+    </div>
 </div>
 
 <script>
-// ================== DATA ==================
-const categories = ["Electronics","Home & Kitchen","Mobile Accessories","Software Solutions","Services"];
+// ================== CORE CONFIGURATION STATES ==================
+const categories = ["Electronics", "Home & Kitchen", "Mobile Accessories", "Software Solutions", "Services"];
 const categoriesContainer = document.getElementById('categoriesContainer');
 const filterContainer = document.getElementById('categoryFilter');
 const searchInput = document.getElementById('searchInput');
 const sortSelect = document.getElementById('sortSelect');
 
-let products = [];
-let idCounter=1;
-categories.forEach(cat=>{
-  for(let i=1;i<=50;i++){
-    products.push({
-      id:'p'+(idCounter++),
-      title:`${cat} Product ${i}`,
-      desc:`Description for ${cat} Product ${i}`,
-      price:Math.floor(Math.random()*5000)+200,
-      img:`https://picsum.photos/300/200?random=${idCounter}`,
-      category:cat
-    });
-  }
-});
+let currentUserRole = 'user'; // Defaults to standard client customer mode
 
-// ================== CART ==================
+// Initialize data arrays with clean layout seed modules
+let products = JSON.parse(localStorage.getItem('cynic_products'));
+if (!products || products.length === 0) {
+    products = [
+        { id: 'seed_1', title: 'Industrial Board Controller', desc: 'Main logic framework interface for low-level automation processes.', price: 4500, img: 'controller.jpg', category: 'Electronics' },
+        { id: 'seed_2', title: 'LiFePO4 Solar Module', desc: 'Advanced off-grid solar panels with built-in airflow ventilation clearance mechanics.', price: 12000, img: 'solar-panel.jpg', category: 'Home & Kitchen' },
+        { id: 'seed_3', title: 'Supercharged Diagnostics Link', desc: 'Custom high-speed connection line optimized for flashing firmware safely.', price: 1500, img: 'flex-cable.jpg', category: 'Mobile Accessories' },
+        { id: 'seed_4', title: 'Firmware Recovery Shell', desc: 'Telnet and BusyBox setup profiles built for unbricking and recovering router ONTs.', price: 3500, img: 'firmware-box.jpg', category: 'Software Solutions' },
+        { id: 'seed_5', title: 'Custom Modification Setup', desc: 'Hardware consultation design node tailored for customized custom upgrades.', price: 2500, img: 'blueprint.jpg', category: 'Services' }
+    ];
+    localStorage.setItem('cynic_products', JSON.stringify(products));
+}
+
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentDisplayProducts = [...products];
-function saveCart(){ localStorage.setItem('cart', JSON.stringify(cart)); }
 
-// ================== RENDER ==================
-function createCard(p){
-  const card=document.createElement('div'); card.className='card';
-  const img=document.createElement('img'); img.src=p.img; img.alt=p.title;
-  const content=document.createElement('div'); content.className='card-content';
-  const title=document.createElement('h3'); title.innerText=p.title;
-  const desc=document.createElement('p'); desc.innerText=p.desc;
-  const price=document.createElement('div'); price.className='price'; price.innerText=`Ksh ${p.price}`;
-  content.append(title,desc,price); card.appendChild(img); card.appendChild(content);
-  card.addEventListener('click',()=>{ card.style.animation='neonPulse 0.6s ease-in-out';
-    card.addEventListener('animationend',()=>{ card.style.animation=''; openPreview(p); }, {once:true});
-  });
-  return card;
+function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); }
+function saveProductsArray() { localStorage.setItem('cynic_products', JSON.stringify(products)); }
+
+// ================== DATA UI RENDERING MATRICES ==================
+function createCard(p) {
+    const card = document.createElement('div');
+    card.className = 'card-recessed p-3 flex flex-col justify-between space-y-3 transition-all duration-200 hover:border-cyan-500 group cursor-pointer';
+    
+    const imagePath = `./assets/images/${p.img}`;
+
+    card.innerHTML = `
+        <div class="space-y-2">
+            <div class="overflow-hidden rounded border border-neutral-900 bg-black h-32 flex items-center justify-center relative">
+                <img class="w-full h-32 object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-200 hidden" 
+                     src="${imagePath}" 
+                     alt="${p.title}" 
+                     onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden')"
+                     onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden')">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-2 text-center font-mono text-[9px] text-slate-400 bg-neutral-950">
+                    <span class="truncate max-w-full text-cyan-400">${p.img}</span>
+                    <span class="text-[8px] text-slate-600 mt-1 uppercase">Image Assigned</span>
+                </div>
+            </div>
+            <h3 class="text-[11px] font-black tracking-wide text-gray-200 uppercase line-clamp-1 group-hover:text-cyan-400">${p.title}</h3>
+            <p class="text-[10px] text-gray-500 leading-normal line-clamp-2">${p.desc}</p>
+        </div>
+        <div class="flex justify-between items-center pt-2 border-t border-neutral-900/60">
+            <div class="flex flex-col">
+                <span class="text-[11px] font-black text-emerald-400">Ksh ${p.price}</span>
+            </div>
+            <div class="flex items-center gap-2">
+                ${currentUserRole === 'admin' ? `<span class="text-[9px] font-black text-rose-500 hover:underline z-10" onclick="event.stopPropagation(); deleteProduct('${p.id}')">DELETE</span>` : ''}
+                <span class="text-[9px] font-bold text-cyan-500 tracking-wider group-hover:underline">VIEW</span>
+            </div>
+        </div>
+    `;
+    card.addEventListener('click', () => openPreview(p));
+    return card;
 }
 
-function createPagination(container, items){
-  const pagination = document.createElement('div'); pagination.className = 'pagination';
-  const totalPages = Math.ceil(items.length/10); let currentPage = 1;
-  function renderPage(page){
-    currentPage = page; const grid = container.querySelector('.grid'); grid.innerHTML = '';
-    const start = (page-1)*10; const end = start+10;
-    items.slice(start,end).forEach(p=>grid.appendChild(createCard(p)));
-    pagination.innerHTML='';
-    for(let i=1;i<=totalPages;i++){
-      const btn=document.createElement('button'); btn.innerText=i;
-      if(i===currentPage) btn.classList.add('active');
-      btn.addEventListener('click',()=>renderPage(i));
-      pagination.appendChild(btn);
+function createPagination(container, items) {
+    const pagination = document.createElement('div');
+    pagination.className = 'flex flex-wrap gap-1.5 justify-center mt-4';
+    
+    const itemsPerPage = 10;
+    const totalPages = Math.ceil(items.length / itemsPerPage) || 1;
+    let currentPage = 1;
+
+    function renderPage(page) {
+        currentPage = page;
+        const grid = container.querySelector('.grid-layout-node');
+        grid.innerHTML = '';
+        
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        
+        if (items.length === 0) {
+            grid.innerHTML = `<div class="col-span-full text-center text-gray-500 font-bold text-xs py-8 tracking-widest">NO PRODUCTS FOUND IN THIS CATEGORY.</div>`;
+            return;
+        }
+
+        items.slice(start, end).forEach(p => grid.appendChild(createCard(p)));
+        pagination.innerHTML = '';
+        
+        if (totalPages > 1) {
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `px-2.5 py-1 text-[10px] font-black rounded telemetry-btn ${i === currentPage ? 'active' : ''}`;
+                btn.innerText = String(i).padStart(2, '0');
+                btn.addEventListener('click', () => {
+                    renderPage(i);
+                    container.scrollIntoView({ behavior: 'smooth' });
+                });
+                pagination.appendChild(btn);
+            }
+        }
     }
-  }
-  container.appendChild(pagination); renderPage(1);
+    container.appendChild(pagination);
+    renderPage(1);
 }
 
-function renderCategories(filteredProducts){
-  categoriesContainer.innerHTML='';
+function renderCategories(filteredProducts) {
+    categoriesContainer.innerHTML = '';
 
-  const allSection = document.createElement('div'); allSection.className='category'; allSection.id='AllProducts';
-  const allTitle = document.createElement('h2'); allTitle.innerText='All Products';
-  allSection.appendChild(allTitle);
-  const allGrid = document.createElement('div'); allGrid.className='grid';
-  allSection.appendChild(allGrid);
-  categoriesContainer.appendChild(allSection);
-  createPagination(allSection, filteredProducts);
+    // Master All Products Section
+    const allSection = document.createElement('div');
+    allSection.className = 'hardware-panel p-5 space-y-4';
+    allSection.id = 'AllProducts';
+    allSection.innerHTML = `
+        <div class="border-b border-neutral-800 pb-2"><h2 class="text-xs font-black text-gray-300 tracking-widest uppercase">ALL PRODUCTS CATALOG</h2></div>
+        <div class="grid-layout-node grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+    `;
+    categoriesContainer.appendChild(allSection);
+    createPagination(allSection, filteredProducts);
 
-  categories.forEach(cat=>{
-    const catSection = document.createElement('div'); catSection.className='category'; catSection.id=cat.replace(/\s/g,'');
-    const title = document.createElement('h2'); title.innerText=cat; catSection.appendChild(title);
-    const grid = document.createElement('div'); grid.className='grid'; catSection.appendChild(grid);
-    categoriesContainer.appendChild(catSection);
-    const catProducts = filteredProducts.filter(p=>p.category===cat);
-    createPagination(catSection, catProducts);
-  });
+    // Segmented Domain Categories
+    categories.forEach(cat => {
+        const catSection = document.createElement('div');
+        catSection.className = 'hardware-panel p-5 space-y-4';
+        catSection.id = cat.replace(/\s/g, '');
+        catSection.innerHTML = `
+            <div class="border-b border-neutral-800 pb-2"><h2 class="text-xs font-black text-gray-300 tracking-widest uppercase">${cat}</h2></div>
+            <div class="grid-layout-node grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+        `;
+        categoriesContainer.appendChild(catSection);
+        const catProducts = filteredProducts.filter(p => p.category === cat);
+        createPagination(catSection, catProducts);
+    });
 
-  document.querySelectorAll('.category').forEach(sec => sec.style.display='none');
-  document.getElementById('AllProducts').style.display='block';
+    const currentActiveFilterBtn = document.querySelector('#categoryFilter button.active');
+    const targetId = currentActiveFilterBtn ? currentActiveFilterBtn.dataset.target : 'AllProducts';
+    
+    document.querySelectorAll('#categoriesContainer > div').forEach(sec => sec.classList.add('hidden'));
+    const targetedSection = document.getElementById(targetId);
+    if (targetedSection) targetedSection.classList.remove('hidden');
 }
 
-// ================== CATEGORY BUTTONS ==================
-filterContainer.innerHTML='';
-const allBtn = document.createElement('button'); allBtn.innerText = "All Products"; allBtn.classList.add('active');
-allBtn.addEventListener('click',()=>{
-  document.querySelectorAll('#categoryFilter button').forEach(b=>b.classList.remove('active')); allBtn.classList.add('active');
-  document.querySelectorAll('.category').forEach(sec=>sec.style.display='none');
-  document.getElementById('AllProducts').style.display='block';
-}); filterContainer.appendChild(allBtn);
+// ================== INTERACTIVE SIDEBAR GENERATION ==================
+function initializeFilterControls() {
+    filterContainer.innerHTML = '';
+    
+    const allBtn = document.createElement('button');
+    allBtn.className = 'px-4 py-2 w-full text-center md:text-left telemetry-btn active';
+    allBtn.innerText = "SHOW ALL ITEMS";
+    allBtn.setAttribute('data-target', 'AllProducts');
+    allBtn.addEventListener('click', () => {
+        document.querySelectorAll('#categoryFilter button').forEach(b => b.classList.remove('active'));
+        allBtn.classList.add('active');
+        document.querySelectorAll('#categoriesContainer > div').forEach(sec => sec.classList.add('hidden'));
+        document.getElementById('AllProducts').classList.remove('hidden');
+    });
+    filterContainer.appendChild(allBtn);
 
-categories.forEach(cat=>{
-  const btn = document.createElement('button'); btn.innerText=cat;
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('#categoryFilter button').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
-    document.querySelectorAll('.category').forEach(sec=>sec.style.display='none');
-    document.getElementById(cat.replace(/\s/g,'')).style.display='block';
-  });
-  filterContainer.appendChild(btn);
-});
+    categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'px-4 py-2 w-full text-center md:text-left telemetry-btn';
+        btn.innerText = cat.toUpperCase();
+        const cleanId = cat.replace(/\s/g, '');
+        btn.setAttribute('data-target', cleanId);
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('#categoryFilter button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('#categoriesContainer > div').forEach(sec => sec.classList.add('hidden'));
+            document.getElementById(cleanId).classList.remove('hidden');
+        });
+        filterContainer.appendChild(btn);
+    });
 
-// ================== SEARCH & SORT ==================
-searchInput.addEventListener('input',()=>{
-  const term = searchInput.value.toLowerCase();
-  currentDisplayProducts = products.filter(p=>p.title.toLowerCase().includes(term)||p.desc.toLowerCase().includes(term));
-  renderCategories(currentDisplayProducts);
-});
-sortSelect.addEventListener('change',()=>{
-  const val = sortSelect.value;
-  if(val==='priceLow') currentDisplayProducts.sort((a,b)=>a.price-b.price);
-  else if(val==='priceHigh') currentDisplayProducts.sort((a,b)=>b.price-a.price);
-  else if(val==='nameAZ') currentDisplayProducts.sort((a,b)=>a.title.localeCompare(b.title));
-  else if(val==='nameZA') currentDisplayProducts.sort((a,b)=>b.title.localeCompare(a.title));
-  renderCategories(currentDisplayProducts);
-});
-
-// ================== CART MODAL ==================
-const cartBtn = document.getElementById('cartBtn');
-cartBtn.addEventListener('click',()=>openCart());
-
-function openCart(){ document.getElementById('cartModal').style.display='flex'; updateCartUI(); }
-function closeCart(){ document.getElementById('cartModal').style.display='none'; }
-
-function updateCartUI(){
-  const cartItemsDiv = document.getElementById('cartItems'); cartItemsDiv.innerHTML='';
-  if(cart.length===0){ cartItemsDiv.innerHTML='<div class="cart-empty">Your cart is empty.</div>'; }
-  cart.forEach(item=>{
-    const div = document.createElement('div'); div.className='cart-item';
-    const img = document.createElement('img'); img.src=item.img;
-    const meta = document.createElement('div'); meta.className='meta';
-    meta.innerHTML=`<strong>${item.title}</strong><br>Ksh ${item.price} x ${item.qty}`;
-    const qty = document.createElement('div'); qty.className='qty-controls';
-    const minus = document.createElement('button'); minus.innerText='-';
-    minus.addEventListener('click',()=>{ item.qty--; if(item.qty<=0){ cart=cart.filter(c=>c.id!==item.id);} saveCart(); updateCartUI(); });
-    const plus = document.createElement('button'); plus.innerText='+';
-    plus.addEventListener('click',()=>{ item.qty++; saveCart(); updateCartUI(); });
-    qty.append(minus, plus); div.append(img,meta,qty); cartItemsDiv.appendChild(div);
-  });
-  const total = cart.reduce((a,b)=>a+b.price*b.qty,0);
-  document.getElementById('cartTotal').innerText=`Ksh ${total}`;
-  document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
-  saveCart();
+    const forgeSelect = document.getElementById('forgeCategory');
+    forgeSelect.innerHTML = '';
+    categories.forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.innerText = cat.toUpperCase();
+        forgeSelect.appendChild(opt);
+    });
 }
 
-// ================== PREVIEW MODAL ==================
-function openPreview(p){
-  document.getElementById('previewModal').style.display='flex';
-  document.getElementById('previewImg').src=p.img;
-  document.getElementById('previewTitle').innerText=p.title;
-  document.getElementById('previewDesc').innerText=p.desc;
-  document.getElementById('previewPrice').innerText=`Ksh ${p.price}`;
-  document.getElementById('addToCartBtn').onclick=()=>{
-    const existing = cart.find(c=>c.id===p.id);
-    if(existing){ existing.qty++; } else{ cart.push({...p,qty:1}); }
-    saveCart(); updateCartUI(); alert(`${p.title} added to cart!`);
-  };
+// ================== SEARCH AND FILTRATION ALGORITHMS ==================
+function applyFiltersAndSorting() {
+    const term = searchInput.value.toLowerCase();
+    let result = products.filter(p => p.title.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term));
+    
+    const val = sortSelect.value;
+    if (val === 'priceLow') result.sort((a, b) => a.price - b.price);
+    else if (val === 'priceHigh') result.sort((a, b) => b.price - a.price);
+    else if (val === 'nameAZ') result.sort((a, b) => a.title.localeCompare(b.title));
+    else if (val === 'nameZA') result.sort((a, b) => b.title.localeCompare(a.title));
+    
+    currentDisplayProducts = result;
+    renderCategories(currentDisplayProducts);
 }
-function closePreview(){ document.getElementById('previewModal').style.display='none'; }
 
-// ================== CHECKOUT MODAL ==================
-function openCheckout(){
-  if(cart.length===0){ alert('Your cart is empty.'); return; }
-  document.getElementById('checkoutModal').style.display='flex';
-  const checkoutProductsDiv = document.getElementById('checkoutProducts'); checkoutProductsDiv.innerHTML='';
-  cart.forEach(item=>{
-    const div = document.createElement('div'); div.className='cart-item';
-    const img = document.createElement('img'); img.src=item.img;
-    const meta = document.createElement('div'); meta.className='meta';
-    meta.innerHTML=`<strong>${item.title}</strong><br>Ksh ${item.price} x ${item.qty}`;
-    div.append(img,meta); checkoutProductsDiv.appendChild(div);
-  });
-  const total = cart.reduce((a,b)=>a+b.price*b.qty,0);
-  document.getElementById('checkoutTotal').innerText=`Ksh ${total}`;
+searchInput.addEventListener('input', applyFiltersAndSorting);
+sortSelect.addEventListener('change', applyFiltersAndSorting);
+
+// ================== CLIENT USER PROFILE MANAGEMENT ==================
+function openProfileModal() {
+    document.getElementById('profileModal').classList.replace('hidden', 'flex');
+    const profile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '' };
+    
+    document.getElementById('profileName').value = profile.name;
+    document.getElementById('profilePhone').value = profile.phone;
+    document.getElementById('profileEmail').value = profile.email;
 }
-function closeCheckout(){ document.getElementById('checkoutModal').style.display='none'; }
+function closeProfileModal() { document.getElementById('profileModal').classList.replace('flex', 'hidden'); }
 
-// ================== EMAIL CHECKOUT ==================
-emailjs.init("Iz22KBRfL682WD6td"); // <-- Replace with your EmailJS public key
+function saveUserProfileData() {
+    const name = document.getElementById('profileName').value.trim();
+    const phone = document.getElementById('profilePhone').value.trim();
+    const email = document.getElementById('profileEmail').value.trim();
+
+    const profilePayload = { name, phone, email };
+    localStorage.setItem('cynic_profile_data', JSON.stringify(profilePayload));
+    
+    alert('PROFILE RECORDED: Profile variables saved successfully.');
+    closeProfileModal();
+}
+
+function clearUserProfileData() {
+    if (confirm('ARE YOU SURE YOU WANT TO DELETE YOUR PROFILE? This will clear all saved contact details from this browser.')) {
+        localStorage.removeItem('cynic_profile_data');
+        
+        document.getElementById('profileName').value = '';
+        document.getElementById('profilePhone').value = '';
+        document.getElementById('profileEmail').value = '';
+        
+        alert('PROFILE PURGED: Local identification data cleared successfully.');
+        closeProfileModal();
+    }
+}
+
+// ================== AUTHENTICATION TERMINAL LOGIN ==================
+function openAuthModal() { document.getElementById('authModal').classList.replace('hidden', 'flex'); }
+function closeAuthModal() { document.getElementById('authModal').classList.replace('flex', 'hidden'); }
+
+function verifySecureMatrixPasskey(input) {
+    if (!input) return false;
+    const structuralSequence = [78, 101, 108, 114, 101, 121, 64, 54, 52, 56, 55];
+    if (input.length !== structuralSequence.length) return false;
+    for (let i = 0; i < input.length; i++) {
+        if (input.charCodeAt(i) !== structuralSequence[i]) return false;
+    }
+    return true;
+}
+
+async function executeAuthentication() {
+    const chosenRole = document.getElementById('authRoleSelect').value;
+    const statusText = document.getElementById('authIdentity');
+    const adminBtn = document.getElementById('adminForgeBtn');
+    
+    if (chosenRole === 'admin') {
+        const passwordInput = prompt("ENTER ADMINISTRATIVE PASSWORD:");
+        const accessGranted = verifySecureMatrixPasskey(passwordInput);
+
+        if (!accessGranted) {
+            alert("ACCESS DENIED: INCORRECT PASSWORD CREDENTIALS.");
+            document.getElementById('authRoleSelect').value = 'user';
+            return;
+        }
+
+        currentUserRole = 'admin';
+        statusText.innerText = "STATUS: STORE MANAGER";
+        statusText.classList.replace('text-gray-500', 'text-amber-400');
+        adminBtn.classList.remove('hidden');
+        alert("LOGIN SUCCESSFUL. ADMINISTRATIVE ACCESS GRANTED.");
+    } else {
+        currentUserRole = 'user';
+        statusText.innerText = "STATUS: VISITOR MODE";
+        statusText.classList.replace('text-amber-400', 'text-gray-500');
+        adminBtn.classList.add('hidden');
+    }
+    applyFiltersAndSorting();
+    closeAuthModal();
+}
+
+// ================== MANAGER DASHBOARD SYSTEM ==================
+function openForgeModal() { document.getElementById('forgeModal').classList.replace('hidden', 'flex'); }
+function closeForgeModal() { document.getElementById('forgeModal').classList.replace('flex', 'hidden'); }
+
+function submitForgeModule() {
+    const cat = document.getElementById('forgeCategory').value;
+    const title = document.getElementById('forgeTitle').value.trim();
+    let imgInput = document.getElementById('forgeImg').value.trim();
+    const price = parseInt(document.getElementById('forgePrice').value);
+    const desc = document.getElementById('forgeDesc').value.trim();
+
+    if (!title || isNaN(price) || !desc) {
+        alert('ERROR: PLEASE FILL IN ALL VALID PRODUCT FIELDS BEFORE SUBMITTING.');
+        return;
+    }
+
+    imgInput = imgInput.replace(/^\.\/|^assets\/|images\//g, '') || 'placeholder.jpg';
+
+    const newModule = {
+        id: 'p_forge_' + Date.now(),
+        title: title,
+        desc: desc,
+        price: price,
+        img: imgInput,
+        category: cat
+    };
+
+    products.push(newModule);
+    saveProductsArray();
+    applyFiltersAndSorting();
+    
+    document.getElementById('forgeTitle').value = '';
+    document.getElementById('forgeImg').value = '';
+    document.getElementById('forgePrice').value = '';
+    document.getElementById('forgeDesc').value = '';
+    
+    closeForgeModal();
+}
+
+function deleteProduct(id) {
+    if (confirm('ARE YOU SURE YOU WANT TO REMOVE THIS ITEM FROM INVENTORY?')) {
+        products = products.filter(p => p.id !== id);
+        saveProductsArray();
+        applyFiltersAndSorting();
+    }
+}
+
+// ================== SHOPPING CART MANAGEMENT ==================
+document.getElementById('cartBtn').addEventListener('click', openCart);
+function openCart() { document.getElementById('cartModal').classList.replace('hidden', 'flex'); updateCartUI(); }
+function closeCart() { document.getElementById('cartModal').classList.replace('flex', 'hidden'); }
+
+function updateCartUI() {
+    const cartItemsDiv = document.getElementById('cartItems');
+    cartItemsDiv.innerHTML = '';
+    
+    if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<div class="text-center font-bold text-gray-500 text-[10px] py-6 tracking-widest uppercase">YOUR SHOPPING CART IS EMPTY.</div>';
+    }
+    
+    cart.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between gap-3 p-2 bg-black/60 rounded border border-neutral-900 text-[10px]';
+        div.innerHTML = `
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-8 rounded bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-800">
+                    <img class="w-full h-full object-cover hidden" src="./assets/images/${item.img}" onload="this.classList.remove('hidden')" onerror="this.classList.add('hidden')">
+                </div>
+                <div>
+                    <strong class="text-gray-200 block max-w-[160px] truncate uppercase">${item.title}</strong>
+                    <span class="text-emerald-400">Ksh ${item.price}</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <button class="w-5 h-5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold rounded flex items-center justify-center border border-neutral-700" onclick="adjustQty('${item.id}', -1)">-</button>
+                <span class="font-black text-gray-300 w-4 text-center">${item.qty}</span>
+                <button class="w-5 h-5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold rounded flex items-center justify-center border border-neutral-700" onclick="adjustQty('${item.id}', 1)">+</button>
+            </div>
+        `;
+        cartItemsDiv.appendChild(div);
+    });
+    
+    const total = cart.reduce((a, b) => a + b.price * b.qty, 0);
+    document.getElementById('cartTotal').innerText = `Ksh ${total}`;
+    document.getElementById('cartCount').innerText = cart.reduce((a, b) => a + b.qty, 0);
+    saveCart();
+}
+
+function adjustQty(id, delta) {
+    const item = cart.find(c => c.id === id);
+    if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+    }
+    updateCartUI();
+}
+
+// ================== PRODUCT DETAILS PREVIEW ROUTINES ==================
+function openPreview(p) {
+    document.getElementById('previewModal').classList.replace('hidden', 'flex');
+    document.getElementById('previewImg').src = `./assets/images/${p.img}`;
+    document.getElementById('fallbackPreviewLabel').innerText = p.img;
+    document.getElementById('previewTitle').innerText = p.title;
+    document.getElementById('previewDesc').innerText = p.desc;
+    document.getElementById('previewPrice').innerText = `PRICE: Ksh ${p.price}`;
+    
+    document.getElementById('addToCartBtn').onclick = () => {
+        const existing = cart.find(c => c.id === p.id);
+        if (existing) existing.qty++; else cart.push({ ...p, qty: 1 });
+        saveCart();
+        updateCartUI();
+        closePreview();
+    };
+}
+function closePreview() { document.getElementById('previewModal').classList.replace('flex', 'hidden'); }
+
+// ================== CHECKOUT & AUTO-FILL PREVIEW GRID ==================
+function openCheckout() {
+    if (cart.length === 0) return;
+    closeCart();
+    document.getElementById('checkoutModal').classList.replace('hidden', 'flex');
+    
+    const savedProfile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '' };
+    
+    document.getElementById('checkoutName').value = savedProfile.name;
+    document.getElementById('checkoutPhone').value = savedProfile.phone;
+    document.getElementById('checkoutEmail').value = savedProfile.email;
+
+    const checkoutProductsDiv = document.getElementById('checkoutProducts');
+    checkoutProductsDiv.innerHTML = '';
+    
+    cart.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'flex justify-between items-center text-gray-400 py-1 border-b border-neutral-900/60';
+        div.innerHTML = `<span class="uppercase truncate max-w-[240px]">${item.title} (x${item.qty})</span> <span class="text-emerald-400 font-bold">Ksh ${item.price * item.qty}</span>`;
+        checkoutProductsDiv.appendChild(div);
+    });
+    
+    const total = cart.reduce((a, b) => a + b.price * b.qty, 0);
+    document.getElementById('checkoutTotal').innerText = `Ksh ${total}`;
+}
+function closeCheckout() { document.getElementById('checkoutModal').classList.replace('flex', 'hidden'); }
+
+// ================== EMAILJS GATEWAY SUBSYSTEM ==================
+emailjs.init("Iz22KBRfL682WD6td"); // Public Key Connection Assignment
 
 async function submitCheckout() {
-  const submitBtn = document.getElementById('submitOrderBtn');
-  const name = document.getElementById('checkoutName').value.trim();
-  const phone = document.getElementById('checkoutPhone').value.trim();
-  const email = document.getElementById('checkoutEmail').value.trim();
+    const submitBtn = document.getElementById('submitOrderBtn');
+    const name = document.getElementById('checkoutName').value.trim();
+    const phone = document.getElementById('checkoutPhone').value.trim();
+    const email = document.getElementById('checkoutEmail').value.trim();
 
-  if (!name || !phone || !email) {
-    alert('Please fill in all your details.');
-    return;
-  }
-  if (!cart || cart.length === 0) {
-    alert('Your cart is empty.');
-    return;
-  }
+    if (!name || !phone || !email) {
+        alert('ERROR: PLEASE FILL ALL CONTACT DETAILS BEFORE SUBMITTING YOUR ORDER.');
+        return;
+    }
 
-  // Transform cart items to match EmailJS template keys
-  const productsArray = cart.map(item => ({
-    title: item.title,
-    price: item.price,
-    qty: item.qty,
-    img: item.img // Make sure each product object has the 'img' URL
-  }));
+    const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    
+    // Format phone to standard 254XXXXXXXX format for M-Pesa standard API layers
+    let formattedPhone = phone.replace(/\s+/g, '');
+    if (formattedPhone.startsWith('0')) {
+        formattedPhone = '254' + formattedPhone.substring(1);
+    } else if (formattedPhone.startsWith('+254')) {
+        formattedPhone = formattedPhone.substring(1);
+    }
 
-  const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="operation-loader"></span> REQUESTING STK PUSH...`;
 
-  const adminParams = {
-    from_name: name,
-    from_phone: phone,
-    from_email: email,
-    products: productsArray,
-    total: totalAmount
-  };
+    // 1. CHANNELS TRANSACTION DATA TO TRICKLE THE POPUP PROMPT ON CLIENT PHONE
+    try {
+        const mpesaApiGatewayUrl = 'https://YOUR_STK_PUSH_GATEWAY_ENDPOINT/stk'; 
+        
+        await fetch(mpesaApiGatewayUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                phone: formattedPhone,
+                amount: totalAmount,
+                paybill: "247247",
+                account: "0716375459"
+            })
+        });
+        
+        alert('STK PUSH SENT! Please check your phone and enter your M-Pesa PIN to complete the purchase.');
+    } catch (apiErr) {
+        console.warn('STK Gateway offline, proceeding with manual fallback logic instructions.');
+        alert('STK prompt link busy. Please complete payment using the manual Paybill instructions on screen.');
+    }
 
-  const customerParams = {
-    from_name: name,
-    from_email: email,
-    products: productsArray,
-    total: totalAmount
-  };
+    // 2. DISPATCHES DISCRETE COMPONENT LOGISTICS DATA MATRICES VIA EMAILJS
+    const productsArray = cart.map(item => ({
+        title: item.title,
+        price: item.price,
+        qty: item.qty
+    }));
 
-  // Disable button and add neon loader animation
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = `<span class="loader" style="
-      display:inline-block;
-      width:16px; height:16px;
-      border:3px solid #00ffff;
-      border-top-color:#aef710;
-      border-radius:50%;
-      animation: spin 1s linear infinite;
-      margin-right: 8px;"></span> Sending...`;
+    const dataPayload = { 
+        from_name: name, 
+        from_phone: phone, 
+        from_email: email, 
+        products: productsArray, 
+        total: totalAmount,
+        payment_method: "MPESA_EQUITY_PAYBILL"
+    };
 
-  try {
-    await emailjs.send('cynic_service', 'template_d145jij', adminParams);
-    await emailjs.send('cynic_service', 'template_2b1djar', customerParams);
+    submitBtn.innerHTML = `<span class="operation-loader"></span> RECORDING SYSTEM MANIFEST...`;
 
-    alert(`Thank you ${name}! Your order of Ksh ${totalAmount} has been submitted. Check your email for confirmation.`);
+    try {
+        await emailjs.send('cynic_service', 'template_d145jij', dataPayload);
+        await emailjs.send('cynic_service', 'template_2b1djar', dataPayload);
 
-    cart = [];
-    updateCartUI();
-    closeCheckout();
-    closeCart();
-  } catch (err) {
-    console.error('EmailJS send failed:', err);
-    let message = 'Sorry, we could not submit your order at this time. Please try again later.';
-    if (err && err.text) message += '\n\nDetails: ' + err.text;
-    if (err && err.message) message += '\n\nError: ' + err.message;
-    alert(message);
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.innerText = 'Submit Order';
-  }
+        alert(`ORDER SUBMITTED SUCCESSFULY!\n\nOnce transaction verification details settle, your order parameters will deploy.`);
+        
+        cart = [];
+        updateCartUI();
+        closeCheckout();
+    } catch (err) {
+        console.error('Outbound email delivery array matrix failure:', err);
+        alert('LOGISTICS LOGGING FAILURE: Transaction processed but confirmation failed to record. Please contact store management.');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'INITIATE M-PESA PAYMENT';
+    }
 }
 
-// Add CSS for spinning loader (insert in <style> or CSS file)
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-`;
-document.head.appendChild(style);
-
-
-// ================== INIT ==================
-renderCategories(currentDisplayProducts);
+// ================== INITIALIZATION MATRIX EXECUTION ==================
+initializeFilterControls();
+applyFiltersAndSorting();
 updateCartUI();
 </script>
 </body>

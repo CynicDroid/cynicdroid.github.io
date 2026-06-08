@@ -9,317 +9,330 @@
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Google Fonts: Orbitron -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<!-- Google Fonts: Orbitron for precision technical readouts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
 
-<!-- Particles.js -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<!-- AOS Scroll Animations -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
-body {
+body, h1, h2, h3, p, a, button {
     font-family: 'Orbitron', sans-serif;
-    background-color: #2e2e2e;
-    color: #fff;
-    margin: 0;
+}
+
+body {
+    background-color: #cbd5e1;
+    /* Skeuomorphic Brushed Aluminum / Raw Metallic Background Design */
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.1) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.05) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.15);
+    color: #1e293b;
     overflow-x: hidden;
 }
 
-/* Particle canvas */
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-}
-
-/* Circuit lines canvas */
-#circuit-lines {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-/* Header */
-header {
-    background-color: #262626;
-    padding: 1rem 0;
+/* ====== 3D Machined Metal Chassis Panels ====== */
+.hardware-panel {
+    background: linear-gradient(180deg, #2a303d 0%, #171b22 100%);
+    border-top: 2px solid #5a657a;
+    border-left: 2px solid #485264;
+    border-right: 2px solid #1a1e26;
+    border-bottom: 3px solid #0d1014;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.6),
+        0 30px 60px -15px rgba(15, 23, 42, 0.6);
+    border-radius: 6px;
     position: relative;
-    z-index: 10;
 }
-header a {
-    font-family: 'Orbitron', sans-serif;
+
+/* Inner mechanical framing trim */
+.hardware-panel::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* ====== Recessed Die-Cast Pods ====== */
+.card-recessed {
+    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
+    border-top: 2px solid #101319;
+    border-left: 2px solid #101319;
+    border-right: 1px solid #3a4252;
+    border-bottom: 1px solid #3a4252;
+    box-shadow: 
+        inset 0 4px 10px rgba(0, 0, 0, 0.9),
+        0 1px 2px rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-recessed:hover {
+    border-right-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.9),
+        0 0 15px rgba(0, 210, 255, 0.2);
+}
+
+.card-recessed img {
+    border: 2px solid #1b202b;
+    border-radius: 2px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    filter: brightness(85%) contrast(105%);
+    transition: all 0.3s ease;
+}
+.card-recessed:hover img {
+    filter: brightness(100%) contrast(100%);
+    border-color: #00d2ff;
+}
+
+/* ====== Industrial Rivet Badges ====== */
+.rivet-plate {
+    background: linear-gradient(180deg, #404859 0%, #202530 100%);
+    border: 1px solid #566178;
+    box-shadow: 
+        inset 0 1px 1px rgba(255,255,255,0.2),
+        0 4px 8px rgba(0,0,0,0.5);
+    padding: 4px 20px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #e2e8f0;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+.rivet-plate::before, .rivet-plate::after {
+    content: '';
+    width: 5px; height: 5px;
+    background: #11141a;
+    border-radius: 50%;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* ====== Heavy Machinery 3D Buttons ====== */
+.btn-machined {
+    background: linear-gradient(180deg, #323947 0%, #1a1e26 100%);
+    border-top: 1px solid #566178;
+    border-left: 1px solid #465063;
+    border-right: 2px solid #0f1217;
+    border-bottom: 4px solid #0a0c10;
+    color: #d8dee9;
     font-weight: 700;
-    font-size: 1.8rem;
-    background: linear-gradient(90deg, #0ff, #00f);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 6px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+    letter-spacing: 1.5px;
+}
+
+.btn-machined:hover {
+    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%);
+    color: #00d2ff;
+    border-right-color: #1f242e;
+    border-bottom-color: #00d2ff;
+    text-shadow: 0 0 4px rgba(0, 210, 255, 0.4);
+    box-shadow: 
+        inset 0 1px 0 rgba(0, 210, 255, 0.05),
+        0 4px 12px rgba(0, 210, 255, 0.15);
+}
+
+.btn-machined:active {
+    border-bottom-width: 1px;
+    transform: translateY(3px);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* ====== Embedded Steel Header Navigation ====== */
+.nav-chassis {
+    background: linear-gradient(180deg, #3a4253 0%, #1c2029 100%);
+    border-bottom: 4px solid #0d1014;
+    box-shadow: 
+        inset 0 -1px 0 rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        0 10px 30px rgba(0,0,0,0.5);
+}
+
+.logo-cast {
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #e5e9f0;
+    background: linear-gradient(180deg, #ffffff 0%, #9aa3b2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
 }
 
-/* Hero Section */
-.hero-section {
-    position: relative;
-    background: linear-gradient(135deg,#2e2e2e,#3a3a3a);
-    text-align: center;
-    padding: 6rem 1rem;
-    z-index: 1;
-    box-shadow: 0 0 50px #0ff inset, 0 0 80px #00f inset;
-    border-radius: 1rem;
+.telemetry-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #090b0e;
+    border: 1px solid #313745;
+    color: #88c0d0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+    border-radius: 3px;
+    transition: all 0.2s ease;
 }
-.hero-title {
-    color: #0ff;
-    font-size: 3rem;
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-    animation: neonGlow 2s ease-in-out infinite alternate;
-}
-.hero-subtitle {
-    color: #0ff;
-    text-shadow: 0 0 3px #0ff, 0 0 6px #0ff;
-    animation: neonGlowSub 2s ease-in-out infinite alternate;
-}
-@keyframes neonGlow {
-    from { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; }
-    to { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 50px #0ff; }
-}
-@keyframes neonGlowSub {
-    from { text-shadow: 0 0 3px #0ff, 0 0 6px #0ff; }
-    to { text-shadow: 0 0 6px #0ff, 0 0 12px #0ff; }
+.telemetry-link:hover {
+    color: #ffffff;
+    border-color: #00d2ff;
+    box-shadow: 
+        inset 0 1px 2px rgba(0,0,0,0.6),
+        0 0 8px rgba(0, 210, 255, 0.3);
 }
 
-/* Cards Section */
-.section-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: auto;
-    padding: 4rem 1rem;
-    position: relative;
-    z-index: 1;
-}
-.card-tech {
-    border-radius: 1rem;
-    padding: 1.5rem;
-    text-align: center;
-    animation: floatCard 6s ease-in-out infinite;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card-tech img {
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    max-height: 200px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Neon card colors */
-.card-tech:nth-child(1) {
-    background-color: #3a1a3a;
-    border: 2px solid #ff00ff;
-}
-.card-tech:nth-child(1):hover {
-    box-shadow: 0 0 30px #ff00ff, 0 0 60px #ff00ff inset;
-}
-.card-tech:nth-child(1) img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
-}
-
-.card-tech:nth-child(2) {
-    background-color: #1a3a3a;
-    border: 2px solid #00ffcc;
-}
-.card-tech:nth-child(2):hover {
-    box-shadow: 0 0 30px #00ffcc, 0 0 60px #00ffcc inset;
-}
-.card-tech:nth-child(2) img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
-}
-
-.card-tech:nth-child(3) {
-    background-color: #1a1a3a;
-    border: 2px solid #00ccff;
-}
-.card-tech:nth-child(3):hover {
-    box-shadow: 0 0 30px #00ccff, 0 0 60px #00ccff inset;
-}
-.card-tech:nth-child(3) img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff;
-}
-
-.card-tech:nth-child(4) {
-    background-color: #3a3a1a;
-    border: 2px solid #ffff00;
-}
-.card-tech:nth-child(4):hover {
-    box-shadow: 0 0 30px #ffff00, 0 0 60px #ffff00 inset;
-}
-.card-tech:nth-child(4) img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00;
-}
-
-.card-tech:nth-child(5) {
-    background-color: #3a1a1a;
-    border: 2px solid #ff5500;
-}
-.card-tech:nth-child(5):hover {
-    box-shadow: 0 0 30px #ff5500, 0 0 60px #ff5500 inset;
-}
-.card-tech:nth-child(5) img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #ff5500, 0 0 40px #ff5500;
-}
-
-.section-title {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-/* Float animation */
-@keyframes floatCard {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-}
-
-/* Manager Section */
-.manager-section {
-    background-color: #262626;
-    padding: 6rem 1rem;
-    text-align: center;
-}
-.manager-card {
-    max-width: 700px;
-    margin: auto;
-    border-radius: 1rem;
-    padding: 2rem;
-    text-align: left;
-    animation: neonManager 4s ease-in-out infinite alternate;
-}
-.manager-card img {
-    border-radius: 0.5rem;
-    max-height: 300px;
-    display: block;
-    margin: 0 auto 1rem auto;
-}
-.manager-card p {
-    margin-bottom: 1rem;
-}
-@keyframes neonManager {
-    0% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff inset; }
-    25% { box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc inset; }
-    50% { box-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff inset; }
-    75% { box-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00 inset; }
-    100% { box-shadow: 0 0 20px #ff5500, 0 0 40px #ff5500 inset; }
-}
-
-/* Footer */
-footer {
-    background-color: #262626;
-    padding: 2rem 1rem;
-    text-align: center;
+/* ====== Structural Chiseled Typography ====== */
+.steel-engraved-header {
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #ffffff 20%, #a3acb9 60%, #4c535e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
 }
 </style>
 </head>
 <body>
 
-<!-- Particle background -->
-<div id="particles-js"></div>
-
-<!-- Circuit lines SVG -->
-<svg id="circuit-lines">
-    <line x1="10%" y1="40%" x2="40%" y2="20%" stroke="#0ff" stroke-width="2" stroke-opacity="0.3"/>
-    <line x1="40%" y1="20%" x2="70%" y2="40%" stroke="#0ff" stroke-width="2" stroke-opacity="0.3"/>
-    <line x1="30%" y1="60%" x2="60%" y2="60%" stroke="#0ff" stroke-width="2" stroke-opacity="0.3"/>
-    <line x1="50%" y1="10%" x2="50%" y2="80%" stroke="#0ff" stroke-width="1.5" stroke-opacity="0.2"/>
-</svg>
-
-<!-- Header -->
-<header>
-    <div class="container mx-auto px-4">
-        <a href="index.html">CynicDroid</a>
+<!-- Header Architecture Layout -->
+<header class="nav-chassis fixed w-full z-50">
+    <div class="container mx-auto flex justify-between items-center p-3 px-6">
+        <a href="index.html" class="text-2xl logo-cast">CYNICDROID</a>
+        <div class="flex gap-3">
+            <a href="https://wa.me/0716375459" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">WHATSAPP</a>
+            <a href="https://www.facebook.com/profile.php?id=100064124917514" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">FACEBOOK</a>
+            <a href="mailto:cynicdroid@gmail.com" class="telemetry-link px-4 py-1.5">EMAIL</a>
+        </div>
     </div>
 </header>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <h1 class="hero-title">About CynicDroid Technologies</h1>
-    <p class="hero-subtitle mt-4 text-lg">Innovating IT solutions for modern businesses</p>
-</section>
+<!-- Main Dashboard Frame -->
+<main class="pt-32 pb-12 relative z-10 container mx-auto px-6 space-y-6">
+    
+    <!-- Hero Section Panel -->
+    <div class="hardware-panel p-6 md:p-8 text-center" data-aos="fade-up">
+        <h1 class="text-2xl md:text-5xl font-black tracking-wider steel-engraved-header uppercase">ABOUT CYNICDROID TECHNOLOGIES</h1>
+        <div class="mt-4 inline-block"><span class="rivet-plate text-cyan-400">SYSTEM PROFILE MATRIX</span></div>
+    </div>
 
-<!-- About Cards Section -->
-<section class="section-container">
-    <div class="card-tech">
-        <img src="assets/images/mbr-2-240x240.png" alt="">
-        <h2 class="section-title">Who are we?</h2>
-        <p>We specializes in analyzing, designing, and implementing IT systems. We assess system suitability, collaborate with users and developers, and use technology to solve business challenges. We also guide organizational improvements and help teams adopt new systems effectively. CynicDroid Technologies designs and implements cutting-edge IT systems. We assess, optimize, and solve business challenges with tech, while guiding teams to embrace smarter, faster workflows</p>
-    </div>
-    <div class="card-tech">
-        <img src="assets/images/mbr-240x240.jpg" alt="">
-        <h2 class="section-title">What do we do?</h2>
-        <p>We offer a wide range of IT services, including software development, ICT setup and maintenance, hardware and software installation, website design and deployment, Android device support, data recovery, and internet services like email and web conferencing.</p>
-    </div>
-    <div class="card-tech">
-        <img src="assets/images/mbr-240x151.jpg" alt="">
-        <h2 class="section-title">Our Mission</h2>
-        <p>Our mission is to provide reliable software support, secure and well-documented packages, prompt assistance via our helpline, strong data security, collaboration with users and developers, and affordable products and services..</p>
-    </div>
-    <div class="card-tech">
-        <img src="assets/images/mbr-1-240x170.jpg" alt="">
-        <h2 class="section-title">Our Vision</h2>
-        <p>To make technology fit in seamlessly with everyday life.</p>
-    </div>
-    <div class="card-tech">
-        <img src="assets/images/mbr-1-240x240.jpg" alt="">
-        <h2 class="section-title">Motto</h2>
-        <p>Get rid of all doubts and go for it.</p>
-    </div>
-</section>
+    <!-- Master Two-Column Grid Setup -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- LEFT COLUMN: Executive Management Terminal Block -->
+        <div class="lg:col-span-5 hardware-panel p-6 space-y-6 lg:sticky lg:top-24" data-aos="fade-right">
+            <div class="text-center"><span class="rivet-plate">EXECUTIVE CORE TERMINAL</span></div>
+            
+            <!-- Recessed Viewport for Profile Image -->
+            <div class="card-recessed p-3 flex justify-center items-center">
+                <img src="assets/images/cyniclogo.jpg" alt="Nelson Mutugi" class="w-full max-w-xs object-cover rounded shadow-md border border-neutral-800">
+            </div>
+            
+            <!-- Diagnostics Profile Text -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-black tracking-wider text-gray-100 uppercase border-b-2 border-neutral-800 pb-2">
+                    NELSON MUTUGI NGARI <span class="text-xs text-cyan-400 font-normal tracking-widest block mt-1">CHIEF TECHNICIAN / MANAGING DIRECTIVES</span>
+                </h3>
+                <div class="card-recessed p-4 text-gray-400 text-xs leading-relaxed tracking-wide space-y-3">
+                    <p>
+                        Nelson is an ICT expert with advanced competencies in software engineering, device firmware customization, architecture analytics, and full-stack information management arrays. He builds and manages high-availability business platforms, aligning programmatic solutions to complex real-world infrastructure failures.
+                    </p>
+                    <p>
+                        Through continuous learning cycles and deep technical diagnostics, Nelson thrives on orchestrating low-overhead, mission-critical systems even in constrained or complex deployment environments.
+                    </p>
+                </div>
+                <div class="pt-2 text-center lg:text-left">
+                    <a href="Contacts.html" class="btn-machined px-6 py-2.5 rounded text-xs font-black inline-block w-full text-center lg:w-auto">ACCESS MANAGER LINK</a>
+                </div>
+            </div>
+        </div>
 
-<!-- Manager Section -->
-<section class="manager-section">
-    <h2 class="section-title mb-8">MANAGER</h2>
-    <div class="manager-card">
-        <img src="assets/images/1629107421449-240x427.jpg" alt="Nelson Mutugi">
-        <p>Nelson is an ICT expert with skills in software engineering, Android programming, web development, and IT system management. He designs, builds, and maintains efficient tech solutions, blending technical know-how with problem-solving and project management.Always learning and exploring new trends, Nelson thrives on creating innovative, user-friendly solutions, even in remote or challenging environments.</p>
-        <p class="text-cyan-400 font-bold mt-2">NELSON MUTUGI NGARI</p>
-    </div>
-</section>
+        <!-- RIGHT COLUMN: Stack of Core Diagnostic Matrix Cards -->
+        <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
+            
+            <!-- Module 1: Identity Profile -->
+            <div class="hardware-panel p-5">
+                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Who Are We?
+                </h2>
+                <div class="card-recessed p-4">
+                    <p class="text-gray-400 text-xs leading-relaxed tracking-wide">
+                        We specialize in analyzing, designing, and implementing IT systems. We assess system suitability, collaborate with users and developers, and use technology to solve business challenges. We also guide organizational improvements and help teams adopt new systems effectively. CynicDroid Technologies designs and implements cutting-edge IT systems. We assess, optimize, and solve business challenges with tech, while guiding teams to embrace smarter, faster workflows.
+                    </p>
+                </div>
+            </div>
 
-<!-- Footer -->
-<footer>
-    <p>© Copyright 2025 CynicDroid Technologies. All Rights Reserved.</p>
+            <!-- Module 2: Functional Scope -->
+            <div class="hardware-panel p-5">
+                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> What Do We Do?
+                </h2>
+                <div class="card-recessed p-4">
+                    <p class="text-gray-400 text-xs leading-relaxed tracking-wide">
+                        We offer a wide range of IT services, including software development, ICT setup and maintenance, hardware and software installation, website design and deployment, Android device support, data recovery, and internet services like email and web conferencing.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Module 3: Strategy Matrix -->
+            <div class="hardware-panel p-5">
+                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Our Mission
+                </h2>
+                <div class="card-recessed p-4">
+                    <p class="text-gray-400 text-xs leading-relaxed tracking-wide">
+                        Our mission is to provide reliable software support, secure and well-documented packages, prompt assistance via our helpline, strong data security, collaboration with users and developers, and affordable products and services.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Module 4: Operational Objective -->
+            <div class="hardware-panel p-5">
+                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Our Vision
+                </h2>
+                <div class="card-recessed p-4">
+                    <p class="text-gray-400 text-xs leading-relaxed tracking-wide">
+                        To make technology fit in seamlessly with everyday life.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Module 5: Core Directive -->
+            <div class="hardware-panel p-5">
+                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Core Motto
+                </h2>
+                <div class="card-recessed p-4">
+                    <p class="text-xl font-black text-cyan-400 tracking-wider mb-2 text-center sm:text-left">"GET RID OF ALL DOUBTS AND GO FOR IT."</p>
+                    <p class="text-gray-500 text-xs leading-relaxed">System execution principle powering every deployment framework at CynicDroid.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<!-- Base Chassis Footer Frame -->
+<footer class="bg-black border-t-4 border-neutral-800 text-gray-600 py-6 text-center text-xs tracking-widest relative z-10">
+    <p>© Copyright 2026 CynicDroid Technologies. All Rights Reserved.</p>
 </footer>
 
-<!-- Particles JS -->
+<!-- Integration Scripts Framework -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-particlesJS('particles-js', {
-    "particles": {
-        "number": {"value": 60, "density": {"enable": true, "value_area": 800}},
-        "color": {"value": "#0ff"},
-        "shape": {"type": "circle"},
-        "opacity": {"value": 0.3, "random": true},
-        "size": {"value": 3, "random": true},
-        "line_linked": {"enable": true, "distance": 150, "color": "#0ff", "opacity": 0.2, "width": 1},
-        "move": {"enable": true, "speed": 1, "direction": "none", "random": true, "straight": false}
-    },
-    "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-            "onhover": {"enable": true, "mode": "repulse"},
-            "onclick": {"enable": true, "mode": "push"}
-        },
-        "modes": {
-            "repulse": {"distance": 100},
-            "push": {"particles_nb": 4}
-        }
-    },
-    "retina_detect": true
-});
+    AOS.init({ duration: 1000, once: true });
 </script>
-
 </body>
 </html>

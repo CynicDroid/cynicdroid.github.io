@@ -3,354 +3,348 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forum - CynicDroid</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Kanit:wght@400;600&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+<title>Forum - CynicDroid Technologies</title>
+<link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
+
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts: Orbitron for precision technical readouts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --cyan:#00ffff;
-  --lime:#aef710;
-  --magenta:#ff00f0;
-  --bg:#0b0c10;
-}
-body{
-  font-family:'Kanit',sans-serif;
-  background:linear-gradient(180deg,#0b0c10,#111216);
-  color:#e0e0e0;
-  overflow-x:hidden;
-  margin:0;
-  position:relative;
-}
-h1,h2,h3{ 
-  font-family:'Orbitron',sans-serif; 
-  color: var(--cyan);
-  text-shadow:0 0 8px var(--cyan),0 0 18px var(--lime);
-}
-a{ color: var(--cyan); text-decoration:none; transition:0.3s;}
-a:hover{ color: var(--lime); text-shadow:0 0 12px var(--lime);}
-.btn-neon{
-  background:linear-gradient(90deg,var(--cyan),var(--lime));
-  color:#000;
-  font-weight:600;
-  text-transform:uppercase;
-  box-shadow:0 0 10px var(--cyan),0 0 20px var(--lime);
-  transition:0.3s;
-}
-.btn-neon:hover{
-  box-shadow:0 0 20px var(--cyan),0 0 30px var(--lime);
-  transform:scale(1.05);
-}
-.form-input,.form-textarea{
-  background:var(--bg);
-  border:1px solid var(--cyan);
-  border-radius:0.5rem;
-  padding:0.5rem;
-  color:#e0e0e0;
-  margin-bottom:0.5rem;
-}
-.form-input:focus,.form-textarea:focus{
-  outline:none;
-  border-color:var(--lime);
-  box-shadow:0 0 10px var(--cyan),0 0 20px var(--lime);
+body, h1, h2, h3, h4, p, a, button, input, textarea, label {
+    font-family: 'Orbitron', sans-serif;
 }
 
-/* ====== Header ====== */
-header{
-  position:relative; 
-  display:flex; 
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:2rem 0;
-  background:#0b0c10;
-  z-index:10;
-}
-.cynicdroid-brand{
-  font-family:'Orbitron',sans-serif;
-  font-size:2rem;
-  font-weight:700;
-  color:var(--cyan);
-  text-shadow:0 0 12px var(--cyan),0 0 20px var(--lime);
-  margin-bottom:1rem;
-  z-index:10;
-}
-header .social-icons{
-  display:flex; 
-  gap:1rem; 
-  justify-content:center;
-  z-index:10;
-}
-header .social-icons a{
-  display:inline-block; 
-  padding:0.4rem; 
-  border-radius:50%; 
-  background:rgba(0,255,255,0.1); 
-  box-shadow:0 0 6px var(--cyan);
-  transition:0.3s;
-}
-header .social-icons a:hover{
-  box-shadow:0 0 14px var(--cyan),0 0 20px var(--lime);
-  transform:scale(1.1);
+body {
+    background-color: #cbd5e1;
+    /* Skeuomorphic Brushed Aluminum / Raw Metallic Background Design */
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.1) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.05) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.15);
+    color: #1e293b;
+    overflow-x: hidden;
 }
 
-/* Combined card for instructions + form */
-.form-card{
-  max-width:900px;
-  margin:2rem auto 4rem auto;
-  padding:2rem;
-  border-radius:1rem;
-  background:linear-gradient(180deg, rgba(0,255,255,0.05), rgba(0,255,255,0.03));
-  box-shadow:0 0 12px var(--cyan),0 0 24px var(--lime);
-  backdrop-blur:6px;
-  position:relative;
-  z-index:1;
-}
-.form-card h2{
-  font-family:'Orbitron',sans-serif;
-  color: var(--cyan);
-  text-shadow:0 0 8px var(--cyan),0 0 16px var(--lime);
-  margin-bottom:1rem;
-  text-align:center;
-}
-.instructions{
-  margin-bottom:1.5rem;
-  line-height:1.6;
-  color:#e0e0e0;
-}
-.instructions ul{
-  list-style-type:disc;
-  padding-left:1.25rem;
+/* ====== 3D Machined Metal Chassis Panels ====== */
+.hardware-panel {
+    background: linear-gradient(180deg, #2a303d 0%, #171b22 100%);
+    border-top: 2px solid #5a657a;
+    border-left: 2px solid #485264;
+    border-right: 2px solid #1a1e26;
+    border-bottom: 3px solid #0d1014;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.6),
+        0 30px 60px -15px rgba(15, 23, 42, 0.6);
+    border-radius: 6px;
+    position: relative;
 }
 
-/* ====== FAQ Tabs ====== */
-.tabs-container{
-  max-width:900px;
-  margin:2rem auto 4rem auto;
-  position:relative;
-  z-index:1;
-}
-.tab-btns{
-  display:flex; 
-  justify-center; 
-  gap:1rem;
-  flex-wrap:wrap;
-  margin-bottom:1.5rem;
-}
-.tab-btn{
-  padding:0.5rem 1.2rem;
-  border-radius:0.5rem;
-  border:1px solid var(--cyan);
-  cursor:pointer;
-  background: rgba(0,255,255,0.05);
-  color: var(--cyan);
-  font-weight:600;
-  transition:0.3s, box-shadow 0.5s;
-}
-.tab-btn.active{
-  background: linear-gradient(90deg,var(--cyan),var(--lime));
-  color:#000;
-  box-shadow:0 0 10px var(--cyan),0 0 20px var(--lime);
-}
-.tab-btn.active::after{
-  content:'';
-  display:block;
-  margin:4px auto 0;
-  width:50%;
-  height:3px;
-  background: linear-gradient(90deg,var(--cyan),var(--lime));
-  border-radius:2px;
-  animation: glowLine 1.5s infinite alternate;
-}
-@keyframes glowLine{
-  0%{box-shadow:0 0 5px var(--cyan);}
-  100%{box-shadow:0 0 15px var(--lime);}
-}
-.tab-content{
-  display:none;
-  padding:1rem 1.5rem;
-  border-radius:0.75rem;
-  background:#1a1a2e;
-  color:#e0e0e0;
-  animation: fadeIn 0.4s ease-in-out;
-}
-.tab-content.active{
-  display:block;
-}
-.tab-content p, .tab-content ul{
-  margin:0.5rem 0;
-  line-height:1.6;
-}
-.tab-content ul{
-  list-style:disc;
-  padding-left:1.25rem;
-}
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(10px);}
-  to{opacity:1; transform:translateY(0);}
+.hardware-panel::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    pointer-events: none;
 }
 
-/* ====== Canvas for Circuit Particles ====== */
-#circuit-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-  pointer-events:none;
+/* ====== Recessed Die-Cast Bays ====== */
+.card-recessed {
+    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
+    border-top: 2px solid #101319;
+    border-left: 2px solid #101319;
+    border-right: 1px solid #3a4252;
+    border-bottom: 1px solid #3a4252;
+    box-shadow: 
+        inset 0 4px 10px rgba(0, 0, 0, 0.9),
+        0 1px 2px rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
+
+/* ====== Machined Inputs ====== */
+.form-input-machined {
+    background: #090b0e;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #2e3542;
+    border-bottom: 1px solid #2e3542;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    color: #e2e8f0;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+.form-input-machined:focus {
+    outline: none;
+    border-color: #00d2ff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,210,255,0.3);
+}
+
+/* ====== Industrial Rivet Badges ====== */
+.rivet-plate {
+    background: linear-gradient(180deg, #404859 0%, #202530 100%);
+    border: 1px solid #566178;
+    box-shadow: 
+        inset 0 1px 1px rgba(255,255,255,0.2),
+        0 4px 8px rgba(0,0,0,0.5);
+    padding: 4px 20px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #e2e8f0;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+.rivet-plate::before, .rivet-plate::after {
+    content: '';
+    width: 5px; height: 5px;
+    background: #11141a;
+    border-radius: 50%;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* ====== Heavy Machinery 3D Buttons ====== */
+.btn-machined {
+    background: linear-gradient(180deg, #323947 0%, #1a1e26 100%);
+    border-top: 1px solid #566178;
+    border-left: 1px solid #465063;
+    border-right: 2px solid #0f1217;
+    border-bottom: 4px solid #0a0c10;
+    color: #d8dee9;
+    font-weight: 700;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 6px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+    letter-spacing: 1.5px;
+}
+.btn-machined:hover {
+    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%);
+    color: #00d2ff;
+    border-right-color: #1f242e;
+    border-bottom-color: #00d2ff;
+    text-shadow: 0 0 4px rgba(0, 210, 255, 0.4);
+}
+.btn-machined:active {
+    border-bottom-width: 1px;
+    transform: translateY(3px);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* ====== Interactive Hardware Toggle Tabs ====== */
+.tab-toggle-btn {
+    background: linear-gradient(180deg, #222733 0%, #13161c 100%);
+    border: 1px solid #333b4a;
+    color: #64748b;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+.tab-toggle-btn.active {
+    background: #090b0e;
+    color: #00d2ff;
+    border-color: #101319;
+    border-bottom: 2px solid #00d2ff;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+}
+
+/* ====== Embedded Steel Header Navigation ====== */
+.nav-chassis {
+    background: linear-gradient(180deg, #3a4253 0%, #1c2029 100%);
+    border-bottom: 4px solid #0d1014;
+    box-shadow: 
+        inset 0 -1px 0 rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        0 10px 30px rgba(0,0,0,0.5);
+}
+
+.logo-cast {
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #e5e9f0;
+    background: linear-gradient(180deg, #ffffff 0%, #9aa3b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
+}
+
+.telemetry-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #090b0e;
+    border: 1px solid #313745;
+    color: #88c0d0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+.telemetry-link:hover {
+    color: #ffffff;
+    border-color: #00d2ff;
+    box-shadow: 
+        inset 0 1px 2px rgba(0,0,0,0.6),
+        0 0 8px rgba(0, 210, 255, 0.3);
+}
+
+/* ====== Structural Chiseled Typography ====== */
+.steel-engraved-header {
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #ffffff 20%, #a3acb9 60%, #4c535e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
+}
+
+.tab-content-pane {
+    display: none;
+    animation: diagnosticFade 0.3s ease-out forwards;
+}
+.tab-content-pane.active {
+    display: block;
+}
+@keyframes diagnosticFade {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 <body>
 
-<canvas id="circuit-canvas"></canvas>
-
-<!-- Header -->
-<header>
-  <a href="index.html" class="cynicdroid-brand">CynicDroid</a>
-  <div class="social-icons">
-    <a href="mailto:cynicdroid@gmail.com" title="Email">✉️</a>
-    <a href="https://wa.me/0716375459" title="WhatsApp">💬</a>
-    <a href="https://www.facebook.com/profile.php?id=100064124917514" title="Facebook">📘</a>
-  </div>
+<!-- Header Architecture Layout -->
+<header class="nav-chassis fixed w-full z-50">
+    <div class="container mx-auto flex justify-between items-center p-3 px-6">
+        <a href="index.html" class="text-2xl logo-cast">CYNICDROID</a>
+        <div class="flex gap-3">
+            <a href="https://wa.me/0716375459" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">WHATSAPP</a>
+            <a href="https://www.facebook.com/profile.php?id=100064124917514" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">FACEBOOK</a>
+            <a href="mailto:cynicdroid@gmail.com" class="telemetry-link px-4 py-1.5">EMAIL</a>
+        </div>
+    </div>
 </header>
 
-<!-- Combined Instructions + Form Card -->
-<div class="form-card">
-  <h2>Contact Us / Forum</h2>
-  <div class="instructions">
-    <p>Please use the form below to communicate to us, make requests and notify us about any bugs you experience from our products. To inquire for help services, kindly fill in the details and click send form. Thank you!</p>
-    <p>We offer a variety of services including but not limited to:</p>
-    <ul>
-      <li>Analyzing, designing, coding and implementing computer programs providing user support.</li>
-      <li>Configuring of new Information Communication Technology equipment.</li>
-      <li>Repairing and maintaining of Information Communication Technology equipment and associated peripherals.</li>
-      <li>Install and configure software and hardware for new and used computers to make them ready for use.</li>
-      <li>Designing, coding and deployment of websites providing user support.</li>
-      <li>Android devices software maintenance.</li>
-      <li>Windows and Android platform data recovery.</li>
-      <li>Offering internet services i.e Emails and web conferencing.</li>
-    </ul>
-  </div>
-  <form class="w-full">
-    <input type="text" placeholder="Name" class="form-input w-full" required>
-    <input type="email" placeholder="Email" class="form-input w-full" required>
-    <input type="tel" placeholder="Phone" class="form-input w-full">
-    <textarea placeholder="Message" class="form-textarea w-full h-32"></textarea>
-    <label class="block text-xs mb-2"><input type="checkbox" required> By continuing you agree to our <a href="Privacy.html">Privacy Policy</a>.</label>
-    <button type="submit" class="btn-neon w-full py-2 mt-2">Send Form</button>
-  </form>
-</div>
+<!-- Main Dashboard Frame -->
+<main class="pt-32 pb-12 relative z-10 container mx-auto px-6 space-y-6 max-w-5xl">
+    
+    <!-- Hero Header Panel -->
+    <div class="hardware-panel p-6 md:p-8 text-center">
+        <h1 class="text-2xl md:text-5xl font-black tracking-wider steel-engraved-header uppercase">DATA HUB & INTERACTION MATRIX</h1>
+        <div class="mt-4 inline-block"><span class="rivet-plate text-cyan-400">TICKET TERMINAL</span></div>
+    </div>
 
-<!-- FAQ Tabs Section -->
-<div class="tabs-container">
-  <h2 class="text-3xl font-bold mb-6 text-center neon-text">FAQ</h2>
-  <div class="tab-btns">
-    <div class="tab-btn active" data-tab="tab1">What is CynicDroid?</div>
-    <div class="tab-btn" data-tab="tab2">Is it good for me?</div>
-    <div class="tab-btn" data-tab="tab3">Why CynicDroid?</div>
-  </div>
-  <div id="tab1" class="tab-content active">
-    <p>We specialize in analyzing, designing, and implementing IT systems. We assess system suitability, collaborate with users and developers, and use technology to solve business challenges. We also guide organizational improvements and help teams adopt new systems effectively. CynicDroid Technologies designs and implements cutting-edge IT systems. We assess, optimize, and solve business challenges with tech, while guiding teams to embrace smarter, faster workflows.</p>
-  </div>
-  <div id="tab2" class="tab-content">
-    <p>We try to offer a variety of services including but not limited to:</p>
-    <ul>
-      <li>Analyzing, designing, coding and implementing computer programs providing user support.</li>
-      <li>Configuring of new Information Communication Technology equipment.</li>
-      <li>Repairing and maintaining of Information Communication Technology equipment and associated peripherals.</li>
-      <li>Install and configure software and hardware for new and used computers to make them ready for use.</li>
-      <li>Designing, coding and deployment of websites providing user support.</li>
-      <li>Android devices software maintenance.</li>
-      <li>Windows and Android platform data recovery.</li>
-      <li>Offering internet services i.e emails and web conferencing.</li>
-    </ul>
-  </div>
-  <div id="tab3" class="tab-content">
-    <p>We provide secure, documented software packages, instant support, data security, and pocket-friendly services.</p>
-  </div>
-</div>
+    <!-- Combined Instructions + Form Card -->
+    <div class="hardware-panel p-6 md:p-8">
+        <h2 class="text-sm font-black text-gray-300 tracking-widest uppercase mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span> INTAKE CONSOLE / DIAGNOSTIC REQUESTS
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Left Side Instruction Diagnostics -->
+            <div class="md:col-span-6 space-y-4">
+                <div class="card-recessed p-4 text-gray-400 text-xs leading-relaxed tracking-wide space-y-3">
+                    <p>
+                        Please use the intake interface to signal our technical staff, initiate system requests, or notify our diagnostics queue about any bugs or anomalies found inside our firmwares or application packages.
+                    </p>
+                    <p class="text-cyan-400 font-bold border-t border-neutral-900 pt-2">CORE DISPATCH ARCHITECTURES AVAILABLE:</p>
+                    <ul class="space-y-1.5 text-[11px] list-none pl-0">
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">■</span> Custom programming analytics & deployment support.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">■</span> Configuration matrix matching for native ICT arrays.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">■</span> Board-level board modifications and hardware overhauls.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">■</span> OS staging for desktop systems and smartphone devices.</li>
+                        <li class="flex items-start gap-2"><span class="text-cyan-400">■</span> Dynamic firmware repairs & data structural restoration.</li>
+                    </ul>
+                </div>
+            </div>
 
-<!-- Footer -->
-<footer class="text-center py-6 bg-black/80 text-white relative z-1">
-  <p>© 2025 CynicDroid Technologies. All Rights Reserved.</p>
+            <!-- Right Side Input Fields Form -->
+            <div class="md:col-span-6">
+                <form class="space-y-3">
+                    <input type="text" placeholder="OPERATOR NAME" class="form-input-machined w-full p-3 rounded font-semibold" required>
+                    <input type="email" placeholder="SECURE DATA EMAIL" class="form-input-machined w-full p-3 rounded font-semibold" required>
+                    <input type="tel" placeholder="COMMS LINE (PHONE)" class="form-input-machined w-full p-3 rounded font-semibold">
+                    <textarea placeholder="DIAGNOSTIC TELEMETRY MESSAGING..." class="form-input-machined w-full p-3 rounded font-semibold h-28 resize-none"></textarea>
+                    
+                    <label class="flex items-center gap-2 text-[10px] text-gray-400 tracking-wider cursor-pointer py-1">
+                        <input type="checkbox" class="accent-cyan-500 bg-neutral-950 border-neutral-800 rounded" required>
+                        <span>CONFIRM ALIGNMENT WITH OUR <a href="Privacy.html" class="text-cyan-400 underline hover:text-white">PRIVACY POLICY</a></span>
+                    </label>
+                    
+                    <button type="submit" class="btn-machined w-full py-3 rounded text-xs">TRANSMIT PACKET DATA</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Tabs Section -->
+    <div class="hardware-panel p-6">
+        <h2 class="text-sm font-black text-gray-300 tracking-widest uppercase mb-4 text-center md:text-left flex items-center justify-center md:justify-start gap-2">
+            <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> CENTRAL REPOSITORY FAQ
+        </h2>
+        
+        <!-- Tab Array Selectors -->
+        <div class="grid grid-cols-3 gap-2 mb-4">
+            <button class="tab-toggle-btn p-3 rounded active" data-tab="tab1">CORE ARCHITECTURE</button>
+            <button class="tab-toggle-btn p-3 rounded" data-tab="tab2">SERVICE COMPLIANCE</button>
+            <button class="tab-toggle-btn p-3 rounded" data-tab="tab3">DEPLOYMENT VALUE</button>
+        </div>
+        
+        <!-- Tab Structural Display Panes -->
+        <div class="card-recessed p-4 text-xs tracking-wide leading-relaxed text-gray-400 minimum-h-[120px]">
+            <div id="tab1" class="tab-content-pane active">
+                <p>
+                    We specialize in analyzing, designing, and implementing IT systems. We assess system suitability, collaborate with users and developers, and use technology to solve business challenges. CynicDroid Technologies designs and implements cutting-edge IT systems. We assess, optimize, and solve business challenges with tech, while guiding teams to embrace smarter, faster workflows right here from our Ishiara service base.
+                </p>
+            </div>
+            <div id="tab2" class="tab-content-pane">
+                <p class="mb-2 font-bold text-gray-300 text-[11px]">OUR OPERATIONAL ARRAYS PERMIT EXPEDIENT DEPLOYMENT ACROSS:</p>
+                <ul class="space-y-1 pl-1 list-none">
+                    <li class="flex items-center gap-2"><span class="text-cyan-400">⚡</span> Custom logic compilation and multi-tier system support.</li>
+                    <li class="flex items-center gap-2"><span class="text-cyan-400">⚡</span> Native routing equipment updates and ICT configurations.</li>
+                    <li class="flex items-center gap-2"><span class="text-cyan-400">⚡</span> Mechanical motherboard trace overhauls and electronic diagnostics.</li>
+                    <li class="flex items-center gap-2"><span class="text-cyan-400">⚡</span> Data recovery processing across partition structures on Windows & Android layers.</li>
+                </ul>
+            </div>
+            <div id="tab3" class="tab-content-pane">
+                <p>
+                    We deliver strictly validated firmware packages, instant direct line communications via our communication pathways, unbreakable privacy rules, and budget-optimized engineering rates tailored directly to local businesses and consumers.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- Base Chassis Footer Frame -->
+<footer class="bg-black border-t-4 border-neutral-800 text-gray-600 py-6 text-center text-xs tracking-widest relative z-10">
+    <p>© Copyright 2026 CynicDroid Technologies. All Rights Reserved.</p>
 </footer>
 
-<!-- Particle Circuit Script -->
+<!-- Interactive Tab Script Logic -->
 <script>
-const canvas=document.getElementById('circuit-canvas');
-const ctx=canvas.getContext('2d');
-let W=canvas.width=window.innerWidth;
-let H=canvas.height=window.innerHeight;
-window.addEventListener('resize',()=>{ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; });
+const tabs = document.querySelectorAll('.tab-toggle-btn');
+const contents = document.querySelectorAll('.tab-content-pane');
 
-class Particle{
-  constructor(){
-    this.x=Math.random()*W;
-    this.y=Math.random()*H;
-    this.vx=(Math.random()-0.5)*0.5;
-    this.vy=(Math.random()-0.5)*0.5;
-    this.size=Math.random()*3+1;
-    this.color=['#00ffff','#aef710','#ff00f0','#f0ff00'][Math.floor(Math.random()*4)];
-  }
-  move(){
-    this.x+=this.vx;
-    this.y+=this.vy;
-    if(this.x<0||this.x>W)this.vx*=-1;
-    if(this.y<0||this.y>H)this.vy*=-1;
-  }
-  draw(){
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fillStyle=this.color;
-    ctx.shadowBlur=8;
-    ctx.shadowColor=this.color;
-    ctx.fill();
-  }
-}
-
-let particles=[];
-for(let i=0;i<80;i++)particles.push(new Particle());
-
-function connect(){
-  for(let i=0;i<particles.length;i++){
-    for(let j=i;j<particles.length;j++){
-      let dx=particles[i].x-particles[j].x;
-      let dy=particles[i].y-particles[j].y;
-      let dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<120){
-        ctx.beginPath();
-        ctx.strokeStyle=`rgba(0,255,255,${1-dist/120})`;
-        ctx.lineWidth=1;
-        ctx.moveTo(particles[i].x,particles[i].y);
-        ctx.lineTo(particles[j].x,particles[j].y);
-        ctx.stroke();
-      }
-    }
-  }
-}
-
-function animate(){
-  ctx.clearRect(0,0,W,H);
-  particles.forEach(p=>{p.move(); p.draw();});
-  connect();
-  requestAnimationFrame(animate);
-}
-animate();
-</script>
-
-<script>
-// Tabs functionality
-const tabs=document.querySelectorAll('.tab-btn');
-const contents=document.querySelectorAll('.tab-content');
-tabs.forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    tabs.forEach(t=>t.classList.remove('active'));
-    contents.forEach(c=>c.classList.remove('active'));
-    tab.classList.add('active');
-    const activeTab=document.getElementById(tab.dataset.tab);
-    activeTab.classList.add('active');
-  });
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+    });
 });
 </script>
 </body>

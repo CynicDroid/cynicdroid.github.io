@@ -1,276 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cookie Policy - CynicDroid Technologies</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy - CynicDroid Technologies</title>
+<link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Ubuntu+Condensed&family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    body {
-      font-family: 'Kanit', sans-serif;
-      background-color: #0f0f0f;
-      color: #e0e0e0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      position: relative;
-    }
+<!-- Google Fonts: Orbitron for absolute hardware symmetry -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Russo One', sans-serif;
-      color: #00f0ff;
-      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-    }
+<style>
+body, h1, h2, h3, h4, p, a, li, strong, em {
+    font-family: 'Orbitron', sans-serif;
+}
 
-    a {
-      color: #ff00ff;
-      text-decoration: underline;
-    }
+body {
+    background-color: #cbd5e1;
+    /* Skeuomorphic Brushed Aluminum / Raw Metallic Background Design */
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.1) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.05) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.15);
+    color: #1e293b;
+    overflow-x: hidden;
+}
 
-    a:hover {
-      color: #00ffff;
-    }
+/* ====== 3D Machined Metal Chassis Panels ====== */
+.hardware-panel {
+    background: linear-gradient(180deg, #2a303d 0%, #171b22 100%);
+    border-top: 2px solid #5a657a;
+    border-left: 2px solid #485264;
+    border-right: 2px solid #1a1e26;
+    border-bottom: 3px solid #0d1014;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.6),
+        0 30px 60px -15px rgba(15, 23, 42, 0.6);
+    border-radius: 6px;
+    position: relative;
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+.hardware-panel::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    pointer-events: none;
+}
 
-    .content-section {
-      background: rgba(20, 20, 20, 0.8);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 0 20px #00f0ff;
-      position: relative;
-      z-index: 2;
-    }
+/* ====== Recessed Die-Cast Technical Bays ====== */
+.card-recessed {
+    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
+    border-top: 2px solid #101319;
+    border-left: 2px solid #101319;
+    border-right: 1px solid #3a4252;
+    border-bottom: 1px solid #3a4252;
+    box-shadow: 
+        inset 0 4px 10px rgba(0, 0, 0, 0.9),
+        0 1px 2px rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
 
-    .footer {
-      background: #111111;
-      text-align: center;
-      padding: 2rem;
-      color: #999999;
-      font-size: 0.875rem;
-      position: relative;
-      z-index: 2;
-    }
+/* ====== Industrial Rivet Badges ====== */
+.rivet-plate {
+    background: linear-gradient(180deg, #404859 0%, #202530 100%);
+    border: 1px solid #566178;
+    box-shadow: 
+        inset 0 1px 1px rgba(255,255,255,0.2),
+        0 4px 8px rgba(0,0,0,0.5);
+    padding: 4px 20px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #e2e8f0;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+.rivet-plate::before, .rivet-plate::after {
+    content: '';
+    width: 5px; height: 5px;
+    background: #11141a;
+    border-radius: 50%;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
 
-    .footer a {
-      color: #00f0ff;
-    }
+/* ====== Embedded Steel Header Navigation ====== */
+.nav-chassis {
+    background: linear-gradient(180deg, #3a4253 0%, #1c2029 100%);
+    border-bottom: 4px solid #0d1014;
+    box-shadow: 
+        inset 0 -1px 0 rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        0 10px 30px rgba(0,0,0,0.5);
+}
 
-    /* Futuristic CynicDroid Logo */
-    .logo-futuristic {
-      font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #0ff, #00f);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
-      animation: neonFlicker 3s infinite;
-      display: inline-block;
-    }
-    @keyframes neonFlicker {
-      0%, 100% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f; }
-      50% { text-shadow: 0 0 10px #0ff, 0 0 20px #00f, 0 0 30px #0ff; }
-    }
+.logo-cast {
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #e5e9f0;
+    background: linear-gradient(180deg, #ffffff 0%, #9aa3b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
+}
 
-    /* Circuit & Particle Canvas */
-    #circuitCanvas, #particleCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
+.telemetry-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #090b0e;
+    border: 1px solid #313745;
+    color: #88c0d0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+.telemetry-link:hover {
+    color: #ffffff;
+    border-color: #00d2ff;
+    box-shadow: 
+        inset 0 1px 2px rgba(0,0,0,0.6),
+        0 0 8px rgba(0, 210, 255, 0.3);
+}
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(5px);
-      z-index: 3;
-      padding: 1rem 2rem;
-    }
+/* ====== Structural Chiseled Typography ====== */
+.steel-engraved-header {
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #ffffff 20%, #a3acb9 60%, #4c535e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
+}
 
-    nav a {
-      text-decoration: none;
-    }
-
-    nav ul {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+/* Inside-Terminal Hyperlinks */
+.terminal-link {
+    color: #00d2ff;
+    text-decoration: none;
+    border-bottom: 1px dashed #00d2ff;
+    transition: all 0.2s ease;
+}
+.terminal-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+    text-shadow: 0 0 4px rgba(0, 210, 255, 0.6);
+}
+</style>
 </head>
 <body>
 
-  <!-- Particle Canvas -->
-  <canvas id="particleCanvas"></canvas>
-  <!-- Circuit Canvas -->
-  <canvas id="circuitCanvas"></canvas>
+<!-- Header Architecture Layout -->
+<header class="nav-chassis fixed w-full z-50">
+    <div class="container mx-auto flex justify-between items-center p-3 px-6">
+        <a href="index.html" class="text-2xl logo-cast">CYNICDROID</a>
+        <div class="flex gap-3">
+            <a href="https://wa.me/0716375459" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">WHATSAPP</a>
+            <a href="https://www.facebook.com/profile.php?id=100064124917514" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">FACEBOOK</a>
+            <a href="mailto:cynicdroid@gmail.com" class="telemetry-link px-4 py-1.5">EMAIL</a>
+        </div>
+    </div>
+</header>
 
-  <!-- Navbar -->
-  <nav class="flex justify-between items-center">
-    <a href="index.html" class="logo-futuristic">CynicDroid</a>
-    <ul>
-      <li><a href="About.html" class="hover:text-cyan-400">About</a></li>
-      <li><a href="Purchase.html" class="hover:text-cyan-400">Shop</a></li>
-      <li><a href="Contacts.html" class="hover:text-cyan-400">Contacts</a></li>
-    </ul>
-  </nav>
+<!-- Main Dashboard Frame -->
+<main class="pt-32 pb-12 relative z-10 container mx-auto px-6 space-y-6 max-w-5xl">
+    
+    <!-- Hero Header Panel -->
+    <div class="hardware-panel p-6 md:p-8 text-center">
+        <h1 class="text-2xl md:text-5xl font-black tracking-wider steel-engraved-header uppercase">COOKIE POLICY TRACK</h1>
+        <div class="mt-4 inline-block"><span class="rivet-plate text-cyan-400">LAST REVISED: JUNE 08, 2026</span></div>
+    </div>
 
-  <div class="pt-32 px-4 md:px-16">
+    <!-- Overview Statement Card -->
+    <div class="hardware-panel p-6 md:p-8">
+        <h2 class="text-sm font-black text-gray-300 tracking-widest uppercase mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span> TELEMETRY TRACKING & DATA COLLECTION
+        </h2>
+        <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide space-y-3">
+            <p>
+                We may use cookies, web beacons, tracking pixels, and other parsing technologies when you visit our station architecture, including any other media form, communication channel, mobile adaptation, or firmware application linked or otherwise associated with <span class="text-gray-200 font-bold">CynicDroid Technologies</span> to help monitor hardware handshakes and optimize your system load rendering. 
+            </p>
+            <p>
+                We reserve the explicit authorization to append amendments to this Cookie Policy at any time and for any reason. We will post notification logs regarding modifications by altering the configuration parameters on the index timestamp badge above. Any structural revisions are effective immediately upon distribution, and you waive the option to receive direct diagnostic notices for each modification. Continued link association with our domain arrays infers acknowledgment of adjusted rules.
+            </p>
+        </div>
+    </div>
 
-    <!-- Cookie Policy Title -->
-    <section class="section-title">
-      <h1 class="text-4xl">COOKIE POLICY</h1>
-      <p class="text-cyan-300 mt-2">Last updated November 07, 2025</p>
-    </section>
+    <!-- Analytical Breakdown Layer -->
+    <div class="hardware-panel p-6 md:p-8 space-y-6">
+        
+        <!-- Block 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+            <div class="md:col-span-4">
+                <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">UTILIZATION LAYERS</span>
+            </div>
+            <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed space-y-2">
+                <p>Cookies are specialized configuration micro-files written to your host terminal hardware that help our servers verify platform navigation settings, retain persistent validation loops, and accelerate content deployment speed. They allow us to:</p>
+                <ul class="space-y-1 pl-4 text-[11px]">
+                    <li><span class="text-cyan-400">▪</span> Preserve localized state selections and security authorizations.</li>
+                    <li><span class="text-cyan-400">▪</span> Monitor diagnostic interaction speed and layout usage variables.</li>
+                    <li><span class="text-cyan-400">▪</span> Feed specific custom logic segments down to individual devices.</li>
+                    <li><span class="text-cyan-400">▪</span> Assist in tracking marketing and hardware support communication queues.</li>
+                </ul>
+            </div>
+        </div>
 
-    <!-- Introduction -->
-    <section class="content-section">
-      <p class="mbr-text mbr-fonts-style display-7"><br>We may use cookies, web beacons, tracking pixels, and other tracking technologies when you visit our website, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the “<strong><em>CynicDroid Technologies</em></strong>”) to help customize the Site and improve your experience. We reserve the right to make changes to this Cookie Policy at any time and for any reason. We will alert you about any changes by updating the “Last Updated” date of this Cookie Policy. Any changes or modifications will be effective immediately upon posting the updated Cookie Policy on the Site, and you waive the right to receive specific notice of each such change or modification. You are encouraged to periodically review this Cookie Policy to stay informed of updates. You will be deemed to have been made aware of, will be subject to, and will be deemed to have accepted the changes in any revised Cookie Policy by your continued use of the Site after the date such revised Cookie Policy is posted.</p>
-    </section>
+        <!-- Block 2 -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+            <div class="md:col-span-4">
+                <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">CLASSIFIED ARRAY TYPES</span>
+            </div>
+            <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px]">
+                    <div>
+                        <strong class="text-gray-300 block">■ ADVERTISING LAYERS</strong>
+                        Serve targeted telemetry blocks and measure interaction responses without scanning unique identity databases.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block">■ ANALYTICAL STACKS</strong>
+                        Record internal application traffic metrics to repair structural site path bugs.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block">■ FIRST-PARTY SYSTEM UTILITIES</strong>
+                        Core foundational scripts mandatory for executing standard navigation loads.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block">■ USER PREFERENCE FILES</strong>
+                        Retain custom theme presets and language orientation matrices.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block">■ SECURITY MODULES</strong>
+                        Verify cryptographic credentials, counter malicious bot attacks, and protect active client payloads.
+                    </div>
+                    <div>
+                        <strong class="text-gray-300 block">■ EXTERNAL THIRD-PARTY UTILITIES</strong>
+                        Embedded dependencies served from diagnostic platforms linked across our web footprint.
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Use of Cookies -->
-    <section class="content-section">
-      <h2 class="text-2xl mb-2">USE OF COOKIES</h2>
-      <p>Cookies are small files stored on your device that help us remember your preferences, maintain your sessions, and improve website performance. They allow us to:</p>
-      <ul class="list-disc ml-6 mt-2">
-        <li>Keep you logged in and remember your preferences</li>
-        <li>Analyze traffic and usage patterns</li>
-        <li>Provide personalized content</li>
-        <li>Deliver relevant advertisements</li>
-      </ul>
-    </section>
+        <!-- Block 3 -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+            <div class="md:col-span-4">
+                <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">CLIENT ARBITRATION</span>
+            </div>
+            <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed space-y-2">
+                <p>You can reject or wipe tracking cookies by reconfiguring the application permissions inside your native client browser. Warning: Killing script permissions may degrade operational features and disconnect state memory arrays.</p>
+                <p>To reject dynamic third-party tracking scripts, you can utilize the technical exclusion tools provided by the Network Advertising Initiative's Opt-Out Interface.</p>
+            </div>
+        </div>
 
-    <!-- Types of Cookies -->
-    <section class="content-section">
-      <h2 class="text-2xl mb-2">TYPES OF COOKIES</h2>
-      <ul class="list-disc ml-6 mt-2">
-        <li><strong>Advertising Cookies:</strong> Display relevant ads and track ad performance without collecting personal info.</li>
-        <li><strong>Analytics Cookies:</strong> Monitor site usage and improve features.</li>
-        <li><strong>First-Party Cookies:</strong> Necessary for site functionality.</li>
-        <li><strong>Personalization Cookies:</strong> Remember your settings and preferences.</li>
-        <li><strong>Security Cookies:</strong> Authenticate users and protect data.</li>
-        <li><strong>Site Management Cookies:</strong> Maintain sessions and retain input data.</li>
-        <li><strong>Third-Party Cookies:</strong> Cookies from external services used on our site.</li>
-      </ul>
-    </section>
+        <!-- Block 4 -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+            <div class="md:col-span-4">
+                <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">BEACONS & METRICS</span>
+            </div>
+            <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed">
+                <p>We may also activate transparent web beacons or execution pixel tags to log total section loads, evaluate transmission success metrics for outgoing diagnostic updates, and compile macro analytical parameters.</p>
+            </div>
+        </div>
 
-    <!-- Control of Cookies -->
-    <section class="content-section">
-      <h2 class="text-2xl mb-2">CONTROL OF COOKIES</h2>
-      <p>You can manage cookies through your browser settings. Disabling cookies may affect some website functionalities. Additionally, you can opt-out of some third-party cookies via the Network Advertising Initiative’s Opt-Out Tool.</p>
-    </section>
+    </div>
 
-    <!-- Other Tracking Technologies -->
-    <section class="content-section">
-      <h2 class="text-2xl mb-2">OTHER TRACKING TECHNOLOGIES</h2>
-      <p>We may also use web beacons, pixel tags, and similar technologies to track visits, email views, and collect limited data. You can control their use via cookie settings.</p>
-    </section>
+    <!-- Privacy Integration Unit -->
+    <div class="hardware-panel p-6 text-center space-y-3">
+        <h3 class="text-xs font-black text-gray-300 tracking-widest uppercase">COMPLETE PROTECTION SPECIFICATIONS</h3>
+        <p class="text-xs text-gray-400 max-w-xl mx-auto">
+            To view full cryptographic storage rules, account retention parameters, and complete data governance configurations, link directly to our primary diagnostic layout.
+        </p>
+        <div class="pt-2">
+            <a href="Privacy.html" class="telemetry-link px-6 py-2 text-xs font-bold inline-block">ACCESS PRIMARY PRIVACY MATRIX</a>
+        </div>
+    </div>
 
-    <!-- Privacy Policy Link -->
-    <section class="content-section">
-      <h2 class="text-2xl mb-2">PRIVACY POLICY</h2>
-      <p>For more details on how we handle your data, please review our <a href="Privacy.html">Privacy Policy</a>.</p>
-    </section>
+</main>
 
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 CynicDroid Technologies. All Rights Reserved.</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script>
-    // ===== Particle Animation =====
-    const pCanvas = document.getElementById('particleCanvas');
-    const pCtx = pCanvas.getContext('2d');
-    let pWidth = pCanvas.width = window.innerWidth;
-    let pHeight = pCanvas.height = document.body.scrollHeight;
-
-    const particles = [];
-    for(let i=0;i<80;i++){
-      particles.push({ x: Math.random()*pWidth, y: Math.random()*pHeight, vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5, size: Math.random()*2+1, alphaOffset: Math.random()*Math.PI*2 });
-    }
-
-    function animateParticles(){
-      pCtx.clearRect(0,0,pWidth,pHeight);
-      const time = Date.now()*0.002;
-      for(let p of particles){
-        p.x += p.vx; p.y += p.vy;
-        if(p.x<0||p.x>pWidth) p.vx*=-1;
-        if(p.y<0||p.y>pHeight) p.vy*=-1;
-        const pulse = 0.5 + 0.5*Math.sin(time+p.alphaOffset);
-        const color = `rgba(0,${Math.floor(255*pulse)},${Math.floor(255*(1-0.5*pulse))},0.7)`;
-        pCtx.beginPath();
-        pCtx.arc(p.x,p.y,p.size,0,Math.PI*2);
-        pCtx.fillStyle=color;
-        pCtx.shadowColor=color;
-        pCtx.shadowBlur=8;
-        pCtx.fill();
-      }
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // ===== Glowing Circuit Animation =====
-    const cCanvas = document.getElementById('circuitCanvas');
-    const cCtx = cCanvas.getContext('2d');
-    let cWidth = cCanvas.width = window.innerWidth;
-    let cHeight = cCanvas.height = document.body.scrollHeight;
-
-    const lines = [];
-    for(let i=0;i<120;i++){
-      lines.push({ x: Math.random()*cWidth, y: Math.random()*cHeight, dx: (Math.random()-0.5)*1, dy: (Math.random()-0.5)*1, length: Math.random()*60+20 });
-    }
-
-    function animateCircuit(){
-      cCtx.clearRect(0,0,cWidth,cHeight);
-      lines.forEach(l=>{
-        const glow = Math.sin(Date.now()*0.005 + l.x + l.y);
-        const alpha = 0.2 + 0.3*(glow+1)/2;
-        cCtx.strokeStyle = `rgba(0,255,255,${alpha})`;
-        cCtx.lineWidth = 1.5;
-        cCtx.shadowColor = `rgba(0,255,255,${alpha})`;
-        cCtx.shadowBlur = 8;
-        cCtx.beginPath();
-        cCtx.moveTo(l.x,l.y);
-        cCtx.lineTo(l.x+l.dx*l.length,l.y+l.dy*l.length);
-        cCtx.stroke();
-        l.x += l.dx; l.y += l.dy;
-        if(l.x<0||l.x>cWidth) l.dx*=-1;
-        if(l.y<0||l.y>cHeight) l.dy*=-1;
-      });
-      requestAnimationFrame(animateCircuit);
-    }
-    animateCircuit();
-
-    // ===== Resize Handler =====
-    window.addEventListener('resize',()=>{
-      pWidth = pCanvas.width = window.innerWidth;
-      pHeight = pCanvas.height = document.body.scrollHeight;
-      cWidth = cCanvas.width = window.innerWidth;
-      cHeight = cCanvas.height = document.body.scrollHeight;
-    });
-  </script>
+<!-- Base Chassis Footer Frame -->
+<footer class="bg-black border-t-4 border-neutral-800 text-gray-600 py-6 text-center text-xs tracking-widest relative z-10">
+    <p>© Copyright 2026 CynicDroid Technologies. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
