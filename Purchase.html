@@ -373,18 +373,40 @@ const sortSelect = document.getElementById('sortSelect');
 
 let currentUserRole = 'user'; // Defaults to standard client customer mode
 
-// Initialize data arrays with clean layout seed modules
-let products = JSON.parse(localStorage.getItem('cynic_products'));
-if (!products || products.length === 0) {
-    products = [
-        { id: 'seed_1', title: 'Industrial Board Controller', desc: 'Main logic framework interface for low-level automation processes.', price: 4500, img: 'controller.jpg', category: 'Electronics' },
-        { id: 'seed_2', title: 'LiFePO4 Solar Module', desc: 'Advanced off-grid solar panels with built-in airflow ventilation clearance mechanics.', price: 12000, img: 'solar-panel.jpg', category: 'Home & Kitchen' },
-        { id: 'seed_3', title: 'Supercharged Diagnostics Link', desc: 'Custom high-speed connection line optimized for flashing firmware safely.', price: 1500, img: 'flex-cable.jpg', category: 'Mobile Accessories' },
-        { id: 'seed_4', title: 'Firmware Recovery Shell', desc: 'Telnet and BusyBox setup profiles built for unbricking and recovering router ONTs.', price: 3500, img: 'firmware-box.jpg', category: 'Software Solutions' },
-        { id: 'seed_5', title: 'Custom Modification Setup', desc: 'Hardware consultation design node tailored for customized custom upgrades.', price: 2500, img: 'blueprint.jpg', category: 'Services' }
-    ];
-    localStorage.setItem('cynic_products', JSON.stringify(products));
+// ================== GOOGLE SHEET INVENTORY FETCH ==================
+let products = [];
+
+async function loadProductsFromSheet() {
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR6nwuh8gVDU94Xr1akAb95Mps3FIHsRbMeT1Oq1R2FIrw4gzvdQSte2_0dPGjE4Hf9zrkrjmU2eVQh/pub?gid=0&single=true&output=csv';
+    
+    try {
+        const response = await fetch(sheetUrl);
+        const data = await response.text();
+        
+        // Split rows and remove the header line
+        const rows = data.split('\n').slice(1);
+        
+        products = rows.map(row => {
+            const [id, title, price, category, img, desc] = row.split(',');
+            return { 
+                id: id?.trim(), 
+                title: title?.trim(), 
+                price: Number(price), 
+                category: category?.trim(), 
+                img: img?.trim(), 
+                desc: desc?.trim() 
+            };
+        }).filter(p => p.title); // Only keep rows that have a title
+        
+        // Update the UI
+        applyFiltersAndSorting();
+    } catch (err) {
+        console.error("Failed to load inventory from Google Sheet:", err);
+    }
 }
+
+// Initialize the system
+loadProductsFromSheet();
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentDisplayProducts = [...products];
