@@ -161,22 +161,15 @@ body {
         </div>
         
         <div class="w-full mt-6 space-y-2 flex flex-row flex-wrap gap-2 md:flex-col md:space-y-2 justify-center items-center" id="categoryFilter">
-            </div>
+        </div>
     </div>
 
     <div class="w-full mt-6 pt-4 border-t border-neutral-800 flex flex-col items-center gap-2">
-        <div class="text-[8px] font-black text-gray-500 tracking-widest" id="authIdentity">STATUS: VISITOR MODE</div>
-        <div class="w-full flex gap-1">
-            <button class="telemetry-btn flex-1 py-2 text-[9px]" onclick="openProfileModal()">MY PROFILE</button>
-            <button id="authTerminalBtn" class="telemetry-btn flex-1 py-2 text-[9px]" onclick="openAuthModal()">ADMIN LOGIN</button>
-        </div>
+        <button class="telemetry-btn w-full py-2 text-[10px]" onclick="openProfileModal()">MY PROFILE</button>
     </div>
 </aside>
 
 <div class="fixed top-4 right-4 z-40 flex items-center gap-2">
-    <button id="adminForgeBtn" class="hardware-panel p-3 px-4 hidden text-amber-400 border-amber-500 hover:border-amber-400 transition-all duration-200" onclick="openForgeModal()">
-        <span class="text-xs font-black tracking-widest">ADD NEW ITEM</span>
-    </button>
     <button id="cartBtn" class="hardware-panel p-3 px-4 flex items-center gap-3 text-cyan-400 group transition-all duration-200 hover:border-cyan-500">
         <span class="text-xs font-black tracking-widest text-gray-200">SHOPPING CART</span>
         <div class="card-recessed px-2 py-0.5 text-[11px] font-black text-cyan-400 group-hover:text-white" id="cartCount">0</div>
@@ -211,7 +204,7 @@ body {
             <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">MY ACCOUNT PROFILE</h3>
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeProfileModal()">✕</button>
         </div>
-        <p class="text-[10px] text-gray-400 leading-normal">Save your delivery details here to check out with a single click next time.</p>
+        <p class="text-[10px] text-gray-400 leading-normal">Save your details to checkout with a single click next time.</p>
         <div class="space-y-2">
             <div>
                 <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">FULL NAME</label>
@@ -225,63 +218,18 @@ body {
                 <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">EMAIL ADDRESS</label>
                 <input type="email" id="profileEmail" placeholder="Your Email Address" class="telemetry-input w-full">
             </div>
+            <div>
+                <div class="flex justify-between items-center mb-1">
+                    <label class="text-[8px] font-black text-gray-500 tracking-widest block">SHIPPING / DELIVERY ADDRESS</label>
+                    <button class="text-[8px] font-black text-cyan-400 tracking-wide hover:underline uppercase" onclick="autoGetLocation('profileAddress')">⚡ USE MY GPS LOCATION</button>
+                </div>
+                <textarea id="profileAddress" rows="2" placeholder="e.g., Shop/House, Street, Town (or GPS link)" class="telemetry-input w-full resize-none"></textarea>
+            </div>
         </div>
         <div class="flex gap-2">
             <button class="telemetry-btn flex-1 py-2.5 text-rose-500 border-rose-950 hover:border-rose-500" onclick="clearUserProfileData()">DELETE PROFILE</button>
             <button class="telemetry-btn flex-2 py-2.5 text-cyan-400 border-cyan-700 hover:border-cyan-400" onclick="saveUserProfileData()">SAVE CHANGES</button>
         </div>
-    </div>
-</div>
-
-<div id="authModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
-    <div class="hardware-panel max-w-sm w-full p-6 space-y-4">
-        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
-            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">ADMIN PORTAL LOGIN</h3>
-            <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeAuthModal()">✕</button>
-        </div>
-        <div class="space-y-2">
-            <label class="text-[9px] font-black text-gray-400 tracking-widest block">SELECT ACCOUNT TYPE</label>
-            <select id="authRoleSelect" class="telemetry-select w-full">
-                <option value="user">CUSTOMER (VIEW ONLY)</option>
-                <option value="admin">STORE MANAGER (ADMIN ACCESS)</option>
-            </select>
-        </div>
-        <button class="telemetry-btn w-full py-2.5" onclick="executeAuthentication()">LOG IN</button>
-    </div>
-</div>
-
-<div id="forgeModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
-    <div class="hardware-panel max-w-md w-full p-6 space-y-4">
-        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
-            <h3 class="text-xs font-black text-amber-400 tracking-wider uppercase">ADD NEW PRODUCT TO CATALOG</h3>
-            <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeForgeModal()">✕</button>
-        </div>
-        <div class="space-y-3 max-h-[70vh] overflow-y-auto pr-1">
-            <div class="space-y-1">
-                <label class="text-[9px] font-black text-gray-400 tracking-widest block">PRODUCT CATEGORY</label>
-                <select id="forgeCategory" class="telemetry-select w-full"></select>
-            </div>
-            <div class="space-y-1">
-                <label class="text-[9px] font-black text-gray-400 tracking-widest block">PRODUCT TITLE</label>
-                <input type="text" id="forgeTitle" placeholder="e.g., Tecno Firmware Patch v2" class="telemetry-input w-full">
-            </div>
-            <div class="space-y-1">
-                <label class="text-[9px] font-black text-gray-400 tracking-widest block">IMAGE FILE NAME</label>
-                <div class="relative flex items-center">
-                    <span class="absolute left-3 text-[10px] font-mono text-slate-500 select-none">./assets/images/</span>
-                    <input type="text" id="forgeImg" placeholder="camon20-ic.jpg" class="telemetry-input w-full pl-32">
-                </div>
-            </div>
-            <div class="space-y-1">
-                <label class="text-[9px] font-black text-gray-400 tracking-widest block">PRICE VALUE (Ksh)</label>
-                <input type="number" id="forgePrice" placeholder="e.g., 4500" class="telemetry-input w-full">
-            </div>
-            <div class="space-y-1">
-                <label class="text-[9px] font-black text-gray-400 tracking-widest block">PRODUCT DESCRIPTION</label>
-                <textarea id="forgeDesc" rows="3" placeholder="Enter specifications or features of this product..." class="telemetry-input w-full resize-none"></textarea>
-            </div>
-        </div>
-        <button class="telemetry-btn w-full py-2.5 border-amber-600 text-amber-400 hover:border-amber-400" onclick="submitForgeModule()">ADD TO INVENTORY</button>
     </div>
 </div>
 
@@ -335,6 +283,14 @@ body {
             <input type="text" id="checkoutName" placeholder="YOUR FULL NAME" class="telemetry-input w-full">
             <input type="tel" id="checkoutPhone" placeholder="M-PESA NUMBER (e.g., 0712345678)" class="telemetry-input w-full">
             <input type="email" id="checkoutEmail" placeholder="EMAIL ADDRESS" class="telemetry-input w-full">
+            
+            <div class="w-full">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-[8px] font-black text-gray-500 tracking-widest uppercase">DELIVERY ADDRESS MANIFEST</span>
+                    <button class="text-[8px] font-black text-cyan-400 tracking-wide hover:underline uppercase" onclick="autoGetLocation('checkoutAddress')">⚡ RE-SCAN GPS LOCATION</button>
+                </div>
+                <textarea id="checkoutAddress" rows="2" placeholder="ENTER PHYSICAL ADDRESS OR DETAILED DELIVERY LANDMARKS..." class="telemetry-input w-full resize-none"></textarea>
+            </div>
         </div>
 
         <div class="card-recessed p-3 border border-neutral-800 space-y-2">
@@ -351,7 +307,7 @@ body {
             </div>
         </div>
 
-        <div class="card-recessed p-2 max-h-32 overflow-y-auto space-y-1 text-[10px]" id="checkoutProducts"></div>
+        <div class="card-recessed p-2 max-h-24 overflow-y-auto space-y-1 text-[10px]" id="checkoutProducts"></div>
         
         <div class="flex justify-between items-center p-3 card-recessed font-black text-xs">
             <span class="text-gray-400 tracking-widest">TOTAL AMOUNT:</span>
@@ -371,8 +327,6 @@ const filterContainer = document.getElementById('categoryFilter');
 const searchInput = document.getElementById('searchInput');
 const sortSelect = document.getElementById('sortSelect');
 
-let currentUserRole = 'user'; // Defaults to standard client customer mode
-
 // ================== GOOGLE SHEET INVENTORY FETCH ==================
 let products = [];
 
@@ -383,7 +337,6 @@ async function loadProductsFromSheet() {
         const response = await fetch(sheetUrl);
         const data = await response.text();
         
-        // Split rows and remove the header line
         const rows = data.split('\n').slice(1);
         
         products = rows.map(row => {
@@ -396,23 +349,57 @@ async function loadProductsFromSheet() {
                 img: img?.trim(), 
                 desc: desc?.trim() 
             };
-        }).filter(p => p.title); // Only keep rows that have a title
+        }).filter(p => p.title);
         
-        // Update the UI
         applyFiltersAndSorting();
     } catch (err) {
         console.error("Failed to load inventory from Google Sheet:", err);
     }
 }
 
-// Initialize the system
 loadProductsFromSheet();
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentDisplayProducts = [...products];
 
 function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); }
-function saveProductsArray() { localStorage.setItem('cynic_products', JSON.stringify(products)); }
+
+// ================== AUTOMATED GPS GEOLOCATION MATRIX ==================
+function autoGetLocation(targetElementId) {
+    const targetTextArea = document.getElementById(targetElementId);
+    
+    if (!navigator.geolocation) {
+        alert("GEOLOCATION UNAVAILABLE: Your browser does not support automatic location mapping.");
+        return;
+    }
+    
+    targetTextArea.value = "ACQUIRING TELEMETRY SATELLITE FIX... PLEASE WAIT...";
+    
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const accuracy = Math.round(position.coords.accuracy);
+            const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
+            
+            // Appends link cleanly or replaces if it was just placeholder text
+            if (targetTextArea.value.includes("ACQUIRING TELEMETRY")) {
+                targetTextArea.value = `GPS Location (Accurate to ~${accuracy}m):\n${mapLink}`;
+            } else {
+                targetTextArea.value += `\n\nGPS Coordinates:\n${mapLink}`;
+            }
+        },
+        (error) => {
+            targetTextArea.value = "";
+            let errorMsg = "LOCATION ERROR: Failed to acquire GPS parameters.";
+            if (error.code === error.PERMISSION_DENIED) {
+                errorMsg = "ACCESS DENIED: Please enable location permissions to capture your map anchor.";
+            }
+            alert(errorMsg);
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+    );
+}
 
 // ================== DATA UI RENDERING MATRICES ==================
 function createCard(p) {
@@ -442,7 +429,6 @@ function createCard(p) {
                 <span class="text-[11px] font-black text-emerald-400">Ksh ${p.price}</span>
             </div>
             <div class="flex items-center gap-2">
-                ${currentUserRole === 'admin' ? `<span class="text-[9px] font-black text-rose-500 hover:underline z-10" onclick="event.stopPropagation(); deleteProduct('${p.id}')">DELETE</span>` : ''}
                 <span class="text-[9px] font-bold text-cyan-500 tracking-wider group-hover:underline">VIEW</span>
             </div>
         </div>
@@ -495,7 +481,6 @@ function createPagination(container, items) {
 function renderCategories(filteredProducts) {
     categoriesContainer.innerHTML = '';
 
-    // Master All Products Section
     const allSection = document.createElement('div');
     allSection.className = 'hardware-panel p-5 space-y-4';
     allSection.id = 'AllProducts';
@@ -506,7 +491,6 @@ function renderCategories(filteredProducts) {
     categoriesContainer.appendChild(allSection);
     createPagination(allSection, filteredProducts);
 
-    // Segmented Domain Categories
     categories.forEach(cat => {
         const catSection = document.createElement('div');
         catSection.className = 'hardware-panel p-5 space-y-4';
@@ -558,15 +542,6 @@ function initializeFilterControls() {
         });
         filterContainer.appendChild(btn);
     });
-
-    const forgeSelect = document.getElementById('forgeCategory');
-    forgeSelect.innerHTML = '';
-    categories.forEach(cat => {
-        const opt = document.createElement('option');
-        opt.value = cat;
-        opt.innerText = cat.toUpperCase();
-        forgeSelect.appendChild(opt);
-    });
 }
 
 // ================== SEARCH AND FILTRATION ALGORITHMS ==================
@@ -590,11 +565,12 @@ sortSelect.addEventListener('change', applyFiltersAndSorting);
 // ================== CLIENT USER PROFILE MANAGEMENT ==================
 function openProfileModal() {
     document.getElementById('profileModal').classList.replace('hidden', 'flex');
-    const profile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '' };
+    const profile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '', address: '' };
     
-    document.getElementById('profileName').value = profile.name;
-    document.getElementById('profilePhone').value = profile.phone;
-    document.getElementById('profileEmail').value = profile.email;
+    document.getElementById('profileName').value = profile.name || '';
+    document.getElementById('profilePhone').value = profile.phone || '';
+    document.getElementById('profileEmail').value = profile.email || '';
+    document.getElementById('profileAddress').value = profile.address || '';
 }
 function closeProfileModal() { document.getElementById('profileModal').classList.replace('flex', 'hidden'); }
 
@@ -602,115 +578,26 @@ function saveUserProfileData() {
     const name = document.getElementById('profileName').value.trim();
     const phone = document.getElementById('profilePhone').value.trim();
     const email = document.getElementById('profileEmail').value.trim();
+    const address = document.getElementById('profileAddress').value.trim();
 
-    const profilePayload = { name, phone, email };
+    const profilePayload = { name, phone, email, address };
     localStorage.setItem('cynic_profile_data', JSON.stringify(profilePayload));
     
-    alert('PROFILE RECORDED: Profile variables saved successfully.');
+    alert('PROFILE RECORDED: Variables saved successfully.');
     closeProfileModal();
 }
 
 function clearUserProfileData() {
-    if (confirm('ARE YOU SURE YOU WANT TO DELETE YOUR PROFILE? This will clear all saved contact details from this browser.')) {
+    if (confirm('ARE YOU SURE YOU WANT TO DELETE YOUR PROFILE?')) {
         localStorage.removeItem('cynic_profile_data');
         
         document.getElementById('profileName').value = '';
         document.getElementById('profilePhone').value = '';
         document.getElementById('profileEmail').value = '';
+        document.getElementById('profileAddress').value = '';
         
         alert('PROFILE PURGED: Local identification data cleared successfully.');
         closeProfileModal();
-    }
-}
-
-// ================== AUTHENTICATION TERMINAL LOGIN ==================
-function openAuthModal() { document.getElementById('authModal').classList.replace('hidden', 'flex'); }
-function closeAuthModal() { document.getElementById('authModal').classList.replace('flex', 'hidden'); }
-
-function verifySecureMatrixPasskey(input) {
-    if (!input) return false;
-    const structuralSequence = [78, 101, 108, 114, 101, 121, 64, 54, 52, 56, 55];
-    if (input.length !== structuralSequence.length) return false;
-    for (let i = 0; i < input.length; i++) {
-        if (input.charCodeAt(i) !== structuralSequence[i]) return false;
-    }
-    return true;
-}
-
-async function executeAuthentication() {
-    const chosenRole = document.getElementById('authRoleSelect').value;
-    const statusText = document.getElementById('authIdentity');
-    const adminBtn = document.getElementById('adminForgeBtn');
-    
-    if (chosenRole === 'admin') {
-        const passwordInput = prompt("ENTER ADMINISTRATIVE PASSWORD:");
-        const accessGranted = verifySecureMatrixPasskey(passwordInput);
-
-        if (!accessGranted) {
-            alert("ACCESS DENIED: INCORRECT PASSWORD CREDENTIALS.");
-            document.getElementById('authRoleSelect').value = 'user';
-            return;
-        }
-
-        currentUserRole = 'admin';
-        statusText.innerText = "STATUS: STORE MANAGER";
-        statusText.classList.replace('text-gray-500', 'text-amber-400');
-        adminBtn.classList.remove('hidden');
-        alert("LOGIN SUCCESSFUL. ADMINISTRATIVE ACCESS GRANTED.");
-    } else {
-        currentUserRole = 'user';
-        statusText.innerText = "STATUS: VISITOR MODE";
-        statusText.classList.replace('text-amber-400', 'text-gray-500');
-        adminBtn.classList.add('hidden');
-    }
-    applyFiltersAndSorting();
-    closeAuthModal();
-}
-
-// ================== MANAGER DASHBOARD SYSTEM ==================
-function openForgeModal() { document.getElementById('forgeModal').classList.replace('hidden', 'flex'); }
-function closeForgeModal() { document.getElementById('forgeModal').classList.replace('flex', 'hidden'); }
-
-function submitForgeModule() {
-    const cat = document.getElementById('forgeCategory').value;
-    const title = document.getElementById('forgeTitle').value.trim();
-    let imgInput = document.getElementById('forgeImg').value.trim();
-    const price = parseInt(document.getElementById('forgePrice').value);
-    const desc = document.getElementById('forgeDesc').value.trim();
-
-    if (!title || isNaN(price) || !desc) {
-        alert('ERROR: PLEASE FILL IN ALL VALID PRODUCT FIELDS BEFORE SUBMITTING.');
-        return;
-    }
-
-    imgInput = imgInput.replace(/^\.\/|^assets\/|images\//g, '') || 'placeholder.jpg';
-
-    const newModule = {
-        id: 'p_forge_' + Date.now(),
-        title: title,
-        desc: desc,
-        price: price,
-        img: imgInput,
-        category: cat
-    };
-
-    products.push(newModule);
-    saveProductsArray();
-    applyFiltersAndSorting();
-    
-    document.getElementById('forgeTitle').value = '';
-    document.getElementById('forgeImg').value = '';
-    document.getElementById('forgePrice').value = '';
-    document.getElementById('forgeDesc').value = '';
-    
-    closeForgeModal();
-}
-
-function deleteProduct(id) {
-    if (confirm('ARE YOU SURE YOU WANT TO REMOVE THIS ITEM FROM INVENTORY?')) {
-        products = products.filter(p => p.id !== id);
-        saveProductsArray();
-        applyFiltersAndSorting();
     }
 }
 
@@ -789,11 +676,12 @@ function openCheckout() {
     closeCart();
     document.getElementById('checkoutModal').classList.replace('hidden', 'flex');
     
-    const savedProfile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '' };
+    const savedProfile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '', address: '' };
     
-    document.getElementById('checkoutName').value = savedProfile.name;
-    document.getElementById('checkoutPhone').value = savedProfile.phone;
-    document.getElementById('checkoutEmail').value = savedProfile.email;
+    document.getElementById('checkoutName').value = savedProfile.name || '';
+    document.getElementById('checkoutPhone').value = savedProfile.phone || '';
+    document.getElementById('checkoutEmail').value = savedProfile.email || '';
+    document.getElementById('checkoutAddress').value = savedProfile.address || '';
 
     const checkoutProductsDiv = document.getElementById('checkoutProducts');
     checkoutProductsDiv.innerHTML = '';
@@ -811,22 +699,22 @@ function openCheckout() {
 function closeCheckout() { document.getElementById('checkoutModal').classList.replace('flex', 'hidden'); }
 
 // ================== EMAILJS GATEWAY SUBSYSTEM ==================
-emailjs.init("Iz22KBRfL682WD6td"); // Public Key Connection Assignment
+emailjs.init("Iz22KBRfL682WD6td"); 
 
 async function submitCheckout() {
     const submitBtn = document.getElementById('submitOrderBtn');
     const name = document.getElementById('checkoutName').value.trim();
     const phone = document.getElementById('checkoutPhone').value.trim();
     const email = document.getElementById('checkoutEmail').value.trim();
+    const address = document.getElementById('checkoutAddress').value.trim();
 
-    if (!name || !phone || !email) {
-        alert('ERROR: PLEASE FILL ALL CONTACT DETAILS BEFORE SUBMITTING YOUR ORDER.');
+    if (!name || !phone || !email || !address) {
+        alert('ERROR: PLEASE COMPLETE ALL CONTACT AND SHIPPING DETAILS BEFORE CHECKOUT.');
         return;
     }
 
     const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     
-    // Format phone to standard 254XXXXXXXX format for M-Pesa standard API layers
     let formattedPhone = phone.replace(/\s+/g, '');
     if (formattedPhone.startsWith('0')) {
         formattedPhone = '254' + formattedPhone.substring(1);
@@ -837,7 +725,6 @@ async function submitCheckout() {
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span class="operation-loader"></span> REQUESTING STK PUSH...`;
 
-    // 1. CHANNELS TRANSACTION DATA TO TRICKLE THE POPUP PROMPT ON CLIENT PHONE
     try {
         const mpesaApiGatewayUrl = 'https://YOUR_STK_PUSH_GATEWAY_ENDPOINT/stk'; 
         
@@ -858,7 +745,6 @@ async function submitCheckout() {
         alert('STK prompt link busy. Please complete payment using the manual Paybill instructions on screen.');
     }
 
-    // 2. DISPATCHES DISCRETE COMPONENT LOGISTICS DATA MATRICES VIA EMAILJS
     const productsArray = cart.map(item => ({
         title: item.title,
         price: item.price,
@@ -868,7 +754,8 @@ async function submitCheckout() {
     const dataPayload = { 
         from_name: name, 
         from_phone: phone, 
-        from_email: email, 
+        from_email: email,
+        shipping_address: address, // Enriched context delivery manifest parameter
         products: productsArray, 
         total: totalAmount,
         payment_method: "MPESA_EQUITY_PAYBILL"
@@ -886,7 +773,7 @@ async function submitCheckout() {
         updateCartUI();
         closeCheckout();
     } catch (err) {
-        console.error('Outbound email delivery array matrix failure:', err);
+        console.error('Outbound email delivery failure:', err);
         alert('LOGISTICS LOGGING FAILURE: Transaction processed but confirmation failed to record. Please contact store management.');
     } finally {
         submitBtn.disabled = false;
