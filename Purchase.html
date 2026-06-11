@@ -19,7 +19,6 @@ body, h1, h2, h3, h4, p, a, li, strong, em, input, select, button, textarea {
 
 body {
     background-color: #cbd5e1;
-    /* Clean Brushed Aluminum Metal Panel Background */
     background-image: 
         linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.1) 100%),
         linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.05) 100%),
@@ -32,7 +31,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ====== 3D Machined Metal Chassis Panels ====== */
 .hardware-panel {
     background: linear-gradient(180deg, #2a303d 0%, #171b22 100%);
     border-top: 2px solid #5a657a;
@@ -56,7 +54,6 @@ body {
     pointer-events: none;
 }
 
-/* ====== Recessed Die-Cast Technical Bays ====== */
 .card-recessed {
     background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
     border-top: 2px solid #101319;
@@ -69,7 +66,6 @@ body {
     border-radius: 4px;
 }
 
-/* ====== Structural Chiseled Typography ====== */
 .steel-engraved-header {
     font-weight: 900;
     letter-spacing: 2px;
@@ -89,7 +85,6 @@ body {
     filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
 }
 
-/* ====== Telemetry Hardware Controls ====== */
 .telemetry-input, .telemetry-select {
     background: linear-gradient(180deg, #090b0e 0%, #151922 100%);
     border: 1px solid #3a4252;
@@ -165,7 +160,7 @@ body {
     </div>
 
     <div class="w-full mt-6 pt-4 border-t border-neutral-800 flex flex-col items-center gap-2">
-        <button class="telemetry-btn w-full py-2 text-[10px]" onclick="openProfileModal()">MY PROFILE</button>
+        <button class="telemetry-btn w-full py-2 text-[10px]" onclick="openProfileModal()">MY PROFILE & HISTORY</button>
     </div>
 </aside>
 
@@ -177,7 +172,6 @@ body {
 </div>
 
 <main class="flex-grow p-4 md:p-8 pt-6 md:pt-8 space-y-6 md:ml-64 w-full max-w-7xl">
-    
     <div class="hardware-panel p-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <div>
             <h1 class="text-xl md:text-3xl font-black steel-engraved-header uppercase tracking-wider">ONLINE SHOPPING PLATFORM</h1>
@@ -198,13 +192,15 @@ body {
     <div id="categoriesContainer" class="space-y-8"></div>
 </main>
 
-<div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
-    <div class="hardware-panel max-w-sm w-full p-6 space-y-4">
+<!-- PROFILE & PURCHASE HISTORY MODAL -->
+<div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4 overflow-y-auto">
+    <div class="hardware-panel max-w-md w-full p-6 space-y-4 my-8">
         <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
-            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">MY ACCOUNT PROFILE</h3>
+            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">MY ACCOUNT & ARCHIVES</h3>
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeProfileModal()">✕</button>
         </div>
-        <p class="text-[10px] text-gray-400 leading-normal">Save your details to checkout with a single click next time.</p>
+        
+        <!-- Profile Inputs Group -->
         <div class="space-y-2">
             <div>
                 <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">FULL NAME</label>
@@ -220,15 +216,23 @@ body {
             </div>
             <div>
                 <div class="flex justify-between items-center mb-1">
-                    <label class="text-[8px] font-black text-gray-500 tracking-widest block">SHIPPING / DELIVERY ADDRESS</label>
+                    <label class="text-[8px] font-black text-gray-500 tracking-widest block">DEFAULT SHIPPING ADDRESS</label>
                     <button class="text-[8px] font-black text-cyan-400 tracking-wide hover:underline uppercase" onclick="autoGetLocation('profileAddress')">⚡ USE MY GPS LOCATION</button>
                 </div>
                 <textarea id="profileAddress" rows="2" placeholder="e.g., Shop/House, Street, Town (or GPS link)" class="telemetry-input w-full resize-none"></textarea>
             </div>
+            <div class="flex gap-2 pt-1">
+                <button class="telemetry-btn flex-1 py-2 text-[10px] text-rose-500 border-rose-950 hover:border-rose-500" onclick="clearUserProfileData()">DELETE PROFILE</button>
+                <button class="telemetry-btn flex-1 py-2 text-[10px] text-cyan-400 border-cyan-700 hover:border-cyan-400" onclick="saveUserProfileData()">SAVE CHANGES</button>
+            </div>
         </div>
-        <div class="flex gap-2">
-            <button class="telemetry-btn flex-1 py-2.5 text-rose-500 border-rose-950 hover:border-rose-500" onclick="clearUserProfileData()">DELETE PROFILE</button>
-            <button class="telemetry-btn flex-2 py-2.5 text-cyan-400 border-cyan-700 hover:border-cyan-400" onclick="saveUserProfileData()">SAVE CHANGES</button>
+
+        <!-- Purchase History Record Matrix -->
+        <div class="border-t border-neutral-800 pt-3 space-y-2">
+            <h4 class="text-[10px] font-black text-gray-400 tracking-widest uppercase">VERIFIED PURCHASE HISTORY</h4>
+            <div id="historyLogContainer" class="card-recessed p-2 max-h-48 overflow-y-auto space-y-2">
+                <!-- Dynamically Populated History Items Go Here -->
+            </div>
         </div>
     </div>
 </div>
@@ -240,7 +244,7 @@ body {
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closePreview()">✕</button>
         </div>
         <div class="card-recessed overflow-hidden relative min-h-48 flex items-center justify-center">
-            <img id="previewImg" class="w-full h-48 object-cover opacity-80 hidden" src="" onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');">
+            <img id="previewImg" class="w-full h-48 object-cover opacity-80 hidden" src="" onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
             <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-black font-mono text-[10px] text-slate-400">
                 <span id="fallbackPreviewLabel" class="truncate max-w-full text-cyan-400"></span>
                 <span class="text-[9px] text-amber-400 mt-2 border border-amber-900/50 bg-amber-950/20 px-2 py-0.5 rounded">NO IMAGE INSTALLED</span>
@@ -299,7 +303,7 @@ body {
                 <span class="text-[10px] font-bold px-2 py-0.5 rounded text-black bg-emerald-400 uppercase tracking-wide">M-PESA STK PUSH</span>
             </div>
             <div class="text-[10px] font-mono p-2 bg-black/40 rounded border border-neutral-900 text-slate-300 leading-relaxed">
-                <span>An STK prompt will appear on your handset automatically. If it flags or times out, pay manually to:</span><br>
+                <span>An STK prompt will appear on your phone. If it logs busy or fails to push, please clear manually via:</span><br>
                 <div class="text-white text-center py-2 mt-1 bg-neutral-900 rounded border border-neutral-800 space-y-1 text-[10px]">
                     <div>EQUITY PAYBILL: <strong class="text-cyan-400 font-black">247247</strong></div>
                     <div>ACCOUNT NUMBER: <strong class="text-cyan-400 font-black">0716375459</strong></div>
@@ -320,25 +324,21 @@ body {
 </div>
 
 <script>
-// ================== CORE CONFIGURATION STATES ==================
 const categories = ["Electronics", "Home & Kitchen", "Mobile Accessories", "Software Solutions", "Services"];
 const categoriesContainer = document.getElementById('categoriesContainer');
 const filterContainer = document.getElementById('categoryFilter');
 const searchInput = document.getElementById('searchInput');
 const sortSelect = document.getElementById('sortSelect');
 
-// ================== GOOGLE SHEET INVENTORY FETCH ==================
 let products = [];
+let manualPaymentMode = false; // State flag to track STK timeout/busy state switches
 
 async function loadProductsFromSheet() {
     const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR6nwuh8gVDU94Xr1akAb95Mps3FIHsRbMeT1Oq1R2FIrw4gzvdQSte2_0dPGjE4Hf9zrkrjmU2eVQh/pub?gid=0&single=true&output=csv';
-    
     try {
         const response = await fetch(sheetUrl);
         const data = await response.text();
-        
         const rows = data.split('\n').slice(1);
-        
         products = rows.map(row => {
             const [id, title, price, category, img, desc] = row.split(',');
             return { 
@@ -350,7 +350,6 @@ async function loadProductsFromSheet() {
                 desc: desc?.trim() 
             };
         }).filter(p => p.title);
-        
         applyFiltersAndSorting();
     } catch (err) {
         console.error("Failed to load inventory from Google Sheet:", err);
@@ -364,25 +363,19 @@ let currentDisplayProducts = [...products];
 
 function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); }
 
-// ================== AUTOMATED GPS GEOLOCATION MATRIX ==================
 function autoGetLocation(targetElementId) {
     const targetTextArea = document.getElementById(targetElementId);
-    
     if (!navigator.geolocation) {
-        alert("GEOLOCATION UNAVAILABLE: Your browser does not support automatic location mapping.");
+        alert("GEOLOCATION UNAVAILABLE: Browser tracking mapping unsupported.");
         return;
     }
-    
     targetTextArea.value = "ACQUIRING TELEMETRY SATELLITE FIX... PLEASE WAIT...";
-    
     navigator.geolocation.getCurrentPosition(
         (position) => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             const accuracy = Math.round(position.coords.accuracy);
             const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
-            
-            // Appends link cleanly or replaces if it was just placeholder text
             if (targetTextArea.value.includes("ACQUIRING TELEMETRY")) {
                 targetTextArea.value = `GPS Location (Accurate to ~${accuracy}m):\n${mapLink}`;
             } else {
@@ -393,7 +386,7 @@ function autoGetLocation(targetElementId) {
             targetTextArea.value = "";
             let errorMsg = "LOCATION ERROR: Failed to acquire GPS parameters.";
             if (error.code === error.PERMISSION_DENIED) {
-                errorMsg = "ACCESS DENIED: Please enable location permissions to capture your map anchor.";
+                errorMsg = "ACCESS DENIED: Location permissions are restricted.";
             }
             alert(errorMsg);
         },
@@ -401,19 +394,15 @@ function autoGetLocation(targetElementId) {
     );
 }
 
-// ================== DATA UI RENDERING MATRICES ==================
 function createCard(p) {
     const card = document.createElement('div');
     card.className = 'card-recessed p-3 flex flex-col justify-between space-y-3 transition-all duration-200 hover:border-cyan-500 group cursor-pointer';
-    
     const imagePath = `./assets/images/${p.img}`;
-
     card.innerHTML = `
         <div class="space-y-2">
             <div class="overflow-hidden rounded border border-neutral-900 bg-black h-32 flex items-center justify-center relative">
                 <img class="w-full h-32 object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-200 hidden" 
-                     src="${imagePath}" 
-                     alt="${p.title}" 
+                     src="${imagePath}" alt="${p.title}" 
                      onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden')"
                      onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden')">
                 <div class="absolute inset-0 flex flex-col items-center justify-center p-2 text-center font-mono text-[9px] text-slate-400 bg-neutral-950">
@@ -425,12 +414,8 @@ function createCard(p) {
             <p class="text-[10px] text-gray-500 leading-normal line-clamp-2">${p.desc}</p>
         </div>
         <div class="flex justify-between items-center pt-2 border-t border-neutral-900/60">
-            <div class="flex flex-col">
-                <span class="text-[11px] font-black text-emerald-400">Ksh ${p.price}</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="text-[9px] font-bold text-cyan-500 tracking-wider group-hover:underline">VIEW</span>
-            </div>
+            <span class="text-[11px] font-black text-emerald-400">Ksh ${p.price}</span>
+            <span class="text-[9px] font-bold text-cyan-500 tracking-wider group-hover:underline">VIEW</span>
         </div>
     `;
     card.addEventListener('click', () => openPreview(p));
@@ -440,7 +425,6 @@ function createCard(p) {
 function createPagination(container, items) {
     const pagination = document.createElement('div');
     pagination.className = 'flex flex-wrap gap-1.5 justify-center mt-4';
-    
     const itemsPerPage = 10;
     const totalPages = Math.ceil(items.length / itemsPerPage) || 1;
     let currentPage = 1;
@@ -449,18 +433,14 @@ function createPagination(container, items) {
         currentPage = page;
         const grid = container.querySelector('.grid-layout-node');
         grid.innerHTML = '';
-        
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
-        
         if (items.length === 0) {
             grid.innerHTML = `<div class="col-span-full text-center text-gray-500 font-bold text-xs py-8 tracking-widest">NO PRODUCTS FOUND IN THIS CATEGORY.</div>`;
             return;
         }
-
         items.slice(start, end).forEach(p => grid.appendChild(createCard(p)));
         pagination.innerHTML = '';
-        
         if (totalPages > 1) {
             for (let i = 1; i <= totalPages; i++) {
                 const btn = document.createElement('button');
@@ -480,7 +460,6 @@ function createPagination(container, items) {
 
 function renderCategories(filteredProducts) {
     categoriesContainer.innerHTML = '';
-
     const allSection = document.createElement('div');
     allSection.className = 'hardware-panel p-5 space-y-4';
     allSection.id = 'AllProducts';
@@ -506,16 +485,13 @@ function renderCategories(filteredProducts) {
 
     const currentActiveFilterBtn = document.querySelector('#categoryFilter button.active');
     const targetId = currentActiveFilterBtn ? currentActiveFilterBtn.dataset.target : 'AllProducts';
-    
     document.querySelectorAll('#categoriesContainer > div').forEach(sec => sec.classList.add('hidden'));
     const targetedSection = document.getElementById(targetId);
     if (targetedSection) targetedSection.classList.remove('hidden');
 }
 
-// ================== INTERACTIVE SIDEBAR GENERATION ==================
 function initializeFilterControls() {
     filterContainer.innerHTML = '';
-    
     const allBtn = document.createElement('button');
     allBtn.className = 'px-4 py-2 w-full text-center md:text-left telemetry-btn active';
     allBtn.innerText = "SHOW ALL ITEMS";
@@ -544,17 +520,14 @@ function initializeFilterControls() {
     });
 }
 
-// ================== SEARCH AND FILTRATION ALGORITHMS ==================
 function applyFiltersAndSorting() {
     const term = searchInput.value.toLowerCase();
     let result = products.filter(p => p.title.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term));
-    
     const val = sortSelect.value;
     if (val === 'priceLow') result.sort((a, b) => a.price - b.price);
     else if (val === 'priceHigh') result.sort((a, b) => b.price - a.price);
     else if (val === 'nameAZ') result.sort((a, b) => a.title.localeCompare(b.title));
     else if (val === 'nameZA') result.sort((a, b) => b.title.localeCompare(a.title));
-    
     currentDisplayProducts = result;
     renderCategories(currentDisplayProducts);
 }
@@ -562,7 +535,7 @@ function applyFiltersAndSorting() {
 searchInput.addEventListener('input', applyFiltersAndSorting);
 sortSelect.addEventListener('change', applyFiltersAndSorting);
 
-// ================== CLIENT USER PROFILE MANAGEMENT ==================
+// ================== ACCOUNT PROFILE & LOCAL HISTORY MATRICES ==================
 function openProfileModal() {
     document.getElementById('profileModal').classList.replace('hidden', 'flex');
     const profile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '', address: '' };
@@ -571,6 +544,8 @@ function openProfileModal() {
     document.getElementById('profilePhone').value = profile.phone || '';
     document.getElementById('profileEmail').value = profile.email || '';
     document.getElementById('profileAddress').value = profile.address || '';
+    
+    renderPurchaseHistory();
 }
 function closeProfileModal() { document.getElementById('profileModal').classList.replace('flex', 'hidden'); }
 
@@ -580,28 +555,73 @@ function saveUserProfileData() {
     const email = document.getElementById('profileEmail').value.trim();
     const address = document.getElementById('profileAddress').value.trim();
 
-    const profilePayload = { name, phone, email, address };
-    localStorage.setItem('cynic_profile_data', JSON.stringify(profilePayload));
-    
-    alert('PROFILE RECORDED: Variables saved successfully.');
+    localStorage.setItem('cynic_profile_data', JSON.stringify({ name, phone, email, address }));
+    alert('PROFILE RECORDED: Local profile details updated.');
     closeProfileModal();
 }
 
 function clearUserProfileData() {
-    if (confirm('ARE YOU SURE YOU WANT TO DELETE YOUR PROFILE?')) {
+    if (confirm('PURGE PROFILE DATA? This will wipe your saved credentials and local purchase database records permanently.')) {
         localStorage.removeItem('cynic_profile_data');
+        localStorage.removeItem('cynic_purchase_history');
         
         document.getElementById('profileName').value = '';
         document.getElementById('profilePhone').value = '';
         document.getElementById('profileEmail').value = '';
         document.getElementById('profileAddress').value = '';
         
-        alert('PROFILE PURGED: Local identification data cleared successfully.');
+        alert('PROFILE AND HISTORY PURGED SUCCESSFULY.');
         closeProfileModal();
     }
 }
 
-// ================== SHOPPING CART MANAGEMENT ==================
+// Renders the saved transactions inside the history layout node
+function renderPurchaseHistory() {
+    const container = document.getElementById('historyLogContainer');
+    const history = JSON.parse(localStorage.getItem('cynic_purchase_history')) || [];
+    container.innerHTML = '';
+
+    if (history.length === 0) {
+        container.innerHTML = '<div class="text-center font-bold text-gray-500 text-[9px] py-4 uppercase tracking-widest">NO PRIOR ACCOUNT TRANSACTIONS FOUND.</div>';
+        return;
+    }
+
+    history.reverse().forEach(record => {
+        const itemBlock = document.createElement('div');
+        itemBlock.className = 'p-2 bg-neutral-950/80 rounded border border-neutral-900 text-[9px] space-y-1';
+        
+        let itemsListHTML = record.items.map(i => `<div class="text-gray-300 uppercase">${i.title} (x${i.qty})</div>`).join('');
+        
+        itemBlock.innerHTML = `
+            <div class="flex justify-between border-b border-neutral-900 pb-1 font-mono text-[8px] text-gray-500">
+                <span>DATE: ${record.date}</span>
+                <span class="text-cyan-500 font-bold">${record.method}</span>
+            </div>
+            <div class="space-y-0.5">${itemsListHTML}</div>
+            <div class="flex justify-between items-center pt-1 text-slate-400">
+                <span class="truncate max-w-[180px] text-[8px] italic text-slate-500">Del: ${record.address}</span>
+                <strong class="text-emerald-400 font-black">Ksh ${record.total}</strong>
+            </div>
+        `;
+        container.appendChild(itemBlock);
+    });
+}
+
+// Stores successful logs directly into storage
+function archiveTransactionToHistory(itemsArray, totalCost, deliveryAddress, fallbackStatus) {
+    const history = JSON.parse(localStorage.getItem('cynic_purchase_history')) || [];
+    const newRecord = {
+        date: new Date().toLocaleString(),
+        items: itemsArray.map(i => ({ title: i.title, qty: i.qty })),
+        total: totalCost,
+        address: deliveryAddress,
+        method: fallbackStatus ? "MANUAL_PAYBILL" : "STK_PUSH"
+    };
+    history.push(newRecord);
+    localStorage.setItem('cynic_purchase_history', JSON.stringify(history));
+}
+
+// ================== SHOPPING CART SUBSYSTEM ==================
 document.getElementById('cartBtn').addEventListener('click', openCart);
 function openCart() { document.getElementById('cartModal').classList.replace('hidden', 'flex'); updateCartUI(); }
 function closeCart() { document.getElementById('cartModal').classList.replace('flex', 'hidden'); }
@@ -609,11 +629,9 @@ function closeCart() { document.getElementById('cartModal').classList.replace('f
 function updateCartUI() {
     const cartItemsDiv = document.getElementById('cartItems');
     cartItemsDiv.innerHTML = '';
-    
     if (cart.length === 0) {
         cartItemsDiv.innerHTML = '<div class="text-center font-bold text-gray-500 text-[10px] py-6 tracking-widest uppercase">YOUR SHOPPING CART IS EMPTY.</div>';
     }
-    
     cart.forEach(item => {
         const div = document.createElement('div');
         div.className = 'flex items-center justify-between gap-3 p-2 bg-black/60 rounded border border-neutral-900 text-[10px]';
@@ -635,7 +653,6 @@ function updateCartUI() {
         `;
         cartItemsDiv.appendChild(div);
     });
-    
     const total = cart.reduce((a, b) => a + b.price * b.qty, 0);
     document.getElementById('cartTotal').innerText = `Ksh ${total}`;
     document.getElementById('cartCount').innerText = cart.reduce((a, b) => a + b.qty, 0);
@@ -651,7 +668,6 @@ function adjustQty(id, delta) {
     updateCartUI();
 }
 
-// ================== PRODUCT DETAILS PREVIEW ROUTINES ==================
 function openPreview(p) {
     document.getElementById('previewModal').classList.replace('hidden', 'flex');
     document.getElementById('previewImg').src = `./assets/images/${p.img}`;
@@ -670,14 +686,19 @@ function openPreview(p) {
 }
 function closePreview() { document.getElementById('previewModal').classList.replace('flex', 'hidden'); }
 
-// ================== CHECKOUT & AUTO-FILL PREVIEW GRID ==================
+// ================== CHECKOUT AND GATEWAY CONTROLS ==================
 function openCheckout() {
     if (cart.length === 0) return;
     closeCart();
     document.getElementById('checkoutModal').classList.replace('hidden', 'flex');
     
+    // Reset control states cleanly on every window invocation
+    manualPaymentMode = false;
+    const submitBtn = document.getElementById('submitOrderBtn');
+    submitBtn.innerText = 'INITIATE M-PESA PAYMENT';
+    submitBtn.className = "telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-emerald-400 border-emerald-900 hover:border-emerald-400";
+
     const savedProfile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '', address: '' };
-    
     document.getElementById('checkoutName').value = savedProfile.name || '';
     document.getElementById('checkoutPhone').value = savedProfile.phone || '';
     document.getElementById('checkoutEmail').value = savedProfile.email || '';
@@ -685,20 +706,18 @@ function openCheckout() {
 
     const checkoutProductsDiv = document.getElementById('checkoutProducts');
     checkoutProductsDiv.innerHTML = '';
-    
     cart.forEach(item => {
         const div = document.createElement('div');
         div.className = 'flex justify-between items-center text-gray-400 py-1 border-b border-neutral-900/60';
         div.innerHTML = `<span class="uppercase truncate max-w-[240px]">${item.title} (x${item.qty})</span> <span class="text-emerald-400 font-bold">Ksh ${item.price * item.qty}</span>`;
         checkoutProductsDiv.appendChild(div);
     });
-    
     const total = cart.reduce((a, b) => a + b.price * b.qty, 0);
     document.getElementById('checkoutTotal').innerText = `Ksh ${total}`;
 }
 function closeCheckout() { document.getElementById('checkoutModal').classList.replace('flex', 'hidden'); }
 
-// ================== EMAILJS GATEWAY SUBSYSTEM ==================
+// ================== EMAILJS GATEWAY & TIMEOUT FAILOVER ==================
 emailjs.init("Iz22KBRfL682WD6td"); 
 
 async function submitCheckout() {
@@ -714,7 +733,13 @@ async function submitCheckout() {
     }
 
     const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    
+
+    // If already toggled to manual mode because STK was flagged busy/offline
+    if (manualPaymentMode) {
+        processOrderManifest(name, phone, email, address, totalAmount, true);
+        return;
+    }
+
     let formattedPhone = phone.replace(/\s+/g, '');
     if (formattedPhone.startsWith('0')) {
         formattedPhone = '254' + formattedPhone.substring(1);
@@ -723,27 +748,45 @@ async function submitCheckout() {
     }
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span class="operation-loader"></span> REQUESTING STK PUSH...`;
+    submitBtn.innerHTML = `<span class="operation-loader"></span> PINNING GATEWAY TELEMETRY...`;
+
+    // Promise Race pattern handling: Swaps to manual fallback if backend drops or blocks for > 5 seconds
+    const gatewayTimeout = new Promise((_, reject) => setTimeout(() => reject(new Error('TIMEOUT_BUSY')), 5000));
+    const mpesaApiGatewayUrl = 'https://YOUR_STK_PUSH_GATEWAY_ENDPOINT/stk'; 
+    
+    const gatewayFetch = fetch(mpesaApiGatewayUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            phone: formattedPhone,
+            amount: totalAmount,
+            paybill: "247247",
+            account: "0716375459"
+        })
+    });
 
     try {
-        const mpesaApiGatewayUrl = 'https://YOUR_STK_PUSH_GATEWAY_ENDPOINT/stk'; 
+        await Promise.race([gatewayFetch, gatewayTimeout]);
+        alert('STK PUSH SENT! Enter your M-Pesa PIN on your phone to authorize.');
+        processOrderManifest(name, phone, email, address, totalAmount, false);
+    } catch (err) {
+        console.warn('STK API transmission flagged busy or offline. Switching layout state to manual payload mode.');
         
-        await fetch(mpesaApiGatewayUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                phone: formattedPhone,
-                amount: totalAmount,
-                paybill: "247247",
-                account: "0716375459"
-            })
-        });
+        // Transform checkout interface controls to prioritize confirmation over blockages
+        manualPaymentMode = true;
+        submitBtn.disabled = false;
+        submitBtn.className = "telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-amber-400 border-amber-900 hover:border-amber-400";
+        submitBtn.innerText = 'CONFIRM MANUAL PAYMENT';
         
-        alert('STK PUSH SENT! Please check your phone and enter your M-Pesa PIN to complete the purchase.');
-    } catch (apiErr) {
-        console.warn('STK Gateway offline, proceeding with manual fallback logic instructions.');
-        alert('STK prompt link busy. Please complete payment using the manual Paybill instructions on screen.');
+        alert('STK PROMPT BUSY: Network routing is slow. Please pay manually using the Equity Paybill instructions on your screen, then click "CONFIRM MANUAL PAYMENT" to submit your order manifest.');
     }
+}
+
+// Separate manifest transmission controller so users don't lose cart parameters on network errors
+async function processOrderManifest(name, phone, email, address, totalAmount, isManualPayment) {
+    const submitBtn = document.getElementById('submitOrderBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="operation-loader"></span> DEPLOYING ORDER SYSTEM MANIFEST...`;
 
     const productsArray = cart.map(item => ({
         title: item.title,
@@ -755,33 +798,34 @@ async function submitCheckout() {
         from_name: name, 
         from_phone: phone, 
         from_email: email,
-        shipping_address: address, // Enriched context delivery manifest parameter
+        shipping_address: address,
         products: productsArray, 
         total: totalAmount,
-        payment_method: "MPESA_EQUITY_PAYBILL"
+        payment_method: isManualPayment ? "MANUAL_EQUITY_PAYBILL_FALLBACK" : "MPESA_AUTOMATED_STK_PUSH"
     };
-
-    submitBtn.innerHTML = `<span class="operation-loader"></span> RECORDING SYSTEM MANIFEST...`;
 
     try {
         await emailjs.send('cynic_service', 'template_d145jij', dataPayload);
         await emailjs.send('cynic_service', 'template_2b1djar', dataPayload);
 
-        alert(`ORDER SUBMITTED SUCCESSFULY!\n\nOnce transaction verification details settle, your order parameters will deploy.`);
+        // Record metrics to Local Purchase Logs on absolute delivery success
+        archiveTransactionToHistory(cart, totalAmount, address, isManualPayment);
+
+        alert(`ORDER LOGGED SUCCESSFULLY!\n\nYour purchase manifest has been updated. Delivery will initiate once manual cross-verifications conclude.`);
         
         cart = [];
         updateCartUI();
         closeCheckout();
     } catch (err) {
-        console.error('Outbound email delivery failure:', err);
-        alert('LOGISTICS LOGGING FAILURE: Transaction processed but confirmation failed to record. Please contact store management.');
+        console.error('Outbound email delivery logging failure:', err);
+        alert('LOGISTICS LOGGING FAILURE: Transaction failed to log. Please screenshot this and reach out to management directly.');
     } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = 'INITIATE M-PESA PAYMENT';
+        manualPaymentMode = false;
     }
 }
 
-// ================== INITIALIZATION MATRIX EXECUTION ==================
+// ================== RUN CORE ENGINE ==================
 initializeFilterControls();
 applyFiltersAndSorting();
 updateCartUI();
