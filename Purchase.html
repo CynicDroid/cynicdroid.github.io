@@ -7,9 +7,7 @@
 <link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
 
 <script src="https://cdn.tailwindcss.com"></script>
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
-
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
@@ -88,7 +86,7 @@ body {
 .telemetry-input, .telemetry-select {
     background: linear-gradient(180deg, #090b0e 0%, #151922 100%);
     border: 1px solid #3a4252;
-    color: #88c0d0;
+    color: #00d2ff;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 1px;
@@ -154,11 +152,8 @@ body {
             <a href="index.html" class="text-xl logo-cast block py-2">CYNICDROID</a>
             <div class="text-[9px] text-gray-500 tracking-widest font-bold mt-1">ONLINE PRODUCT STORE</div>
         </div>
-        
-        <div class="w-full mt-6 space-y-2 flex flex-row flex-wrap gap-2 md:flex-col md:space-y-2 justify-center items-center" id="categoryFilter">
-        </div>
+        <div class="w-full mt-6 space-y-2 flex flex-row flex-wrap gap-2 md:flex-col md:space-y-2 justify-center items-center" id="categoryFilter"></div>
     </div>
-
     <div class="w-full mt-6 pt-4 border-t border-neutral-800 flex flex-col items-center gap-2">
         <button class="telemetry-btn w-full py-2 text-[10px]" onclick="openProfileModal()">MY PROFILE & HISTORY</button>
     </div>
@@ -200,7 +195,6 @@ body {
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeProfileModal()">✕</button>
         </div>
         
-        <!-- Profile Inputs Group -->
         <div class="space-y-2">
             <div>
                 <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">FULL NAME</label>
@@ -227,27 +221,25 @@ body {
             </div>
         </div>
 
-        <!-- Purchase History Record Matrix -->
         <div class="border-t border-neutral-800 pt-3 space-y-2">
             <h4 class="text-[10px] font-black text-gray-400 tracking-widest uppercase">VERIFIED PURCHASE HISTORY</h4>
-            <div id="historyLogContainer" class="card-recessed p-2 max-h-48 overflow-y-auto space-y-2">
-                <!-- Dynamically Populated History Items Go Here -->
-            </div>
+            <div id="historyLogContainer" class="card-recessed p-2 max-h-48 overflow-y-auto space-y-2"></div>
         </div>
     </div>
 </div>
 
+<!-- PREVIEW MODAL -->
 <div id="previewModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
         <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
             <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">PRODUCT DETAILS</h3>
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closePreview()">✕</button>
         </div>
-        <div class="card-recessed overflow-hidden relative min-h-48 flex items-center justify-center">
-            <img id="previewImg" class="w-full h-48 object-cover opacity-80 hidden" src="" onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-black font-mono text-[10px] text-slate-400">
-                <span id="fallbackPreviewLabel" class="truncate max-w-full text-cyan-400"></span>
-                <span class="text-[9px] text-amber-400 mt-2 border border-amber-900/50 bg-amber-950/20 px-2 py-0.5 rounded">NO IMAGE INSTALLED</span>
+        <div class="card-recessed overflow-hidden relative min-h-48 flex items-center justify-center bg-black">
+            <img id="previewImg" class="w-full h-48 object-cover opacity-80" src="" onerror="handleBrokenImage(this, 'PREVIEW')">
+            <div id="previewFallbackContainer" class="absolute inset-0 hidden flex-col items-center justify-center p-4 text-center font-mono text-[10px] bg-neutral-950 border border-cyan-500/20 shadow-[inset_0_0_15px_rgba(0,210,255,0.15)] text-slate-400">
+                <span id="fallbackPreviewLabel" class="truncate max-w-full text-cyan-400 font-bold tracking-wider"></span>
+                <span class="text-[9px] text-cyan-400 mt-2 border border-cyan-500/30 bg-cyan-950/30 px-3 py-1 rounded shadow-[0_0_8px_rgba(0,210,255,0.2)] uppercase">CYNICDROID SYSTEM MODULE</span>
             </div>
         </div>
         <div class="space-y-1">
@@ -261,6 +253,7 @@ body {
     </div>
 </div>
 
+<!-- CART MODAL -->
 <div id="cartModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
         <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
@@ -276,6 +269,7 @@ body {
     </div>
 </div>
 
+<!-- CHECKOUT MODAL -->
 <div id="checkoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
         <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
@@ -331,7 +325,21 @@ const searchInput = document.getElementById('searchInput');
 const sortSelect = document.getElementById('sortSelect');
 
 let products = [];
-let manualPaymentMode = false; // State flag to track STK timeout/busy state switches
+let manualPaymentMode = false;
+
+// Global broken image engine
+function handleBrokenImage(imgElement, context, fallbackName = '') {
+    imgElement.classList.add('hidden');
+    if (context === 'PREVIEW') {
+        document.getElementById('previewFallbackContainer').classList.replace('hidden', 'flex');
+    } else if (context === 'CARD') {
+        const fallbackNode = imgElement.nextElementSibling;
+        if (fallbackNode) fallbackNode.classList.replace('hidden', 'flex');
+    } else if (context === 'CART') {
+        const parent = imgElement.parentElement;
+        if (parent) parent.innerHTML = `<span class="text-[8px] text-cyan-400 font-bold font-mono">MODULE</span>`;
+    }
+}
 
 async function loadProductsFromSheet() {
     const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR6nwuh8gVDU94Xr1akAb95Mps3FIHsRbMeT1Oq1R2FIrw4gzvdQSte2_0dPGjE4Hf9zrkrjmU2eVQh/pub?gid=0&single=true&output=csv';
@@ -366,7 +374,7 @@ function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); }
 function autoGetLocation(targetElementId) {
     const targetTextArea = document.getElementById(targetElementId);
     if (!navigator.geolocation) {
-        alert("GEOLOCATION UNAVAILABLE: Browser tracking mapping unsupported.");
+        alert("GEOLOCATION UNAVAILABLE: Tracking mapping unsupported.");
         return;
     }
     targetTextArea.value = "ACQUIRING TELEMETRY SATELLITE FIX... PLEASE WAIT...";
@@ -376,19 +384,11 @@ function autoGetLocation(targetElementId) {
             const lon = position.coords.longitude;
             const accuracy = Math.round(position.coords.accuracy);
             const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
-            if (targetTextArea.value.includes("ACQUIRING TELEMETRY")) {
-                targetTextArea.value = `GPS Location (Accurate to ~${accuracy}m):\n${mapLink}`;
-            } else {
-                targetTextArea.value += `\n\nGPS Coordinates:\n${mapLink}`;
-            }
+            targetTextArea.value = `GPS Location (Accurate to ~${accuracy}m):\n${mapLink}`;
         },
         (error) => {
             targetTextArea.value = "";
-            let errorMsg = "LOCATION ERROR: Failed to acquire GPS parameters.";
-            if (error.code === error.PERMISSION_DENIED) {
-                errorMsg = "ACCESS DENIED: Location permissions are restricted.";
-            }
-            alert(errorMsg);
+            alert(error.code === error.PERMISSION_DENIED ? "ACCESS DENIED: Check location permissions." : "LOCATION ERROR: Fix failed.");
         },
         { enableHighAccuracy: true, timeout: 10000 }
     );
@@ -397,17 +397,20 @@ function autoGetLocation(targetElementId) {
 function createCard(p) {
     const card = document.createElement('div');
     card.className = 'card-recessed p-3 flex flex-col justify-between space-y-3 transition-all duration-200 hover:border-cyan-500 group cursor-pointer';
-    const imagePath = `./assets/images/${p.img}`;
+    
+    // Verifies whether image string is empty, undefined, or missing a standard image extension
+    const hasValidImageString = p.img && p.img.trim() !== "" && /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(p.img);
+    const imageSrc = hasValidImageString ? `./assets/images/${p.img}` : 'BROKEN_TRIGGER';
+
     card.innerHTML = `
         <div class="space-y-2">
             <div class="overflow-hidden rounded border border-neutral-900 bg-black h-32 flex items-center justify-center relative">
-                <img class="w-full h-32 object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-200 hidden" 
-                     src="${imagePath}" alt="${p.title}" 
-                     onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden')"
-                     onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden')">
-                <div class="absolute inset-0 flex flex-col items-center justify-center p-2 text-center font-mono text-[9px] text-slate-400 bg-neutral-950">
-                    <span class="truncate max-w-full text-cyan-400">${p.img}</span>
-                    <span class="text-[8px] text-slate-600 mt-1 uppercase">Image Assigned</span>
+                <img class="w-full h-32 object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-200" 
+                     src="${imageSrc}" alt="${p.title}" 
+                     onerror="handleBrokenImage(this, 'CARD')">
+                <div class="absolute inset-0 hidden flex-col items-center justify-center p-2 text-center font-mono text-[9px] bg-neutral-950 border border-cyan-500/20 shadow-[inset_0_0_12px_rgba(0,210,255,0.1)] text-slate-400">
+                    <span class="truncate max-w-full text-cyan-400 font-bold uppercase tracking-wide">${p.title}</span>
+                    <span class="text-[8px] text-cyan-500/50 mt-1 uppercase tracking-widest font-mono">SYS_MODULE</span>
                 </div>
             </div>
             <h3 class="text-[11px] font-black tracking-wide text-gray-200 uppercase line-clamp-1 group-hover:text-cyan-400">${p.title}</h3>
@@ -436,7 +439,7 @@ function createPagination(container, items) {
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         if (items.length === 0) {
-            grid.innerHTML = `<div class="col-span-full text-center text-gray-500 font-bold text-xs py-8 tracking-widest">NO PRODUCTS FOUND IN THIS CATEGORY.</div>`;
+            grid.innerHTML = `<div class="col-span-full text-center text-gray-500 font-bold text-xs py-8 tracking-widest">NO PRODUCTS FOUND.</div>`;
             return;
         }
         items.slice(start, end).forEach(p => grid.appendChild(createCard(p)));
@@ -535,16 +538,14 @@ function applyFiltersAndSorting() {
 searchInput.addEventListener('input', applyFiltersAndSorting);
 sortSelect.addEventListener('change', applyFiltersAndSorting);
 
-// ================== ACCOUNT PROFILE & LOCAL HISTORY MATRICES ==================
+// ================== ACCOUNT PROFILE & LOCAL HISTORY ==================
 function openProfileModal() {
     document.getElementById('profileModal').classList.replace('hidden', 'flex');
     const profile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '', address: '' };
-    
     document.getElementById('profileName').value = profile.name || '';
     document.getElementById('profilePhone').value = profile.phone || '';
     document.getElementById('profileEmail').value = profile.email || '';
     document.getElementById('profileAddress').value = profile.address || '';
-    
     renderPurchaseHistory();
 }
 function closeProfileModal() { document.getElementById('profileModal').classList.replace('flex', 'hidden'); }
@@ -554,48 +555,39 @@ function saveUserProfileData() {
     const phone = document.getElementById('profilePhone').value.trim();
     const email = document.getElementById('profileEmail').value.trim();
     const address = document.getElementById('profileAddress').value.trim();
-
     localStorage.setItem('cynic_profile_data', JSON.stringify({ name, phone, email, address }));
-    alert('PROFILE RECORDED: Local profile details updated.');
+    alert('PROFILE RECORDED: Local details updated.');
     closeProfileModal();
 }
 
 function clearUserProfileData() {
-    if (confirm('PURGE PROFILE DATA? This will wipe your saved credentials and local purchase database records permanently.')) {
+    if (confirm('PURGE ALL DATA?')) {
         localStorage.removeItem('cynic_profile_data');
         localStorage.removeItem('cynic_purchase_history');
-        
         document.getElementById('profileName').value = '';
         document.getElementById('profilePhone').value = '';
         document.getElementById('profileEmail').value = '';
         document.getElementById('profileAddress').value = '';
-        
-        alert('PROFILE AND HISTORY PURGED SUCCESSFULY.');
+        alert('PURGED SUCCESSFULY.');
         closeProfileModal();
     }
 }
 
-// Renders the saved transactions inside the history layout node
 function renderPurchaseHistory() {
     const container = document.getElementById('historyLogContainer');
     const history = JSON.parse(localStorage.getItem('cynic_purchase_history')) || [];
     container.innerHTML = '';
-
     if (history.length === 0) {
-        container.innerHTML = '<div class="text-center font-bold text-gray-500 text-[9px] py-4 uppercase tracking-widest">NO PRIOR ACCOUNT TRANSACTIONS FOUND.</div>';
+        container.innerHTML = '<div class="text-center font-bold text-gray-500 text-[9px] py-4 tracking-widest">NO PRIOR ACCOUNT TRANSACTIONS FOUND.</div>';
         return;
     }
-
     history.reverse().forEach(record => {
         const itemBlock = document.createElement('div');
         itemBlock.className = 'p-2 bg-neutral-950/80 rounded border border-neutral-900 text-[9px] space-y-1';
-        
         let itemsListHTML = record.items.map(i => `<div class="text-gray-300 uppercase">${i.title} (x${i.qty})</div>`).join('');
-        
         itemBlock.innerHTML = `
             <div class="flex justify-between border-b border-neutral-900 pb-1 font-mono text-[8px] text-gray-500">
-                <span>DATE: ${record.date}</span>
-                <span class="text-cyan-500 font-bold">${record.method}</span>
+                <span>DATE: ${record.date}</span> <span class="text-cyan-500 font-bold">${record.method}</span>
             </div>
             <div class="space-y-0.5">${itemsListHTML}</div>
             <div class="flex justify-between items-center pt-1 text-slate-400">
@@ -607,17 +599,15 @@ function renderPurchaseHistory() {
     });
 }
 
-// Stores successful logs directly into storage
 function archiveTransactionToHistory(itemsArray, totalCost, deliveryAddress, fallbackStatus) {
     const history = JSON.parse(localStorage.getItem('cynic_purchase_history')) || [];
-    const newRecord = {
+    history.push({
         date: new Date().toLocaleString(),
         items: itemsArray.map(i => ({ title: i.title, qty: i.qty })),
         total: totalCost,
         address: deliveryAddress,
         method: fallbackStatus ? "MANUAL_PAYBILL" : "STK_PUSH"
-    };
-    history.push(newRecord);
+    });
     localStorage.setItem('cynic_purchase_history', JSON.stringify(history));
 }
 
@@ -635,10 +625,14 @@ function updateCartUI() {
     cart.forEach(item => {
         const div = document.createElement('div');
         div.className = 'flex items-center justify-between gap-3 p-2 bg-black/60 rounded border border-neutral-900 text-[10px]';
+        
+        const hasValidImageString = item.img && item.img.trim() !== "" && /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(item.img);
+        const imageSrc = hasValidImageString ? `./assets/images/${item.img}` : 'BROKEN_TRIGGER';
+
         div.innerHTML = `
             <div class="flex items-center gap-2">
                 <div class="w-10 h-8 rounded bg-neutral-950 flex items-center justify-center overflow-hidden border border-neutral-800">
-                    <img class="w-full h-full object-cover hidden" src="./assets/images/${item.img}" onload="this.classList.remove('hidden')" onerror="this.classList.add('hidden')">
+                    <img class="w-full h-full object-cover" src="${imageSrc}" onerror="handleBrokenImage(this, 'CART')">
                 </div>
                 <div>
                     <strong class="text-gray-200 block max-w-[160px] truncate uppercase">${item.title}</strong>
@@ -670,8 +664,13 @@ function adjustQty(id, delta) {
 
 function openPreview(p) {
     document.getElementById('previewModal').classList.replace('hidden', 'flex');
-    document.getElementById('previewImg').src = `./assets/images/${p.img}`;
-    document.getElementById('fallbackPreviewLabel').innerText = p.img;
+    document.getElementById('previewImg').classList.remove('hidden');
+    document.getElementById('previewFallbackContainer').classList.add('hidden');
+    
+    const hasValidImageString = p.img && p.img.trim() !== "" && /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(p.img);
+    document.getElementById('previewImg').src = hasValidImageString ? `./assets/images/${p.img}` : 'BROKEN_TRIGGER';
+    
+    document.getElementById('fallbackPreviewLabel').innerText = p.title;
     document.getElementById('previewTitle').innerText = p.title;
     document.getElementById('previewDesc').innerText = p.desc;
     document.getElementById('previewPrice').innerText = `PRICE: Ksh ${p.price}`;
@@ -691,8 +690,6 @@ function openCheckout() {
     if (cart.length === 0) return;
     closeCart();
     document.getElementById('checkoutModal').classList.replace('hidden', 'flex');
-    
-    // Reset control states cleanly on every window invocation
     manualPaymentMode = false;
     const submitBtn = document.getElementById('submitOrderBtn');
     submitBtn.innerText = 'INITIATE M-PESA PAYMENT';
@@ -717,7 +714,7 @@ function openCheckout() {
 }
 function closeCheckout() { document.getElementById('checkoutModal').classList.replace('flex', 'hidden'); }
 
-// ================== EMAILJS GATEWAY & TIMEOUT FAILOVER ==================
+// ================== EMAILJS GATEWAY & TELEMETRY DESIGN ==================
 emailjs.init("Iz22KBRfL682WD6td"); 
 
 async function submitCheckout() {
@@ -733,73 +730,85 @@ async function submitCheckout() {
     }
 
     const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-
-    // If already toggled to manual mode because STK was flagged busy/offline
     if (manualPaymentMode) {
         processOrderManifest(name, phone, email, address, totalAmount, true);
         return;
     }
 
     let formattedPhone = phone.replace(/\s+/g, '');
-    if (formattedPhone.startsWith('0')) {
-        formattedPhone = '254' + formattedPhone.substring(1);
-    } else if (formattedPhone.startsWith('+254')) {
-        formattedPhone = formattedPhone.substring(1);
-    }
+    if (formattedPhone.startsWith('0')) formattedPhone = '254' + formattedPhone.substring(1);
+    else if (formattedPhone.startsWith('+254')) formattedPhone = formattedPhone.substring(1);
 
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span class="operation-loader"></span> PINNING GATEWAY TELEMETRY...`;
 
-    // Promise Race pattern handling: Swaps to manual fallback if backend drops or blocks for > 5 seconds
     const gatewayTimeout = new Promise((_, reject) => setTimeout(() => reject(new Error('TIMEOUT_BUSY')), 5000));
     const mpesaApiGatewayUrl = 'https://YOUR_STK_PUSH_GATEWAY_ENDPOINT/stk'; 
     
     const gatewayFetch = fetch(mpesaApiGatewayUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            phone: formattedPhone,
-            amount: totalAmount,
-            paybill: "247247",
-            account: "0716375459"
-        })
+        body: JSON.stringify({ phone: formattedPhone, amount: totalAmount, paybill: "247247", account: "0716375459" })
     });
 
     try {
         await Promise.race([gatewayFetch, gatewayTimeout]);
-        alert('STK PUSH SENT! Enter your M-Pesa PIN on your phone to authorize.');
+        alert('STK PUSH SENT! Enter your M-Pesa PIN.');
         processOrderManifest(name, phone, email, address, totalAmount, false);
     } catch (err) {
-        console.warn('STK API transmission flagged busy or offline. Switching layout state to manual payload mode.');
-        
-        // Transform checkout interface controls to prioritize confirmation over blockages
         manualPaymentMode = true;
         submitBtn.disabled = false;
         submitBtn.className = "telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-amber-400 border-amber-900 hover:border-amber-400";
         submitBtn.innerText = 'CONFIRM MANUAL PAYMENT';
-        
-        alert('STK PROMPT BUSY: Network routing is slow. Please pay manually using the Equity Paybill instructions on your screen, then click "CONFIRM MANUAL PAYMENT" to submit your order manifest.');
+        alert('STK PROMPT BUSY: Routing slow. Please pay manually via Equity Paybill, then tap "CONFIRM MANUAL PAYMENT" to submit.');
     }
 }
 
-// Separate manifest transmission controller so users don't lose cart parameters on network errors
 async function processOrderManifest(name, phone, email, address, totalAmount, isManualPayment) {
     const submitBtn = document.getElementById('submitOrderBtn');
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span class="operation-loader"></span> DEPLOYING ORDER SYSTEM MANIFEST...`;
 
-    const productsArray = cart.map(item => ({
-        title: item.title,
-        price: item.price,
-        qty: item.qty
-    }));
+    // Constructs a themed tech-styled HTML block to look beautiful in email clients
+    let itemsHtmlBuffer = `
+    <div style="font-family:'Orbitron',sans-serif; background-color:#090b0e; border:1px solid #00d2ff; padding:15px; border-radius:4px; max-width:500px;">
+        <table style="width:100%; border-collapse:collapse; color:#e2e8f0; font-size:11px;">
+            <thead>
+                <tr style="border-bottom:2px solid #3a4252; text-align:left; color:#00d2ff;">
+                    <th style="padding-bottom:6px; letter-spacing:1px;">ITEM MODULE DESCRIPTION</th>
+                    <th style="padding-bottom:6px; text-align:center;">QTY</th>
+                    <th style="padding-bottom:6px; text-align:right;">PRICE</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    cart.forEach(item => {
+        itemsHtmlBuffer += `
+            <tr style="border-bottom:1px solid #151922;">
+                <td style="padding:8px 0; font-weight:bold; text-transform:uppercase; color:#ffffff;">${item.title}</td>
+                <td style="padding:8px 0; text-align:center; color:#88c0d0;">${item.qty}</td>
+                <td style="padding:8px 0; text-align:right; color:#a3be8c; font-weight:bold;">Ksh ${item.price * item.qty}</td>
+            </tr>
+        `;
+    });
+
+    itemsHtmlBuffer += `
+            </tbody>
+        </table>
+        <div style="margin-top:12px; padding-top:10px; border-top:2px solid #3a4252; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:10px; color:#4c566a; font-weight:bold;">GATEWAY VERIFIED</span>
+            <span style="font-size:13px; color:#00d2ff; font-weight:900;">TOTAL: Ksh ${totalAmount}</span>
+        </div>
+    </div>
+    `;
 
     const dataPayload = { 
         from_name: name, 
         from_phone: phone, 
         from_email: email,
-        shipping_address: address,
-        products: productsArray, 
+        shipping_address: address, // Injects the shipping address safely into the core array parameters
+        products_html: itemsHtmlBuffer, // Passes the beautifully themed inline template block
         total: totalAmount,
         payment_method: isManualPayment ? "MANUAL_EQUITY_PAYBILL_FALLBACK" : "MPESA_AUTOMATED_STK_PUSH"
     };
@@ -808,24 +817,20 @@ async function processOrderManifest(name, phone, email, address, totalAmount, is
         await emailjs.send('cynic_service', 'template_d145jij', dataPayload);
         await emailjs.send('cynic_service', 'template_2b1djar', dataPayload);
 
-        // Record metrics to Local Purchase Logs on absolute delivery success
         archiveTransactionToHistory(cart, totalAmount, address, isManualPayment);
-
-        alert(`ORDER LOGGED SUCCESSFULLY!\n\nYour purchase manifest has been updated. Delivery will initiate once manual cross-verifications conclude.`);
-        
+        alert(`ORDER LOGGED SUCCESSFULLY!`);
         cart = [];
         updateCartUI();
         closeCheckout();
     } catch (err) {
-        console.error('Outbound email delivery logging failure:', err);
-        alert('LOGISTICS LOGGING FAILURE: Transaction failed to log. Please screenshot this and reach out to management directly.');
+        console.error('Email delivery failure:', err);
+        alert('LOGISTICS LOGGING FAILURE. Please screenshot your dashboard cart details manually.');
     } finally {
         submitBtn.disabled = false;
         manualPaymentMode = false;
     }
 }
 
-// ================== RUN CORE ENGINE ==================
 initializeFilterControls();
 applyFiltersAndSorting();
 updateCartUI();
