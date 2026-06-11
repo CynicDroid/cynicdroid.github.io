@@ -12,36 +12,39 @@
 <!-- Google Fonts: Orbitron for absolute hardware symmetry -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
 
+<!-- AOS Scroll Animations -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 <style>
-body, h1, h2, h3, h4, p, a, li, strong, em {
+body, h1, h2, h3, h4, p, a, li, strong, em, button, input, select {
     font-family: 'Orbitron', sans-serif;
 }
 
 body {
     background-color: #cbd5e1;
-    /* Skeuomorphic Brushed Aluminum / Raw Metallic Background Design */
+    /* Premium Bright Brushed Aluminum Metal Panel Background */
     background-image: 
-        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.1) 100%),
-        linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.05) 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 4px),
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 3px);
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.15);
-    color: #1e293b;
+        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.1) 80%, rgba(255,255,255,0.1) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.1) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.15);
+    color: #e2e8f0;
     overflow-x: hidden;
 }
 
 /* ====== 3D Machined Metal Chassis Panels ====== */
 .hardware-panel {
-    background: linear-gradient(180deg, #2a303d 0%, #171b22 100%);
-    border-top: 2px solid #5a657a;
-    border-left: 2px solid #485264;
-    border-right: 2px solid #1a1e26;
-    border-bottom: 3px solid #0d1014;
+    background: linear-gradient(180deg, #232936 0%, #161b24 100%);
+    border-top: 2px solid #38455e;
+    border-left: 2px solid #2d374b;
+    border-right: 2px solid #141923;
+    border-bottom: 4px solid #0d1016;
     box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.2),
-        inset 0 -3px 8px rgba(0, 0, 0, 0.6),
-        0 30px 60px -15px rgba(15, 23, 42, 0.6);
-    border-radius: 6px;
+        inset 0 1px 2px rgba(255, 255, 255, 0.08),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.5),
+        0 20px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
     position: relative;
 }
 
@@ -50,93 +53,171 @@ body {
     position: absolute;
     inset: 5px;
     border: 1px solid #101319;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
     border-radius: 4px;
     pointer-events: none;
 }
 
 /* ====== Recessed Die-Cast Technical Bays ====== */
 .card-recessed {
-    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
-    border-top: 2px solid #101319;
-    border-left: 2px solid #101319;
-    border-right: 1px solid #3a4252;
-    border-bottom: 1px solid #3a4252;
+    background: linear-gradient(180deg, #12161f 0%, #0d1016 100%);
+    border-top: 2px solid #090b0e;
+    border-left: 2px solid #090b0e;
+    border-right: 1px solid #2d374b;
+    border-bottom: 1px solid #2d374b;
     box-shadow: 
-        inset 0 4px 10px rgba(0, 0, 0, 0.9),
-        0 1px 2px rgba(255, 255, 255, 0.08);
-    border-radius: 4px;
+        inset 0 4px 10px rgba(0, 0, 0, 0.6),
+        0 1px 2px rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-recessed:hover {
+    border-right-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.7),
+        0 0 15px rgba(0, 210, 255, 0.15);
 }
 
 /* ====== Industrial Rivet Badges ====== */
 .rivet-plate {
-    background: linear-gradient(180deg, #404859 0%, #202530 100%);
-    border: 1px solid #566178;
+    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
+    border: 1px solid #2d374b;
     box-shadow: 
-        inset 0 1px 1px rgba(255,255,255,0.2),
-        0 4px 8px rgba(0,0,0,0.5);
-    padding: 4px 20px;
+        inset 0 1px 1px rgba(255,255,255,0.05),
+        0 4px 8px rgba(0,0,0,0.4);
+    padding: 6px 24px;
     font-weight: 900;
     font-size: 0.85rem;
     letter-spacing: 2px;
-    color: #e2e8f0;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+    color: #00d2ff;
+    text-shadow: 0 0 6px rgba(0, 210, 255, 0.3);
     position: relative;
     display: inline-flex;
     align-items: center;
     gap: 12px;
+    border-radius: 4px;
 }
 .rivet-plate::before, .rivet-plate::after {
     content: '';
     width: 5px; height: 5px;
-    background: #11141a;
+    background: #090b0e;
     border-radius: 50%;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ====== Heavy Machinery 3D Buttons ====== */
+.btn-machined, .telemetry-link {
+    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%) !important;
+    border-top: 1px solid #3d4a63 !important;
+    border-left: 1px solid #333e54 !important;
+    border-right: 2px solid #0f1217 !important;
+    border-bottom: 4px solid #0a0c10 !important;
+    color: #d8dee9 !important;
+    font-weight: 700;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 6px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.1s ease;
+    letter-spacing: 1.5px;
+}
+
+.btn-machined:hover, .telemetry-link:hover {
+    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%) !important;
+    color: #aef710 !important;
+    border-right-color: #1f242e !important;
+    border-bottom-color: #aef710 !important;
+    text-shadow: 0 0 6px rgba(174, 247, 16, 0.4);
+    box-shadow: 
+        inset 0 1px 0 rgba(174, 247, 16, 0.05),
+        0 4px 12px rgba(174, 247, 16, 0.15);
+}
+
+.btn-machined:active, .telemetry-link:active {
+    border-bottom-width: 1px !important;
+    transform: translateY(3px);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Red Emergency Finish for Logout Button */
+.btn-logout {
+    background: linear-gradient(180deg, #5c2424 0%, #3a1515 100%) !important;
+    border-top: 1px solid #7c3535 !important;
+    border-left: 1px solid #6b2d2d !important;
+    border-right: 2px solid #240c0c !important;
+    border-bottom: 4px solid #1a0808 !important;
+    color: #fca5a5 !important;
+}
+
+.btn-logout:hover {
+    background: linear-gradient(180deg, #3d1616 0%, #240c0c 100%) !important;
+    color: #ef4444 !important;
+    border-bottom-color: #ef4444 !important;
+    text-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.telemetry-link {
+    font-size: 0.72rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.telemetry-link-profile {
+    color: #00d2ff !important;
+    border-color: #1b354b !important;
+}
+
+/* Input Fields Machined Realism */
+.input-machined {
+    background: #090b0e;
+    border: 1px solid #232d3d;
+    border-bottom: 2px solid #334155;
+    color: #f1f5f9;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+    border-radius: 4px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+.input-machined:focus {
+    outline: none;
+    border-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.9), 0 0 10px rgba(0, 210, 255, 0.15);
 }
 
 /* ====== Embedded Steel Header Navigation ====== */
 .nav-chassis {
-    background: linear-gradient(180deg, #3a4253 0%, #1c2029 100%);
-    border-bottom: 4px solid #0d1014;
+    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
+    border-bottom: 3px solid #00d2ff;
     box-shadow: 
-        inset 0 -1px 0 rgba(0,0,0,0.8),
-        inset 0 1px 0 rgba(255,255,255,0.15),
-        0 10px 30px rgba(0,0,0,0.5);
+        inset 0 -1px 0 rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        0 10px 30px rgba(0,0,0,0.7);
 }
 
 .logo-cast {
     font-weight: 900;
     letter-spacing: 4px;
-    color: #e5e9f0;
-    background: linear-gradient(180deg, #ffffff 0%, #9aa3b2 100%);
+    color: #00d2ff;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+    background: linear-gradient(180deg, #ffffff 0%, #00d2ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
-}
-
-.telemetry-link {
-    font-size: 0.75rem;
-    font-weight: 700;
-    background: #090b0e;
-    border: 1px solid #313745;
-    color: #88c0d0;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
-    border-radius: 3px;
-    transition: all 0.2s ease;
-}
-.telemetry-link:hover {
-    color: #ffffff;
-    border-color: #00d2ff;
-    box-shadow: 
-        inset 0 1px 2px rgba(0,0,0,0.6),
-        0 0 8px rgba(0, 210, 255, 0.3);
 }
 
 /* ====== Structural Chiseled Typography ====== */
 .steel-engraved-header {
     font-weight: 900;
     letter-spacing: 2px;
-    background: linear-gradient(180deg, #ffffff 20%, #a3acb9 60%, #4c535e 100%);
+    background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
@@ -159,28 +240,35 @@ body {
 <body>
 
 <!-- Header Architecture Layout -->
-<header class="nav-chassis fixed w-full z-50">
-    <div class="container mx-auto flex justify-between items-center p-3 px-6">
+<header class="nav-chassis fixed w-full z-40">
+    <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center p-3 px-4 md:px-6 gap-3">
         <a href="index.html" class="text-2xl logo-cast">CYNICDROID</a>
-        <div class="flex gap-3">
-            <a href="https://wa.me/0716375459" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">WHATSAPP</a>
-            <a href="https://www.facebook.com/profile.php?id=100064124917514" class="telemetry-link px-4 py-1.5" target="_blank" rel="noopener">FACEBOOK</a>
-            <a href="mailto:cynicdroid@gmail.com" class="telemetry-link px-4 py-1.5">EMAIL</a>
+        
+        <!-- Action Control Array Matrix -->
+        <div class="flex flex-wrap gap-2 items-center justify-center">
+            <a href="https://wa.me/254716375459" class="telemetry-link" target="_blank" rel="noopener">WHATSAPP</a>
+            <a href="tel:+254716375459" class="telemetry-link">CALL</a>
+            <a href="mailto:cynicdroid@gmail.com" class="telemetry-link">EMAIL</a>
+            
+            <!-- Auth Switches Dynamic Hub -->
+            <div id="authNavContainer" class="flex gap-2 border-l border-gray-700 pl-2">
+                <!-- Injected via JavaScript Core -->
+            </div>
         </div>
     </div>
 </header>
 
 <!-- Main Dashboard Frame -->
-<main class="pt-32 pb-12 relative z-10 container mx-auto px-6 space-y-6 max-w-5xl">
+<main class="pt-36 sm:pt-28 md:pt-32 pb-12 relative z-10 container mx-auto px-4 md:px-6 space-y-6 max-w-5xl">
     
     <!-- Hero Header Panel -->
-    <div class="hardware-panel p-6 md:p-8 text-center">
+    <div class="hardware-panel p-6 md:p-8 text-center" data-aos="fade-up">
         <h1 class="text-2xl md:text-5xl font-black tracking-wider steel-engraved-header uppercase">COOKIE POLICY TRACK</h1>
-        <div class="mt-4 inline-block"><span class="rivet-plate text-cyan-400">LAST REVISED: JUNE 08, 2026</span></div>
+        <div class="mt-4 inline-block"><span class="rivet-plate">LAST REVISED: JUNE 08, 2026</span></div>
     </div>
 
     <!-- Overview Statement Card -->
-    <div class="hardware-panel p-6 md:p-8">
+    <div class="hardware-panel p-6 md:p-8" data-aos="fade-up" data-aos-delay="50">
         <h2 class="text-sm font-black text-gray-300 tracking-widest uppercase mb-4 flex items-center gap-2">
             <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span> TELEMETRY TRACKING & DATA COLLECTION
         </h2>
@@ -195,7 +283,7 @@ body {
     </div>
 
     <!-- Analytical Breakdown Layer -->
-    <div class="hardware-panel p-6 md:p-8 space-y-6">
+    <div class="hardware-panel p-6 md:p-8 space-y-6" data-aos="fade-up" data-aos-delay="100">
         
         <!-- Block 1 -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
@@ -219,29 +307,29 @@ body {
                 <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">CLASSIFIED ARRAY TYPES</span>
             </div>
             <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px]">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[11px]">
                     <div>
-                        <strong class="text-gray-300 block">■ ADVERTISING LAYERS</strong>
+                        <strong class="text-gray-300 block mb-1">■ ADVERTISING LAYERS</strong>
                         Serve targeted telemetry blocks and measure interaction responses without scanning unique identity databases.
                     </div>
                     <div>
-                        <strong class="text-gray-300 block">■ ANALYTICAL STACKS</strong>
+                        <strong class="text-gray-300 block mb-1">■ ANALYTICAL STACKS</strong>
                         Record internal application traffic metrics to repair structural site path bugs.
                     </div>
                     <div>
-                        <strong class="text-gray-300 block">■ FIRST-PARTY SYSTEM UTILITIES</strong>
+                        <strong class="text-gray-300 block mb-1">■ FIRST-PARTY SYSTEM UTILITIES</strong>
                         Core foundational scripts mandatory for executing standard navigation loads.
                     </div>
                     <div>
-                        <strong class="text-gray-300 block">■ USER PREFERENCE FILES</strong>
+                        <strong class="text-gray-300 block mb-1">■ USER PREFERENCE FILES</strong>
                         Retain custom theme presets and language orientation matrices.
                     </div>
                     <div>
-                        <strong class="text-gray-300 block">■ SECURITY MODULES</strong>
+                        <strong class="text-gray-300 block mb-1">■ SECURITY MODULES</strong>
                         Verify cryptographic credentials, counter malicious bot attacks, and protect active client payloads.
                     </div>
                     <div>
-                        <strong class="text-gray-300 block">■ EXTERNAL THIRD-PARTY UTILITIES</strong>
+                        <strong class="text-gray-300 block mb-1">■ EXTERNAL THIRD-PARTY UTILITIES</strong>
                         Embedded dependencies served from diagnostic platforms linked across our web footprint.
                     </div>
                 </div>
@@ -272,22 +360,174 @@ body {
     </div>
 
     <!-- Privacy Integration Unit -->
-    <div class="hardware-panel p-6 text-center space-y-3">
+    <div class="hardware-panel p-6 text-center space-y-3" data-aos="fade-up">
         <h3 class="text-xs font-black text-gray-300 tracking-widest uppercase">COMPLETE PROTECTION SPECIFICATIONS</h3>
-        <p class="text-xs text-gray-400 max-w-xl mx-auto">
+        <p class="text-xs text-gray-400 max-w-xl mx-auto leading-relaxed">
             To view full cryptographic storage rules, account retention parameters, and complete data governance configurations, link directly to our primary diagnostic layout.
         </p>
         <div class="pt-2">
-            <a href="Privacy.html" class="telemetry-link px-6 py-2 text-xs font-bold inline-block">ACCESS PRIMARY PRIVACY MATRIX</a>
+            <a href="Privacy.html" class="btn-machined px-6 py-2.5 rounded text-xs font-bold inline-block">ACCESS PRIMARY PRIVACY MATRIX</a>
         </div>
     </div>
 
 </main>
 
+<!-- SIMPLE ENGLISH REGISTRATION / LOGIN MODAL -->
+<div id="authModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+    <div class="hardware-panel max-w-lg w-full p-6 relative">
+        <!-- Close Button -->
+        <button onclick="toggleAuthModal(false)" class="absolute top-4 right-4 text-gray-500 hover:text-white font-black text-sm select-none">&times; CLOSE</button>
+        
+        <div class="text-center mb-6"><span class="rivet-plate" id="modalBadge">CREATE AN ACCOUNT</span></div>
+        
+        <!-- Registration Form Subsystem -->
+        <form id="registrationForm" onsubmit="handleRegistration(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Full Name</label>
+                    <input type="text" id="regName" required class="input-machined" placeholder="Enter your full name">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Email Address</label>
+                    <input type="email" id="regEmail" required class="input-machined" placeholder="yourname@example.com">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Phone Number</label>
+                    <input type="tel" id="regPhone" required class="input-machined" placeholder="e.g. 0716375459">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Where do you live?</label>
+                    <input type="text" id="regLocation" required class="input-machined" placeholder="Town, County (e.g. Ishiara, Embu)">
+                </div>
+            </div>
+            <div class="flex flex-col gap-1">
+                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Create a Password</label>
+                <input type="password" id="regPassword" required class="input-machined" placeholder="Choose a secure password">
+            </div>
+            <button type="submit" class="btn-machined w-full py-3 rounded text-xs uppercase font-bold mt-2">REGISTER NOW</button>
+            <p class="text-center text-[10px] text-gray-500 tracking-wide mt-2">Already have an account? <span onclick="switchModalMode('login')" class="text-sky-400 cursor-pointer underline">Log In Here</span></p>
+        </form>
+
+        <!-- Login Form Subsystem -->
+        <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 hidden">
+            <div class="flex flex-col gap-1">
+                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Email Address</label>
+                <input type="email" id="loginEmail" required class="input-machined" placeholder="yourname@example.com">
+            </div>
+            <div class="flex flex-col gap-1">
+                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Password</label>
+                <input type="password" id="loginPassword" required class="input-machined" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn-machined w-full py-3 rounded text-xs uppercase font-bold mt-2">LOG IN</button>
+            <p class="text-center text-[10px] text-gray-500 tracking-wide mt-2">Need a new account? <span onclick="switchModalMode('register')" class="text-sky-400 cursor-pointer underline">Sign Up Here</span></p>
+        </form>
+    </div>
+</div>
+
 <!-- Base Chassis Footer Frame -->
-<footer class="bg-black border-t-4 border-neutral-800 text-gray-600 py-6 text-center text-xs tracking-widest relative z-10">
-    <p>© Copyright 2026 CynicDroid Technologies. All Rights Reserved.</p>
+<footer class="bg-black border-t-4 border-neutral-900 py-6 text-center text-xs tracking-widest relative z-10">
+    <p class="font-black inline-block uppercase" style="background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));">
+        © Copyright 2026 CynicDroid Technologies. All Rights Reserved.
+    </p>
 </footer>
 
+<!-- Integration Scripts Framework -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true });
+
+window.addEventListener('load', () => {
+    syncAuthUI();
+});
+
+// ====== USER PROFILE & AUTHENTICATION SUBSYSTEM ======
+function toggleAuthModal(show) {
+    const modal = document.getElementById('authModal');
+    if(show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        switchModalMode('register');
+    } else {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }
+}
+
+function switchModalMode(mode) {
+    const regForm = document.getElementById('registrationForm');
+    const loginForm = document.getElementById('loginForm');
+    const badge = document.getElementById('modalBadge');
+    
+    if(mode === 'login') {
+        regForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+        badge.innerText = "LOG IN TO YOUR ACCOUNT";
+    } else {
+        regForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        badge.innerText = "CREATE AN ACCOUNT";
+    }
+}
+
+function handleRegistration(e) {
+    e.preventDefault();
+    const userData = {
+        name: document.getElementById('regName').value,
+        email: document.getElementById('regEmail').value,
+        phone: document.getElementById('regPhone').value,
+        location: document.getElementById('regLocation').value,
+        password: document.getElementById('regPassword').value
+    };
+    
+    localStorage.setItem('cynicdroid_user', JSON.stringify(userData));
+    localStorage.setItem('cynicdroid_session', 'active');
+    
+    toggleAuthModal(false);
+    syncAuthUI();
+    document.getElementById('registrationForm').reset();
+}
+
+function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const pass = document.getElementById('loginPassword').value;
+    
+    const localUser = JSON.parse(localStorage.getItem('cynicdroid_user'));
+    
+    if(localUser && localUser.email === email && localUser.password === pass) {
+        localStorage.setItem('cynicdroid_session', 'active');
+        toggleAuthModal(false);
+        syncAuthUI();
+        document.getElementById('loginForm').reset();
+    } else {
+        alert("Error: The email or password you entered is incorrect.");
+    }
+}
+
+function handleLogout() {
+    localStorage.removeItem('cynicdroid_session');
+    syncAuthUI();
+}
+
+function syncAuthUI() {
+    const session = localStorage.getItem('cynicdroid_session');
+    const userContainer = document.getElementById('authNavContainer');
+    
+    if(session === 'active') {
+        const user = JSON.parse(localStorage.getItem('cynicdroid_user')) || {};
+        
+        userContainer.innerHTML = `
+            <span class="telemetry-link telemetry-link-profile uppercase">USER: ${user.name.split(' ')[0]}</span>
+            <button onclick="handleLogout()" class="telemetry-link btn-logout">LOGOUT</button>
+        `;
+    } else {
+        userContainer.innerHTML = `
+            <button onclick="toggleAuthModal(true)" class="telemetry-link">REGISTER / LOGIN</button>
+        `;
+    }
+}
+</script>
 </body>
 </html>

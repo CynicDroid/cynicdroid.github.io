@@ -83,7 +83,7 @@ body {
     filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
 }
 
-.telemetry-input, .telemetry-select {
+.telemetry-input {
     background: linear-gradient(180deg, #090b0e 0%, #151922 100%);
     border: 1px solid #3a4252;
     color: #00d2ff;
@@ -96,10 +96,40 @@ body {
     outline: none;
     transition: all 0.2s ease;
 }
-.telemetry-input:focus, .telemetry-select:focus {
+.telemetry-input:focus {
     border-color: #00d2ff;
     color: #ffffff;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,210,255,0.25);
+}
+
+/* Highly calibrated style layout architecture for custom select fields */
+.telemetry-select {
+    background: #090b0e !important;
+    border: 1px solid #3a4252;
+    color: #00d2ff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2300d2ff'><polygon points='0,0 10,0 5,5'/></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1rem center !important;
+}
+.telemetry-select:focus {
+    border-color: #00d2ff;
+    color: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,210,255,0.25);
+}
+.telemetry-select option {
+    background-color: #090b0e !important;
+    color: #00d2ff !important;
+    padding: 10px;
 }
 
 .telemetry-btn {
@@ -129,6 +159,31 @@ body {
     box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
 }
 
+.cyber-checkbox {
+    appearance: none;
+    background: #090b0e;
+    border: 1px solid #3a4252;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+.cyber-checkbox:checked {
+    border-color: #00d2ff;
+    background: #13171f;
+}
+.cyber-checkbox:checked::after {
+    content: '✓';
+    color: #00d2ff;
+    font-size: 11px;
+    font-weight: bold;
+    position: absolute;
+    top: -2px;
+    left: 2px;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -144,91 +199,146 @@ body {
 }
 </style>
 </head>
-<body class="flex flex-col md:flex-row min-h-100vh">
+<body class="flex flex-col min-h-100vh">
 
-<aside class="w-full md:w-64 bg-[#1e2330] border-b-4 md:border-b-0 md:border-r-4 border-neutral-900 md:fixed md:top-0 md:left-0 md:bottom-0 p-5 flex flex-col justify-between z-30 shadow-2xl">
-    <div class="w-full">
-        <div class="w-full text-center pb-4 border-b border-neutral-800">
-            <a href="index.html" class="text-xl logo-cast block py-2">CYNICDROID</a>
-            <div class="text-[9px] text-gray-500 tracking-widest font-bold mt-1">ONLINE PRODUCT STORE</div>
+<header class="w-full bg-[#171b22] border-b-4 border-neutral-900 sticky top-0 z-40 px-4 md:px-8 py-3 flex flex-col sm:flex-row justify-between items-center gap-3 shadow-xl">
+    <div class="flex items-center gap-3">
+        <a href="index.html" class="text-xl md:text-2xl logo-cast block">CYNICDROID</a>
+        <div class="hidden sm:block border-l border-neutral-800 h-6 pl-3">
+            <span class="text-[9px] text-cyan-400 tracking-widest font-bold block uppercase">CENTRAL HARDWARE STORES</span>
         </div>
-        <div class="w-full mt-6 space-y-2 flex flex-row flex-wrap gap-2 md:flex-col md:space-y-2 justify-center items-center" id="categoryFilter"></div>
     </div>
-    <div class="w-full mt-6 pt-4 border-t border-neutral-800 flex flex-col items-center gap-2">
-        <button class="telemetry-btn w-full py-2 text-[10px]" onclick="openProfileModal()">MY PROFILE & HISTORY</button>
+    <div class="flex items-center gap-4 w-full sm:w-auto justify-end">
+        <nav class="flex gap-4 text-[10px] font-bold tracking-widest text-gray-400 uppercase">
+            <a href="index.html" class="hover:text-cyan-400 transition-colors">HOME</a>
+            <a href="purchase.html" class="text-cyan-400 underline decoration-2 underline-offset-4">STORE</a>
+        </nav>
+        <button id="cartBtn" class="hardware-panel p-2 px-4 flex items-center gap-3 text-cyan-400 group transition-all duration-200 hover:border-cyan-500 text-xs shadow-none">
+            <span class="text-[9px] font-black tracking-widest text-gray-200 uppercase">CART</span>
+            <div class="card-recessed px-1.5 py-0.5 text-[10px] font-black text-cyan-400 group-hover:text-white" id="cartCount">0</div>
+        </button>
     </div>
-</aside>
+</header>
 
-<div class="fixed top-4 right-4 z-40 flex items-center gap-2">
-    <button id="cartBtn" class="hardware-panel p-3 px-4 flex items-center gap-3 text-cyan-400 group transition-all duration-200 hover:border-cyan-500">
-        <span class="text-xs font-black tracking-widest text-gray-200">SHOPPING CART</span>
-        <div class="card-recessed px-2 py-0.5 text-[11px] font-black text-cyan-400 group-hover:text-white" id="cartCount">0</div>
-    </button>
+<div class="flex flex-col md:flex-row flex-grow w-full relative">
+    <aside class="w-full md:w-64 bg-[#1e2330] border-b-4 md:border-b-0 md:border-r-4 border-neutral-900 p-5 flex flex-col justify-between z-30 shadow-2xl md:sticky md:top-[60px] md:h-[calc(100vh-60px)] overflow-y-auto">
+        <div class="w-full space-y-5">
+            <div>
+                <div class="text-[9px] text-gray-500 tracking-widest font-bold mb-3 uppercase">FILTER MODULE ARCHIVE</div>
+                <div class="w-full space-y-2 flex flex-col" id="categoryFilter"></div>
+            </div>
+
+            <div>
+                <div class="text-[9px] text-gray-500 tracking-widest font-bold mb-3 uppercase">PRICE RANGE FILTERS</div>
+                <div class="w-full space-y-1.5 flex flex-col" id="priceFilterContainer">
+                    <button class="px-3 py-1.5 text-left telemetry-btn text-[9px] active font-medium" data-min="0" data-max="999999">ALL PRICE TRACKS</button>
+                    <button class="px-3 py-1.5 text-left telemetry-btn text-[9px] font-medium" data-min="0" data-max="1000">Ksh 0 - Ksh 1,000</button>
+                    <button class="px-3 py-1.5 text-left telemetry-btn text-[9px] font-medium" data-min="1000" data-max="5000">Ksh 1,000 - Ksh 5,000</button>
+                    <button class="px-3 py-1.5 text-left telemetry-btn text-[9px] font-medium" data-min="5000" data-max="999999">Ksh 5,000+</button>
+                </div>
+            </div>
+
+            <div class="pt-2 border-t border-neutral-800">
+                <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="checkbox" id="stockToggle" class="cyber-checkbox">
+                    <span class="text-[9px] font-black text-gray-400 group-hover:text-cyan-400 tracking-widest uppercase transition-colors">HIDE OUT-OF-STOCK</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="w-full mt-6 pt-4 border-t border-neutral-800 flex flex-col items-center gap-2">
+            <button class="telemetry-btn w-full py-2 text-[10px]" onclick="openProfileModal()">MY PROFILE & HISTORY</button>
+        </div>
+    </aside>
+
+    <main class="flex-grow p-4 md:p-8 space-y-6 w-full max-w-7xl">
+        <div class="hardware-panel p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-xl md:text-3xl font-black steel-engraved-header uppercase tracking-wider">ONLINE SHOPPING PLATFORM</h1>
+                <p class="text-[10px] text-gray-400 font-bold tracking-widest mt-1">STORE ONLINE • 2026</p>
+            </div>
+            <div class="flex flex-wrap gap-2 w-full md:w-auto justify-end">
+                <input id="searchInput" class="telemetry-input w-full sm:w-64" placeholder="SEARCH PRODUCTS..." />
+                <select id="sortSelect" class="telemetry-select w-full sm:w-56">
+                    <option value="default">SORT BY: DEFAULT</option>
+                    <option value="priceLow">PRICE: LOW TO HIGH</option>
+                    <option value="priceHigh">PRICE: HIGH TO LOW</option>
+                    <option value="nameAZ">NAME: A TO Z</option>
+                    <option value="nameZA">NAME: Z TO A</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="categoriesContainer" class="space-y-8"></div>
+    </main>
 </div>
 
-<main class="flex-grow p-4 md:p-8 pt-6 md:pt-8 space-y-6 md:ml-64 w-full max-w-7xl">
-    <div class="hardware-panel p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div>
-            <h1 class="text-xl md:text-3xl font-black steel-engraved-header uppercase tracking-wider">ONLINE SHOPPING PLATFORM</h1>
-            <p class="text-[10px] text-gray-400 font-bold tracking-widest mt-1">STORE ONLINE • 2026</p>
+<footer class="w-full bg-[#14171f] border-t-4 border-neutral-900 mt-auto px-4 md:px-8 py-6 z-30 relative">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left space-y-1">
+            <h4 class="text-xs font-black text-gray-300 tracking-widest uppercase">CYNICDROID TECHNOLOGIES</h4>
+            <p class="text-[9px] text-gray-500 font-bold tracking-wider">FIRMWARE FIXES • LAPTOP REPAIRS • SMARTPHONE DIAGNOSTICS</p>
+            <p class="text-[9px] text-cyan-500/60 font-mono">LOCATION: ISHIARA, EMBU COUNTY, KENYA</p>
         </div>
-        <div class="flex flex-wrap gap-2 w-full md:w-auto justify-end">
-            <input id="searchInput" class="telemetry-input w-full sm:w-64" placeholder="SEARCH PRODUCTS..." />
-            <select id="sortSelect" class="telemetry-select w-full sm:w-48">
-                <option value="default">SORT BY: DEFAULT</option>
-                <option value="priceLow">PRICE: LOW TO HIGH</option>
-                <option value="priceHigh">PRICE: HIGH TO LOW</option>
-                <option value="nameAZ">NAME: A TO Z</option>
-                <option value="nameZA">NAME: Z TO A</option>
-            </select>
+        <div class="flex flex-wrap justify-center gap-4 text-[9px] font-mono text-gray-500 tracking-widest">
+            <div>SYS_STATUS: <span class="text-emerald-400 font-bold">ONLINE</span></div>
+            <div>VER: <span class="text-cyan-400 font-bold">4.2.0-PRO</span></div>
+            <div>© 2026 CYNICDROID</div>
         </div>
     </div>
+</footer>
 
-    <div id="categoriesContainer" class="space-y-8"></div>
-</main>
-
-<!-- PROFILE & PURCHASE HISTORY MODAL -->
 <div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4 overflow-y-auto">
-    <div class="hardware-panel max-w-md w-full p-6 space-y-4 my-8">
+    <div class="hardware-panel max-w-4xl w-full p-6 space-y-4 my-4">
         <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
-            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">MY ACCOUNT & ARCHIVES</h3>
+            <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">MY CENTRAL SYSTEM ACCOUNT DASHBOARD</h3>
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeProfileModal()">✕</button>
         </div>
         
-        <div class="space-y-2">
-            <div>
-                <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">FULL NAME</label>
-                <input type="text" id="profileName" placeholder="Your Name" class="telemetry-input w-full">
-            </div>
-            <div>
-                <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">PHONE NUMBER</label>
-                <input type="tel" id="profilePhone" placeholder="e.g., 0712345678" class="telemetry-input w-full">
-            </div>
-            <div>
-                <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">EMAIL ADDRESS</label>
-                <input type="email" id="profileEmail" placeholder="Your Email Address" class="telemetry-input w-full">
-            </div>
-            <div>
-                <div class="flex justify-between items-center mb-1">
-                    <label class="text-[8px] font-black text-gray-500 tracking-widest block">DEFAULT SHIPPING ADDRESS</label>
-                    <button class="text-[8px] font-black text-cyan-400 tracking-wide hover:underline uppercase" onclick="autoGetLocation('profileAddress')">⚡ USE MY GPS LOCATION</button>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            
+            <div class="md:col-span-5 space-y-3 border-b md:border-b-0 md:border-r border-neutral-800 pb-6 md:pb-0 md:pr-6">
+                <div class="text-[10px] font-black text-cyan-500 tracking-wider uppercase mb-1">CLIENT ACCESS DETAILS</div>
+                
+                <div class="space-y-2">
+                    <div>
+                        <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">FULL NAME</label>
+                        <input type="text" id="profileName" placeholder="Your Name" class="telemetry-input w-full">
+                    </div>
+                    <div>
+                        <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">PHONE NUMBER</label>
+                        <input type="tel" id="profilePhone" placeholder="e.g., 0712345678" class="telemetry-input w-full">
+                    </div>
+                    <div>
+                        <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1">EMAIL ADDRESS</label>
+                        <input type="email" id="profileEmail" placeholder="Your Email Address" class="telemetry-input w-full">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="text-[8px] font-black text-gray-500 tracking-widest block">DEFAULT SHIPPING ADDRESS</label>
+                            <button class="text-[8px] font-black text-cyan-400 tracking-wide hover:underline uppercase" onclick="autoGetLocation('profileAddress')">⚡ USE MY GPS LOCATION</button>
+                        </div>
+                        <textarea id="profileAddress" rows="3" placeholder="e.g., Shop/House, Street, Town (or GPS link)" class="telemetry-input w-full resize-none"></textarea>
+                    </div>
+                    <div class="flex gap-2 pt-2">
+                        <button class="telemetry-btn flex-1 py-2 text-[10px] text-rose-500 border-rose-950 hover:border-rose-500" onclick="clearUserProfileData()">DELETE PROFILE</button>
+                        <button class="telemetry-btn flex-1 py-2 text-[10px] text-cyan-400 border-cyan-700 hover:border-cyan-400" onclick="saveUserProfileData()">SAVE CHANGES</button>
+                    </div>
                 </div>
-                <textarea id="profileAddress" rows="2" placeholder="e.g., Shop/House, Street, Town (or GPS link)" class="telemetry-input w-full resize-none"></textarea>
             </div>
-            <div class="flex gap-2 pt-1">
-                <button class="telemetry-btn flex-1 py-2 text-[10px] text-rose-500 border-rose-950 hover:border-rose-500" onclick="clearUserProfileData()">DELETE PROFILE</button>
-                <button class="telemetry-btn flex-1 py-2 text-[10px] text-cyan-400 border-cyan-700 hover:border-cyan-400" onclick="saveUserProfileData()">SAVE CHANGES</button>
-            </div>
-        </div>
 
-        <div class="border-t border-neutral-800 pt-3 space-y-2">
-            <h4 class="text-[10px] font-black text-gray-400 tracking-widest uppercase">VERIFIED PURCHASE HISTORY</h4>
-            <div id="historyLogContainer" class="card-recessed p-2 max-h-48 overflow-y-auto space-y-2"></div>
+            <div class="md:col-span-7 flex flex-col h-full min-h-[340px]">
+                <div class="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-3 flex justify-between items-center">
+                    <span>VERIFIED PURCHASE HISTORY LOGS</span>
+                    <span class="text-[8px] text-cyan-500/50 font-mono">SECURE ARCHIVE</span>
+                </div>
+                <div id="historyLogContainer" class="card-recessed p-3 flex-grow overflow-y-auto space-y-3 max-h-[340px]"></div>
+            </div>
+            
         </div>
     </div>
 </div>
 
-<!-- PREVIEW MODAL -->
 <div id="previewModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
         <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
@@ -243,6 +353,10 @@ body {
             </div>
         </div>
         <div class="space-y-1">
+            <div class="flex items-center gap-2">
+                <span id="previewBadge" class="text-[8px] font-black bg-cyan-950 text-cyan-400 px-1.5 py-0.5 rounded border border-cyan-800 font-mono"></span>
+                <span id="previewStock" class="text-[8px] font-black px-1.5 py-0.5 rounded font-mono"></span>
+            </div>
             <h4 id="previewTitle" class="text-sm font-black text-gray-200 tracking-wide uppercase"></h4>
             <p id="previewDesc" class="text-[11px] text-gray-400 leading-relaxed"></p>
         </div>
@@ -253,7 +367,6 @@ body {
     </div>
 </div>
 
-<!-- CART MODAL -->
 <div id="cartModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
         <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
@@ -269,7 +382,6 @@ body {
     </div>
 </div>
 
-<!-- CHECKOUT MODAL -->
 <div id="checkoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
         <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
@@ -323,11 +435,17 @@ const categoriesContainer = document.getElementById('categoriesContainer');
 const filterContainer = document.getElementById('categoryFilter');
 const searchInput = document.getElementById('searchInput');
 const sortSelect = document.getElementById('sortSelect');
+const stockToggle = document.getElementById('stockToggle');
+const priceFilterContainer = document.getElementById('priceFilterContainer');
 
 let products = [];
 let manualPaymentMode = false;
+let activeMinPrice = 0;
+let activeMaxPrice = 999999;
+let isUserTypingSearch = false;
 
-// Global broken image engine
+const itemsPerPage = 20;
+
 function handleBrokenImage(imgElement, context, fallbackName = '') {
     imgElement.classList.add('hidden');
     if (context === 'PREVIEW') {
@@ -341,6 +459,20 @@ function handleBrokenImage(imgElement, context, fallbackName = '') {
     }
 }
 
+function getHardwareBadge(category) {
+    switch (category) {
+        case 'Electronics':
+        case 'Mobile Accessories':
+            return '[SYS_HW]';
+        case 'Software Solutions':
+            return '[SYS_SW]';
+        case 'Services':
+            return '[SYS_SVC]';
+        default:
+            return '[SYS_MOD]';
+    }
+}
+
 async function loadProductsFromSheet() {
     const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR6nwuh8gVDU94Xr1akAb95Mps3FIHsRbMeT1Oq1R2FIrw4gzvdQSte2_0dPGjE4Hf9zrkrjmU2eVQh/pub?gid=0&single=true&output=csv';
     try {
@@ -348,14 +480,15 @@ async function loadProductsFromSheet() {
         const data = await response.text();
         const rows = data.split('\n').slice(1);
         products = rows.map(row => {
-            const [id, title, price, category, img, desc] = row.split(',');
+            const [id, title, price, category, img, desc, stock] = row.split(',');
             return { 
                 id: id?.trim(), 
                 title: title?.trim(), 
                 price: Number(price), 
                 category: category?.trim(), 
                 img: img?.trim(), 
-                desc: desc?.trim() 
+                desc: desc?.trim(),
+                inStock: stock ? stock.trim().toLowerCase() !== 'false' && stock.trim() !== '0' : true
             };
         }).filter(p => p.title);
         applyFiltersAndSorting();
@@ -396,11 +529,14 @@ function autoGetLocation(targetElementId) {
 
 function createCard(p) {
     const card = document.createElement('div');
-    card.className = 'card-recessed p-3 flex flex-col justify-between space-y-3 transition-all duration-200 hover:border-cyan-500 group cursor-pointer';
+    card.className = `card-recessed p-3 flex flex-col justify-between space-y-3 transition-all duration-200 hover:border-cyan-500 group cursor-pointer ${!p.inStock ? 'opacity-60' : ''}`;
     
-    // Verifies whether image string is empty, undefined, or missing a standard image extension
     const hasValidImageString = p.img && p.img.trim() !== "" && /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(p.img);
     const imageSrc = hasValidImageString ? `./assets/images/${p.img}` : 'BROKEN_TRIGGER';
+    const badgeText = getHardwareBadge(p.category);
+    const stockStatusHTML = p.inStock 
+        ? `<span class="text-[8px] text-emerald-400 font-bold font-mono uppercase">IN_STOCK</span>` 
+        : `<span class="text-[8px] text-rose-500 font-bold font-mono uppercase">DEPLETED</span>`;
 
     card.innerHTML = `
         <div class="space-y-2">
@@ -408,6 +544,12 @@ function createCard(p) {
                 <img class="w-full h-32 object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-200" 
                      src="${imageSrc}" alt="${p.title}" 
                      onerror="handleBrokenImage(this, 'CARD')">
+                <div class="absolute top-1.5 left-1.5 flex gap-1 z-10">
+                    <span class="text-[7px] font-black bg-black/80 text-cyan-400 px-1 py-0.5 rounded border border-cyan-900/60 font-mono tracking-wider">${badgeText}</span>
+                </div>
+                <div class="absolute top-1.5 right-1.5 z-10 bg-black/80 px-1 py-0.5 rounded border border-neutral-900">
+                    ${stockStatusHTML}
+                </div>
                 <div class="absolute inset-0 hidden flex-col items-center justify-center p-2 text-center font-mono text-[9px] bg-neutral-950 border border-cyan-500/20 shadow-[inset_0_0_12px_rgba(0,210,255,0.1)] text-slate-400">
                     <span class="truncate max-w-full text-cyan-400 font-bold uppercase tracking-wide">${p.title}</span>
                     <span class="text-[8px] text-cyan-500/50 mt-1 uppercase tracking-widest font-mono">SYS_MODULE</span>
@@ -428,7 +570,6 @@ function createCard(p) {
 function createPagination(container, items) {
     const pagination = document.createElement('div');
     pagination.className = 'flex flex-wrap gap-1.5 justify-center mt-4';
-    const itemsPerPage = 10;
     const totalPages = Math.ceil(items.length / itemsPerPage) || 1;
     let currentPage = 1;
 
@@ -439,7 +580,7 @@ function createPagination(container, items) {
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         if (items.length === 0) {
-            grid.innerHTML = `<div class="col-span-full text-center text-gray-500 font-bold text-xs py-8 tracking-widest">NO PRODUCTS FOUND.</div>`;
+            grid.innerHTML = `<div class="col-span-full text-center text-gray-500 font-bold text-xs py-8 tracking-widest">NO LOGICAL MODULES MATCH CRITERIA.</div>`;
             return;
         }
         items.slice(start, end).forEach(p => grid.appendChild(createCard(p)));
@@ -486,8 +627,12 @@ function renderCategories(filteredProducts) {
         createPagination(catSection, catProducts);
     });
 
-    const currentActiveFilterBtn = document.querySelector('#categoryFilter button.active');
-    const targetId = currentActiveFilterBtn ? currentActiveFilterBtn.dataset.target : 'AllProducts';
+    let targetId = 'AllProducts';
+    if (!isUserTypingSearch) {
+        const currentActiveFilterBtn = document.querySelector('#categoryFilter button.active');
+        targetId = currentActiveFilterBtn ? currentActiveFilterBtn.dataset.target : 'AllProducts';
+    }
+    
     document.querySelectorAll('#categoriesContainer > div').forEach(sec => sec.classList.add('hidden'));
     const targetedSection = document.getElementById(targetId);
     if (targetedSection) targetedSection.classList.remove('hidden');
@@ -496,10 +641,11 @@ function renderCategories(filteredProducts) {
 function initializeFilterControls() {
     filterContainer.innerHTML = '';
     const allBtn = document.createElement('button');
-    allBtn.className = 'px-4 py-2 w-full text-center md:text-left telemetry-btn active';
+    allBtn.className = 'px-4 py-2 w-full text-left telemetry-btn active text-[10px] font-bold';
     allBtn.innerText = "SHOW ALL ITEMS";
     allBtn.setAttribute('data-target', 'AllProducts');
     allBtn.addEventListener('click', () => {
+        isUserTypingSearch = false; 
         document.querySelectorAll('#categoryFilter button').forEach(b => b.classList.remove('active'));
         allBtn.classList.add('active');
         document.querySelectorAll('#categoriesContainer > div').forEach(sec => sec.classList.add('hidden'));
@@ -509,11 +655,12 @@ function initializeFilterControls() {
 
     categories.forEach(cat => {
         const btn = document.createElement('button');
-        btn.className = 'px-4 py-2 w-full text-center md:text-left telemetry-btn';
+        btn.className = 'px-4 py-2 w-full text-left telemetry-btn text-[10px] font-bold';
         btn.innerText = cat.toUpperCase();
         const cleanId = cat.replace(/\s/g, '');
         btn.setAttribute('data-target', cleanId);
         btn.addEventListener('click', () => {
+            isUserTypingSearch = false; 
             document.querySelectorAll('#categoryFilter button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             document.querySelectorAll('#categoriesContainer > div').forEach(sec => sec.classList.add('hidden'));
@@ -521,21 +668,52 @@ function initializeFilterControls() {
         });
         filterContainer.appendChild(btn);
     });
+
+    document.querySelectorAll('#priceFilterContainer button').forEach(pBtn => {
+        pBtn.addEventListener('click', () => {
+            document.querySelectorAll('#priceFilterContainer button').forEach(b => b.classList.remove('active'));
+            pBtn.classList.add('active');
+            activeMinPrice = Number(pBtn.dataset.min);
+            activeMaxPrice = Number(pBtn.dataset.max);
+            applyFiltersAndSorting();
+        });
+    });
+
+    stockToggle.addEventListener('change', applyFiltersAndSorting);
 }
 
 function applyFiltersAndSorting() {
-    const term = searchInput.value.toLowerCase();
-    let result = products.filter(p => p.title.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term));
+    const term = searchInput.value.toLowerCase().trim();
+    
+    let result = products.filter(p => {
+        const matchesSearch = p.title.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term);
+        const matchesPrice = p.price >= activeMinPrice && p.price <= activeMaxPrice;
+        const matchesStock = stockToggle.checked ? p.inStock === true : true;
+        return matchesSearch && matchesPrice && matchesStock;
+    });
+
     const val = sortSelect.value;
     if (val === 'priceLow') result.sort((a, b) => a.price - b.price);
     else if (val === 'priceHigh') result.sort((a, b) => b.price - a.price);
     else if (val === 'nameAZ') result.sort((a, b) => a.title.localeCompare(b.title));
     else if (val === 'nameZA') result.sort((a, b) => b.title.localeCompare(a.title));
+    
     currentDisplayProducts = result;
     renderCategories(currentDisplayProducts);
 }
 
-searchInput.addEventListener('input', applyFiltersAndSorting);
+searchInput.addEventListener('input', () => {
+    if (searchInput.value.trim() !== "") {
+        isUserTypingSearch = true;
+        document.querySelectorAll('#categoryFilter button').forEach(b => b.classList.remove('active'));
+        const allBtn = document.querySelector('#categoryFilter button[data-target="AllProducts"]');
+        if (allBtn) allBtn.classList.add('active');
+    } else {
+        isUserTypingSearch = false;
+    }
+    applyFiltersAndSorting();
+});
+
 sortSelect.addEventListener('change', applyFiltersAndSorting);
 
 // ================== ACCOUNT PROFILE & LOCAL HISTORY ==================
@@ -548,6 +726,9 @@ function openProfileModal() {
     document.getElementById('profileAddress').value = profile.address || '';
     renderPurchaseHistory();
 }
+
+document.getElementById('cartBtn').addEventListener('click', openCart);
+
 function closeProfileModal() { document.getElementById('profileModal').classList.replace('flex', 'hidden'); }
 
 function saveUserProfileData() {
@@ -578,21 +759,21 @@ function renderPurchaseHistory() {
     const history = JSON.parse(localStorage.getItem('cynic_purchase_history')) || [];
     container.innerHTML = '';
     if (history.length === 0) {
-        container.innerHTML = '<div class="text-center font-bold text-gray-500 text-[9px] py-4 tracking-widest">NO PRIOR ACCOUNT TRANSACTIONS FOUND.</div>';
+        container.innerHTML = '<div class="text-center font-bold text-gray-500 text-[9px] py-16 tracking-widest uppercase">NO PRIOR ACCOUNT TRANSACTIONS FOUND.</div>';
         return;
     }
-    history.reverse().forEach(record => {
+    history.slice().reverse().forEach(record => {
         const itemBlock = document.createElement('div');
-        itemBlock.className = 'p-2 bg-neutral-950/80 rounded border border-neutral-900 text-[9px] space-y-1';
-        let itemsListHTML = record.items.map(i => `<div class="text-gray-300 uppercase">${i.title} (x${i.qty})</div>`).join('');
+        itemBlock.className = 'p-3 bg-neutral-950/80 rounded border border-neutral-900 text-[10px] space-y-1.5';
+        let itemsListHTML = record.items.map(i => `<div class="text-gray-300 uppercase">${i.title} <span class="text-cyan-500 font-bold font-mono text-[9px] ml-1">(x${i.qty})</span></div>`).join('');
         itemBlock.innerHTML = `
             <div class="flex justify-between border-b border-neutral-900 pb-1 font-mono text-[8px] text-gray-500">
-                <span>DATE: ${record.date}</span> <span class="text-cyan-500 font-bold">${record.method}</span>
+                <span>DATE: ${record.date}</span> <span class="text-cyan-500 font-bold tracking-wider">${record.method}</span>
             </div>
             <div class="space-y-0.5">${itemsListHTML}</div>
-            <div class="flex justify-between items-center pt-1 text-slate-400">
-                <span class="truncate max-w-[180px] text-[8px] italic text-slate-500">Del: ${record.address}</span>
-                <strong class="text-emerald-400 font-black">Ksh ${record.total}</strong>
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-1.5 text-slate-400 gap-1 border-t border-neutral-900/40">
+                <span class="truncate max-w-full text-[8px] italic text-slate-500">Del: ${record.address}</span>
+                <strong class="text-emerald-400 font-black font-mono text-[10px] sm:ml-auto">Ksh ${record.total}</strong>
             </div>
         `;
         container.appendChild(itemBlock);
@@ -612,7 +793,6 @@ function archiveTransactionToHistory(itemsArray, totalCost, deliveryAddress, fal
 }
 
 // ================== SHOPPING CART SUBSYSTEM ==================
-document.getElementById('cartBtn').addEventListener('click', openCart);
 function openCart() { document.getElementById('cartModal').classList.replace('hidden', 'flex'); updateCartUI(); }
 function closeCart() { document.getElementById('cartModal').classList.replace('flex', 'hidden'); }
 
@@ -670,12 +850,27 @@ function openPreview(p) {
     const hasValidImageString = p.img && p.img.trim() !== "" && /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(p.img);
     document.getElementById('previewImg').src = hasValidImageString ? `./assets/images/${p.img}` : 'BROKEN_TRIGGER';
     
+    document.getElementById('previewBadge').innerText = getHardwareBadge(p.category);
+    const stockEl = document.getElementById('previewStock');
+    if (p.inStock) {
+        stockEl.innerText = "IN STOCK";
+        stockEl.className = "text-[8px] font-black bg-emerald-950 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-800 font-mono";
+        document.getElementById('addToCartBtn').disabled = false;
+        document.getElementById('addToCartBtn').innerText = "ADD TO SHOPPING CART";
+    } else {
+        stockEl.innerText = "OUT OF STOCK";
+        stockEl.className = "text-[8px] font-black bg-rose-950 text-rose-400 px-1.5 py-0.5 rounded border border-rose-800 font-mono";
+        document.getElementById('addToCartBtn').disabled = true;
+        document.getElementById('addToCartBtn').innerText = "MODULE OUT OF STOCK";
+    }
+
     document.getElementById('fallbackPreviewLabel').innerText = p.title;
     document.getElementById('previewTitle').innerText = p.title;
     document.getElementById('previewDesc').innerText = p.desc;
     document.getElementById('previewPrice').innerText = `PRICE: Ksh ${p.price}`;
     
     document.getElementById('addToCartBtn').onclick = () => {
+        if (!p.inStock) return;
         const existing = cart.find(c => c.id === p.id);
         if (existing) existing.qty++; else cart.push({ ...p, qty: 1 });
         saveCart();
@@ -769,7 +964,6 @@ async function processOrderManifest(name, phone, email, address, totalAmount, is
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span class="operation-loader"></span> DEPLOYING ORDER SYSTEM MANIFEST...`;
 
-    // Constructs a themed tech-styled HTML block to look beautiful in email clients
     let itemsHtmlBuffer = `
     <div style="font-family:'Orbitron',sans-serif; background-color:#090b0e; border:1px solid #00d2ff; padding:15px; border-radius:4px; max-width:500px;">
         <table style="width:100%; border-collapse:collapse; color:#e2e8f0; font-size:11px;">
@@ -807,8 +1001,8 @@ async function processOrderManifest(name, phone, email, address, totalAmount, is
         from_name: name, 
         from_phone: phone, 
         from_email: email,
-        shipping_address: address, // Injects the shipping address safely into the core array parameters
-        products_html: itemsHtmlBuffer, // Passes the beautifully themed inline template block
+        shipping_address: address, 
+        products_html: itemsHtmlBuffer, 
         total: totalAmount,
         payment_method: isManualPayment ? "MANUAL_EQUITY_PAYBILL_FALLBACK" : "MPESA_AUTOMATED_STK_PUSH"
     };
