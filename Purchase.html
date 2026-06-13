@@ -102,7 +102,6 @@ body {
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,210,255,0.25);
 }
 
-/* Highly calibrated style layout architecture for custom select fields */
 .telemetry-select {
     background: #090b0e !important;
     border: 1px solid #3a4252;
@@ -296,7 +295,6 @@ body {
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            
             <div class="md:col-span-5 space-y-3 border-b md:border-b-0 md:border-r border-neutral-800 pb-6 md:pb-0 md:pr-6">
                 <div class="text-[10px] font-black text-cyan-500 tracking-wider uppercase mb-1">CLIENT ACCESS DETAILS</div>
                 
@@ -334,7 +332,6 @@ body {
                 </div>
                 <div id="historyLogContainer" class="card-recessed p-3 flex-grow overflow-y-auto space-y-3 max-h-[340px]"></div>
             </div>
-            
         </div>
     </div>
 </div>
@@ -401,6 +398,15 @@ body {
                 </div>
                 <textarea id="checkoutAddress" rows="2" placeholder="ENTER PHYSICAL ADDRESS OR DETAILED DELIVERY LANDMARKS..." class="telemetry-input w-full resize-none"></textarea>
             </div>
+
+            <div class="w-full">
+                <label class="text-[8px] font-black text-gray-500 tracking-widest block mb-1 uppercase">COURIER & LOGISTICS FREIGHT ROUTE</label>
+                <select id="checkoutShipping" class="telemetry-select w-full" onchange="calculateGrandTotal()">
+                    <option value="matatu" data-cost="350">REGIONAL SHUTTLE SACCCO (SAME DAY STATION DROP) - Ksh 350</option>
+                    <option value="speedaf" data-cost="400">SPEEDAF EXPRESS (1-2 DAYS LOGISTICS NETWORK) - Ksh 400</option>
+                    <option value="fargo" data-cost="550">SECURE COURIER (WELLS FARGO / G4S ELECTRONICS TRUCK) - Ksh 550</option>
+                </select>
+            </div>
         </div>
 
         <div class="card-recessed p-3 border border-neutral-800 space-y-2">
@@ -419,6 +425,11 @@ body {
 
         <div class="card-recessed p-2 max-h-24 overflow-y-auto space-y-1 text-[10px]" id="checkoutProducts"></div>
         
+        <div class="space-y-1 font-mono text-[9px] text-gray-400 px-1">
+            <div class="flex justify-between"><span>BASE INVENTORY VALUE:</span><span id="checkoutBaseTotal">Ksh 0</span></div>
+            <div class="flex justify-between"><span>FREIGHT MANIFEST FEE:</span><span id="checkoutShippingCost">Ksh 0</span></div>
+        </div>
+
         <div class="flex justify-between items-center p-3 card-recessed font-black text-xs">
             <span class="text-gray-400 tracking-widest">TOTAL AMOUNT:</span>
             <span class="text-emerald-400 tracking-wider" id="checkoutTotal">Ksh 0</span>
@@ -881,6 +892,20 @@ function openPreview(p) {
 function closePreview() { document.getElementById('previewModal').classList.replace('flex', 'hidden'); }
 
 // ================== CHECKOUT AND GATEWAY CONTROLS ==================
+function calculateGrandTotal() {
+    const baseTotal = cart.reduce((a, b) => a + b.price * b.qty, 0);
+    const shippingSelect = document.getElementById('checkoutShipping');
+    const selectedOption = shippingSelect.options[shippingSelect.selectedIndex];
+    const shippingCost = selectedOption ? Number(selectedOption.dataset.cost) : 0;
+    
+    const grandTotal = baseTotal + shippingCost;
+    
+    document.getElementById('checkoutBaseTotal').innerText = `Ksh ${baseTotal}`;
+    document.getElementById('checkoutShippingCost').innerText = `Ksh ${shippingCost}`;
+    document.getElementById('checkoutTotal').innerText = `Ksh ${grandTotal}`;
+    return grandTotal;
+}
+
 function openCheckout() {
     if (cart.length === 0) return;
     closeCart();
@@ -904,8 +929,8 @@ function openCheckout() {
         div.innerHTML = `<span class="uppercase truncate max-w-[240px]">${item.title} (x${item.qty})</span> <span class="text-emerald-400 font-bold">Ksh ${item.price * item.qty}</span>`;
         checkoutProductsDiv.appendChild(div);
     });
-    const total = cart.reduce((a, b) => a + b.price * b.qty, 0);
-    document.getElementById('checkoutTotal').innerText = `Ksh ${total}`;
+    
+    calculateGrandTotal();
 }
 function closeCheckout() { document.getElementById('checkoutModal').classList.replace('flex', 'hidden'); }
 
@@ -924,9 +949,10 @@ async function submitCheckout() {
         return;
     }
 
-    const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const grandTotalAmount = calculateGrandTotal();
+
     if (manualPaymentMode) {
-        processOrderManifest(name, phone, email, address, totalAmount, true);
+        processOrderManifest(name, phone, email, address, grandTotalAmount, true);
         return;
     }
 
@@ -943,13 +969,13 @@ async function submitCheckout() {
     const gatewayFetch = fetch(mpesaApiGatewayUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: formattedPhone, amount: totalAmount, paybill: "247247", account: "0716375459" })
+        body: JSON.stringify({ phone: formattedPhone, amount: grandTotalAmount, paybill: "247247", account: "0716375459" })
     });
 
     try {
         await Promise.race([gatewayFetch, gatewayTimeout]);
         alert('STK PUSH SENT! Enter your M-Pesa PIN.');
-        processOrderManifest(name, phone, email, address, totalAmount, false);
+        processOrderManifest(name, phone, email, address, grandTotalAmount, false);
     } catch (err) {
         manualPaymentMode = true;
         submitBtn.disabled = false;
@@ -959,10 +985,14 @@ async function submitCheckout() {
     }
 }
 
-async function processOrderManifest(name, phone, email, address, totalAmount, isManualPayment) {
+async function processOrderManifest(name, phone, email, address, grandTotalAmount, isManualPayment) {
     const submitBtn = document.getElementById('submitOrderBtn');
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span class="operation-loader"></span> DEPLOYING ORDER SYSTEM MANIFEST...`;
+
+    const shippingSelect = document.getElementById('checkoutShipping');
+    const selectedOption = shippingSelect.options[shippingSelect.selectedIndex];
+    const shippingMethodLabel = selectedOption ? selectedOption.innerText : "Standard Logistics";
 
     let itemsHtmlBuffer = `
     <div style="font-family:'Orbitron',sans-serif; background-color:#090b0e; border:1px solid #00d2ff; padding:15px; border-radius:4px; max-width:500px;">
@@ -990,9 +1020,12 @@ async function processOrderManifest(name, phone, email, address, totalAmount, is
     itemsHtmlBuffer += `
             </tbody>
         </table>
+        <div style="margin-top:10px; padding:6px 0; font-size:10px; color:#00d2ff; border-top:1px dashed #3a4252;">
+            <strong>FREIGHT MANIFEST:</strong> ${shippingMethodLabel}
+        </div>
         <div style="margin-top:12px; padding-top:10px; border-top:2px solid #3a4252; display:flex; justify-content:space-between; align-items:center;">
             <span style="font-size:10px; color:#4c566a; font-weight:bold;">GATEWAY VERIFIED</span>
-            <span style="font-size:13px; color:#00d2ff; font-weight:900;">TOTAL: Ksh ${totalAmount}</span>
+            <span style="font-size:13px; color:#00d2ff; font-weight:900;">TOTAL: Ksh ${grandTotalAmount}</span>
         </div>
     </div>
     `;
@@ -1003,7 +1036,7 @@ async function processOrderManifest(name, phone, email, address, totalAmount, is
         from_email: email,
         shipping_address: address, 
         products_html: itemsHtmlBuffer, 
-        total: totalAmount,
+        total: grandTotalAmount,
         payment_method: isManualPayment ? "MANUAL_EQUITY_PAYBILL_FALLBACK" : "MPESA_AUTOMATED_STK_PUSH"
     };
 
@@ -1011,7 +1044,7 @@ async function processOrderManifest(name, phone, email, address, totalAmount, is
         await emailjs.send('cynic_service', 'template_d145jij', dataPayload);
         await emailjs.send('cynic_service', 'template_2b1djar', dataPayload);
 
-        archiveTransactionToHistory(cart, totalAmount, address, isManualPayment);
+        archiveTransactionToHistory(cart, grandTotalAmount, address + ` (${shippingMethodLabel})`, isManualPayment);
         alert(`ORDER LOGGED SUCCESSFULLY!`);
         cart = [];
         updateCartUI();
