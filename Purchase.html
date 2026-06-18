@@ -15,153 +15,165 @@ body, h1, h2, h3, h4, p, a, li, strong, em, input, select, button, textarea {
     font-family: 'Orbitron', sans-serif;
 }
 
+/* ==========================================================================
+   1. CORE THEME SYSTEM ARCHITECTURE
+   ========================================================================== */
+
+/* --- BASELINE LIGHT MODE (PREMIUM METALLIC CHASSIS) --- */
 body {
     background-color: #cbd5e1;
     background-image: 
-        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.1) 100%),
+        linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.04) 40%, rgba(255,255,255,0.18) 60%, rgba(0,0,0,0.06) 80%, rgba(255,255,255,0.1) 100%),
         linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(0,0,0,0.05) 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 4px),
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 3px);
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.15);
-    color: #1e293b;
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.12);
+    color: #0f172a;
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
+body header { background-color: #f1f5f9 !important; border-bottom-color: #94a3b8 !important; transition: all 0.25s ease; }
+body aside { background-color: #e2e8f0 !important; border-color: #94a3b8 !important; transition: all 0.25s ease; }
+body footer { background-color: #cbd5e1 !important; border-top-color: #94a3b8 !important; transition: all 0.25s ease; }
+
 .hardware-panel {
-    background: linear-gradient(180deg, #2a303d 0%, #171b22 100%);
-    border-top: 2px solid #5a657a;
-    border-left: 2px solid #485264;
-    border-right: 2px solid #1a1e26;
-    border-bottom: 3px solid #0d1014;
+    background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%) !important;
+    border-top: 2px solid #ffffff !important;
+    border-left: 2px solid #f8fafc !important;
+    border-right: 2px solid #cbd5e1 !important;
+    border-bottom: 3px solid #94a3b8 !important;
     box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.2),
-        inset 0 -3px 8px rgba(0, 0, 0, 0.6),
-        0 20px 40px -10px rgba(15, 23, 42, 0.5);
+        inset 0 1px 1px rgba(255, 255, 255, 0.9),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.03),
+        0 10px 25px -5px rgba(51, 65, 85, 0.1);
     border-radius: 6px;
     position: relative;
+    color: #0f172a !important;
+    transition: all 0.25s ease;
 }
 .hardware-panel::before {
     content: '';
     position: absolute;
     inset: 5px;
-    border: 1px solid #101319;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
     border-radius: 4px;
     pointer-events: none;
 }
 
 .card-recessed {
-    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
-    border-top: 2px solid #101319;
-    border-left: 2px solid #101319;
-    border-right: 1px solid #3a4252;
-    border-bottom: 1px solid #3a4252;
+    background: linear-gradient(180deg, #e2e8f0 0%, #f1f5f9 100%) !important;
+    border-top: 2px solid #94a3b8 !important;
+    border-left: 2px solid #94a3b8 !important;
+    border-right: 1px solid #ffffff !important;
+    border-bottom: 1px solid #ffffff !important;
     box-shadow: 
-        inset 0 4px 10px rgba(0, 0, 0, 0.9),
-        0 1px 2px rgba(255, 255, 255, 0.08);
+        inset 0 3px 8px rgba(15, 23, 42, 0.12),
+        0 1px 1px rgba(255, 255, 255, 0.7);
     border-radius: 4px;
+    color: #1e293b !important;
+    transition: all 0.25s ease;
 }
 
 .steel-engraved-header {
     font-weight: 900;
     letter-spacing: 2px;
-    background: linear-gradient(180deg, #ffffff 20%, #a3acb9 60%, #4c535e 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
+    background: linear-gradient(180deg, #0f172a 20%, #475569 60%, #94a3b8 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 1px 1px rgba(255,255,255,0.8)) !important;
 }
 
 .logo-cast {
     font-weight: 900;
     letter-spacing: 3px;
-    color: #e5e9f0;
-    background: linear-gradient(180deg, #ffffff 0%, #9aa3b2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9));
+    background: linear-gradient(180deg, #0f172a 0%, #64748b 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 1px 0px rgba(255,255,255,0.7));
 }
 
 .telemetry-input {
-    background: linear-gradient(180deg, #090b0e 0%, #151922 100%);
-    border: 1px solid #3a4252;
-    color: #00d2ff;
+    background: #ffffff !important;
+    border: 1px solid #94a3b8 !important;
+    color: #0284c7 !important;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 1px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1) !important;
     border-radius: 4px;
     padding: 0.75rem 1rem;
     outline: none;
     transition: all 0.2s ease;
 }
 .telemetry-input:focus {
-    border-color: #00d2ff;
-    color: #ffffff;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,210,255,0.25);
+    border-color: #0284c7 !important;
+    color: #0369a1 !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(2,132,199,0.2) !important;
 }
 
 .telemetry-select {
-    background: #090b0e !important;
-    border: 1px solid #3a4252;
-    color: #00d2ff;
+    background: #ffffff !important;
+    border: 1px solid #94a3b8 !important;
+    color: #0284c7 !important;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 1px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1) !important;
     border-radius: 4px;
     padding: 0.75rem 1rem;
     outline: none;
     transition: all 0.2s ease;
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2300d2ff'><polygon points='0,0 10,0 5,5'/></svg>") !important;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%230284c7'><polygon points='0,0 10,0 5,5'/></svg>") !important;
     background-repeat: no-repeat !important;
     background-position: right 1rem center !important;
 }
 .telemetry-select:focus {
-    border-color: #00d2ff;
-    color: #ffffff;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,210,255,0.25);
+    border-color: #0284c7 !important;
+    color: #0369a1 !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(2,132,199,0.2) !important;
 }
 .telemetry-select option {
-    background-color: #090b0e !important;
-    color: #00d2ff !important;
-    padding: 10px;
+    background-color: #ffffff !important;
+    color: #0284c7 !important;
 }
 
 .telemetry-btn {
-    background: linear-gradient(180deg, #3a4253 0%, #1c2029 100%);
-    border-top: 1px solid #5a657a;
-    border-left: 1px solid #485264;
-    border-right: 1px solid #14171f;
-    border-bottom: 2px solid #0d1014;
-    color: #e2e8f0;
+    background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%) !important;
+    border-top: 1px solid #ffffff !important;
+    border-left: 1px solid #ffffff !important;
+    border-right: 1px solid #cbd5e1 !important;
+    border-bottom: 2px solid #94a3b8 !important;
+    color: #475569 !important;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 1px;
     border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
     transition: all 0.15s ease;
 }
 .telemetry-btn:hover:not(:disabled) {
-    color: #ffffff;
-    border-color: #00d2ff;
-    box-shadow: 0 0 12px rgba(0,210,255,0.3);
-    background: linear-gradient(180deg, #434c5f 0%, #242935 100%);
+    color: #0f172a !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 8px rgba(2,132,199,0.2) !important;
+    background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%) !important;
 }
 .telemetry-btn.active {
-    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%);
-    border: 1px solid #00d2ff;
-    color: #00d2ff;
-    box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+    background: linear-gradient(180deg, #cbd5e1 0%, #f1f5f9 100%) !important;
+    border: 1px solid #0284c7 !important;
+    color: #0284c7 !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.08) !important;
 }
 
 .cyber-checkbox {
     appearance: none;
-    background: #090b0e;
-    border: 1px solid #3a4252;
+    background: #ffffff;
+    border: 1px solid #94a3b8;
     width: 16px;
     height: 16px;
     border-radius: 3px;
@@ -170,12 +182,12 @@ body {
     outline: none;
 }
 .cyber-checkbox:checked {
-    border-color: #00d2ff;
-    background: #13171f;
+    border-color: #0284c7;
+    background: #f1f5f9;
 }
 .cyber-checkbox:checked::after {
     content: '✓';
-    color: #00d2ff;
+    color: #0284c7;
     font-size: 11px;
     font-weight: bold;
     position: absolute;
@@ -183,6 +195,149 @@ body {
     left: 2px;
 }
 
+/* FALLBACK READABILITY REMAPPING CONTROLS FOR TEXT UTILITIES INSIDE LIGHT MODE CHASSIS */
+body :not(.dark-mode) .text-gray-400 { color: #475569 !important; }
+body :not(.dark-mode) .text-gray-500 { color: #64748b !important; }
+body :not(.dark-mode) .text-gray-200 { color: #0f172a !important; }
+body :not(.dark-mode) .text-gray-300 { color: #1e293b !important; }
+body :not(.dark-mode) .text-slate-300 { color: #334155 !important; }
+body :not(.dark-mode) .text-slate-400 { color: #475569 !important; }
+body :not(.dark-mode) .text-cyan-400 { color: #0284c7 !important; }
+
+
+/* --- DYNAMIC DARK MODE OVERRIDES (TACTICAL ALLOY TERMINAL) --- */
+body.dark-mode {
+    background-color: #0f131a;
+    background-image: 
+        linear-gradient(90deg, rgba(0,210,255,0.02) 0%, transparent 40%, rgba(0,210,255,0.02) 100%),
+        repeating-linear-gradient(90deg, rgba(0,210,255,0.03) 0px, rgba(0,210,255,0.03) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,210,255,0.02) 0px, rgba(0,210,255,0.02) 1px, transparent 1px, transparent 4px);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.6);
+    color: #e2e8f0;
+}
+
+body.dark-mode header { background-color: #171b22 !important; border-bottom-color: #0a0d12 !important; }
+body.dark-mode aside { background-color: #1e2330 !important; border-color: #0a0d12 !important; }
+body.dark-mode footer { background-color: #14171f !important; border-top-color: #0a0d12 !important; }
+
+body.dark-mode .hardware-panel {
+    background: linear-gradient(180deg, #2a303d 0%, #171b22 100%) !important;
+    border-top: 2px solid #5a657a !important;
+    border-left: 2px solid #485264 !important;
+    border-right: 2px solid #1a1e26 !important;
+    border-bottom: 3px solid #0d1014 !important;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.6),
+        0 20px 40px -10px rgba(15, 23, 42, 0.5) !important;
+    color: #e2e8f0 !important;
+}
+body.dark-mode .hardware-panel::before {
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .card-recessed {
+    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%) !important;
+    border-top: 2px solid #101319 !important;
+    border-left: 2px solid #101319 !important;
+    border-right: 1px solid #3a4252 !important;
+    border-bottom: 1px solid #3a4252 !important;
+    box-shadow: 
+        inset 0 4px 10px rgba(0, 0, 0, 0.9),
+        0 1px 2px rgba(255, 255, 255, 0.08) !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .steel-engraved-header {
+    background: linear-gradient(180deg, #ffffff 20%, #a3acb9 60%, #4c535e 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95)) !important;
+}
+
+body.dark-mode .logo-cast {
+    background: linear-gradient(180deg, #ffffff 0%, #9aa3b2 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.9)) !important;
+}
+
+body.dark-mode .telemetry-input {
+    background: linear-gradient(180deg, #090b0e 0%, #151922 100%) !important;
+    border: 1px solid #3a4252 !important;
+    color: #00d2ff !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8) !important;
+}
+body.dark-mode .telemetry-input:focus {
+    border-color: #00d2ff !important;
+    color: #ffffff !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,210,255,0.25) !important;
+}
+
+body.dark-mode .telemetry-select {
+    background: #090b0e !important;
+    border: 1px solid #3a4252 !important;
+    color: #00d2ff !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8) !important;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2300d2ff'><polygon points='0,0 10,0 5,5'/></svg>") !important;
+}
+body.dark-mode .telemetry-select:focus {
+    border-color: #00d2ff !important;
+    color: #ffffff !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,210,255,0.25) !important;
+}
+body.dark-mode .telemetry-select option {
+    background-color: #090b0e !important;
+    color: #00d2ff !important;
+}
+
+body.dark-mode .telemetry-btn {
+    background: linear-gradient(180deg, #3a4253 0%, #1c2029 100%) !important;
+    border-top: 1px solid #5a657a !important;
+    border-left: 1px solid #485264 !important;
+    border-right: 1px solid #14171f !important;
+    border-bottom: 2px solid #0d1014 !important;
+    color: #e2e8f0 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
+}
+body.dark-mode .telemetry-btn:hover:not(:disabled) {
+    color: #ffffff !important;
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 12px rgba(0,210,255,0.3) !important;
+    background: linear-gradient(180deg, #434c5f 0%, #242935 100%) !important;
+}
+body.dark-mode .telemetry-btn.active {
+    background: linear-gradient(180deg, #090b0e 0%, #13171f 100%) !important;
+    border: 1px solid #00d2ff !important;
+    color: #00d2ff !important;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.8) !important;
+}
+
+body.dark-mode .cyber-checkbox {
+    background: #090b0e;
+    border: 1px solid #3a4252;
+}
+body.dark-mode .cyber-checkbox:checked {
+    border-color: #00d2ff;
+    background: #13171f;
+}
+body.dark-mode .cyber-checkbox:checked::after {
+    color: #00d2ff;
+}
+
+/* RE-INVERT REMAPPED TEXT FOR DARK THEME */
+body.dark-mode .text-gray-400 { color: #9ca3af !important; }
+body.dark-mode .text-gray-500 { color: #6b7280 !important; }
+body.dark-mode .text-gray-200 { color: #e5e7eb !important; }
+body.dark-mode .text-gray-300 { color: #d1d5db !important; }
+body.dark-mode .text-slate-300 { color: #cbd5e1 !important; }
+body.dark-mode .text-slate-400 { color: #94a3b8 !important; }
+body.dark-mode .text-cyan-400 { color: #22d3ee !important; }
+
+/* ==========================================================================
+   2. OPERATIONAL ANIMATIONS & LOADER STYLES
+   ========================================================================== */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -200,10 +355,10 @@ body {
 </head>
 <body class="flex flex-col min-h-100vh">
 
-<header class="w-full bg-[#171b22] border-b-4 border-neutral-900 sticky top-0 z-40 px-4 md:px-8 py-3 flex flex-col sm:flex-row justify-between items-center gap-3 shadow-xl">
+<header class="w-full border-b-4 sticky top-0 z-40 px-4 md:px-8 py-3 flex flex-col sm:flex-row justify-between items-center gap-3 shadow-xl">
     <div class="flex items-center gap-3">
         <a href="index.html" class="text-xl md:text-2xl logo-cast block">CYNICDROID</a>
-        <div class="hidden sm:block border-l border-neutral-800 h-6 pl-3">
+        <div class="hidden sm:block border-l border-neutral-400 h-6 pl-3">
             <span class="text-[9px] text-cyan-400 tracking-widest font-bold block uppercase">CENTRAL HARDWARE STORES</span>
         </div>
     </div>
@@ -212,6 +367,13 @@ body {
             <a href="index.html" class="hover:text-cyan-400 transition-colors">HOME</a>
             <a href="purchase.html" class="text-cyan-400 underline decoration-2 underline-offset-4">STORE</a>
         </nav>
+        
+        <!-- HARDWARE INTERACTION THEME SWITCH -->
+        <button id="themeToggleBtn" class="hardware-panel p-2 px-3 flex items-center gap-2 text-xs shadow-none transition-all duration-200 group">
+            <span class="text-[9px] font-black tracking-widest text-gray-400 uppercase transition-colors" id="themeModeLabel">MODE: LIGHT</span>
+            <div class="w-2.5 h-2.5 rounded-full transition-all duration-300" id="themeModeIndicator"></div>
+        </button>
+
         <button id="cartBtn" class="hardware-panel p-2 px-4 flex items-center gap-3 text-cyan-400 group transition-all duration-200 hover:border-cyan-500 text-xs shadow-none">
             <span class="text-[9px] font-black tracking-widest text-gray-200 uppercase">CART</span>
             <div class="card-recessed px-1.5 py-0.5 text-[10px] font-black text-cyan-400 group-hover:text-white" id="cartCount">0</div>
@@ -220,7 +382,7 @@ body {
 </header>
 
 <div class="flex flex-col md:flex-row flex-grow w-full relative">
-    <aside class="w-full md:w-64 bg-[#1e2330] border-b-4 md:border-b-0 md:border-r-4 border-neutral-900 p-5 flex flex-col justify-between z-30 shadow-2xl md:sticky md:top-[60px] md:h-[calc(100vh-60px)] overflow-y-auto">
+    <aside class="w-full md:w-64 border-b-4 md:border-b-0 md:border-r-4 p-5 flex flex-col justify-between z-30 shadow-2xl md:sticky md:top-[60px] md:h-[calc(100vh-60px)] overflow-y-auto">
         <div class="w-full space-y-5">
             <div>
                 <div class="text-[9px] text-gray-500 tracking-widest font-bold mb-3 uppercase">FILTER MODULE ARCHIVE</div>
@@ -237,7 +399,7 @@ body {
                 </div>
             </div>
 
-            <div class="pt-2 border-t border-neutral-800">
+            <div class="pt-2 border-t border-neutral-300">
                 <label class="flex items-center gap-2 cursor-pointer group">
                     <input type="checkbox" id="stockToggle" class="cyber-checkbox">
                     <span class="text-[9px] font-black text-gray-400 group-hover:text-cyan-400 tracking-widest uppercase transition-colors">HIDE OUT-OF-STOCK</span>
@@ -245,7 +407,7 @@ body {
             </div>
         </div>
         
-        <div class="w-full mt-6 pt-4 border-t border-neutral-800 flex flex-col items-center gap-2">
+        <div class="w-full mt-6 pt-4 border-t border-neutral-300 flex flex-col items-center gap-2">
             <button class="telemetry-btn w-full py-2 text-[10px]" onclick="openProfileModal()">MY PROFILE & HISTORY</button>
         </div>
     </aside>
@@ -272,7 +434,7 @@ body {
     </main>
 </div>
 
-<footer class="w-full bg-[#14171f] border-t-4 border-neutral-900 mt-auto px-4 md:px-8 py-6 z-30 relative">
+<footer class="w-full border-t-4 mt-auto px-4 md:px-8 py-6 z-30 relative">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="text-center md:text-left space-y-1">
             <h4 class="text-xs font-black text-gray-300 tracking-widest uppercase">CYNICDROID TECHNOLOGIES</h4>
@@ -280,7 +442,7 @@ body {
             <p class="text-[9px] text-cyan-500/60 font-mono">LOCATION: ISHIARA, EMBU COUNTY, KENYA</p>
         </div>
         <div class="flex flex-wrap justify-center gap-4 text-[9px] font-mono text-gray-500 tracking-widest">
-            <div>SYS_STATUS: <span class="text-emerald-400 font-bold">ONLINE</span></div>
+            <div>SYS_STATUS: <span class="text-emerald-500 font-bold">ONLINE</span></div>
             <div>VER: <span class="text-cyan-400 font-bold">4.2.0-PRO</span></div>
             <div>© 2026 CYNICDROID</div>
         </div>
@@ -289,13 +451,13 @@ body {
 
 <div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4 overflow-y-auto">
     <div class="hardware-panel max-w-4xl w-full p-6 space-y-4 my-4">
-        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+        <div class="flex justify-between items-center border-b border-neutral-300 pb-3">
             <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">MY CENTRAL SYSTEM ACCOUNT DASHBOARD</h3>
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeProfileModal()">✕</button>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div class="md:col-span-5 space-y-3 border-b md:border-b-0 md:border-r border-neutral-800 pb-6 md:pb-0 md:pr-6">
+            <div class="md:col-span-5 space-y-3 border-b md:border-b-0 md:border-r border-neutral-300 pb-6 md:pb-0 md:pr-6">
                 <div class="text-[10px] font-black text-cyan-500 tracking-wider uppercase mb-1">CLIENT ACCESS DETAILS</div>
                 
                 <div class="space-y-2">
@@ -338,7 +500,7 @@ body {
 
 <div id="previewModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
-        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+        <div class="flex justify-between items-center border-b border-neutral-300 pb-3">
             <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">PRODUCT DETAILS</h3>
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closePreview()">✕</button>
         </div>
@@ -357,8 +519,8 @@ body {
             <h4 id="previewTitle" class="text-sm font-black text-gray-200 tracking-wide uppercase"></h4>
             <p id="previewDesc" class="text-[11px] text-gray-400 leading-relaxed"></p>
         </div>
-        <div class="flex justify-between items-center pt-2 border-t border-neutral-800">
-            <div id="previewPrice" class="text-xs font-black text-emerald-400 tracking-widest"></div>
+        <div class="flex justify-between items-center pt-2 border-t border-neutral-300">
+            <div id="previewPrice" class="text-xs font-black text-emerald-600 tracking-widest"></div>
             <button class="telemetry-btn px-4 py-2" id="addToCartBtn">ADD TO SHOPPING CART</button>
         </div>
     </div>
@@ -366,14 +528,14 @@ body {
 
 <div id="cartModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
-        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+        <div class="flex justify-between items-center border-b border-neutral-300 pb-3">
             <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">YOUR SHOPPING CART</h3>
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeCart()">✕</button>
         </div>
         <div class="card-recessed p-2 max-h-64 overflow-y-auto space-y-2" id="cartItems"></div>
         <div class="flex justify-between items-center p-3 card-recessed font-black text-xs">
             <span class="text-gray-400 tracking-widest">TOTAL AMOUNT:</span>
-            <span class="text-emerald-400 tracking-wider" id="cartTotal">Ksh 0</span>
+            <span class="text-emerald-600 tracking-wider" id="cartTotal">Ksh 0</span>
         </div>
         <button class="telemetry-btn w-full py-2.5" onclick="openCheckout()">PROCEED TO CHECKOUT</button>
     </div>
@@ -381,7 +543,7 @@ body {
 
 <div id="checkoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4">
     <div class="hardware-panel max-w-md w-full p-6 space-y-4">
-        <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+        <div class="flex justify-between items-center border-b border-neutral-300 pb-3">
             <h3 class="text-xs font-black text-cyan-400 tracking-wider uppercase">SECURE PAYMENT CHECKOUT</h3>
             <button class="text-gray-400 hover:text-white font-black text-sm" onclick="closeCheckout()">✕</button>
         </div>
@@ -410,32 +572,32 @@ body {
             </div>
         </div>
 
-        <div class="card-recessed p-3 border border-neutral-800 space-y-2">
+        <div class="card-recessed p-3 border border-neutral-300 space-y-2">
             <div class="flex justify-between items-center">
                 <span class="text-[9px] font-black text-gray-400 tracking-widest">TRANSACTION GATEWAY:</span>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded text-black bg-emerald-400 uppercase tracking-wide">M-PESA STK PUSH</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 uppercase tracking-wide">M-PESA STK PUSH</span>
             </div>
-            <div class="text-[10px] font-mono p-2 bg-black/40 rounded border border-neutral-900 text-slate-300 leading-relaxed">
+            <div class="text-[10px] font-mono p-2 bg-black/10 dark:bg-black/40 rounded border border-neutral-300 text-slate-700 leading-relaxed">
                 <span>An STK prompt will appear on your phone. If it logs busy or fails to push, please clear manually via:</span><br>
-                <div class="text-white text-center py-2 mt-1 bg-neutral-900 rounded border border-neutral-800 space-y-1 text-[10px]">
-                    <div>EQUITY PAYBILL: <strong class="text-cyan-400 font-black">247247</strong></div>
-                    <div>ACCOUNT NUMBER: <strong class="text-cyan-400 font-black">0716375459</strong></div>
+                <div class="text-neutral-900 text-center py-2 mt-1 bg-white border border-neutral-300 rounded space-y-1 text-[10px]">
+                    <div>EQUITY PAYBILL: <strong class="text-cyan-600 font-black">247247</strong></div>
+                    <div>ACCOUNT NUMBER: <strong class="text-cyan-600 font-black">0716375459</strong></div>
                 </div>
             </div>
         </div>
 
         <div class="card-recessed p-2 max-h-24 overflow-y-auto space-y-1 text-[10px]" id="checkoutProducts"></div>
         
-        <div class="space-y-1 font-mono text-[9px] text-gray-400 px-1">
+        <div class="space-y-1 font-mono text-[9px] text-gray-500 px-1">
             <div class="flex justify-between"><span>BASE INVENTORY VALUE:</span><span id="checkoutBaseTotal">Ksh 0</span></div>
             <div class="flex justify-between"><span>FREIGHT MANIFEST FEE:</span><span id="checkoutShippingCost">Ksh 0</span></div>
         </div>
 
         <div class="flex justify-between items-center p-3 card-recessed font-black text-xs">
             <span class="text-gray-400 tracking-widest">TOTAL AMOUNT:</span>
-            <span class="text-emerald-400 tracking-wider" id="checkoutTotal">Ksh 0</span>
+            <span class="text-emerald-600 tracking-wider" id="checkoutTotal">Ksh 0</span>
         </div>
-        <button id="submitOrderBtn" class="telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-emerald-400 border-emerald-900 hover:border-emerald-400" onclick="submitCheckout()">
+        <button id="submitOrderBtn" class="telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-emerald-600 border-emerald-900 hover:border-emerald-400" onclick="submitCheckout()">
             INITIATE M-PESA PAYMENT
         </button>
     </div>
@@ -458,6 +620,43 @@ let isUserTypingSearch = false;
 
 const itemsPerPage = 20;
 
+/* ==========================================================================
+   THEME MANAGER SUBSYSTEM
+   ========================================================================== */
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const themeModeLabel = document.getElementById('themeModeLabel');
+const themeModeIndicator = document.getElementById('themeModeIndicator');
+
+function setTheme(isDark) {
+    if (isDark) {
+        document.body.classList.add('dark-mode');
+        themeModeLabel.innerText = "MODE: DARK";
+        themeModeIndicator.className = "w-2.5 h-2.5 rounded-full bg-[#aef710] shadow-[0_0_8px_#aef710]";
+        localStorage.setItem('cynic_theme', 'dark');
+    } else {
+        document.body.classList.remove('dark-mode');
+        themeModeLabel.innerText = "MODE: LIGHT";
+        themeModeIndicator.className = "w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b]";
+        localStorage.setItem('cynic_theme', 'light');
+    }
+}
+
+themeToggleBtn.addEventListener('click', () => {
+    const isCurrentlyDark = document.body.classList.contains('dark-mode');
+    setTheme(!isCurrentlyDark);
+});
+
+// Detect prior chassis state configurations
+const savedTheme = localStorage.getItem('cynic_theme');
+if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    setTheme(true);
+} else {
+    setTheme(false);
+}
+
+/* ==========================================================================
+   INVENTORY CONTROLS & MANAGEMENT
+   ========================================================================== */
 function handleBrokenImage(imgElement, context, fallbackName = '') {
     imgElement.classList.add('hidden');
     if (context === 'PREVIEW') {
@@ -547,12 +746,12 @@ function createCard(p) {
     const imageSrc = hasValidImageString ? `./assets/images/${p.img}` : 'BROKEN_TRIGGER';
     const badgeText = getHardwareBadge(p.category);
     const stockStatusHTML = p.inStock 
-        ? `<span class="text-[8px] text-emerald-400 font-bold font-mono uppercase">IN_STOCK</span>` 
+        ? `<span class="text-[8px] text-emerald-500 font-bold font-mono uppercase">IN_STOCK</span>` 
         : `<span class="text-[8px] text-rose-500 font-bold font-mono uppercase">DEPLETED</span>`;
 
     card.innerHTML = `
         <div class="space-y-2">
-            <div class="overflow-hidden rounded border border-neutral-900 bg-black h-32 flex items-center justify-center relative">
+            <div class="overflow-hidden rounded border border-neutral-400 bg-black h-32 flex items-center justify-center relative">
                 <img class="w-full h-32 object-cover opacity-75 group-hover:opacity-100 transition-opacity duration-200" 
                      src="${imageSrc}" alt="${p.title}" 
                      onerror="handleBrokenImage(this, 'CARD')">
@@ -570,8 +769,8 @@ function createCard(p) {
             <h3 class="text-[11px] font-black tracking-wide text-gray-200 uppercase line-clamp-1 group-hover:text-cyan-400">${p.title}</h3>
             <p class="text-[10px] text-gray-500 leading-normal line-clamp-2">${p.desc}</p>
         </div>
-        <div class="flex justify-between items-center pt-2 border-t border-neutral-900/60">
-            <span class="text-[11px] font-black text-emerald-400">Ksh ${p.price}</span>
+        <div class="flex justify-between items-center pt-2 border-t border-neutral-400/60">
+            <span class="text-[11px] font-black text-emerald-600">Ksh ${p.price}</span>
             <span class="text-[9px] font-bold text-cyan-500 tracking-wider group-hover:underline">VIEW</span>
         </div>
     `;
@@ -620,7 +819,7 @@ function renderCategories(filteredProducts) {
     allSection.className = 'hardware-panel p-5 space-y-4';
     allSection.id = 'AllProducts';
     allSection.innerHTML = `
-        <div class="border-b border-neutral-800 pb-2"><h2 class="text-xs font-black text-gray-300 tracking-widest uppercase">ALL PRODUCTS CATALOG</h2></div>
+        <div class="border-b border-neutral-300 pb-2"><h2 class="text-xs font-black text-gray-300 tracking-widest uppercase">ALL PRODUCTS CATALOG</h2></div>
         <div class="grid-layout-node grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
     `;
     categoriesContainer.appendChild(allSection);
@@ -631,7 +830,7 @@ function renderCategories(filteredProducts) {
         catSection.className = 'hardware-panel p-5 space-y-4';
         catSection.id = cat.replace(/\s/g, '');
         catSection.innerHTML = `
-            <div class="border-b border-neutral-800 pb-2"><h2 class="text-xs font-black text-gray-300 tracking-widest uppercase">${cat}</h2></div>
+            <div class="border-b border-neutral-300 pb-2"><h2 class="text-xs font-black text-gray-300 tracking-widest uppercase">${cat}</h2></div>
             <div class="grid-layout-node grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
         `;
         categoriesContainer.appendChild(catSection);
@@ -728,7 +927,9 @@ searchInput.addEventListener('input', () => {
 
 sortSelect.addEventListener('change', applyFiltersAndSorting);
 
-// ================== ACCOUNT PROFILE & LOCAL HISTORY ==================
+/* ==========================================================================
+   ACCOUNT PROFILE & LOCAL HISTORY
+   ========================================================================== */
 function openProfileModal() {
     document.getElementById('profileModal').classList.replace('hidden', 'flex');
     const profile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '', address: '' };
@@ -776,16 +977,16 @@ function renderPurchaseHistory() {
     }
     history.slice().reverse().forEach(record => {
         const itemBlock = document.createElement('div');
-        itemBlock.className = 'p-3 bg-neutral-950/80 rounded border border-neutral-900 text-[10px] space-y-1.5';
+        itemBlock.className = 'p-3 bg-neutral-950/10 dark:bg-neutral-950/80 rounded border border-neutral-300 dark:border-neutral-900 text-[10px] space-y-1.5';
         let itemsListHTML = record.items.map(i => `<div class="text-gray-300 uppercase">${i.title} <span class="text-cyan-500 font-bold font-mono text-[9px] ml-1">(x${i.qty})</span></div>`).join('');
         itemBlock.innerHTML = `
-            <div class="flex justify-between border-b border-neutral-900 pb-1 font-mono text-[8px] text-gray-500">
+            <div class="flex justify-between border-b border-neutral-300 dark:border-neutral-900 pb-1 font-mono text-[8px] text-gray-500">
                 <span>DATE: ${record.date}</span> <span class="text-cyan-500 font-bold tracking-wider">${record.method}</span>
             </div>
             <div class="space-y-0.5">${itemsListHTML}</div>
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-1.5 text-slate-400 gap-1 border-t border-neutral-900/40">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-1.5 text-slate-400 gap-1 border-t border-neutral-300/40 dark:border-neutral-900/40">
                 <span class="truncate max-w-full text-[8px] italic text-slate-500">Del: ${record.address}</span>
-                <strong class="text-emerald-400 font-black font-mono text-[10px] sm:ml-auto">Ksh ${record.total}</strong>
+                <strong class="text-emerald-500 font-black font-mono text-[10px] sm:ml-auto">Ksh ${record.total}</strong>
             </div>
         `;
         container.appendChild(itemBlock);
@@ -804,7 +1005,9 @@ function archiveTransactionToHistory(itemsArray, totalCost, deliveryAddress, fal
     localStorage.setItem('cynic_purchase_history', JSON.stringify(history));
 }
 
-// ================== SHOPPING CART SUBSYSTEM ==================
+/* ==========================================================================
+   SHOPPING CART SUBSYSTEM
+   ========================================================================== */
 function openCart() { document.getElementById('cartModal').classList.replace('hidden', 'flex'); updateCartUI(); }
 function closeCart() { document.getElementById('cartModal').classList.replace('flex', 'hidden'); }
 
@@ -816,7 +1019,7 @@ function updateCartUI() {
     }
     cart.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'flex items-center justify-between gap-3 p-2 bg-black/60 rounded border border-neutral-900 text-[10px]';
+        div.className = 'flex items-center justify-between gap-3 p-2 bg-black/5 dark:bg-black/60 rounded border border-neutral-300 dark:border-neutral-900 text-[10px]';
         
         const hasValidImageString = item.img && item.img.trim() !== "" && /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(item.img);
         const imageSrc = hasValidImageString ? `./assets/images/${item.img}` : 'BROKEN_TRIGGER';
@@ -828,13 +1031,13 @@ function updateCartUI() {
                 </div>
                 <div>
                     <strong class="text-gray-200 block max-w-[160px] truncate uppercase">${item.title}</strong>
-                    <span class="text-emerald-400">Ksh ${item.price}</span>
+                    <span class="text-emerald-500">Ksh ${item.price}</span>
                 </div>
             </div>
             <div class="flex items-center gap-1.5">
-                <button class="w-5 h-5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold rounded flex items-center justify-center border border-neutral-700" onclick="adjustQty('${item.id}', -1)">-</button>
+                <button class="w-5 h-5 bg-neutral-300 dark:bg-neutral-800 hover:bg-neutral-400 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white font-bold rounded flex items-center justify-center border border-neutral-400 dark:border-neutral-700" onclick="adjustQty('${item.id}', -1)">-</button>
                 <span class="font-black text-gray-300 w-4 text-center">${item.qty}</span>
-                <button class="w-5 h-5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold rounded flex items-center justify-center border border-neutral-700" onclick="adjustQty('${item.id}', 1)">+</button>
+                <button class="w-5 h-5 bg-neutral-300 dark:bg-neutral-800 hover:bg-neutral-400 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white font-bold rounded flex items-center justify-center border border-neutral-400 dark:border-neutral-700" onclick="adjustQty('${item.id}', 1)">+</button>
             </div>
         `;
         cartItemsDiv.appendChild(div);
@@ -892,7 +1095,9 @@ function openPreview(p) {
 }
 function closePreview() { document.getElementById('previewModal').classList.replace('flex', 'hidden'); }
 
-// ================== CHECKOUT AND GATEWAY CONTROLS ==================
+/* ==========================================================================
+   CHECKOUT AND GATEWAY CONTROLS
+   ========================================================================== */
 function calculateGrandTotal() {
     const baseTotal = cart.reduce((a, b) => a + b.price * b.qty, 0);
     const shippingSelect = document.getElementById('checkoutShipping');
@@ -914,7 +1119,7 @@ function openCheckout() {
     manualPaymentMode = false;
     const submitBtn = document.getElementById('submitOrderBtn');
     submitBtn.innerText = 'INITIATE M-PESA PAYMENT';
-    submitBtn.className = "telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-emerald-400 border-emerald-900 hover:border-emerald-400";
+    submitBtn.className = "telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-emerald-600 border-emerald-900 hover:border-emerald-400";
 
     const savedProfile = JSON.parse(localStorage.getItem('cynic_profile_data')) || { name: '', phone: '', email: '', address: '' };
     document.getElementById('checkoutName').value = savedProfile.name || '';
@@ -926,8 +1131,8 @@ function openCheckout() {
     checkoutProductsDiv.innerHTML = '';
     cart.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'flex justify-between items-center text-gray-400 py-1 border-b border-neutral-900/60';
-        div.innerHTML = `<span class="uppercase truncate max-w-[240px]">${item.title} (x${item.qty})</span> <span class="text-emerald-400 font-bold">Ksh ${item.price * item.qty}</span>`;
+        div.className = 'flex justify-between items-center text-gray-400 py-1 border-b border-neutral-300 dark:border-neutral-900/60';
+        div.innerHTML = `<span class="uppercase truncate max-w-[240px]">${item.title} (x${item.qty})</span> <span class="text-emerald-500 font-bold">Ksh ${item.price * item.qty}</span>`;
         checkoutProductsDiv.appendChild(div);
     });
     
@@ -935,7 +1140,9 @@ function openCheckout() {
 }
 function closeCheckout() { document.getElementById('checkoutModal').classList.replace('flex', 'hidden'); }
 
-// ================== EMAILJS GATEWAY & TELEMETRY DESIGN ==================
+/* ==========================================================================
+   EMAILJS GATEWAY & TELEMETRY DESIGN
+   ========================================================================== */
 emailjs.init("Iz22KBRfL682WD6td"); 
 
 async function submitCheckout() {
@@ -980,7 +1187,7 @@ async function submitCheckout() {
     } catch (err) {
         manualPaymentMode = true;
         submitBtn.disabled = false;
-        submitBtn.className = "telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-amber-400 border-amber-900 hover:border-amber-400";
+        submitBtn.className = "telemetry-btn w-full py-2.5 flex justify-center items-center gap-2 text-amber-500 border-amber-900 hover:border-amber-400";
         submitBtn.innerText = 'CONFIRM MANUAL PAYMENT';
         alert('STK PROMPT BUSY: Routing slow. Please pay manually via Equity Paybill, then tap "CONFIRM MANUAL PAYMENT" to submit.');
     }
