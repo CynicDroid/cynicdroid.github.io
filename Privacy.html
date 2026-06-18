@@ -6,94 +6,85 @@
 <title>Privacy Policy - CynicDroid Technologies</title>
 <link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
 
-<!-- Tailwind CSS -->
+<!-- Tailwind CSS config for class-based dark mode -->
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+    }
+</script>
 
-<!-- Google Fonts: Orbitron for precision hardware readouts -->
+<!-- Google Fonts: Orbitron for precision technical readouts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <!-- AOS Scroll Animations -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
-body, h1, h2, h3, h4, p, a, li, strong, em, label {
+body, h1, h2, h3, p, a, button, input, select {
     font-family: 'Orbitron', sans-serif;
 }
 
+/* ====== LIGHT MODE (PREMIUM METALLIC CHASSIS) ====== */
 body {
     background-color: #cbd5e1;
-    /* Premium Bright Brushed Aluminum Metal Panel Background */
     background-image: 
-        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.1) 80%, rgba(255,255,255,0.1) 100%),
-        linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.1) 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px),
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 3px);
-    box-shadow: inset 0 0 60px rgba(0,0,0,0.15);
-    color: #e2e8f0;
+        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.04) 40%, rgba(255,255,255,0.3) 60%, rgba(0,0,0,0.08) 80%, rgba(255,255,255,0.2) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.08) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.12);
+    color: #0f172a;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ====== 3D Machined Metal Chassis Panels ====== */
 .hardware-panel {
-    background: linear-gradient(180deg, #232936 0%, #161b24 100%);
-    border-top: 2px solid #38455e;
-    border-left: 2px solid #2d374b;
-    border-right: 2px solid #141923;
-    border-bottom: 4px solid #0d1016;
-    box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.08),
-        inset 0 -3px 8px rgba(0, 0, 0, 0.5),
-        0 20px 40px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #cbd5e1;
+    border-bottom: 4px solid #94a3b8;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 10px 25px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     position: relative;
 }
-
 .hardware-panel::before {
     content: '';
     position: absolute;
     inset: 5px;
-    border: 1px solid #101319;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 4px;
     pointer-events: none;
 }
 
-/* ====== Recessed Die-Cast Legal Bays ====== */
 .card-recessed {
-    background: linear-gradient(180deg, #12161f 0%, #0d1016 100%);
-    border-top: 2px solid #090b0e;
-    border-left: 2px solid #090b0e;
-    border-right: 1px solid #2d374b;
-    border-bottom: 1px solid #2d374b;
-    box-shadow: 
-        inset 0 4px 10px rgba(0, 0, 0, 0.6),
-        0 1px 2px rgba(255, 255, 255, 0.02);
+    background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+    border-top: 2px solid #94a3b8;
+    border-left: 2px solid #94a3b8;
+    border-right: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     position: relative;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .card-recessed:hover {
-    border-right-color: #00d2ff;
-    border-bottom-color: #00d2ff;
-    box-shadow: 
-        inset 0 2px 6px rgba(0, 0, 0, 0.7),
-        0 0 15px rgba(0, 210, 255, 0.15);
+    border-right-color: #0284c7;
+    border-bottom-color: #0284c7;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 15px rgba(2, 132, 199, 0.15);
 }
 
-/* ====== Industrial Rivet Badges ====== */
 .rivet-plate {
-    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
-    border: 1px solid #2d374b;
-    box-shadow: 
-        inset 0 1px 1px rgba(255,255,255,0.05),
-        0 4px 8px rgba(0,0,0,0.4);
+    background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+    border: 1px solid #94a3b8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     padding: 6px 24px;
     font-weight: 900;
     font-size: 0.85rem;
     letter-spacing: 2px;
-    color: #00d2ff;
-    text-shadow: 0 0 6px rgba(0, 210, 255, 0.3);
+    color: #0284c7;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -103,26 +94,78 @@ body {
 .rivet-plate::before, .rivet-plate::after {
     content: '';
     width: 5px; height: 5px;
-    background: #090b0e;
+    background: #94a3b8;
     border-radius: 50%;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.05);
 }
 
-/* ====== Heavy Machinery 3D Buttons ====== */
-.telemetry-link {
-    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%) !important;
-    border-top: 1px solid #3d4a63 !important;
-    border-left: 1px solid #333e54 !important;
-    border-right: 2px solid #0f1217 !important;
-    border-bottom: 4px solid #0a0c10 !important;
-    color: #d8dee9 !important;
+.btn-machined, .telemetry-link {
+    background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 100%) !important;
+    border-top: 1px solid #ffffff !important;
+    border-left: 1px solid #ffffff !important;
+    border-right: 2px solid #94a3b8 !important;
+    border-bottom: 4px solid #64748b !important;
+    color: #1e293b !important;
     font-weight: 700;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 6px 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.1s ease;
     letter-spacing: 1.5px;
+}
+.btn-machined:hover, .telemetry-link:hover {
+    background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 100%) !important;
+    color: #0284c7 !important;
+    border-bottom-color: #0284c7 !important;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
+}
+.btn-machined:active, .telemetry-link:active {
+    border-bottom-width: 1px !important;
+    transform: translateY(3px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-chassis {
+    background: #94a3b8;
+    border: 2px solid #64748b;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.15);
+    border-radius: 30px;
+    width: 58px;
+    height: 28px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.toggle-handle {
+    background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+    border: 1px solid #94a3b8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-logout {
+    background: linear-gradient(180deg, #fee2e2 0%, #fca5a5 100%) !important;
+    border-top: 1px solid #ffffff !important;
+    border-left: 1px solid #ffffff !important;
+    border-right: 2px solid #f87171 !important;
+    border-bottom: 4px solid #ef4444 !important;
+    color: #991b1b !important;
+}
+.btn-logout:hover {
+    background: linear-gradient(180deg, #fca5a5 0%, #f87171 100%) !important;
+    color: #7f1d1d !important;
+    border-bottom-color: #b91c1c !important;
+}
+
+.telemetry-link {
     font-size: 0.72rem;
     padding: 0.5rem 1rem;
     border-radius: 4px;
@@ -130,53 +173,17 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-.telemetry-link:hover {
-    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%) !important;
-    color: #aef710 !important;
-    border-right-color: #1f242e !important;
-    border-bottom-color: #aef710 !important;
-    text-shadow: 0 0 6px rgba(174, 247, 16, 0.4);
-    box-shadow: 
-        inset 0 1px 0 rgba(174, 247, 16, 0.05),
-        0 4px 12px rgba(174, 247, 16, 0.15);
-}
-
-.telemetry-link:active {
-    border-bottom-width: 1px !important;
-    transform: translateY(3px);
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
-}
-
 .telemetry-link-profile {
-    color: #00d2ff !important;
-    border-color: #1b354b !important;
+    color: #0284c7 !important;
+    border-color: #cbd5e1 !important;
 }
 
-.btn-logout {
-    background: linear-gradient(180deg, #5c2424 0%, #3a1515 100%) !important;
-    border-top: 1px solid #7c3535 !important;
-    border-left: 1px solid #6b2d2d !important;
-    border-right: 2px solid #240c0c !important;
-    border-bottom: 4px solid #1a0808 !important;
-    color: #fca5a5 !important;
-}
-
-.btn-logout:hover {
-    background: linear-gradient(180deg, #3d1616 0%, #240c0c 100%) !important;
-    color: #ef4444 !important;
-    border-bottom-color: #ef4444 !important;
-    text-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
-}
-
-/* Input Fields Machined Realism */
 .input-machined {
-    background: #090b0e;
-    border: 1px solid #232d3d;
-    border-bottom: 2px solid #334155;
-    color: #f1f5f9;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+    background: #f8fafc;
+    border: 1px solid #94a3b8;
+    border-bottom: 2px solid #64748b;
+    color: #0f172a;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
     border-radius: 4px;
     padding: 0.6rem 0.75rem;
     font-size: 0.85rem;
@@ -184,52 +191,170 @@ body {
 }
 .input-machined:focus {
     outline: none;
-    border-color: #00d2ff;
-    border-bottom-color: #00d2ff;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.9), 0 0 10px rgba(0, 210, 255, 0.15);
+    border-color: #0284c7;
+    border-bottom-color: #0284c7;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05), 0 0 10px rgba(2, 132, 199, 0.15);
 }
 
-/* ====== Embedded Steel Header Navigation ====== */
 .nav-chassis {
-    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
-    border-bottom: 3px solid #00d2ff;
-    box-shadow: 
-        inset 0 -1px 0 rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.05),
-        0 10px 30px rgba(0,0,0,0.7);
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-bottom: 3px solid #0284c7;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .logo-cast {
     font-weight: 900;
     letter-spacing: 4px;
+    color: #0284c7;
+    background: linear-gradient(180deg, #0f172a 0%, #0284c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.steel-engraved-header {
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #0f172a 20%, #0284c7 70%, #0369a1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* ====== DARK MODE (PREMIUM INDUSTRIAL CHASSIS) ====== */
+.dark body {
+    background-color: #0f131a;
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.2) 50%, rgba(255,255,255,0.02) 80%, rgba(255,255,255,0.04) 100%),
+        linear-gradient(to bottom, #1e2530 0%, #0f131a 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 80px rgba(0,0,0,0.6);
+    color: #e2e8f0;
+}
+
+.dark .hardware-panel {
+    background: linear-gradient(180deg, #232936 0%, #161b24 100%);
+    border-top: 2px solid #38455e;
+    border-left: 2px solid #2d374b;
+    border-right: 2px solid #141923;
+    border-bottom: 4px solid #0d1016;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.08), inset 0 -3px 8px rgba(0, 0, 0, 0.5), 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.dark .hardware-panel::before {
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.dark .card-recessed {
+    background: linear-gradient(180deg, #12161f 0%, #0d1016 100%);
+    border-top: 2px solid #090b0e;
+    border-left: 2px solid #090b0e;
+    border-right: 1px solid #2d374b;
+    border-bottom: 1px solid #2d374b;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(255, 255, 255, 0.02);
+}
+.dark .card-recessed:hover {
+    border-right-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 210, 255, 0.15);
+}
+
+.dark .rivet-plate {
+    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
+    border: 1px solid #2d374b;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 8px rgba(0,0,0,0.4);
+    color: #00d2ff;
+    text-shadow: 0 0 6px rgba(0, 210, 255, 0.3);
+}
+.dark .rivet-plate::before, .dark .rivet-plate::after {
+    background: #090b0e;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.dark .btn-machined, .dark .telemetry-link {
+    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%) !important;
+    border-top: 1px solid #3d4a63 !important;
+    border-left: 1px solid #333e54 !important;
+    border-right: 2px solid #0f1217 !important;
+    border-bottom: 4px solid #0a0c10 !important;
+    color: #d8dee9 !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+.dark .btn-machined:hover, .dark .telemetry-link:hover {
+    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%) !important;
+    color: #aef710 !important;
+    border-right-color: #1f242e !important;
+    border-bottom-color: #aef710 !important;
+    text-shadow: 0 0 6px rgba(174, 247, 16, 0.4);
+    box-shadow: inset 0 1px 0 rgba(174, 247, 16, 0.05), 0 4px 12px rgba(174, 247, 16, 0.15);
+}
+.dark .btn-machined:active, .dark .telemetry-link:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.dark .toggle-chassis {
+    background: #090b0e;
+    border-color: #1a2230;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
+}
+.dark .toggle-handle {
+    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%);
+    border-color: #3d4a63;
+    left: 32px;
+}
+
+.dark .btn-logout {
+    background: linear-gradient(180deg, #5c2424 0%, #3a1515 100%) !important;
+    border-top: 1px solid #7c3535 !important;
+    border-left: 1px solid #6b2d2d !important;
+    border-right: 2px solid #240c0c !important;
+    border-bottom: 4px solid #1a0808 !important;
+    color: #fca5a5 !important;
+}
+.dark .btn-logout:hover {
+    background: linear-gradient(180deg, #3d1616 0%, #240c0c 100%) !important;
+    color: #ef4444 !important;
+    border-bottom-color: #ef4444 !important;
+    text-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.dark .telemetry-link-profile {
+    color: #00d2ff !important;
+    border-color: #1b354b !important;
+}
+
+.dark .input-machined {
+    background: #090b0e;
+    border: 1px solid #232d3d;
+    border-bottom: 2px solid #334155;
+    color: #f1f5f9;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+}
+.dark .input-machined:focus {
+    border-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.9), 0 0 10px rgba(0, 210, 255, 0.15);
+}
+
+.dark .nav-chassis {
+    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
+    border-bottom: 3px solid #00d2ff;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.dark .logo-cast {
     color: #00d2ff;
     text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
     background: linear-gradient(180deg, #ffffff 0%, #00d2ff 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
-/* ====== Structural Chiseled Typography ====== */
-.steel-engraved-header {
-    font-weight: 900;
-    letter-spacing: 2px;
+.dark .steel-engraved-header {
     background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
-}
-
-/* Dynamic Text Links Inside Terminal */
-.terminal-link {
-    color: #00d2ff;
-    text-decoration: none;
-    border-bottom: 1px dashed #00d2ff;
-    transition: all 0.2s ease;
-}
-.terminal-link:hover {
-    color: #ffffff;
-    border-bottom-color: #ffffff;
-    text-shadow: 0 0 4px rgba(0, 210, 255, 0.6);
 }
 </style>
 </head>
@@ -240,13 +365,23 @@ body {
     <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center p-3 px-4 md:px-6 gap-3">
         <a href="index.html" class="text-2xl logo-cast">CYNICDROID</a>
         
-        <div class="flex flex-wrap gap-2 items-center justify-center">
+        <!-- Action Control Array Matrix -->
+        <div class="flex flex-wrap gap-3 items-center justify-center">
+            
+            <!-- Machined Toggle Button Mechanism -->
+            <div class="flex items-center gap-2">
+                <span class="text-[10px] font-black tracking-wider text-slate-700 dark:text-gray-400">THEME</span>
+                <div id="themeToggleBtn" onclick="toggleThemeEngine()" class="toggle-chassis">
+                    <div id="themeToggleHandle" class="toggle-handle">🌙</div>
+                </div>
+            </div>
+
             <a href="https://wa.me/254716375459" class="telemetry-link" target="_blank" rel="noopener">WHATSAPP</a>
-            <a href="https://www.facebook.com/profile.php?id=100064124917514" class="telemetry-link" target="_blank" rel="noopener">FACEBOOK</a>
+            <a href="tel:+254716375459" class="telemetry-link">CALL</a>
             <a href="mailto:cynicdroid@gmail.com" class="telemetry-link">EMAIL</a>
             
             <!-- Auth Switches Dynamic Hub -->
-            <div id="authNavContainer" class="flex gap-2 border-l border-gray-700 pl-2">
+            <div id="authNavContainer" class="flex gap-2 border-l border-slate-300 dark:border-gray-700 pl-2">
                 <!-- Injected via JavaScript Core -->
             </div>
         </div>
@@ -256,225 +391,200 @@ body {
 <!-- Main Dashboard Frame -->
 <main class="pt-36 sm:pt-28 md:pt-32 pb-12 relative z-10 container mx-auto px-4 md:px-6 space-y-6 max-w-5xl">
     
-    <!-- Hero Header Panel -->
+    <!-- Header Block: Title Console Framework -->
     <div class="hardware-panel p-6 md:p-8 text-center" data-aos="fade-up">
-        <h1 class="text-2xl md:text-5xl font-black tracking-wider steel-engraved-header uppercase">PRIVACY POLICY MATRIX</h1>
-        <div class="mt-4 inline-block"><span class="rivet-plate">LAST REVISED: JUNE 08, 2026</span></div>
+        <h1 class="text-2xl md:text-4xl font-black tracking-wider steel-engraved-header uppercase mb-4">
+            Privacy Policy Matrix
+        </h1>
+        <div class="mt-2">
+            <span class="rivet-plate">LAST REVISED: JUNE 18, 2026</span>
+        </div>
     </div>
 
-    <!-- Intake Overview Terminal -->
-    <div class="hardware-panel p-6 md:p-8" data-aos="fade-up">
-        <h2 class="text-sm font-black text-gray-300 tracking-widest uppercase mb-4 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span> PREAMBLE & APPLICABILITY
+    <!-- Preamble Section Panel -->
+    <div class="hardware-panel p-6" data-aos="fade-up" data-aos-delay="50">
+        <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 bg-sky-600 dark:bg-cyan-400 rounded-full"></span> 1. Operational Environment Preamble
         </h2>
-        <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide space-y-4">
+        <div class="card-recessed p-5 text-xs md:text-sm leading-relaxed tracking-wide space-y-3 font-medium text-slate-800 dark:text-gray-400">
             <p>
-                Thank you for choosing to be part of our community at CynicDroid Technologies. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices with regard to your personal information, please contact our network station at <a href="mailto:cynicdroid@gmail.com" class="terminal-link">cynicdroid@gmail.com</a>.
+                Thank you for choosing to integrate with the digital grid at <strong>CynicDroid Technologies</strong>. We are fully hard-coded to safeguard your structural operational intelligence and personal data integrity. If you maintain queries or processing deadlocks regarding our data handling routines, reach out to terminal support at <a href="mailto:cynicdroid@gmail.com" class="text-sky-700 dark:text-cyan-400 underline font-bold">cynicdroid@gmail.com</a>.
             </p>
-            <p class="text-gray-200 font-bold tracking-wider">THIS PRIVACY NOTICE DESCRIBES HOW WE MIGHT USE YOUR INFORMATION IF YOU:</p>
-            <ul class="space-y-2 pl-4 list-none text-[11px]">
-                <li class="flex items-center gap-2"><span class="text-cyan-400">■</span> Visit our digital station infrastructure at <a href="index.html" class="terminal-link">CynicDroid Technologies</a>.</li>
-                <li class="flex items-center gap-2"><span class="text-cyan-400">■</span> Download and interact with our application firmware binaries.</li>
-                <li class="flex items-center gap-2"><span class="text-cyan-400">■</span> Engage with us in other related ways — including any sales, technical support, hardware repair queues, or marketing events.</li>
+            <p class="font-bold text-slate-900 dark:text-white pt-2 text-xs uppercase tracking-wider">This data disclosure parameter is active across individuals who:</p>
+            <ul class="space-y-2 pl-2">
+                <li class="flex items-start gap-2"><span>•</span> <span>Access or hook into our main domain infrastructure node at <a href="index.html" class="text-sky-700 dark:text-cyan-400 underline font-bold">CynicDroid Technologies</a>.</span></li>
+                <li class="flex items-start gap-2"><span>•</span> <span>Download, extract, or execute application firmware binaries developed by our station.</span></li>
+                <li class="flex items-start gap-2"><span>•</span> <span>Engage in external network loops — including repair service channels, logistics systems, or promotional arrays.</span></li>
             </ul>
-            <p>
-                The purpose of this privacy notice is to explain in the clearest way possible what information we collect, how we use it, and your explicit legal rights. Please review these parameters carefully.
-            </p>
         </div>
     </div>
 
-    <!-- Core Content Breakdown Terminal -->
-    <div class="hardware-panel p-6 md:p-8 space-y-8" data-aos="fade-up">
+    <!-- Core Policy Breakdown Array Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
         
-        <!-- Section 1 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">1. WHAT INFORMATION DO WE COLLECT?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide space-y-4">
-                <p><strong class="text-gray-300">Personal information you disclose to us:</strong> We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services or otherwise when you contact us.</p>
-                <p>The personal information we collect may include names, phone numbers, email addresses, usernames, billing addresses, and other similar configuration information.</p>
-                <p><strong class="text-gray-300">Social Media Login Data:</strong> We may provide you with the option to register with us using your existing social media account details, like your Facebook, Twitter or other social media account. If you choose to register in this way, we will collect the information described in Section 5 below.</p>
-                
-                <div class="border-t border-neutral-900 pt-4 mt-4">
-                    <p class="font-bold text-gray-300 mb-2">INFORMATION AUTOMATICALLY COLLECTED</p>
-                    <p>Some information — such as your Internet Protocol (IP) address and/or browser and device characteristics — is collected automatically when you visit our Services. This information does not reveal your specific identity but may include device and usage information, such as your operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services and other technical information. This information is primarily needed to maintain the security and operation of our Services, and for our internal analytics. Like many businesses, we also collect information through cookies and similar tracking layers. You can find out more about this in our <a href="Cookie.html" class="terminal-link">Cookie Notice</a>.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-                    <div class="bg-black/40 p-3 rounded border border-neutral-900">
-                        <span class="text-[10px] font-bold text-gray-200 block mb-1">LOG & USAGE DATA</span>
-                        Service-related, diagnostic, usage and performance information our servers automatically record in log files, including error reports, crash dumps, and hardware environment variables.
-                    </div>
-                    <div class="bg-black/40 p-3 rounded border border-neutral-900">
-                        <span class="text-[10px] font-bold text-gray-200 block mb-1">DEVICE PROPERTIES</span>
-                        Information about your computer, phone, tablet or other terminal equipment used to access our nodes, including hardware profiles, proxy settings, and mobile carrier.
-                    </div>
-                    <div class="bg-black/40 p-3 rounded border border-neutral-900">
-                        <span class="text-[10px] font-bold text-gray-200 block mb-1">LOCATION ARRAYS</span>
-                        We collect location data such as information about your device's location, which can be either precise or imprecise. You can opt out of allowing us to collect this information in your device parameters.
-                    </div>
+        <!-- Section 2: Telemetry -->
+        <div class="hardware-panel p-5 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+            <div>
+                <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3">
+                    2. Telemetry We Capture
+                </h2>
+                <div class="card-recessed p-4 text-xs leading-relaxed space-y-2 text-slate-700 dark:text-gray-400">
+                    <p><strong>A. Disclosed Input Channels:</strong> We isolate and ledger operational parameters you pass into registration modules when committing data to our matrix, ordering components, or interfacing with support terminals.</p>
+                    <p><strong>B. Automated Diagnostics:</strong> Specific environment data — including browser engine profiles, IP tags, and localized network metadata — is scraped autonomously during terminal handshakes to fortify network defenses.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section 2 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">2. HOW DO WE USE YOUR INFORMATION?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide space-y-2">
-                <p>We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent. We use personal information collected via our Services for a variety of business purposes, including:</p>
-                <ul class="space-y-1.5 pl-4 list-none text-[11px] grid grid-cols-1 md:grid-cols-2 gap-x-4 pt-2">
-                    <li><span class="text-cyan-500">▪</span> Facilitating account creation & logons.</li>
-                    <li><span class="text-cyan-500">▪</span> Posting user testimonials with explicit consent.</li>
-                    <li><span class="text-cyan-500">▪</span> Managing hardware service requests & user accounts.</li>
-                    <li><span class="text-cyan-500">▪</span> Sending administrative data and policy amendments.</li>
-                    <li><span class="text-cyan-500">▪</span> Fraud monitoring, security auditing, and threat avoidance.</li>
-                    <li><span class="text-cyan-500">▪</span> Executing and managing system orders, repairs, and returns.</li>
-                    <li><span class="text-cyan-500">▪</span> Delivering requested software support routines to users.</li>
-                    <li><span class="text-cyan-500">▪</span> Serving target advertising via our tracking nodes.</li>
-                </ul>
+        <!-- Section 3: Processing -->
+        <div class="hardware-panel p-5 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="150">
+            <div>
+                <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3">
+                    3. Processing Metrics Application
+                </h2>
+                <div class="card-recessed p-4 text-xs leading-relaxed space-y-2 text-slate-700 dark:text-gray-400">
+                    <p>We structure automated analysis parameters around explicit legal vectors, user-granted permissions, and systemic processing requirements including:</p>
+                    <p>• Account registry validation and authentication checks.</p>
+                    <p>• Queue allocation for hardware maintenance systems.</p>
+                    <p>• Automated network auditing and threat firewall blocks.</p>
+                    <p>• Routing updates, order fulfillment, and code shipping.</p>
+                </div>
             </div>
         </div>
 
-        <!-- Section 3 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">3. WILL YOUR INFORMATION BE SHARED WITH ANYONE?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide space-y-3">
-                <p>We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations.</p>
-                <p>We may process or share your data that we hold based on the following legal foundations: <strong class="text-gray-300">Consent</strong>, <strong class="text-gray-300">Legitimate Interests</strong>, <strong class="text-gray-300">Performance of a Contract</strong>, <strong class="text-gray-300">Legal Obligations</strong>, and <strong class="text-gray-300">Vital Interests</strong>.</p>
-                <p>Specifically, we may transfer or share information in connection with, or during negotiations of, any company merger, asset sale, financing, or corporate restructuring with another legal entity.</p>
+        <!-- Section 4: Shared Hooks -->
+        <div class="hardware-panel p-5" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3">
+                4. Shared Network Hooks
+            </h2>
+            <div class="card-recessed p-4 text-xs leading-relaxed text-slate-700 dark:text-gray-400">
+                Information deployment only takes place during explicit corporate transformations (mergers), legal court orders, or verified user alignment. We do not sell your personal telemetry data to third-party brokers.
             </div>
         </div>
 
-        <!-- Section 4 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">4. DO WE USE COOKIES AND TRACKING TECHNOLOGIES?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide">
-                <p>We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store analytics telemetry. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our dedicated <a href="Cookie.html" class="terminal-link">Cookie Notice</a>.</p>
+        <!-- Section 5: Cookies -->
+        <div class="hardware-panel p-5" data-aos="fade-up" data-aos-delay="250">
+            <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3">
+                5. Persistent Cookie Tracks
+            </h2>
+            <div class="card-recessed p-4 text-xs leading-relaxed text-slate-700 dark:text-gray-400">
+                We drop lightweight persistent cookie strings to parse interaction trends and preserve interface layouts (such as dark mode alignment). Review alternative setups inside our dedicated <a href="Cookie.html" class="text-sky-700 dark:text-cyan-400 underline font-bold">Cookie Policy</a>.
             </div>
         </div>
 
-        <!-- Section 5 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide space-y-2">
-                <p>Our Services offer you the ability to register and login using your third-party social media account details (like your Facebook or Twitter logins). Where you choose to do this, we will receive certain profile information about you from your social media provider, often including your name, email address, profile picture, and elements you choose to make public.</p>
-                <p>We do not control, and are not responsible for, other uses of your personal information by third-party social media providers. We recommend reviewing their privacy parameters directly.</p>
+        <!-- Section 6: OAuth -->
+        <div class="hardware-panel p-5" data-aos="fade-up" data-aos-delay="300">
+            <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3">
+                6. Social Logins Gateway
+            </h2>
+            <div class="card-recessed p-4 text-xs leading-relaxed text-slate-700 dark:text-gray-400">
+                Connecting third-party OAuth links parses avatar tags, emails, and profile tokens into our engine. We do not manage external platform vulnerabilities or security policy anomalies.
             </div>
         </div>
 
-        <!-- Section 6 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">6. HOW LONG DO WE KEEP YOUR INFORMATION?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide">
-                <p>We keep your information for as long as necessary to fulfill the purposes outlined in this privacy notice unless a longer retention period is required or permitted by law (such as tax, accounting or other structural legal requirements). No purpose in this notice will require us keeping your personal information for longer than the period of time in which users maintain an active account framework with us.</p>
+        <!-- Section 7: Retention -->
+        <div class="hardware-panel p-5" data-aos="fade-up" data-aos-delay="350">
+            <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3">
+                7. Retention Thresholds
+            </h2>
+            <div class="card-recessed p-4 text-xs leading-relaxed text-slate-700 dark:text-gray-400">
+                Data records persist solely to sustain backend application functionality, user authentication modules, or to satisfy local statutory corporate taxation and diagnostic records.
             </div>
         </div>
 
-        <!-- Section 7 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide">
-                <p>We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, despite our structural safeguards, no electronic transmission over the Internet or information storage system can be guaranteed to be 100% secure. Transmission of data to and from our services is executed at your own risk. You should only establish data links within a secure computing environment.</p>
+        <!-- Section 8: Cryptography -->
+        <div class="hardware-panel p-5" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3">
+                8. Crypto-Safeguards & Security
+            </h2>
+            <div class="card-recessed p-4 text-xs leading-relaxed text-slate-700 dark:text-gray-400">
+                Network transmission loops are isolated behind SSL/TLS encryption arrays. However, absolute transmission protection over global packet travel routes can never be guaranteed at 100% airtight efficiency.
             </div>
         </div>
 
-        <!-- Section 8 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">8. WHAT ARE YOUR PRIVACY RIGHTS?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide space-y-4">
-                <p>In some regions (such as the European Economic Area, United Kingdom, or under specific local data protection architectures), you have rights that allow you greater access to and control over your personal information. These include the right to request access, rectification, erasure, processing restriction, and data portability.</p>
-                <p>If you would at any time like to review or change the information in your account or terminate your database entry, you can reach out directly via our secure support link. Upon your request to terminate your account, we will isolate, deactivate, or purge your account records from our active databases.</p>
-                <p>Most web browsers accept cookies by default. You can change your client browser configuration to reject cookies, though it may alter operational characteristics of our site deployment layers.</p>
+        <!-- Section 9: Rights -->
+        <div class="hardware-panel p-5" data-aos="fade-up" data-aos-delay="450">
+            <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase mb-3">
+                9. Rights & Data Portability
+            </h2>
+            <div class="card-recessed p-4 text-xs leading-relaxed text-slate-700 dark:text-gray-400">
+                Depending on your geopolitical region, you maintain structural legal rights to review, format, extract, restrict, or completely purge your baseline database traces at will from our active logs.
             </div>
         </div>
-
-        <!-- Section 9 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">9. CONTROLS FOR DO-NOT-TRACK FEATURES</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide">
-                <p>Most web browsers and some mobile operating systems include a Do-Not-Track ("DNT") configuration toggling option. At this stage, no uniform technical compliance standard for recognizing and implementing DNT signals has been finalized. As such, our systems do not currently respond to automated DNT browser transmissions.</p>
-            </div>
-        </div>
-
-        <!-- Section 10 -->
-        <div class="space-y-3">
-            <h3 class="text-sm font-black text-cyan-400 tracking-wider uppercase">10. DO WE MAKE UPDATES TO THIS NOTICE?</h3>
-            <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide">
-                <p>Yes, we will update this notice as necessary to stay compliant with relevant data laws. The updated iteration will be flagged by a revised execution date and becomes active as soon as it is deployed online. Material updates may be pushed via prompt system alerts or direct digital messaging arrays.</p>
-            </div>
-        </div>
-
-        <!-- Core Terminal Link Nodes -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-            <div class="card-recessed p-4 text-center space-y-2">
-                <span class="text-xs font-black text-gray-200 block tracking-widest">11. TELEMETRY LINE COMMUNICATIONS</span>
-                <p class="text-[11px] text-gray-400 pb-1">Need explicit compliance confirmation or custom security insights?</p>
-                <a href="Contacts.html" class="terminal-link text-xs font-bold block">ACCESS THE COMMS LINE TERMINAL</a>
-            </div>
-            <div class="card-recessed p-4 text-center space-y-2">
-                <span class="text-xs font-black text-gray-200 block tracking-widest">12. DATA RECTIFICATION & PURGES</span>
-                <p class="text-[11px] text-gray-400 pb-1">Request structural modification or absolute destruction of stored files.</p>
-                <a href="Forum.html" class="terminal-link text-xs font-bold block">TRANSMIT REQUEST TO FORUM QUEUE</a>
-            </div>
-        </div>
-
     </div>
+
+    <!-- Bottom Actions Framework Console -->
+    <div class="hardware-panel p-6 text-center space-y-4" data-aos="fade-up" data-aos-delay="500">
+        <h2 class="text-xs font-black tracking-wider text-slate-900 dark:text-gray-200 uppercase">
+            10. Request Dynamic Data Extraction or Purge
+        </h2>
+        <p class="text-xs text-slate-700 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            To invoke data extraction or execute an absolute deletion signal to erase account traces from our infrastructure database nodes, interact with our direct modules below.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center pt-2">
+            <a href="Contacts.html" class="btn-machined px-6 py-2.5 rounded text-[10px] font-black">INITIALIZE COMMS PORTAL</a>
+            <a href="Forum.html" class="btn-machined px-6 py-2.5 rounded text-[10px] font-black">TRANSMIT DELETION SIGNAL</a>
+        </div>
+    </div>
+
 </main>
 
 <!-- SIMPLE ENGLISH REGISTRATION / LOGIN MODAL -->
 <div id="authModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
     <div class="hardware-panel max-w-lg w-full p-6 relative">
+        <!-- Close Button -->
         <button onclick="toggleAuthModal(false)" class="absolute top-4 right-4 text-gray-500 hover:text-white font-black text-sm select-none">&times; CLOSE</button>
+        
         <div class="text-center mb-6"><span class="rivet-plate" id="modalBadge">CREATE AN ACCOUNT</span></div>
         
         <!-- Registration Form Subsystem -->
         <form id="registrationForm" onsubmit="handleRegistration(event)" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Full Name</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Full Name</label>
                     <input type="text" id="regName" required class="input-machined" placeholder="Enter your full name">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Email Address</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Email Address</label>
                     <input type="email" id="regEmail" required class="input-machined" placeholder="yourname@example.com">
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Phone Number</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Phone Number</label>
                     <input type="tel" id="regPhone" required class="input-machined" placeholder="e.g. 0716375459">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Where do you live?</label>
-                    <input type="text" id="regLocation" required class="input-machined" placeholder="Town, County (e.g. Ishiara, Embu)">
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Where do you live?</label>
+                    <input type="text" id="regLocation" required class="input-machined" placeholder="Town, County">
                 </div>
             </div>
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Create a Password</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Create a Password</label>
                 <input type="password" id="regPassword" required class="input-machined" placeholder="Choose a secure password">
             </div>
-            <button type="submit" class="btn-machined telemetry-link w-full py-3 rounded text-xs uppercase font-bold mt-2">REGISTER NOW</button>
-            <p class="text-center text-[10px] text-gray-500 tracking-wide mt-2">Already have an account? <span onclick="switchModalMode('login')" class="text-sky-400 cursor-pointer underline">Log In Here</span></p>
+            <button type="submit" class="btn-machined w-full py-3 rounded text-xs uppercase font-bold mt-2">REGISTER NOW</button>
+            <p class="text-center text-[10px] text-slate-600 dark:text-gray-500 tracking-wide mt-2">Already have an account? <span onclick="switchModalMode('login')" class="text-sky-700 dark:text-sky-400 cursor-pointer underline">Log In Here</span></p>
         </form>
 
         <!-- Login Form Subsystem -->
         <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 hidden">
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Email Address</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Email Address</label>
                 <input type="email" id="loginEmail" required class="input-machined" placeholder="yourname@example.com">
             </div>
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Password</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Password</label>
                 <input type="password" id="loginPassword" required class="input-machined" placeholder="Enter your password">
             </div>
-            <button type="submit" class="btn-machined telemetry-link w-full py-3 rounded text-xs uppercase font-bold mt-2">LOG IN</button>
-            <p class="text-center text-[10px] text-gray-500 tracking-wide mt-2">Need a new account? <span onclick="switchModalMode('register')" class="text-sky-400 cursor-pointer underline">Sign Up Here</span></p>
+            <button type="submit" class="btn-machined w-full py-3 rounded text-xs uppercase font-bold mt-2">LOG IN</button>
+            <p class="text-center text-[10px] text-slate-600 dark:text-gray-500 tracking-wide mt-2">Need a new account? <span onclick="switchModalMode('register')" class="text-sky-700 dark:text-sky-400 cursor-pointer underline">Sign Up Here</span></p>
         </form>
     </div>
 </div>
 
 <!-- Base Chassis Footer Frame -->
-<footer class="bg-black border-t-4 border-neutral-900 py-6 text-center text-xs tracking-widest relative z-10">
-    <p class="font-black inline-block uppercase" style="background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));">
+<footer class="bg-white border-t-4 border-slate-200 dark:bg-black dark:border-neutral-900 py-6 text-center text-xs tracking-widest relative z-10">
+    <p class="font-black inline-block uppercase text-slate-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-b dark:from-white dark:to-lime-600" style="filter: drop-shadow(0 2px 3px rgba(0,0,0,0.05));">
         © Copyright 2026 CynicDroid Technologies. All Rights Reserved.
     </p>
 </footer>
@@ -482,12 +592,43 @@ body {
 <!-- Integration Scripts Framework -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-AOS.init({ duration: 900, once: true });
+AOS.init({ duration: 1000, once: true });
 
+// ====== Theme Controller Engine Initialization ======
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('cynicdroid_theme') || 'light';
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        updateThemeUI(true);
+    } else {
+        document.documentElement.classList.remove('dark');
+        updateThemeUI(false);
+    }
+});
+
+function toggleThemeEngine() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('cynicdroid_theme', isDark ? 'dark' : 'light');
+    updateThemeUI(isDark);
+}
+
+function updateThemeUI(isDark) {
+    const handle = document.getElementById('themeToggleHandle');
+    if (handle) {
+        if (isDark) {
+            handle.innerText = "☀️";
+        } else {
+            handle.innerText = "🌙";
+        }
+    }
+}
+
+// ====== Sync Engine Validation On Load ======
 window.addEventListener('load', () => {
     syncAuthUI();
 });
 
+// ====== USER PROFILE & AUTHENTICATION SUBSYSTEM ======
 function toggleAuthModal(show) {
     const modal = document.getElementById('authModal');
     if(show) {
@@ -562,9 +703,8 @@ function syncAuthUI() {
     
     if(session === 'active') {
         const user = JSON.parse(localStorage.getItem('cynicdroid_user')) || {};
-        
         userContainer.innerHTML = `
-            <span class="telemetry-link telemetry-link-profile uppercase">USER: ${user.name.split(' ')[0]}</span>
+            <span class="telemetry-link telemetry-link-profile uppercase">USER: ${user.name ? user.name.split(' ')[0] : 'Client'}</span>
             <button onclick="handleLogout()" class="telemetry-link btn-logout">LOGOUT</button>
         `;
     } else {

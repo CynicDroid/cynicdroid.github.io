@@ -6,8 +6,13 @@
 <title>Cookie Policy - CynicDroid Technologies</title>
 <link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
 
-<!-- Tailwind CSS -->
+<!-- Tailwind CSS config for class-based dark mode -->
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+    }
+</script>
 
 <!-- Google Fonts: Orbitron for absolute hardware symmetry -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -15,35 +20,35 @@
 <!-- AOS Scroll Animations -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+<!-- Lucide Icons Script -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
 <style>
 body, h1, h2, h3, h4, p, a, li, strong, em, button, input, select {
     font-family: 'Orbitron', sans-serif;
 }
 
+/* ====== LIGHT MODE (DEFAULT STYLE) ====== */
 body {
-    background-color: #cbd5e1;
-    /* Premium Bright Brushed Aluminum Metal Panel Background */
+    background-color: #f1f5f9;
     background-image: 
-        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.1) 80%, rgba(255,255,255,0.1) 100%),
-        linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.1) 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px),
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 3px);
-    box-shadow: inset 0 0 60px rgba(0,0,0,0.15);
-    color: #e2e8f0;
+        linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.02) 40%, rgba(255,255,255,0.4) 60%, rgba(0,0,0,0.04) 80%, rgba(255,255,255,0.3) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(0,0,0,0.05) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.05);
+    color: #0f172a;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ====== 3D Machined Metal Chassis Panels ====== */
 .hardware-panel {
-    background: linear-gradient(180deg, #232936 0%, #161b24 100%);
-    border-top: 2px solid #38455e;
-    border-left: 2px solid #2d374b;
-    border-right: 2px solid #141923;
-    border-bottom: 4px solid #0d1016;
-    box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.08),
-        inset 0 -3px 8px rgba(0, 0, 0, 0.5),
-        0 20px 40px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-top: 2px solid #e2e8f0;
+    border-left: 2px solid #e2e8f0;
+    border-right: 2px solid #cbd5e1;
+    border-bottom: 4px solid #94a3b8;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 10px 25px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     position: relative;
 }
@@ -52,112 +57,123 @@ body {
     content: '';
     position: absolute;
     inset: 5px;
-    border: 1px solid #101319;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    border: 1px solid #e2e8f0;
     border-radius: 4px;
     pointer-events: none;
 }
 
-/* ====== Recessed Die-Cast Technical Bays ====== */
 .card-recessed {
-    background: linear-gradient(180deg, #12161f 0%, #0d1016 100%);
-    border-top: 2px solid #090b0e;
-    border-left: 2px solid #090b0e;
-    border-right: 1px solid #2d374b;
-    border-bottom: 1px solid #2d374b;
-    box-shadow: 
-        inset 0 4px 10px rgba(0, 0, 0, 0.6),
-        0 1px 2px rgba(255, 255, 255, 0.02);
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    border-top: 2px solid #cbd5e1;
+    border-left: 2px solid #cbd5e1;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
     position: relative;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-recessed:hover {
-    border-right-color: #00d2ff;
-    border-bottom-color: #00d2ff;
-    box-shadow: 
-        inset 0 2px 6px rgba(0, 0, 0, 0.7),
-        0 0 15px rgba(0, 210, 255, 0.15);
+    border-right-color: #0284c7;
+    border-bottom-color: #0284c7;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 15px rgba(2, 132, 199, 0.1);
 }
 
-/* ====== Industrial Rivet Badges ====== */
 .rivet-plate {
-    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
-    border: 1px solid #2d374b;
-    box-shadow: 
-        inset 0 1px 1px rgba(255,255,255,0.05),
-        0 4px 8px rgba(0,0,0,0.4);
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     padding: 6px 24px;
     font-weight: 900;
     font-size: 0.85rem;
     letter-spacing: 2px;
-    color: #00d2ff;
-    text-shadow: 0 0 6px rgba(0, 210, 255, 0.3);
+    color: #0284c7;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
     position: relative;
     display: inline-flex;
     align-items: center;
     gap: 12px;
     border-radius: 4px;
 }
+
 .rivet-plate::before, .rivet-plate::after {
     content: '';
     width: 5px; height: 5px;
-    background: #090b0e;
+    background: #cbd5e1;
     border-radius: 50%;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.05);
 }
 
-/* ====== Heavy Machinery 3D Buttons ====== */
 .btn-machined, .telemetry-link {
-    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%) !important;
-    border-top: 1px solid #3d4a63 !important;
-    border-left: 1px solid #333e54 !important;
-    border-right: 2px solid #0f1217 !important;
-    border-bottom: 4px solid #0a0c10 !important;
-    color: #d8dee9 !important;
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%) !important;
+    border-top: 1px solid #ffffff !important;
+    border-left: 1px solid #ffffff !important;
+    border-right: 2px solid #cbd5e1 !important;
+    border-bottom: 4px solid #94a3b8 !important;
+    color: #1e293b !important;
     font-weight: 700;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 6px 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.1s ease;
     letter-spacing: 1.5px;
 }
 
 .btn-machined:hover, .telemetry-link:hover {
-    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%) !important;
-    color: #aef710 !important;
-    border-right-color: #1f242e !important;
-    border-bottom-color: #aef710 !important;
-    text-shadow: 0 0 6px rgba(174, 247, 16, 0.4);
-    box-shadow: 
-        inset 0 1px 0 rgba(174, 247, 16, 0.05),
-        0 4px 12px rgba(174, 247, 16, 0.15);
+    background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+    color: #0284c7 !important;
+    border-bottom-color: #0284c7 !important;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
 }
 
 .btn-machined:active, .telemetry-link:active {
     border-bottom-width: 1px !important;
     transform: translateY(3px);
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Red Emergency Finish for Logout Button */
+/* Machined Switch Container */
+.toggle-chassis {
+    background: #cbd5e1;
+    border: 2px solid #94a3b8;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.15);
+    border-radius: 30px;
+    width: 58px;
+    height: 28px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toggle-handle {
+    background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+    border: 1px solid #94a3b8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .btn-logout {
-    background: linear-gradient(180deg, #5c2424 0%, #3a1515 100%) !important;
-    border-top: 1px solid #7c3535 !important;
-    border-left: 1px solid #6b2d2d !important;
-    border-right: 2px solid #240c0c !important;
-    border-bottom: 4px solid #1a0808 !important;
-    color: #fca5a5 !important;
+    background: linear-gradient(180deg, #fee2e2 0%, #fca5a5 100%) !important;
+    border-top: 1px solid #ffffff !important;
+    border-left: 1px solid #ffffff !important;
+    border-right: 2px solid #f87171 !important;
+    border-bottom: 4px solid #ef4444 !important;
+    color: #991b1b !important;
 }
 
 .btn-logout:hover {
-    background: linear-gradient(180deg, #3d1616 0%, #240c0c 100%) !important;
-    color: #ef4444 !important;
-    border-bottom-color: #ef4444 !important;
-    text-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+    background: linear-gradient(180deg, #fca5a5 0%, #f87171 100%) !important;
+    color: #7f1d1d !important;
+    border-bottom-color: #b91c1c !important;
 }
 
 .telemetry-link {
@@ -170,70 +186,232 @@ body {
 }
 
 .telemetry-link-profile {
-    color: #00d2ff !important;
-    border-color: #1b354b !important;
+    color: #0284c7 !important;
+    border-color: #cbd5e1 !important;
 }
 
-/* Input Fields Machined Realism */
 .input-machined {
-    background: #090b0e;
-    border: 1px solid #232d3d;
-    border-bottom: 2px solid #334155;
-    color: #f1f5f9;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-bottom: 2px solid #94a3b8;
+    color: #0f172a;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
     border-radius: 4px;
     padding: 0.6rem 0.75rem;
     font-size: 0.85rem;
     transition: all 0.2s ease;
 }
+
 .input-machined:focus {
     outline: none;
-    border-color: #00d2ff;
-    border-bottom-color: #00d2ff;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.9), 0 0 10px rgba(0, 210, 255, 0.15);
+    border-color: #0284c7;
+    border-bottom-color: #0284c7;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05), 0 0 10px rgba(2, 132, 199, 0.15);
 }
 
-/* ====== Embedded Steel Header Navigation ====== */
 .nav-chassis {
-    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
-    border-bottom: 3px solid #00d2ff;
-    box-shadow: 
-        inset 0 -1px 0 rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.05),
-        0 10px 30px rgba(0,0,0,0.7);
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-bottom: 3px solid #0284c7;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 .logo-cast {
     font-weight: 900;
     letter-spacing: 4px;
+    color: #0284c7;
+    background: linear-gradient(180deg, #0f172a 0%, #0284c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.steel-engraved-header {
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #0f172a 20%, #0284c7 70%, #0369a1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.terminal-link {
+    color: #0284c7;
+    text-decoration: none;
+    border-bottom: 1px dashed #0284c7;
+    transition: all 0.2s ease;
+}
+
+.terminal-link:hover {
+    color: #0f172a;
+    border-bottom-color: #0f172a;
+}
+
+/* Hardware structural design nodes */
+.panel-rivet-corner {
+    width: 6px;
+    height: 6px;
+    background-color: #94a3b8;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* ====== DARK MODE (PREMIUM INDUSTRIAL CHASSIS) ====== */
+.dark body {
+    background-color: #121620;
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.2) 40%, rgba(255,255,255,0.03) 60%, rgba(0,0,0,0.3) 80%, rgba(255,255,255,0.02) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.4) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.5);
+    color: #e2e8f0;
+}
+
+.dark .hardware-panel {
+    background: linear-gradient(180deg, #232936 0%, #161b24 100%);
+    border-top: 2px solid #38455e;
+    border-left: 2px solid #2d374b;
+    border-right: 2px solid #141923;
+    border-bottom: 4px solid #0d1016;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.08), inset 0 -3px 8px rgba(0, 0, 0, 0.5), 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.dark .hardware-panel::before {
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.dark .card-recessed {
+    background: linear-gradient(180deg, #12161f 0%, #0d1016 100%);
+    border-top: 2px solid #090b0e;
+    border-left: 2px solid #090b0e;
+    border-right: 1px solid #2d374b;
+    border-bottom: 1px solid #2d374b;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(255, 255, 255, 0.02);
+}
+
+.dark .card-recessed:hover {
+    border-right-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 210, 255, 0.15);
+}
+
+.dark .rivet-plate {
+    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
+    border: 1px solid #2d374b;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 8px rgba(0,0,0,0.4);
+    color: #00d2ff;
+    text-shadow: 0 0 6px rgba(0, 210, 255, 0.3);
+}
+
+.dark .rivet-plate::before, .dark .rivet-plate::after {
+    background: #090b0e;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.dark .btn-machined, .dark .telemetry-link {
+    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%) !important;
+    border-top: 1px solid #3d4a63 !important;
+    border-left: 1px solid #333e54 !important;
+    border-right: 2px solid #0f1217 !important;
+    border-bottom: 4px solid #0a0c10 !important;
+    color: #d8dee9 !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.dark .btn-machined:hover, .dark .telemetry-link:hover {
+    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%) !important;
+    color: #aef710 !important;
+    border-right-color: #1f242e !important;
+    border-bottom-color: #aef710 !important;
+    text-shadow: 0 0 6px rgba(174, 247, 16, 0.4);
+    box-shadow: inset 0 1px 0 rgba(174, 247, 16, 0.05), 0 4px 12px rgba(174, 247, 16, 0.15);
+}
+
+.dark .btn-machined:active, .dark .telemetry-link:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.dark .toggle-chassis {
+    background: #090b0e;
+    border-color: #1a2230;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.dark .toggle-handle {
+    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%);
+    border-color: #3d4a63;
+    transform: translateX(30px);
+}
+
+.dark .btn-logout {
+    background: linear-gradient(180deg, #5c2424 0%, #3a1515 100%) !important;
+    border-top: 1px solid #7c3535 !important;
+    border-left: 1px solid #6b2d2d !important;
+    border-right: 2px solid #240c0c !important;
+    border-bottom: 4px solid #1a0808 !important;
+    color: #fca5a5 !important;
+}
+
+.dark .btn-logout:hover {
+    background: linear-gradient(180deg, #3d1616 0%, #240c0c 100%) !important;
+    color: #ef4444 !important;
+    border-bottom-color: #ef4444 !important;
+    text-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.dark .telemetry-link-profile {
+    color: #00d2ff !important;
+    border-color: #1b354b !important;
+}
+
+.dark .input-machined {
+    background: #090b0e;
+    border: 1px solid #232d3d;
+    border-bottom: 2px solid #334155;
+    color: #f1f5f9;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+}
+
+.dark .input-machined:focus {
+    border-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.9), 0 0 10px rgba(0, 210, 255, 0.15);
+}
+
+.dark .nav-chassis {
+    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
+    border-bottom: 3px solid #00d2ff;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.dark .logo-cast {
     color: #00d2ff;
     text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
     background: linear-gradient(180deg, #ffffff 0%, #00d2ff 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
-/* ====== Structural Chiseled Typography ====== */
-.steel-engraved-header {
-    font-weight: 900;
-    letter-spacing: 2px;
+.dark .steel-engraved-header {
     background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
 }
 
-/* Inside-Terminal Hyperlinks */
-.terminal-link {
+.dark .terminal-link {
     color: #00d2ff;
-    text-decoration: none;
-    border-bottom: 1px dashed #00d2ff;
-    transition: all 0.2s ease;
+    border-bottom-color: #00d2ff;
 }
-.terminal-link:hover {
+
+.dark .terminal-link:hover {
     color: #ffffff;
     border-bottom-color: #ffffff;
     text-shadow: 0 0 4px rgba(0, 210, 255, 0.6);
+}
+
+.dark .panel-rivet-corner {
+    background-color: #0d1016;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.05);
 }
 </style>
 </head>
@@ -245,13 +423,28 @@ body {
         <a href="index.html" class="text-2xl logo-cast">CYNICDROID</a>
         
         <!-- Action Control Array Matrix -->
-        <div class="flex flex-wrap gap-2 items-center justify-center">
-            <a href="https://wa.me/254716375459" class="telemetry-link" target="_blank" rel="noopener">WHATSAPP</a>
-            <a href="tel:+254716375459" class="telemetry-link">CALL</a>
-            <a href="mailto:cynicdroid@gmail.com" class="telemetry-link">EMAIL</a>
+        <div class="flex flex-wrap gap-3 items-center justify-center">
+            
+            <!-- Machined Toggle Button Mechanism -->
+            <div class="flex items-center gap-2">
+                <span class="text-[10px] font-black tracking-wider text-slate-700 dark:text-gray-400">THEME</span>
+                <div id="themeToggleBtn" onclick="toggleThemeEngine()" class="toggle-chassis">
+                    <div id="themeToggleHandle" class="toggle-handle">🌙</div>
+                </div>
+            </div>
+
+            <a href="https://wa.me/254716375459" class="telemetry-link flex gap-1.5 items-center" target="_blank" rel="noopener">
+                <i data-lucide="message-square" class="w-3 h-3"></i> WHATSAPP
+            </a>
+            <a href="tel:+254716375459" class="telemetry-link flex gap-1.5 items-center">
+                <i data-lucide="phone" class="w-3 h-3"></i> CALL
+            </a>
+            <a href="mailto:cynicdroid@gmail.com" class="telemetry-link flex gap-1.5 items-center">
+                <i data-lucide="mail" class="w-3 h-3"></i> EMAIL
+            </a>
             
             <!-- Auth Switches Dynamic Hub -->
-            <div id="authNavContainer" class="flex gap-2 border-l border-gray-700 pl-2">
+            <div id="authNavContainer" class="flex gap-2 border-l border-slate-300 dark:border-gray-700 pl-2">
                 <!-- Injected via JavaScript Core -->
             </div>
         </div>
@@ -259,23 +452,33 @@ body {
 </header>
 
 <!-- Main Dashboard Frame -->
-<main class="pt-36 sm:pt-28 md:pt-32 pb-12 relative z-10 container mx-auto px-4 md:px-6 space-y-6 max-w-5xl">
+<main class="pt-40 sm:pt-28 md:pt-32 pb-12 relative z-10 container mx-auto px-4 md:px-6 space-y-6 max-w-5xl">
     
     <!-- Hero Header Panel -->
     <div class="hardware-panel p-6 md:p-8 text-center" data-aos="fade-up">
+        <!-- Mechanical Aesthetic Rivets -->
+        <div class="absolute top-2 left-2 flex gap-1"><div class="panel-rivet-corner"></div><div class="panel-rivet-corner"></div></div>
+        <div class="absolute top-2 right-2 flex gap-1"><div class="panel-rivet-corner"></div><div class="panel-rivet-corner"></div></div>
+        
+        <p class="text-[10px] tracking-[0.3em] font-black text-slate-400 dark:text-slate-500 mb-2">[ SECURITY TELEMETRY ARCHIVE ]</p>
         <h1 class="text-2xl md:text-5xl font-black tracking-wider steel-engraved-header uppercase">COOKIE POLICY TRACK</h1>
         <div class="mt-4 inline-block"><span class="rivet-plate">LAST REVISED: JUNE 08, 2026</span></div>
     </div>
 
     <!-- Overview Statement Card -->
     <div class="hardware-panel p-6 md:p-8" data-aos="fade-up" data-aos-delay="50">
-        <h2 class="text-sm font-black text-gray-300 tracking-widest uppercase mb-4 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span> TELEMETRY TRACKING & DATA COLLECTION
+        <h2 class="text-sm font-black text-slate-700 dark:text-gray-300 tracking-widest uppercase mb-4 flex items-center justify-between">
+            <span class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-sky-600 dark:bg-cyan-400 rounded-full animate-pulse"></span> 
+                TELEMETRY TRACKING & DATA COLLECTION
+            </span>
+            <span class="text-[9px] text-slate-400 dark:text-slate-600 hidden sm:inline">CD-MOD//NODE_01</span>
         </h2>
-        <div class="card-recessed p-5 text-gray-400 text-xs leading-relaxed tracking-wide space-y-3">
+        <div class="card-recessed p-5 text-slate-600 dark:text-gray-400 text-xs leading-relaxed tracking-wide space-y-3">
             <p>
-                We may use cookies, web beacons, tracking pixels, and other parsing technologies when you visit our station architecture, including any other media form, communication channel, mobile adaptation, or firmware application linked or otherwise associated with <span class="text-gray-200 font-bold">CynicDroid Technologies</span> to help monitor hardware handshakes and optimize your system load rendering. 
+                We may use cookies, web beacons, tracking pixels, and other parsing technologies when you visit our station architecture, including any other media form, communication channel, mobile adaptation, or firmware application linked or otherwise associated with <span class="text-slate-900 dark:text-gray-200 font-bold">CynicDroid Technologies</span> to help monitor hardware handshakes and optimize your system load rendering. 
             </p>
+            <div class="h-[1px] w-full bg-slate-200 dark:bg-slate-800 my-2"></div>
             <p>
                 We reserve the explicit authorization to append amendments to this Cookie Policy at any time and for any reason. We will post notification logs regarding modifications by altering the configuration parameters on the index timestamp badge above. Any structural revisions are effective immediately upon distribution, and you waive the option to receive direct diagnostic notices for each modification. Continued link association with our domain arrays infers acknowledgment of adjusted rules.
             </p>
@@ -288,15 +491,15 @@ body {
         <!-- Block 1 -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
             <div class="md:col-span-4">
-                <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">UTILIZATION LAYERS</span>
+                <span class="rivet-plate text-slate-800 dark:text-gray-200 text-[10px] w-full block text-center">UTILIZATION LAYERS</span>
             </div>
-            <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed space-y-2">
+            <div class="md:col-span-8 card-recessed p-4 text-xs text-slate-600 dark:text-gray-400 leading-relaxed space-y-2">
                 <p>Cookies are specialized configuration micro-files written to your host terminal hardware that help our servers verify platform navigation settings, retain persistent validation loops, and accelerate content deployment speed. They allow us to:</p>
-                <ul class="space-y-1 pl-4 text-[11px]">
-                    <li><span class="text-cyan-400">▪</span> Preserve localized state selections and security authorizations.</li>
-                    <li><span class="text-cyan-400">▪</span> Monitor diagnostic interaction speed and layout usage variables.</li>
-                    <li><span class="text-cyan-400">▪</span> Feed specific custom logic segments down to individual devices.</li>
-                    <li><span class="text-cyan-400">▪</span> Assist in tracking marketing and hardware support communication queues.</li>
+                <ul class="space-y-2 pl-2 text-[11px] grid grid-cols-1 sm:grid-cols-2 gap-x-4">
+                    <li class="flex items-start gap-2"><i data-lucide="cpu" class="w-3 h-3 text-sky-600 dark:text-cyan-400 mt-0.5 shrink-0"></i> <span>Preserve localized state selections and security authorizations.</span></li>
+                    <li class="flex items-start gap-2"><i data-lucide="activity" class="w-3 h-3 text-sky-600 dark:text-cyan-400 mt-0.5 shrink-0"></i> <span>Monitor diagnostic interaction speed and layout usage variables.</span></li>
+                    <li class="flex items-start gap-2"><i data-lucide="code" class="w-3 h-3 text-sky-600 dark:text-cyan-400 mt-0.5 shrink-0"></i> <span>Feed specific custom logic segments down to individual devices.</span></li>
+                    <li class="flex items-start gap-2"><i data-lucide="git-branch" class="w-3 h-3 text-sky-600 dark:text-cyan-400 mt-0.5 shrink-0"></i> <span>Assist in tracking marketing and hardware support queues.</span></li>
                 </ul>
             </div>
         </div>
@@ -304,32 +507,32 @@ body {
         <!-- Block 2 -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
             <div class="md:col-span-4">
-                <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">CLASSIFIED ARRAY TYPES</span>
+                <span class="rivet-plate text-slate-800 dark:text-gray-200 text-[10px] w-full block text-center">CLASSIFIED ARRAY TYPES</span>
             </div>
-            <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed">
+            <div class="md:col-span-8 card-recessed p-4 text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[11px]">
-                    <div>
-                        <strong class="text-gray-300 block mb-1">■ ADVERTISING LAYERS</strong>
+                    <div class="p-2 border border-slate-200 dark:border-slate-800/60 rounded bg-slate-100/50 dark:bg-black/20">
+                        <strong class="text-slate-800 dark:text-gray-300 block mb-1 font-extrabold text-sky-600 dark:text-cyan-400">■ ADVERTISING LAYERS</strong>
                         Serve targeted telemetry blocks and measure interaction responses without scanning unique identity databases.
                     </div>
-                    <div>
-                        <strong class="text-gray-300 block mb-1">■ ANALYTICAL STACKS</strong>
+                    <div class="p-2 border border-slate-200 dark:border-slate-800/60 rounded bg-slate-100/50 dark:bg-black/20">
+                        <strong class="text-slate-800 dark:text-gray-300 block mb-1 font-extrabold text-sky-600 dark:text-cyan-400">■ ANALYTICAL STACKS</strong>
                         Record internal application traffic metrics to repair structural site path bugs.
                     </div>
-                    <div>
-                        <strong class="text-gray-300 block mb-1">■ FIRST-PARTY SYSTEM UTILITIES</strong>
+                    <div class="p-2 border border-slate-200 dark:border-slate-800/60 rounded bg-slate-100/50 dark:bg-black/20">
+                        <strong class="text-slate-800 dark:text-gray-300 block mb-1 font-extrabold text-sky-600 dark:text-cyan-400">■ FIRST-PARTY UTILITIES</strong>
                         Core foundational scripts mandatory for executing standard navigation loads.
                     </div>
-                    <div>
-                        <strong class="text-gray-300 block mb-1">■ USER PREFERENCE FILES</strong>
+                    <div class="p-2 border border-slate-200 dark:border-slate-800/60 rounded bg-slate-100/50 dark:bg-black/20">
+                        <strong class="text-slate-800 dark:text-gray-300 block mb-1 font-extrabold text-sky-600 dark:text-cyan-400">■ USER PREFERENCE FILES</strong>
                         Retain custom theme presets and language orientation matrices.
                     </div>
-                    <div>
-                        <strong class="text-gray-300 block mb-1">■ SECURITY MODULES</strong>
+                    <div class="p-2 border border-slate-200 dark:border-slate-800/60 rounded bg-slate-100/50 dark:bg-black/20">
+                        <strong class="text-slate-800 dark:text-gray-300 block mb-1 font-extrabold text-sky-600 dark:text-cyan-400">■ SECURITY MODULES</strong>
                         Verify cryptographic credentials, counter malicious bot attacks, and protect active client payloads.
                     </div>
-                    <div>
-                        <strong class="text-gray-300 block mb-1">■ EXTERNAL THIRD-PARTY UTILITIES</strong>
+                    <div class="p-2 border border-slate-200 dark:border-slate-800/60 rounded bg-slate-100/50 dark:bg-black/20">
+                        <strong class="text-slate-800 dark:text-gray-300 block mb-1 font-extrabold text-sky-600 dark:text-cyan-400">■ EXTERNAL THIRD-PARTY</strong>
                         Embedded dependencies served from diagnostic platforms linked across our web footprint.
                     </div>
                 </div>
@@ -339,9 +542,9 @@ body {
         <!-- Block 3 -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
             <div class="md:col-span-4">
-                <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">CLIENT ARBITRATION</span>
+                <span class="rivet-plate text-slate-800 dark:text-gray-200 text-[10px] w-full block text-center">CLIENT ARBITRATION</span>
             </div>
-            <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed space-y-2">
+            <div class="md:col-span-8 card-recessed p-4 text-xs text-slate-600 dark:text-gray-400 leading-relaxed space-y-2">
                 <p>You can reject or wipe tracking cookies by reconfiguring the application permissions inside your native client browser. Warning: Killing script permissions may degrade operational features and disconnect state memory arrays.</p>
                 <p>To reject dynamic third-party tracking scripts, you can utilize the technical exclusion tools provided by the Network Advertising Initiative's Opt-Out Interface.</p>
             </div>
@@ -350,9 +553,9 @@ body {
         <!-- Block 4 -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
             <div class="md:col-span-4">
-                <span class="rivet-plate text-gray-200 text-[10px] w-full block text-center">BEACONS & METRICS</span>
+                <span class="rivet-plate text-slate-800 dark:text-gray-200 text-[10px] w-full block text-center">BEACONS & METRICS</span>
             </div>
-            <div class="md:col-span-8 card-recessed p-4 text-xs text-gray-400 leading-relaxed">
+            <div class="md:col-span-8 card-recessed p-4 text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
                 <p>We may also activate transparent web beacons or execution pixel tags to log total section loads, evaluate transmission success metrics for outgoing diagnostic updates, and compile macro analytical parameters.</p>
             </div>
         </div>
@@ -361,8 +564,8 @@ body {
 
     <!-- Privacy Integration Unit -->
     <div class="hardware-panel p-6 text-center space-y-3" data-aos="fade-up">
-        <h3 class="text-xs font-black text-gray-300 tracking-widest uppercase">COMPLETE PROTECTION SPECIFICATIONS</h3>
-        <p class="text-xs text-gray-400 max-w-xl mx-auto leading-relaxed">
+        <h3 class="text-xs font-black text-slate-700 dark:text-gray-300 tracking-widest uppercase">[ COMPLETE PROTECTION SPECIFICATIONS ]</h3>
+        <p class="text-xs text-slate-600 dark:text-gray-400 max-w-xl mx-auto leading-relaxed">
             To view full cryptographic storage rules, account retention parameters, and complete data governance configurations, link directly to our primary diagnostic layout.
         </p>
         <div class="pt-2">
@@ -376,7 +579,7 @@ body {
 <div id="authModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
     <div class="hardware-panel max-w-lg w-full p-6 relative">
         <!-- Close Button -->
-        <button onclick="toggleAuthModal(false)" class="absolute top-4 right-4 text-gray-500 hover:text-white font-black text-sm select-none">&times; CLOSE</button>
+        <button onclick="toggleAuthModal(false)" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 font-black text-sm select-none transition-colors">&times; CLOSE</button>
         
         <div class="text-center mb-6"><span class="rivet-plate" id="modalBadge">CREATE AN ACCOUNT</span></div>
         
@@ -384,51 +587,51 @@ body {
         <form id="registrationForm" onsubmit="handleRegistration(event)" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Full Name</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Full Name</label>
                     <input type="text" id="regName" required class="input-machined" placeholder="Enter your full name">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Email Address</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Email Address</label>
                     <input type="email" id="regEmail" required class="input-machined" placeholder="yourname@example.com">
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Phone Number</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Phone Number</label>
                     <input type="tel" id="regPhone" required class="input-machined" placeholder="e.g. 0716375459">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Where do you live?</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Where do you live?</label>
                     <input type="text" id="regLocation" required class="input-machined" placeholder="Town, County (e.g. Ishiara, Embu)">
                 </div>
             </div>
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Create a Password</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Create a Password</label>
                 <input type="password" id="regPassword" required class="input-machined" placeholder="Choose a secure password">
             </div>
             <button type="submit" class="btn-machined w-full py-3 rounded text-xs uppercase font-bold mt-2">REGISTER NOW</button>
-            <p class="text-center text-[10px] text-gray-500 tracking-wide mt-2">Already have an account? <span onclick="switchModalMode('login')" class="text-sky-400 cursor-pointer underline">Log In Here</span></p>
+            <p class="text-center text-[10px] text-slate-600 dark:text-gray-500 tracking-wide mt-2">Already have an account? <span onclick="switchModalMode('login')" class="text-sky-700 dark:text-sky-400 cursor-pointer underline">Log In Here</span></p>
         </form>
 
         <!-- Login Form Subsystem -->
         <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 hidden">
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Email Address</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Email Address</label>
                 <input type="email" id="loginEmail" required class="input-machined" placeholder="yourname@example.com">
             </div>
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Password</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Password</label>
                 <input type="password" id="loginPassword" required class="input-machined" placeholder="Enter your password">
             </div>
             <button type="submit" class="btn-machined w-full py-3 rounded text-xs uppercase font-bold mt-2">LOG IN</button>
-            <p class="text-center text-[10px] text-gray-500 tracking-wide mt-2">Need a new account? <span onclick="switchModalMode('register')" class="text-sky-400 cursor-pointer underline">Sign Up Here</span></p>
+            <p class="text-center text-[10px] text-slate-600 dark:text-gray-500 tracking-wide mt-2">Need a new account? <span onclick="switchModalMode('register')" class="text-sky-700 dark:text-sky-400 cursor-pointer underline">Sign Up Here</span></p>
         </form>
     </div>
 </div>
 
 <!-- Base Chassis Footer Frame -->
-<footer class="bg-black border-t-4 border-neutral-900 py-6 text-center text-xs tracking-widest relative z-10">
-    <p class="font-black inline-block uppercase" style="background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));">
+<footer class="bg-white border-t-4 border-slate-200 dark:bg-black dark:border-neutral-900 py-6 text-center text-xs tracking-widest relative z-10">
+    <p class="font-black inline-block uppercase text-slate-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-b dark:from-white dark:to-lime-600" style="filter: drop-shadow(0 2px 3px rgba(0,0,0,0.05));">
         © Copyright 2026 CynicDroid Technologies. All Rights Reserved.
     </p>
 </footer>
@@ -437,6 +640,35 @@ body {
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init({ duration: 900, once: true });
+
+// ====== Theme Controller Engine Initialization ======
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('cynicdroid_theme') || 'light';
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        updateThemeUI(true);
+    } else {
+        document.documentElement.classList.remove('dark');
+        updateThemeUI(false);
+    }
+    // Render icons
+    lucide.createIcons();
+});
+
+function toggleThemeEngine() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('cynicdroid_theme', isDark ? 'dark' : 'light');
+    updateThemeUI(isDark);
+}
+
+function updateThemeUI(isDark) {
+    const handle = document.getElementById('themeToggleHandle');
+    if (isDark) {
+        handle.innerText = "☀️";
+    } else {
+        handle.innerText = "🌙";
+    }
+}
 
 window.addEventListener('load', () => {
     syncAuthUI();
@@ -519,14 +751,16 @@ function syncAuthUI() {
         const user = JSON.parse(localStorage.getItem('cynicdroid_user')) || {};
         
         userContainer.innerHTML = `
-            <span class="telemetry-link telemetry-link-profile uppercase">USER: ${user.name.split(' ')[0]}</span>
-            <button onclick="handleLogout()" class="telemetry-link btn-logout">LOGOUT</button>
+            <span class="telemetry-link telemetry-link-profile uppercase"><i data-lucide="user" class="w-3 h-3 mr-1.5"></i> ${user.name ? user.name.split(' ')[0] : 'Client'}</span>
+            <button onclick="handleLogout()" class="telemetry-link btn-logout"><i data-lucide="log-out" class="w-3 h-3 mr-1.5"></i> LOGOUT</button>
         `;
     } else {
         userContainer.innerHTML = `
-            <button onclick="toggleAuthModal(true)" class="telemetry-link">REGISTER / LOGIN</button>
+            <button onclick="toggleAuthModal(true)" class="telemetry-link"><i data-lucide="lock" class="w-3 h-3 mr-1.5"></i> REGISTER / LOGIN</button>
         `;
     }
+    // Re-trigger icon parsing for new markup elements injected
+    lucide.createIcons();
 }
 </script>
 </body>

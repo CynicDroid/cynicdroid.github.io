@@ -6,8 +6,13 @@
 <title>About Us - CynicDroid Technologies</title>
 <link rel="shortcut icon" href="assets/images/photo-1652604894441-720x720.png" type="image/x-icon">
 
-<!-- Tailwind CSS -->
+<!-- Tailwind CSS config for class-based dark mode -->
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+    }
+</script>
 
 <!-- Google Fonts: Orbitron for precision technical readouts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -20,92 +25,75 @@ body, h1, h2, h3, p, a, button, input, select {
     font-family: 'Orbitron', sans-serif;
 }
 
+/* ====== GLOBAL CORE LIGHT CHASSIS DESIGN ====== */
 body {
     background-color: #cbd5e1;
-    /* Premium Bright Brushed Aluminum Metal Panel Background */
     background-image: 
-        linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.05) 40%, rgba(255,255,255,0.15) 60%, rgba(0,0,0,0.1) 80%, rgba(255,255,255,0.1) 100%),
-        linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.1) 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px),
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 3px);
-    box-shadow: inset 0 0 60px rgba(0,0,0,0.15);
-    color: #e2e8f0;
+        linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.02) 40%, rgba(255,255,255,0.4) 60%, rgba(0,0,0,0.04) 80%, rgba(255,255,255,0.3) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(0,0,0,0.05) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.12);
+    color: #0f172a;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ====== 3D Machined Metal Chassis Panels ====== */
 .hardware-panel {
-    background: linear-gradient(180deg, #232936 0%, #161b24 100%);
-    border-top: 2px solid #38455e;
-    border-left: 2px solid #2d374b;
-    border-right: 2px solid #141923;
-    border-bottom: 4px solid #0d1016;
-    box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.08),
-        inset 0 -3px 8px rgba(0, 0, 0, 0.5),
-        0 20px 40px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #cbd5e1;
+    border-bottom: 4px solid #94a3b8;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 10px 25px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     position: relative;
 }
-
 .hardware-panel::before {
     content: '';
     position: absolute;
-    inset: 5px;
-    border: 1px solid #101319;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    inset: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 4px;
     pointer-events: none;
 }
 
-/* ====== Recessed Die-Cast Pods ====== */
 .card-recessed {
-    background: linear-gradient(180deg, #12161f 0%, #0d1016 100%);
-    border-top: 2px solid #090b0e;
-    border-left: 2px solid #090b0e;
-    border-right: 1px solid #2d374b;
-    border-bottom: 1px solid #2d374b;
-    box-shadow: 
-        inset 0 4px 10px rgba(0, 0, 0, 0.6),
-        0 1px 2px rgba(255, 255, 255, 0.02);
+    background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+    border-top: 2px solid #cbd5e1;
+    border-left: 2px solid #cbd5e1;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
     position: relative;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .card-recessed:hover {
-    border-right-color: #00d2ff;
-    border-bottom-color: #00d2ff;
-    box-shadow: 
-        inset 0 2px 6px rgba(0, 0, 0, 0.7),
-        0 0 15px rgba(0, 210, 255, 0.15);
+    border-right-color: #0284c7;
+    border-bottom-color: #0284c7;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 15px rgba(2, 132, 199, 0.1);
 }
-
 .card-recessed img {
-    border: 2px solid #1b202b;
+    border: 2px solid #cbd5e1;
     border-radius: 4px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
-    filter: brightness(75%) contrast(105%);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
 }
 .card-recessed:hover img {
-    filter: brightness(100%) contrast(100%);
-    border-color: #00d2ff;
+    border-color: #0284c7;
 }
 
-/* ====== Industrial Rivet Badges ====== */
 .rivet-plate {
-    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
-    border: 1px solid #2d374b;
-    box-shadow: 
-        inset 0 1px 1px rgba(255,255,255,0.05),
-        0 4px 8px rgba(0,0,0,0.4);
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     padding: 6px 24px;
     font-weight: 900;
     font-size: 0.85rem;
     letter-spacing: 2px;
-    color: #00d2ff;
-    text-shadow: 0 0 6px rgba(0, 210, 255, 0.3);
+    color: #0284c7;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -114,62 +102,77 @@ body {
 }
 .rivet-plate::before, .rivet-plate::after {
     content: '';
-    width: 5px; height: 5px;
-    background: #090b0e;
+    width: 6px; height: 6px;
+    background: #94a3b8;
     border-radius: 50%;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);
 }
 
-/* ====== Heavy Machinery 3D Buttons ====== */
 .btn-machined, .telemetry-link {
-    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%) !important;
-    border-top: 1px solid #3d4a63 !important;
-    border-left: 1px solid #333e54 !important;
-    border-right: 2px solid #0f1217 !important;
-    border-bottom: 4px solid #0a0c10 !important;
-    color: #d8dee9 !important;
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%) !important;
+    border-top: 1px solid #ffffff !important;
+    border-left: 1px solid #ffffff !important;
+    border-right: 2px solid #cbd5e1 !important;
+    border-bottom: 4px solid #64748b !important;
+    color: #1e293b !important;
     font-weight: 700;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 6px 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.1s ease;
     letter-spacing: 1.5px;
 }
-
 .btn-machined:hover, .telemetry-link:hover {
-    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%) !important;
-    color: #aef710 !important;
-    border-right-color: #1f242e !important;
-    border-bottom-color: #aef710 !important;
-    text-shadow: 0 0 6px rgba(174, 247, 16, 0.4);
-    box-shadow: 
-        inset 0 1px 0 rgba(174, 247, 16, 0.05),
-        0 4px 12px rgba(174, 247, 16, 0.15);
+    background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+    color: #0284c7 !important;
+    border-bottom-color: #0284c7 !important;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
 }
-
 .btn-machined:active, .telemetry-link:active {
     border-bottom-width: 1px !important;
     transform: translateY(3px);
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Red Emergency Finish for Logout Button */
+.toggle-chassis {
+    background: #94a3b8;
+    border: 2px solid #64748b;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);
+    border-radius: 30px;
+    width: 58px;
+    height: 28px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.toggle-handle {
+    background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+    border: 1px solid #94a3b8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .btn-logout {
-    background: linear-gradient(180deg, #5c2424 0%, #3a1515 100%) !important;
-    border-top: 1px solid #7c3535 !important;
-    border-left: 1px solid #6b2d2d !important;
-    border-right: 2px solid #240c0c !important;
-    border-bottom: 4px solid #1a0808 !important;
-    color: #fca5a5 !important;
+    background: linear-gradient(180deg, #fee2e2 0%, #fca5a5 100%) !important;
+    border-top: 1px solid #ffffff !important;
+    border-left: 1px solid #ffffff !important;
+    border-right: 2px solid #f87171 !important;
+    border-bottom: 4px solid #ef4444 !important;
+    color: #991b1b !important;
 }
-
 .btn-logout:hover {
-    background: linear-gradient(180deg, #3d1616 0%, #240c0c 100%) !important;
-    color: #ef4444 !important;
-    border-bottom-color: #ef4444 !important;
-    text-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+    background: linear-gradient(180deg, #fca5a5 0%, #f87171 100%) !important;
+    color: #7f1d1d !important;
+    border-bottom-color: #b91c1c !important;
 }
 
 .telemetry-link {
@@ -180,19 +183,17 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 .telemetry-link-profile {
-    color: #00d2ff !important;
-    border-color: #1b354b !important;
+    color: #0284c7 !important;
+    border-color: #cbd5e1 !important;
 }
 
-/* Input Fields Machined Realism */
 .input-machined {
-    background: #090b0e;
-    border: 1px solid #232d3d;
-    border-bottom: 2px solid #334155;
-    color: #f1f5f9;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-bottom: 2px solid #64748b;
+    color: #0f172a;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
     border-radius: 4px;
     padding: 0.6rem 0.75rem;
     font-size: 0.85rem;
@@ -200,38 +201,178 @@ body {
 }
 .input-machined:focus {
     outline: none;
-    border-color: #00d2ff;
-    border-bottom-color: #00d2ff;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.9), 0 0 10px rgba(0, 210, 255, 0.15);
+    border-color: #0284c7;
+    border-bottom-color: #0284c7;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05), 0 0 10px rgba(2, 132, 199, 0.15);
 }
 
-/* ====== Embedded Steel Header Navigation ====== */
 .nav-chassis {
-    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
-    border-bottom: 3px solid #00d2ff;
-    box-shadow: 
-        inset 0 -1px 0 rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.05),
-        0 10px 30px rgba(0,0,0,0.7);
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-bottom: 3px solid #0284c7;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 .logo-cast {
     font-weight: 900;
     letter-spacing: 4px;
-    color: #00d2ff;
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-    background: linear-gradient(180deg, #ffffff 0%, #00d2ff 100%);
+    color: #0284c7;
+    background: linear-gradient(180deg, #0f172a 0%, #0284c7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* ====== Structural Chiseled Typography ====== */
 .steel-engraved-header {
     font-weight: 900;
     letter-spacing: 2px;
-    background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%);
+    background: linear-gradient(180deg, #0f172a 20%, #0284c7 70%, #0369a1 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+
+/* ====== PREMIUM ALLOY DARK CHASSIS INTERFACE ====== */
+.dark body {
+    background-color: #0f131a;
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 20%, rgba(0,0,0,0.2) 40%, rgba(255,255,255,0.03) 60%, rgba(0,0,0,0.3) 80%, rgba(255,255,255,0.02) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.4) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 3px);
+    box-shadow: inset 0 0 80px rgba(0,0,0,0.6);
+    color: #e2e8f0;
+}
+
+.dark .hardware-panel {
+    background: linear-gradient(180deg, #232936 0%, #161b24 100%);
+    border-top: 2px solid #38455e;
+    border-left: 2px solid #2d374b;
+    border-right: 2px solid #141923;
+    border-bottom: 4px solid #0d1016;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.08), inset 0 -3px 8px rgba(0, 0, 0, 0.5), 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.dark .hardware-panel::before {
+    border: 1px solid #101319;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.dark .card-recessed {
+    background: linear-gradient(180deg, #12161f 0%, #0d1016 100%);
+    border-top: 2px solid #090b0e;
+    border-left: 2px solid #090b0e;
+    border-right: 1px solid #2d374b;
+    border-bottom: 1px solid #2d374b;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(255, 255, 255, 0.02);
+}
+.dark .card-recessed:hover {
+    border-right-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 210, 255, 0.15);
+}
+.dark .card-recessed img {
+    border: 2px solid #1b202b;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+    filter: brightness(80%) contrast(110%);
+}
+.dark .card-recessed:hover img {
+    filter: brightness(100%) contrast(100%);
+    border-color: #00d2ff;
+}
+
+.dark .rivet-plate {
+    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
+    border: 1px solid #2d374b;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 8px rgba(0,0,0,0.4);
+    color: #00d2ff;
+    text-shadow: 0 0 6px rgba(0, 210, 255, 0.4);
+}
+.dark .rivet-plate::before, .dark .rivet-plate::after {
+    background: #090b0e;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.dark .btn-machined, .dark .telemetry-link {
+    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%) !important;
+    border-top: 1px solid #3d4a63 !important;
+    border-left: 1px solid #333e54 !important;
+    border-right: 2px solid #0f1217 !important;
+    border-bottom: 4px solid #0a0c10 !important;
+    color: #d8dee9 !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+.dark .btn-machined:hover, .dark .telemetry-link:hover {
+    background: linear-gradient(180deg, #1f242e 0%, #0f1217 100%) !important;
+    color: #aef710 !important;
+    border-right-color: #1f242e !important;
+    border-bottom-color: #aef710 !important;
+    text-shadow: 0 0 6px rgba(174, 247, 16, 0.4);
+    box-shadow: inset 0 1px 0 rgba(174, 247, 16, 0.05), 0 4px 12px rgba(174, 247, 16, 0.15);
+}
+.dark .btn-machined:active, .dark .telemetry-link:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.dark .toggle-chassis {
+    background: #090b0e;
+    border-color: #1a2230;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
+}
+.dark .toggle-handle {
+    background: linear-gradient(180deg, #2c3445 0%, #171b24 100%);
+    border-color: #3d4a63;
+    left: 32px;
+}
+
+.dark .btn-logout {
+    background: linear-gradient(180deg, #5c2424 0%, #3a1515 100%) !important;
+    border-top: 1px solid #7c3535 !important;
+    border-left: 1px solid #6b2d2d !important;
+    border-right: 2px solid #240c0c !important;
+    border-bottom: 4px solid #1a0808 !important;
+    color: #fca5a5 !important;
+}
+.dark .btn-logout:hover {
+    background: linear-gradient(180deg, #3d1616 0%, #240c0c 100%) !important;
+    color: #ef4444 !important;
+    border-bottom-color: #ef4444 !important;
+    text-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.dark .telemetry-link-profile {
+    color: #00d2ff !important;
+    border-color: #1b354b !important;
+}
+
+.dark .input-machined {
+    background: #090b0e;
+    border: 1px solid #232d3d;
+    border-bottom: 2px solid #334155;
+    color: #f1f5f9;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+}
+.dark .input-machined:focus {
+    border-color: #00d2ff;
+    border-bottom-color: #00d2ff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.9), 0 0 10px rgba(0, 210, 255, 0.15);
+}
+
+.dark .nav-chassis {
+    background: linear-gradient(180deg, #1f2531 0%, #131822 100%);
+    border-bottom: 3px solid #00d2ff;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.dark .logo-cast {
+    color: #00d2ff;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+    background: linear-gradient(180deg, #ffffff 0%, #00d2ff 100%);
+    -webkit-background-clip: text;
+}
+
+.dark .steel-engraved-header {
+    background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%);
+    -webkit-background-clip: text;
     filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));
 }
 </style>
@@ -244,13 +385,22 @@ body {
         <a href="index.html" class="text-2xl logo-cast">CYNICDROID</a>
         
         <!-- Action Control Array Matrix -->
-        <div class="flex flex-wrap gap-2 items-center justify-center">
+        <div class="flex flex-wrap gap-3 items-center justify-center">
+            
+            <!-- Machined Toggle Button Mechanism -->
+            <div class="flex items-center gap-2">
+                <span class="text-[10px] font-black tracking-wider text-slate-700 dark:text-gray-400">THEME</span>
+                <div id="themeToggleBtn" onclick="toggleThemeEngine()" class="toggle-chassis">
+                    <div id="themeToggleHandle" class="toggle-handle">🌙</div>
+                </div>
+            </div>
+
             <a href="https://wa.me/254716375459" class="telemetry-link" target="_blank" rel="noopener">WHATSAPP</a>
             <a href="tel:+254716375459" class="telemetry-link">CALL</a>
             <a href="mailto:cynicdroid@gmail.com" class="telemetry-link">EMAIL</a>
             
             <!-- Auth Switches Dynamic Hub -->
-            <div id="authNavContainer" class="flex gap-2 border-l border-gray-700 pl-2">
+            <div id="authNavContainer" class="flex gap-2 border-l border-slate-400 dark:border-gray-700 pl-2">
                 <!-- Injected via JavaScript Core -->
             </div>
         </div>
@@ -275,15 +425,15 @@ body {
             
             <!-- Recessed Viewport for Profile Image -->
             <div class="card-recessed p-3 flex justify-center items-center">
-                <img src="assets/images/cyniclogo.jpg" alt="Nelson Mutugi" class="w-full max-w-xs object-cover rounded shadow-md border border-neutral-800">
+                <img src="assets/images/cyniclogo.jpg" alt="Nelson Mutugi" class="w-full max-w-xs object-cover rounded shadow-md">
             </div>
             
             <!-- Diagnostics Profile Text -->
             <div class="space-y-4">
-                <h3 class="text-xl font-black tracking-wider text-gray-100 uppercase border-b-2 border-neutral-800 pb-2">
-                    NELSON MUTUGI NGARI <span class="text-xs text-cyan-400 font-normal tracking-widest block mt-1">CHIEF TECHNICIAN / MANAGING DIRECTIVES</span>
+                <h3 class="text-xl font-black tracking-wider text-slate-900 dark:text-gray-100 uppercase border-b-2 border-slate-300 dark:border-neutral-800 pb-2">
+                    NELSON MUTUGI NGARI <span class="text-xs text-sky-700 dark:text-cyan-400 font-normal tracking-widest block mt-1">CHIEF TECHNICIAN / MANAGING DIRECTIVES</span>
                 </h3>
-                <div class="card-recessed p-4 text-gray-400 text-xs leading-relaxed tracking-wide space-y-3">
+                <div class="card-recessed p-4 text-slate-800 dark:text-gray-300 text-xs leading-relaxed tracking-wide space-y-3">
                     <p>
                         Nelson is an ICT expert with advanced competencies in software engineering, device firmware customization, architecture analytics, and full-stack information management arrays. He builds and manages high-availability business platforms, aligning programmatic solutions to complex real-world infrastructure failures.
                     </p>
@@ -302,11 +452,11 @@ body {
             
             <!-- Module 1: Identity Profile -->
             <div class="hardware-panel p-5">
-                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Who Are We?
+                <h2 class="text-sm font-black mb-3 tracking-wide text-slate-900 dark:text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-sky-600 dark:bg-cyan-400 rounded-full animate-pulse"></span> Who Are We?
                 </h2>
                 <div class="card-recessed p-4">
-                    <p class="text-gray-400 text-xs leading-relaxed tracking-wide">
+                    <p class="text-slate-800 dark:text-gray-300 text-xs leading-relaxed tracking-wide">
                         We specialize in analyzing, designing, and implementing IT systems. We assess system suitability, collaborate with users and developers, and use technology to solve business challenges. We also guide organizational improvements and help teams adopt new systems effectively. CynicDroid Technologies designs and implements cutting-edge IT systems. We assess, optimize, and solve business challenges with tech, while guiding teams to embrace smarter, faster workflows.
                     </p>
                 </div>
@@ -314,11 +464,11 @@ body {
 
             <!-- Module 2: Functional Scope -->
             <div class="hardware-panel p-5">
-                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> What Do We Do?
+                <h2 class="text-sm font-black mb-3 tracking-wide text-slate-900 dark:text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-sky-600 dark:bg-cyan-400 rounded-full animate-pulse"></span> What Do We Do?
                 </h2>
                 <div class="card-recessed p-4">
-                    <p class="text-gray-400 text-xs leading-relaxed tracking-wide">
+                    <p class="text-slate-800 dark:text-gray-300 text-xs leading-relaxed tracking-wide">
                         We offer a wide range of IT services, including software development, ICT setup and maintenance, hardware and software installation, website design and deployment, Android device support, data recovery, and internet services like email and web conferencing.
                     </p>
                 </div>
@@ -326,11 +476,11 @@ body {
 
             <!-- Module 3: Strategy Matrix -->
             <div class="hardware-panel p-5">
-                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Our Mission
+                <h2 class="text-sm font-black mb-3 tracking-wide text-slate-900 dark:text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-sky-600 dark:bg-cyan-400 rounded-full animate-pulse"></span> Our Mission
                 </h2>
                 <div class="card-recessed p-4">
-                    <p class="text-gray-400 text-xs leading-relaxed tracking-wide">
+                    <p class="text-slate-800 dark:text-gray-300 text-xs leading-relaxed tracking-wide">
                         Our mission is to provide reliable software support, secure and well-documented packages, prompt assistance via our helpline, strong data security, collaboration with users and developers, and affordable products and services.
                     </p>
                 </div>
@@ -338,11 +488,11 @@ body {
 
             <!-- Module 4: Operational Objective -->
             <div class="hardware-panel p-5">
-                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Our Vision
+                <h2 class="text-sm font-black mb-3 tracking-wide text-slate-900 dark:text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-sky-600 dark:bg-cyan-400 rounded-full animate-pulse"></span> Our Vision
                 </h2>
                 <div class="card-recessed p-4">
-                    <p class="text-gray-400 text-xs leading-relaxed tracking-wide">
+                    <p class="text-slate-800 dark:text-gray-300 text-xs leading-relaxed tracking-wide">
                         To make technology fit in seamlessly with everyday life.
                     </p>
                 </div>
@@ -350,12 +500,12 @@ body {
 
             <!-- Module 5: Core Directive -->
             <div class="hardware-panel p-5">
-                <h2 class="text-sm font-black mb-3 tracking-wide text-gray-200 uppercase flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Core Motto
+                <h2 class="text-sm font-black mb-3 tracking-wide text-slate-900 dark:text-gray-200 uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 bg-sky-600 dark:bg-cyan-400 rounded-full animate-pulse"></span> Core Motto
                 </h2>
                 <div class="card-recessed p-4">
-                    <p class="text-xl font-black text-cyan-400 tracking-wider mb-2 text-center sm:text-left">"GET RID OF ALL DOUBTS AND GO FOR IT."</p>
-                    <p class="text-gray-500 text-xs leading-relaxed">System execution principle powering every deployment framework at CynicDroid.</p>
+                    <p class="text-xl font-black text-sky-700 dark:text-cyan-400 tracking-wider mb-2 text-center sm:text-left">"GET RID OF ALL DOUBTS AND GO FOR IT."</p>
+                    <p class="text-slate-500 dark:text-gray-500 text-xs leading-relaxed">System execution principle powering every deployment framework at CynicDroid.</p>
                 </div>
             </div>
 
@@ -376,51 +526,51 @@ body {
         <form id="registrationForm" onsubmit="handleRegistration(event)" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Full Name</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Full Name</label>
                     <input type="text" id="regName" required class="input-machined" placeholder="Enter your full name">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Email Address</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Email Address</label>
                     <input type="email" id="regEmail" required class="input-machined" placeholder="yourname@example.com">
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Phone Number</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Phone Number</label>
                     <input type="tel" id="regPhone" required class="input-machined" placeholder="e.g. 0716375459">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Where do you live?</label>
+                    <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Where do you live?</label>
                     <input type="text" id="regLocation" required class="input-machined" placeholder="Town, County (e.g. Ishiara, Embu)">
                 </div>
             </div>
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Create a Password</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Create a Password</label>
                 <input type="password" id="regPassword" required class="input-machined" placeholder="Choose a secure password">
             </div>
             <button type="submit" class="btn-machined w-full py-3 rounded text-xs uppercase font-bold mt-2">REGISTER NOW</button>
-            <p class="text-center text-[10px] text-gray-500 tracking-wide mt-2">Already have an account? <span onclick="switchModalMode('login')" class="text-sky-400 cursor-pointer underline">Log In Here</span></p>
+            <p class="text-center text-[10px] text-slate-600 dark:text-gray-500 tracking-wide mt-2">Already have an account? <span onclick="switchModalMode('login')" class="text-sky-700 dark:text-sky-400 cursor-pointer underline">Log In Here</span></p>
         </form>
 
         <!-- Login Form Subsystem -->
         <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 hidden">
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Email Address</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Email Address</label>
                 <input type="email" id="loginEmail" required class="input-machined" placeholder="yourname@example.com">
             </div>
             <div class="flex flex-col gap-1">
-                <label class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Your Password</label>
+                <label class="text-[10px] uppercase font-bold tracking-widest text-slate-700 dark:text-gray-400">Your Password</label>
                 <input type="password" id="loginPassword" required class="input-machined" placeholder="Enter your password">
             </div>
             <button type="submit" class="btn-machined w-full py-3 rounded text-xs uppercase font-bold mt-2">LOG IN</button>
-            <p class="text-center text-[10px] text-gray-500 tracking-wide mt-2">Need a new account? <span onclick="switchModalMode('register')" class="text-sky-400 cursor-pointer underline">Sign Up Here</span></p>
+            <p class="text-center text-[10px] text-slate-600 dark:text-gray-500 tracking-wide mt-2">Need a new account? <span onclick="switchModalMode('register')" class="text-sky-700 dark:text-sky-400 cursor-pointer underline">Sign Up Here</span></p>
         </form>
     </div>
 </div>
 
 <!-- Base Chassis Footer Frame -->
-<footer class="bg-black border-t-4 border-neutral-900 py-6 text-center text-xs tracking-widest relative z-10">
-    <p class="font-black inline-block uppercase" style="background: linear-gradient(180deg, #ffffff 20%, #aef710 70%, #68960a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.95));">
+<footer class="bg-white border-t-4 border-slate-300 dark:bg-black dark:border-neutral-900 py-6 text-center text-xs tracking-widest relative z-10">
+    <p class="font-black inline-block uppercase text-slate-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-b dark:from-white dark:to-lime-600" style="filter: drop-shadow(0 2px 3px rgba(0,0,0,0.05));">
         © Copyright 2026 CynicDroid Technologies. All Rights Reserved.
     </p>
 </footer>
@@ -429,6 +579,33 @@ body {
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init({ duration: 1000, once: true });
+
+// ====== Theme Controller Engine Initialization ======
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('cynicdroid_theme') || 'light';
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        updateThemeUI(true);
+    } else {
+        document.documentElement.classList.remove('dark');
+        updateThemeUI(false);
+    }
+});
+
+function toggleThemeEngine() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('cynicdroid_theme', isDark ? 'dark' : 'light');
+    updateThemeUI(isDark);
+}
+
+function updateThemeUI(isDark) {
+    const handle = document.getElementById('themeToggleHandle');
+    if (isDark) {
+        handle.innerText = "☀️";
+    } else {
+        handle.innerText = "🌙";
+    }
+}
 
 window.addEventListener('load', () => {
     syncAuthUI();
@@ -511,7 +688,7 @@ function syncAuthUI() {
         const user = JSON.parse(localStorage.getItem('cynicdroid_user')) || {};
         
         userContainer.innerHTML = `
-            <span class="telemetry-link telemetry-link-profile uppercase">USER: ${user.name.split(' ')[0]}</span>
+            <span class="telemetry-link telemetry-link-profile uppercase">USER: ${user.name ? user.name.split(' ')[0] : 'Client'}</span>
             <button onclick="handleLogout()" class="telemetry-link btn-logout">LOGOUT</button>
         `;
     } else {
